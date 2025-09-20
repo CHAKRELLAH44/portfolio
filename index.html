@@ -274,10 +274,12 @@
             </div>
 
             <div class="right-side">
-              <form data-aos="fade-left" data-aos-delay="500">
-                <input type="text" placeholder="YOUR NAME">
-                <input type="text" placeholder="YOUR EMAIL ADDRESS">
-                <textarea placeholder="WHAT CAN I HELP FOR YOU?"></textarea>
+              <form action="https://formsubmit.co/chakrellaah@gmail.com" method="POST" data-aos="fade-left" data-aos-delay="500">
+                <input type="text" name="name" placeholder="YOUR NAME" required>
+                <input type="email" name="email" placeholder="YOUR EMAIL ADDRESS" required>
+                <textarea name="message" placeholder="WHAT CAN I HELP FOR YOU?" required></textarea>
+                <input type="hidden" name="_next" value="https://chakrellah44.github.io/portfolio/thankyou.html">
+                <input type="hidden" name="_subject" value="New Portfolio Contact!">
                 <button type="submit">SEND</button>
               </form>
             </div>
@@ -295,9 +297,16 @@
             <div class="logo">
               <box-icon name='linkedin-square' type='logo' ></box-icon>
             </div>
-            
+            <div class="logo">
+              <box-icon name='discord' type='logo' ></box-icon>
             </div>
-            
+            <div class="logo">
+              <box-icon name='github' type='logo' ></box-icon>
+            </div>
+            <div class="logo">
+              <box-icon name='twitter' type='logo' ></box-icon>
+            </div>
+
           </div>
           <p>&copy; Imanska <span id="year"></span></p>
         </div>
