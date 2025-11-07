@@ -23,20 +23,24 @@
       <div class="container">
         <div class="content">
           <div class="logo">
-            <img src="assets/c--.png" alt="logo" />
+            <img src="assets/dark/c--.png" alt="logo" />
             <a href="">IMANSKA</a>
           </div>
 
           <nav>
             <a href="#about">About</a>
-            <a href="#project">Project</a>
-            <a href="#contact">Contact</a>
-            
+            <a href="projects.html">Projects</a>
+            <a href="hidden-me.html">Hidden Me</a>
+            <a href="contact.html">Contact</a>
           </nav>
 
           <div class="extra-nav">
             <a href="#"><span>AVAILABLE FOR WORK</span></a>
           </div>
+            <!-- Bouton switch thème (logo) 
+            <div class="theme-toggle" title="Changer le thème" onclick="toggleTheme()">
+              <box-icon id="theme-icon" name="moon" type="solid" color="#fff" size="md"></box-icon>
+            </div>-->
         </div>
       </div>
     </header>
@@ -96,7 +100,7 @@
           <div class="profile-and-text">
             <div class="profile-container" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
               <div class="profile">
-                <img src="assets/ai__profile.png" alt="profile">
+                  <img src="assets/dark/ai__profile.png" alt="profile">
               </div>
             </div>
     
@@ -144,28 +148,54 @@
           <div class="project-area" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
             <!-- Projet 1 -->
             <div class="projects">
-              <img src="assets/project-1.png" alt="Gestion Cinema Project" class="project-image">
+              <button class="expand-btn" aria-label="Open project details">+</button>
+              <a href="https://github.com/CHAKRELLAH44/Auto-Twet-.ft-ELIZAOS" class="github-link" target="_blank">
+                <box-icon name='github' type='logo'></box-icon>
+              </a>
+              <div class="project-overlay"></div>
+                <img src="assets/dark/project-1.png" alt="Gestion Cinema Project" class="project-image">
               <div class="desc">
-                <h1> Twitter Automation Agent</h1>
-                <p><strong>Tools:</strong> <span class="tool">Python</span>, <span class="tool">ElizaOS</span>, <span class="tool">Twisnscrape</span></p>
+                <h1>Twitter Automation Agent</h1>
+                <div class="tools-container">
+                  <span class="tool">Python</span>
+                  <span class="tool">ElizaOS</span>
+                  <span class="tool">Twisnscrape</span>
+                </div>
               </div>
             </div>
             
             <!-- Projet 2 -->
             <div class="projects">
-              <img src="assets/project-2.png" alt="Novaship Project" class="project-image">
+              <button class="expand-btn" aria-label="Open project details">+</button>
+              <a href="https://github.com/CHAKRELLAH44/CoffeShop" class="github-link" target="_blank">
+                <box-icon name='github' type='logo'></box-icon>
+              </a>
+              <div class="project-overlay"></div>
+                <img src="assets/dark/project-2.png" alt="Coffee Shop Project" class="project-image">
               <div class="desc">
-                <h1>Coffee Shop </h1>
-                <p><strong>Tools:</strong> <span class="tool">AWS Step Functions</span>, <span class="tool">Amazon EventBridge</span></p>
+                <h1>Coffee Shop</h1>
+                <div class="tools-container">
+                  <span class="tool">AWS Step Functions</span>
+                  <span class="tool">Amazon EventBridge</span>
+                </div>
               </div>
             </div>
             
             <!-- Projet 3 -->
             <div class="projects">
-              <img src="assets/project-3.png" alt="Novascentauri Project" class="project-image">
+              <button class="expand-btn" aria-label="Open project details">+</button>
+              <a href="https://github.com/CHAKRELLAH44/AI-Death-Prediction" class="github-link" target="_blank">
+                <box-icon name='github' type='logo'></box-icon>
+              </a>
+              <div class="project-overlay"></div>
+                <img src="assets/dark/project-3.png" alt="Healthcare AI Project" class="project-image">
               <div class="desc">
                 <h1>Healthcare AI – Predicting</h1>
-                <p><strong>Tools:</strong> <span class="tool">Python</span>, <span class="tool">Scikit-learn</span>, <span class="tool"> TensorFlow</span></p>
+                <div class="tools-container">
+                  <span class="tool">Python</span>
+                  <span class="tool">Scikit-learn</span>
+                  <span class="tool">TensorFlow</span>
+                </div>
               </div>
             </div>
           </div>

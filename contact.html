@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <link rel="icon" href="assets/c-.png" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Contact - Imanska</title>
+  </head>
+  <body>
+    <!-- Header with Navigation -->
+    <header data-aos="fade-down" data-aos-delay="200">
+      <div class="container">
+        <div class="content">
+          <div class="logo">
+            <img src="assets/c--.png" alt="logo" />
+            <a href="index.html">IMANSKA</a>
+          </div>
+
+          <nav>
+            <a href="index.html#about">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="hidden-me.html">Hidden Me</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+
+          <div class="extra-nav">
+            <a href="#"><span>AVAILABLE FOR WORK</span></a>
+          </div>
+            <!-- Bouton switch thème (logo) -->
+            <div class="theme-toggle" title="Changer le thème" onclick="toggleTheme()">
+              <box-icon id="theme-icon" name="moon" type="solid" color="#fff" size="md"></box-icon>
+            </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact-form">
+      <div class="container">
+        <div class="content">
+          <div class="title" data-aos="fade-down" data-aos-delay="300">
+            <h2>LET'S</h2>
+            <h1>CONNECT</h1>
+          </div>
+
+          <div class="contact-area">
+            <div data-aos="fade-right" data-aos-delay="300" class="left-side">
+              <h1>SEND ME BUGS</h1>
+              <h1>(OR LOVE </h1>
+              <h1>        NOTES)</h1>
+            </div>
+
+            <div class="right-side">
+              <form action="https://formsubmit.co/chakrellaah@gmail.com" method="POST" data-aos="fade-left" data-aos-delay="500">
+                <input type="text" name="name" placeholder="YOUR NAME" required>
+                <input type="email" name="email" placeholder="YOUR EMAIL ADDRESS" required>
+                <textarea name="message" placeholder="WHAT CAN I HELP FOR YOU?" required></textarea>
+                <input type="hidden" name="_next" value="https://chakrellah44.github.io/portfolio/thankyou.html">
+                <input type="hidden" name="_subject" value="New Portfolio Contact!">
+                <button type="submit">SEND</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-media">
+      <div class="container">
+        <div class="content" data-aos="fade-up" data-aos-delay="300">
+          <h2>FIND ME ON</h2>
+          <div class="social-links">
+            <a href="https://linkedin.com/in/chakrellah/" target="_blank" class="social-link">
+              <box-icon name='linkedin-square' type='logo' size="lg"></box-icon>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/CHAKRELLAH44" target="_blank" class="social-link">
+              <box-icon name='github' type='logo' size="lg"></box-icon>
+              <span>GitHub</span>
+            </a>
+            <a href="https://discord.com/users/imane.chakre" target="_blank" class="social-link">
+              <box-icon name='discord' type='logo' size="lg"></box-icon>
+              <span>Discord</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back to Home Button -->
+    <div class="back-to-home" data-aos="fade-up">
+      <a href="index.html" class="home-button">
+        <box-icon name='home'></box-icon>
+        BACK TO HOME
+      </a>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="content"> 
+          <h1>Imanska's PORTFOLIO</h1>
+            <div class="social">
+            <a href="https://www.linkedin.com/in/chakrellah/" target="_blank" class="logo" title="LinkedIn">
+              <box-icon name='linkedin-square' type='logo'></box-icon>
+            </a>
+            <a href="https://discord.com/users/imane.chakre" target="_blank" class="logo" title="Discord">
+              <box-icon name='discord' type='logo'></box-icon>
+            </a>
+            <a href="https://github.com/CHAKRELLAH44" target="_blank" class="logo" title="GitHub">
+              <box-icon name='github' type='logo'></box-icon>
+            </a>
+            <a href="https://x.com/iman_chakre" target="_blank" class="logo" title="X (Twitter)">
+              <box-icon name='twitter' type='logo'></box-icon>
+            </a>
+          </div>
+          <p>&copy; Imanska <span id="year"></span> | Building Tech, Adding Fun</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Box Icon -->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

@@ -28,12 +28,19 @@
             </div>
   
             <nav>
-              <a href="index.html"> Back</a>
-              </nav>
+              <a href="index.html#about">About</a>
+              <a href="projects.html">Projects</a>
+              <a href="hidden-me.html">Hidden Me</a>
+              <a href="contact.html">Contact</a>
+            </nav>
   
             <div class="extra-nav">
               <a href="#"><span>AVAILABLE FOR WORK</span></a>
             </div>
+              <!-- Bouton switch thème (logo) -->
+              <div class="theme-toggle" title="Changer le thème" onclick="toggleTheme()">
+                <box-icon id="theme-icon" name="moon" type="solid" color="#fff" size="md"></box-icon>
+              </div>
           </div>
         </div>
       </header>
@@ -65,14 +72,14 @@
                 <p>Motorsports are my adrenaline rush, and Formula 1 is the ultimate obsession. My love for racing runs deep, especially for Lewis Hamilton, An 8-time world champion. I admire the determination and skill of the driver who push the limits every race -- "Life is about LESSONS, not Perfection", Lewis</p>
               </div>
               <div class="image">
-                <img src="assets/lewis.jpg" alt="Photo 2">
+                  <img src="assets/dark/lewis.jpg" alt="Photo 2">
               </div>
             </div>
       
             <!-- Section 3 : Photo à gauche, description à droite -->
             <div class="section" data-aos="fade-left">
               <div class="image">
-                <img src="assets/fcb.png" alt="Photo 3">
+                  <img src="assets/dark/fcb.png" alt="Photo 3">
               </div>
               <div class="description">
                 <h2>The Beautiful Game</h2>
@@ -88,14 +95,14 @@
                  
               </div>
               <div class="image">
-                <img src="assets/baking.png" alt="Photo 4">
+                  <img src="assets/dark/baking.png" alt="Photo 4">
               </div>
             </div>
       
             <!-- Section 5 : Photo à gauche, description à droite -->
             <div class="section" data-aos="fade-left">
               <div class="image">
-                <img src="assets/musique.jpg" alt="Photo 5">
+                  <img src="assets/dark/musique.jpg" alt="Photo 5">
               </div>
               <div class="description">
                 <h2>The Universal Language</h2>
@@ -120,15 +127,21 @@
     <div class="container">
       <div class="content"> 
         <h1>Imanska's PORTFOLIO</h1>
-        <div class="social">
-          <div class="logo">
-            <box-icon name='linkedin-square' type='logo' ></box-icon>
-          </div>
-          
-          </div>
-          
+          <div class="social">
+          <a href="https://www.linkedin.com/in/chakrellah/" target="_blank" class="logo" title="LinkedIn">
+            <box-icon name='linkedin-square' type='logo'></box-icon>
+          </a>
+          <a href="https://discord.com/users/imane.chakre" target="_blank" class="logo" title="Discord">
+            <box-icon name='discord' type='logo'></box-icon>
+          </a>
+          <a href="https://github.com/CHAKRELLAH44" target="_blank" class="logo" title="GitHub">
+            <box-icon name='github' type='logo'></box-icon>
+          </a>
+          <a href="https://x.com/iman_chakre" target="_blank" class="logo" title="X (Twitter)">
+            <box-icon name='twitter' type='logo'></box-icon>
+          </a>
         </div>
-        <p>&copy; Imanska <span id="year"></span></p>
+        <p>&copy; Imanska <span id="year"></span> | Building Tech, Adding Fun</p>
       </div>
     </div>
   </footer>
