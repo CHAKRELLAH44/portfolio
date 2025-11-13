@@ -2029,3 +2029,651 @@ footer .container .content .social p {
 .home-button:hover box-icon {
   fill: var(--black);
 }
+
+/* ============================================
+   RESPONSIVE MEDIA QUERIES - MOBILE & TABLET
+   ============================================ */
+
+/* Tablet - Large (1024px - 1200px) */
+@media (max-width: 1200px) {
+  .container {
+    padding: 1.5rem 4rem;
+  }
+
+  .hero .container .content h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero .container .content .row-2 {
+    font-size: 3.5rem;
+  }
+
+  .project .container .content .header .title .row-1,
+  .project .container .content .header .title .row-2 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Tablet - Medium (768px - 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem 3rem;
+  }
+
+  header .container .content nav {
+    gap: 1.5rem;
+  }
+
+  header .container .content nav a {
+    font-size: 0.9rem;
+  }
+
+  .hero .container .content h1 {
+    font-size: 3rem;
+  }
+
+  .hero .container .content .row-2 {
+    font-size: 3rem;
+  }
+
+  .hero .container .content p {
+    font-size: 1rem;
+    width: 80%;
+  }
+
+  .project .container .content .project-area {
+    height: 300px;
+    gap: 0.8rem;
+  }
+
+  .project .container .content .project-area .projects .desc h1 {
+    font-size: 1.2rem;
+  }
+
+  .project .container .content .project-area .projects .desc .tool {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill .container .content .skill-box {
+    width: 80px;
+    height: 80px;
+  }
+
+  .section .image img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .section .description h2 {
+    font-size: 3rem;
+  }
+}
+
+/* Mobile - Large (600px - 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 2rem;
+  }
+
+  header .container .content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  header .container .content nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 8rem 0 4rem;
+  }
+
+  .hero .container .content {
+    gap: 2rem;
+  }
+
+  .hero .container .content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero .container .content .row-2 {
+    font-size: 2.5rem;
+  }
+
+  .hero .container .content p {
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  .hero .container .content .btn {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  .project .container .content .header .title .row-1,
+  .project .container .content .header .title .row-2 {
+    font-size: 2rem;
+  }
+
+  .project .container .content .project-area {
+    flex-direction: column;
+    height: auto;
+    gap: 1.5rem;
+  }
+
+  .project .container .content .project-area .projects {
+    width: 100%;
+    min-height: 200px;
+  }
+
+  .project .container .content .project-area .projects .desc {
+    padding: 1.5rem;
+  }
+
+  .project .container .content .project-area .projects .desc h1 {
+    font-size: 1.1rem;
+  }
+
+  .skill .container .content h1 {
+    font-size: 2rem;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill .container .content .skill-box {
+    width: 70px;
+    height: 70px;
+  }
+
+  .contact .container .content .title h2 {
+    font-size: 2rem;
+  }
+
+  .contact .container .content .title h1 {
+    font-size: 3rem;
+  }
+
+  .contact .container .content .contact-area {
+    flex-direction: column;
+  }
+
+  .contact .container .content .contact-area .left-side h1 {
+    font-size: 2rem;
+  }
+
+  .section {
+    flex-direction: column !important;
+    gap: 1.5rem;
+  }
+
+  .section .image img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+  }
+
+  .section .description {
+    padding: 1rem;
+  }
+
+  .section .description h2 {
+    font-size: 2.5rem;
+  }
+
+  .project-modal .panel {
+    padding: 1.2rem;
+  }
+
+  .project-modal .panel .title {
+    font-size: 1.5rem;
+  }
+
+  .project-modal .carousel {
+    height: 250px;
+  }
+}
+
+/* Mobile - Medium (480px - 600px) */
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem 1.5rem;
+  }
+
+  header {
+    height: auto;
+    padding: 1rem 0;
+  }
+
+  header .container .content .logo a {
+    font-size: 1.2rem;
+  }
+
+  header .container .content nav a {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .hero .container .content h1 {
+    font-size: 2rem;
+  }
+
+  .hero .container .content .row-2 {
+    font-size: 2rem;
+  }
+
+  .hero .container .content p {
+    font-size: 0.9rem;
+  }
+
+  .hero .container .content .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .project .container .content .header .title .row-1,
+  .project .container .content .header .title .row-2 {
+    font-size: 1.8rem;
+  }
+
+  .project .container .content .project-area .projects {
+    min-height: 180px;
+  }
+
+  .project .container .content .project-area .projects .desc h1 {
+    font-size: 1rem;
+  }
+
+  .project .container .content .project-area .projects .desc .tool {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .skill .container .content h1 {
+    font-size: 1.8rem;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .skill .container .content .skill-box {
+    width: 60px;
+    height: 60px;
+  }
+
+  .contact .container .content .title h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact .container .content .title h1 {
+    font-size: 2.5rem;
+  }
+
+  .contact .container .content .contact-area .left-side h1 {
+    font-size: 1.5rem;
+  }
+
+  .contact .container .content .contact-area .right-side form input,
+  .contact .container .content .contact-area .right-side form textarea {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  .contact .container .content .contact-area .right-side form button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .section .image img {
+    max-width: 280px;
+  }
+
+  .section .description h2 {
+    font-size: 2rem;
+  }
+
+  .section .description p {
+    font-size: 0.9rem;
+  }
+
+  .project-modal .panel {
+    padding: 1rem;
+  }
+
+  .project-modal .panel .title {
+    font-size: 1.3rem;
+  }
+
+  .project-modal .carousel {
+    height: 200px;
+  }
+
+  .project-modal .carousel .nav button {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+}
+
+/* Mobile - Small (320px - 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  header .container .content .logo img {
+    width: 35px;
+    height: 35px;
+  }
+
+  header .container .content .logo a {
+    font-size: 1rem;
+  }
+
+  header .container .content nav {
+    gap: 0.5rem;
+  }
+
+  header .container .content nav a {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .hero .container .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero .container .content .row-2 {
+    font-size: 1.5rem;
+  }
+
+  .hero .container .content p {
+    font-size: 0.85rem;
+  }
+
+  .hero .container .content .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+
+  .project .container .content .header .title .row-1,
+  .project .container .content .header .title .row-2 {
+    font-size: 1.5rem;
+  }
+
+  .project .container .content .project-area {
+    gap: 1rem;
+  }
+
+  .project .container .content .project-area .projects {
+    min-height: 150px;
+  }
+
+  .project .container .content .project-area .projects .desc {
+    padding: 1rem;
+  }
+
+  .project .container .content .project-area .projects .desc h1 {
+    font-size: 0.9rem;
+  }
+
+  .project .container .content .project-area .projects .desc .tool {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .project .container .content .project-area .projects .github-link,
+  .project .container .content .project-area .projects .expand-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .skill .container .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .skill .container .content .skill-box {
+    width: 50px;
+    height: 50px;
+  }
+
+  .contact .container .content .title h2 {
+    font-size: 1.2rem;
+  }
+
+  .contact .container .content .title h1 {
+    font-size: 2rem;
+  }
+
+  .contact .container .content .contact-area .left-side h1 {
+    font-size: 1.2rem;
+  }
+
+  .contact .container .content .contact-area .right-side form input,
+  .contact .container .content .contact-area .right-side form textarea {
+    font-size: 0.85rem;
+    padding: 0.7rem;
+  }
+
+  .contact .container .content .contact-area .right-side form button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  footer .container .content h1 {
+    font-size: 1rem;
+  }
+
+  .section .image img {
+    max-width: 100%;
+  }
+
+  .section .description h2 {
+    font-size: 1.5rem;
+  }
+
+  .section .description p {
+    font-size: 0.85rem;
+  }
+
+  .project-modal .panel {
+    width: 95%;
+    padding: 0.8rem;
+  }
+
+  .project-modal .panel .title {
+    font-size: 1.1rem;
+  }
+
+  .project-modal .carousel {
+    height: 180px;
+  }
+
+  .project-modal .carousel .nav {
+    display: none;
+  }
+
+  .project-modal .close-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.4rem;
+  }
+
+  .project-modal .meta .desc-text {
+    font-size: 0.85rem;
+  }
+
+  .project-modal .tools .tool {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .project-grid {
+    padding: 0 1rem;
+    gap: 1.5rem;
+  }
+
+  .project-card .desc h1 {
+    font-size: 0.95rem;
+  }
+
+  .project-card .desc p {
+    font-size: 0.75rem;
+  }
+
+  .project-card .desc .tool {
+    font-size: 0.7rem;
+    padding: 0.18rem 0.5rem;
+  }
+}
+
+/* ============================================
+   CROSS-BROWSER COMPATIBILITY FIXES
+   ============================================ */
+
+/* Fix for Safari backdrop-filter */
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .project-modal .backdrop {
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
+    backdrop-filter: blur(6px) saturate(120%);
+  }
+
+  .project-card {
+    -webkit-backdrop-filter: blur(4px) saturate(120%);
+    backdrop-filter: blur(4px) saturate(120%);
+  }
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .project-modal .backdrop {
+    background: rgba(0,0,0,0.85);
+  }
+
+  .project-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  }
+}
+
+/* Fix for iOS Safari smooth scrolling */
+@supports (-webkit-overflow-scrolling: touch) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .project-modal .panel .right {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Fix for Firefox scrollbar */
+@-moz-document url-prefix() {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--white) transparent;
+  }
+}
+
+/* Prevent text selection on buttons and interactive elements */
+button, .btn, .expand-btn, .github-link, .close-btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth font rendering across browsers */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fix for transform flickering in Chrome/Safari */
+.project-card,
+.projects,
+.expand-btn,
+.github-link {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Ensure images don't drag on mobile */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+/* Fix for iOS input zoom */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Landscape orientation fixes for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding: 6rem 0 3rem;
+  }
+
+  .project .container .content .project-area {
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .project .container .content .project-area .projects {
+    min-width: 300px;
+  }
+}
+
+/* Print styles */
+@media print {
+  header {
+    position: relative;
+  }
+
+  .expand-btn,
+  .github-link,
+  .project-modal {
+    display: none !important;
+  }
+
+  .project-card,
+  .projects {
+    break-inside: avoid;
+  }
+}
