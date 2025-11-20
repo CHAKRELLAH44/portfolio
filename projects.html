@@ -51,156 +51,196 @@
         <div class="content">
           <h1 data-aos="zoom-in-down" data-aos-delay="300">ALL PROJECTS</h1>
 
-          <div class="project-grid">
-            <!-- Projet 1 -->
-            <div class="project-card" data-long-desc="Application de gestion de cinéma développée avec React et .NET. Permet la gestion des films, des séances, des réservations et des paiements, avec un tableau d'administration pour suivre l'occupation des salles et les rapports de vente." data-screenshots="assets/dark/project-1.png, assets/dark/project-12.png, assets/dark/project-1.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
-              <a href="https://github.com/CHAKRELLAH44/YI-Movie" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
-                <box-icon name='github' type='logo'></box-icon>
-              </a>
-                <img src="assets/dark/project-1.png" alt="Gestion Cinema Project" class="project-image">
-              <div class="desc">
-                <h1>Gestion Cinema</h1>
-                <p><strong>Tools:</strong> <span class="tool">React + Vite</span>, <span class="tool">C#</span>, <span class="tool">.NET</span></p>
-              </div>
-            </div>
-
-            <!-- Projet 2 -->
-            <div class="project-card" data-long-desc="Plateforme de commande pour Coffee Shop utilisant AWS Step Functions et Amazon EventBridge. Automatise le traitement des commandes, gère l'inventaire en temps réel et envoie des notifications clients via un système d'événements résilient." data-screenshots="assets/dark/project-2.png, assets/dark/project-2.png, assets/dark/project-2.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
+          <!-- DevOps & Cloud Engineering -->
+          <div class="category-section">
+            <h2 class="category-title" data-aos="fade-right" data-aos-delay="200">DevOps & Cloud Engineering</h2>
+            <div class="project-grid">
+              <!-- CI/CD Pipeline Automation -->
+              <div class="project-card" data-long-desc="Implemented a complete CI/CD pipeline to automate application deployment and scaling. The setup ensured fast delivery, containerized workloads, and full observability through monitoring dashboards. Kubernetes (Minikube) for orchestration and cluster environment, Jenkins for CI pipeline & automation, ArgoCD for GitOps CD & deployment sync, Docker for containerization, GitHub for version control, and Prometheus + Grafana for metrics collection & visualization." data-screenshots="assets/dark/project-cicd.png, assets/dark/project-cicd.png, assets/dark/project-cicd.png">
+                <button class="expand-btn" aria-label="Open project details">+</button>
                 <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
-                    <box-icon name='github' type='logo'></box-icon>
-                  </a>
-                <img src="assets/dark/project-2.png" alt="Coffee Shop Project" class="project-image">
-              <div class="desc">
-                <h1>Coffee Shop</h1>
-                <p><strong>Tools:</strong> <span class="tool">AWS Step Functions</span>, <span class="tool">Amazon EventBridge</span></p>
-              </div>
-            </div>
-
-            <!-- Projet 3 -->
-            <div class="project-card" data-long-desc="Solution de réception hôtelière écrite en Java. Comprend la gestion des réservations, le suivi des clients, la génération de factures et un module pour gérer les services annexes (spa, restauration)." data-screenshots="assets/dark/project-3.png, assets/dark/project-3.png, assets/dark/project-3.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
-                <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
-                    <box-icon name='github' type='logo'></box-icon>
-                  </a>
-                <img src="assets/dark/project-3.png" alt="Systeme Reception Hotel Project" class="project-image">
-              <div class="desc">
-                <h1>Systeme Reception Hotel</h1>
-                <p><strong>Tools:</strong> <span class="tool">Java</span>, <span class="tool">Net-Beans</span></p>
-              </div>
-            </div>
-
-            <!-- Projet 4 -->
-            <div class="project-card" data-long-desc="Plateforme de réservation de taxi en ligne développée avec Django. Intègre la géolocalisation, estimation dynamique des tarifs, gestion des courses en temps réel et système d'évaluation des chauffeurs." data-screenshots="assets/dark/project-4.png, assets/dark/project-4.png, assets/dark/project-4.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
-                <a href="https://github.com/CHAKRELLAH44/T-SIR.git" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
-                    <box-icon name='github' type='logo'></box-icon>
-                  </a>
-                  <img src="assets/dark/project-4.png" alt="Systeme Reservation TAXI en-ligne Project" class="project-image">
+                  <box-icon name='github' type='logo'></box-icon>
+                </a>
+                <img src="assets/dark/project-cicd.png" alt="CI/CD Pipeline Project" class="project-image">
                 <div class="desc">
-                  <h1>Systeme Reservation TAXI en-ligne</h1>
-                  <p><strong>Tools:</strong> <span class="tool">Python[Django]</span>, <span class="tool">HTML-CSS</span></p>
+                  <h1>CI/CD Pipeline Automation</h1>
+                  <p><strong>Tools:</strong> <span class="tool">Kubernetes</span>, <span class="tool">Jenkins</span>, <span class="tool">ArgoCD</span>, <span class="tool">Docker</span></p>
                 </div>
               </div>
 
-              <!-- Projet 5 -->
-            <div class="project-card" data-long-desc="Application C++ optimisée pour la gestion opérationnelle d'un hôtel. Propose des routines rapides pour l'allocation des chambres, la gestion des disponibilités et de la tarification, avec export CSV des rapports." data-screenshots="assets/dark/project-5.png, assets/dark/project-5.png, assets/dark/project-5.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
+              <!-- Automated Package Deployment -->
+              <div class="project-card" data-long-desc="Created an automated system to install and configure packages across multiple servers, eliminating manual work and ensuring consistent configuration. Built a reproducible multi-VM infrastructure for testing. Ansible for playbooks, inventory, and automation, SSH for secure remote execution, and VirtualBox/Vagrant for multi-machine development environment." data-screenshots="assets/dark/project-ansible.png, assets/dark/project-ansible.png, assets/dark/project-ansible.png">
+                <button class="expand-btn" aria-label="Open project details">+</button>
                 <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
-                    <box-icon name='github' type='logo'></box-icon>
-                  </a>
-                  <img src="assets/dark/project-5.png" alt="Systeme Reception Hotel Project" class="project-image">
+                  <box-icon name='github' type='logo'></box-icon>
+                </a>
+                <img src="assets/dark/project-ansible.png" alt="Automated Package Deployment Project" class="project-image">
                 <div class="desc">
-                  <h1>Gestion Hotel</h1>
+                  <h1>Automated Package Deployment</h1>
+                  <p><strong>Tools:</strong> <span class="tool">Ansible</span>, <span class="tool">SSH</span>, <span class="tool">VirtualBox</span>, <span class="tool">Vagrant</span></p>
+                </div>
+              </div>
+
+              <!-- DMZ Virtual Network Architecture -->
+              <div class="project-card" data-long-desc="Designed a secure DMZ architecture with segmentation, firewall rules, and NAT to expose external services safely. Verified isolation and controlled traffic flow across all network zones. Proxmox for virtualization & network configuration, pfSense for firewalling, NAT, and routing, Network Bridges for interface isolation, and Windows Server IIS for web service hosting & validation." data-screenshots="assets/dark/project-dmz.png, assets/dark/project-dmz.png, assets/dark/project-dmz.png">
+                <button class="expand-btn" aria-label="Open project details">+</button>
+                <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
+                  <box-icon name='github' type='logo'></box-icon>
+                </a>
+                <img src="assets/dark/project-dmz.png" alt="DMZ Network Architecture Project" class="project-image">
+                <div class="desc">
+                  <h1>DMZ Virtual Network Architecture</h1>
+                  <p><strong>Tools:</strong> <span class="tool">Proxmox</span>, <span class="tool">pfSense</span>, <span class="tool">Windows Server IIS</span></p>
+                </div>
+              </div>
+
+              <!-- PROVIROLL Twitter Agent -->
+              <div class="project-card" data-long-desc="Developed an AI agent capable of creating, scheduling, and posting coherent tweets automatically. Built datasets and fine-tuned NLP models for high-quality generated content. ElizaOS for agent orchestration, Twitter API for automated posting, snscrape/Tweepy for data scraping, and Hugging Face for NLP model fine-tuning." data-screenshots="assets/dark/S4/1.jpg,assets/dark/S4/2.jpg,assets/dark/S4/3.jpg">
+                <button class="expand-btn" aria-label="Open project details">+</button>
+                <a href="https://github.com/CHAKRELLAH44/Auto-Twet-.ft-ELIZAOS" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
+                  <box-icon name='github' type='logo'></box-icon>
+                </a>
+                <img src="assets/dark/project-1.png" alt="Twitter Automation Agent Project" class="project-image">
+                <div class="desc">
+                  <h1>PROVIROLL – Twitter Automation Agent</h1>
+                  <p><strong>Tools:</strong> <span class="tool">ElizaOS</span>, <span class="tool">Python</span>, <span class="tool">Hugging Face</span></p>
+                </div>
+              </div>
+
+              <!-- LUMINALINK Coffee Shop -->
+              <div class="project-card" data-long-desc="Built a fully serverless ordering platform to automate coffee orders with a modern Angular interface. Ensured scalability, low cost, and real-time back-end execution. AWS Lambda for serverless backend logic, API Gateway for REST API routing, DynamoDB for NoSQL storage, S3 for static assets & backups, and Angular for frontend UI." data-screenshots="assets/dark/S3/1.png,assets/dark/S3/2.png,assets/dark/S3/3.png,assets/dark/S3/archi.png">
+                <button class="expand-btn" aria-label="Open project details">+</button>
+                <a href="https://github.com/CHAKRELLAH44/CoffeShop" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
+                  <box-icon name='github' type='logo'></box-icon>
+                </a>
+                <img src="assets/dark/project-2.png" alt="Coffee Shop Project" class="project-image">
+                <div class="desc">
+                  <h1>LUMINALINK – Coffee Shop</h1>
+                  <p><strong>Tools:</strong> <span class="tool">AWS Lambda</span>, <span class="tool">DynamoDB</span>, <span class="tool">Angular</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Engineering & Machine Learning -->
+          <div class="category-section">
+            <h2 class="category-title" data-aos="fade-right" data-aos-delay="200">Data Engineering & Machine Learning</h2>
+            <div class="project-grid">
+              <!-- Healthcare AI -->
+              <div class="project-card" data-long-desc="Designed a predictive model estimating patient survival based on medical features, with an interactive UI for clinicians. Streamlined data processing through ETL pipelines. Scikit-learn for classical ML models, TensorFlow for deep learning architecture, Streamlit for web interface, Power BI for visualization & reporting, and ETL for data cleaning & transformation." data-screenshots="assets/dark/TIW/1.png,assets/dark/TIW/2.png,assets/dark/TIW/3.png">
+                <button class="expand-btn" aria-label="Open project details">+</button>
+                <a href="https://github.com/CHAKRELLAH44/AI-Death-Prediction" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
+                  <box-icon name='github' type='logo'></box-icon>
+                </a>
+                <img src="assets/dark/project-3.png" alt="Healthcare AI Project" class="project-image">
+                <div class="desc">
+                  <h1>Healthcare AI – Predicting Patient Survival</h1>
+                  <p><strong>Tools:</strong> <span class="tool">Scikit-learn</span>, <span class="tool">TensorFlow</span>, <span class="tool">Streamlit</span>, <span class="tool">Power BI</span></p>
+                </div>
+              </div>
+
+              <!-- Recommendation System -->
+              <div class="project-card" data-long-desc="Implemented a hybrid recommendation engine combining collaborative filtering and content-based analysis for personalized product suggestions. Integrated real-time indexing for fast search. PySpark + MLlib (ALS) for collaborative filtering model, Kafka for real-time data streams, and Elasticsearch for indexing & fast search." data-screenshots="assets/dark/project-recommendation.png, assets/dark/project-recommendation.png, assets/dark/project-recommendation.png">
+                <button class="expand-btn" aria-label="Open project details">+</button>
+                <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
+                  <box-icon name='github' type='logo'></box-icon>
+                </a>
+                <img src="assets/dark/project-recommendation.png" alt="Recommendation System Project" class="project-image">
+                <div class="desc">
+                  <h1>Recommendation System – E-commerce</h1>
+                  <p><strong>Tools:</strong> <span class="tool">PySpark</span>, <span class="tool">MLlib</span>, <span class="tool">Kafka</span>, <span class="tool">Elasticsearch</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Web Development -->
+          <div class="category-section">
+            <h2 class="category-title" data-aos="fade-right" data-aos-delay="200">Web Development</h2>
+            <div class="project-grid">
+              <!-- Ech Store -->
+              <div class="project-card" data-long-desc="Developed a JEE-based e-commerce website with full CRUD operations, authentication, and product catalog management. Delivered a fast and secure backend architecture. Jakarta EE (JEE) for backend servlets, JDK 17 for Java runtime, and Tomcat 10 for server deployment." data-screenshots="assets/dark/project-echstore.png, assets/dark/project-echstore.png, assets/dark/project-echstore.png">
+                <button class="expand-btn" aria-label="Open project details">+</button>
+                <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
+                  <box-icon name='github' type='logo'></box-icon>
+                </a>
+                <img src="assets/dark/project-echstore.png" alt="Ech Store Project" class="project-image">
+                <div class="desc">
+                  <h1>Ech Store – JEE Website</h1>
+                  <p><strong>Tools:</strong> <span class="tool">Jakarta EE</span>, <span class="tool">JDK 17</span>, <span class="tool">Tomcat 10</span></p>
+                </div>
+              </div>
+
+              <!-- Movie Management System -->
+              <div class="project-card" data-long-desc="Built a movie and actor management platform with full CRUD, split into a modern React frontend and a robust .NET backend connected to SQL storage. C# (.NET) for backend logic, SQL for relational database, and React + Vite for frontend UI." data-screenshots="assets/dark/project-1.png, assets/dark/project-12.png, assets/dark/project-1.png">
+                <button class="expand-btn" aria-label="Open project details">+</button>
+                <a href="https://github.com/CHAKRELLAH44/YI-Movie" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
+                  <box-icon name='github' type='logo'></box-icon>
+                </a>
+                <img src="assets/dark/project-1.png" alt="Movie Management System Project" class="project-image">
+                <div class="desc">
+                  <h1>Movie Management System</h1>
+                  <p><strong>Tools:</strong> <span class="tool">React + Vite</span>, <span class="tool">C#</span>, <span class="tool">.NET</span>, <span class="tool">SQL</span></p>
+                </div>
+              </div>
+
+              <!-- Online Taxi Reservation System -->
+              <div class="project-card" data-long-desc="Created an online taxi booking system with secure user authentication and ride management. Delivered a responsive interface suitable for both desktop and mobile. Django for backend + authentication, HTML/CSS for frontend, and SQL for data persistence." data-screenshots="assets/dark/project-4.png, assets/dark/project-4.png, assets/dark/project-4.png">
+                <button class="expand-btn" aria-label="Open project details">+</button>
+                <a href="https://github.com/CHAKRELLAH44/T-SIR.git" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
+                  <box-icon name='github' type='logo'></box-icon>
+                </a>
+                <img src="assets/dark/project-4.png" alt="Online Taxi Reservation System Project" class="project-image">
+                <div class="desc">
+                  <h1>Online Taxi Reservation System</h1>
+                  <p><strong>Tools:</strong> <span class="tool">Django</span>, <span class="tool">HTML/CSS</span>, <span class="tool">SQL</span></p>
+                </div>
+              </div>
+
+              <!-- Hotel Management Systems -->
+              <div class="project-card" data-long-desc="Solution de réception hôtelière écrite en Java. Comprend la gestion des réservations, le suivi des clients, la génération de factures et un module pour gérer les services annexes (spa, restauration)." data-screenshots="assets/dark/project-3.png, assets/dark/project-3.png, assets/dark/project-3.png">
+                <button class="expand-btn" aria-label="Open project details">+</button>
+                <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
+                  <box-icon name='github' type='logo'></box-icon>
+                </a>
+                <img src="assets/dark/project-3.png" alt="Hotel Management System Project" class="project-image">
+                <div class="desc">
+                  <h1>Hotel Management System (Java)</h1>
+                  <p><strong>Tools:</strong> <span class="tool">Java</span>, <span class="tool">NetBeans</span></p>
+                </div>
+              </div>
+
+              <div class="project-card" data-long-desc="Application C++ optimisée pour la gestion opérationnelle d'un hôtel. Propose des routines rapides pour l'allocation des chambres, la gestion des disponibilités et de la tarification, avec export CSV des rapports." data-screenshots="assets/dark/project-5.png, assets/dark/project-5.png, assets/dark/project-5.png">
+                <button class="expand-btn" aria-label="Open project details">+</button>
+                <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
+                  <box-icon name='github' type='logo'></box-icon>
+                </a>
+                <img src="assets/dark/project-5.png" alt="Hotel Management System C++ Project" class="project-image">
+                <div class="desc">
+                  <h1>Hotel Management System (C++)</h1>
                   <p><strong>Tools:</strong> <span class="tool">C++</span></p>
                 </div>
               </div>
-          <!-- Projet 6 -->
-        <div class="project-card" data-long-desc="Module de back-office pour la réception d'hôtel (Java). Traite les check-ins/check-outs, la facturation, et l'historique client, avec une attention portée à la robustesse et la validation des données." data-screenshots="assets/dark/project-6.png, assets/dark/project-6.png, assets/dark/project-6.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
-                <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
-                    <box-icon name='github' type='logo'></box-icon>
-                  </a>
-              <img src="assets/dark/project-6.png" alt="Systeme Reception Hotel Project" class="project-image">
-              <div class="desc">
-                <h1>Systeme Reception Hotel</h1>
-                <p><strong>Tools:</strong> <span class="tool">Java</span>, <span class="tool">Net-Beans</span></p>
-              </div>
             </div>
-             <!-- Projet 7 -->
-            <div class="project-card" data-long-desc="Prototype de gestion d'établissement hôtelier avec logique métier pour la réservation et la répartition des chambres. Conçu pour l'extensibilité et l'intégration future avec des outils externes de paiement." data-screenshots="assets/dark/project-7.png, assets/dark/project-7.png, assets/dark/project-7.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
+          </div>
+
+          <!-- Mobile Development -->
+          <div class="category-section">
+            <h2 class="category-title" data-aos="fade-right" data-aos-delay="200">Mobile Development</h2>
+            <div class="project-grid">
+              <!-- Mobile Application – Online Exams App -->
+              <div class="project-card" data-long-desc="Developed an Android app enabling users to create, share, and take quizzes with detailed history tracking. Provided a clean UI and real-time storage synchronization. Java for app logic & UI components, Android Studio for development environment, and Firebase for authentication & real-time database." data-screenshots="assets/dark/project-mobile.png, assets/dark/project-mobile.png, assets/dark/project-mobile.png">
+                <button class="expand-btn" aria-label="Open project details">+</button>
                 <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
-                    <box-icon name='github' type='logo'></box-icon>
-                  </a>
-                <img src="assets/dark/project-7.png" alt="Systeme Reception Hotel Project" class="project-image">
-              <div class="desc">
-                <h1>Systeme Reception Hotel</h1>
-                <p><strong>Tools:</strong> <span class="tool">Java</span>, <span class="tool">Net-Beans</span></p>
-              </div>
-            </div>
-             <!-- Projet 8 -->
-            <div class="project-card" data-long-desc="Application de gestion des opérations hôtelières, incluant la synchronisation des disponibilités entre plusieurs canaux et un tableau de bord analytique pour le personnel." data-screenshots="assets/project-8.png, assets/project-8.png, assets/project-8.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
-                <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
-                    <box-icon name='github' type='logo'></box-icon>
-                  </a>
-                <img src="assets/dark/project-8.png" alt="Systeme Reception Hotel Project" class="project-image">
-              <div class="desc">
-                <h1>Systeme Reception Hotel</h1>
-                <p><strong>Tools:</strong> <span class="tool">Java</span>, <span class="tool">Net-Beans</span></p>
-              </div>
-            </div>
-             <!-- Projet 9 -->
-            <div class="project-card" data-long-desc="Outil de gestion des réservations et des services en hôtel, avec accent sur l'expérience utilisateur et la simplicité d'administration. Comprend des rapports sur l'occupation et les revenus." data-screenshots="assets/project-9.png, assets/project-9.png, assets/project-9.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
-                <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
-                    <box-icon name='github' type='logo'></box-icon>
-                  </a>
-                <img src="assets/dark/project-9.png" alt="Systeme Reception Hotel Project" class="project-image">
-              <div class="desc">
-                <h1>Systeme Reception Hotel</h1>
-                <p><strong>Tools:</strong> <span class="tool">Java</span>, <span class="tool">Net-Beans</span></p>
-              </div>
-            </div>
-             <!-- Projet 10 -->
-            <div class="project-card" data-long-desc="Solution complète de réception pour petites chaînes hôtelières, couvrant la facturation, la gestion des chambres et les modules de rapports. Conçue pour être déployée rapidement." data-screenshots="assets/project-10.png, assets/project-10.png, assets/project-10.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
-                <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
-                    <box-icon name='github' type='logo'></box-icon>
-                  </a>
-                <img src="assets/dark/project-10.png" alt="Systeme Reception Hotel Project" class="project-image">
-              <div class="desc">
-                <h1>Systeme Reception Hotel</h1>
-                <p><strong>Tools:</strong> <span class="tool">Java</span>, <span class="tool">Net-Beans</span></p>
-              </div>
-            </div>
-             <!-- Projet 11 -->
-            <div class="project-card" data-long-desc="Version démonstrative d'un système de réservation et d'accueil client, utilisée pour tester des algorithmes de tarification et des workflows de service clients." data-screenshots="assets/project-11.png, assets/project-11.png, assets/project-11.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
-                <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
-                    <box-icon name='github' type='logo'></box-icon>
+                  <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-11.png" alt="Systeme Reception Hotel Project" class="project-image">
-              <div class="desc">
-                <h1>Systeme Reception Hotel</h1>
-                <p><strong>Tools:</strong> <span class="tool">Java</span>, <span class="tool">Net-Beans</span></p>
+                <img src="assets/dark/project-mobile.png" alt="Online Exams Mobile App Project" class="project-image">
+                <div class="desc">
+                  <h1>Mobile Application – Online Exams App</h1>
+                  <p><strong>Tools:</strong> <span class="tool">Java</span>, <span class="tool">Android Studio</span>, <span class="tool">Firebase</span></p>
+                </div>
               </div>
             </div>
-            <!-- Projet 12 -->
-            <div class="project-card" data-long-desc="Projet expérimental centré sur l'automatisation des tâches administratives d'un hôtel, avec scripts de migration et outils d'import/export pour faciliter la transition depuis des systèmes legacy." data-screenshots="assets/project-12.png, assets/project-12.png, assets/project-12.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
-                <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
-                    <box-icon name='github' type='logo'></box-icon>
-                </a>
-                <img src="assets/dark/project-12.png" alt="Systeme Reception Hotel Project" class="project-image">
-              <div class="desc">
-                <h1>Systeme Reception Hotel</h1>
-                <p><strong>Tools:</strong> <span class="tool">Java</span>, <span class="tool">Net-Beans</span></p>
-              </div>
-            </div>
-            <!-- Ajoute d'autres projets ici -->
           </div>
 
           <!-- Bouton pour retourner à la page d'accueil -->
@@ -245,7 +285,7 @@
         AOS.init();
       </script>
 
-      <!-- Add detailed descriptions for modal -->
+      <!-- Add detailed descriptions for modal 
       <script>
         // Add long descriptions to projects
         document.querySelectorAll('.project-card').forEach(card => {
@@ -270,6 +310,12 @@
               card.setAttribute('data-long-desc', 'Un projet innovant utilisant les dernières technologies pour résoudre des problèmes réels. Focus sur la performance et l\'expérience utilisateur.');
           }
         });
-      </script>
+      </script>-->
     </body>
   </html>
+
+
+
+
+
+

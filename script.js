@@ -252,10 +252,25 @@ function initProjectModal() {
   });
 }
 
+// Add long descriptions to projects
+document.querySelectorAll('.project-card').forEach(card => {
+  const title = card.querySelector('.desc h1').innerText;
+  switch(title) {
+    case 'CI/CD Pipeline Automation':
+      card.setAttribute('data-long-desc', 'Implemented a complete CI/CD pipeline to automate application deployment and scaling. The setup ensured fast delivery, containerized workloads, and full observability through monitoring dashboards. Kubernetes (Minikube) for orchestration and cluster environment, Jenkins for CI pipeline & automation, ArgoCD for GitOps CD & deployment sync, Docker for containerization, GitHub for version control, and Prometheus + Grafana for metrics collection & visualization.');
+      break;
+    case 'Automated Package Deployment':
+      card.setAttribute('data-long-desc', 'Created an automated system to install and configure packages across multiple servers, eliminating manual work and ensuring consistent configuration. Built a reproducible multi-VM infrastructure for testing. Ansible for playbooks, inventory, and automation, SSH for secure remote execution, and VirtualBox/Vagrant for multi-machine development environment.');
+      break;
+    // ... autres projets
+  }
+});
+
 // Initialize immediately if DOM is already ready, otherwise wait for DOMContentLoaded
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initProjectModal);
 } else {
   initProjectModal();
 }
+
 

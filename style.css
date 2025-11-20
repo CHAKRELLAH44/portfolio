@@ -1018,22 +1018,72 @@ footer .container .content .social p {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
   width: 100%;
-  padding: 0 2rem;
+  padding: 0 1rem;
+  margin-top: 1.5rem;
 }
 
-@media (max-width: 1024px) {
-  .project-grid {
-    grid-template-columns: repeat(2, 1fr); 
+/* Add subtle separator between categories */
+.category-section:not(:last-child)::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,255,221,0.2), transparent);
+  margin-top: 3rem;
+}
+
+/* Hover effect for category titles */
+.category-title:hover {
+  color: var(--primary);
+  transition: color 0.3s ease;
+}
+
+.category-title:hover::before {
+  background: linear-gradient(180deg, var(--white), var(--primary));
+  box-shadow: 0 0 25px rgba(0,255,221,0.6);
+  transition: all 0.3s ease;
+}
+
+/* Add subtle animation to category sections */
+.category-section {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.category-section:nth-child(2) { animation-delay: 0.1s; }
+.category-section:nth-child(3) { animation-delay: 0.2s; }
+.category-section:nth-child(4) { animation-delay: 0.3s; }
+.category-section:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 768px) {
-  .project-grid {
-    grid-template-columns: 1fr; 
-  }
+/* Enhanced project grid with better spacing */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  width: 100%;
+  padding: 0 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Add subtle separator between categories */
+.category-section:not(:last-child)::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,255,221,0.2), transparent);
+  margin-top: 3rem;
 }
 
 .project-card {
@@ -2187,7 +2237,194 @@ footer .container .content .social p {
   .skill .container .content h1 {
     font-size: 2rem;
   }
+}
 
+/* Tablet - Large (1024px - 1200px) */
+@media (max-width: 1200px) {
+  .container {
+    padding: 1.5rem 4rem;
+  }
+
+  .hero .container .content h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero .container .content .row-2 {
+    font-size: 3.5rem;
+  }
+
+  .project .container .content .header .title .row-1,
+  .project .container .content .header .title .row-2 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Tablet - Medium (768px - 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem 3rem;
+  }
+
+  header .container .content nav {
+    gap: 1.5rem;
+  }
+
+  header .container .content nav a {
+    font-size: 0.9rem;
+  }
+
+  .hero .container .content h1 {
+    font-size: 3rem;
+  }
+
+  .hero .container .content .row-2 {
+    font-size: 3rem;
+  }
+
+  .hero .container .content p {
+    font-size: 1rem;
+    width: 80%;
+  }
+
+  .project .container .content .project-area {
+    height: 300px;
+    gap: 0.8rem;
+  }
+
+  .project .container .content .project-area .projects .desc h1 {
+    font-size: 1.2rem;
+  }
+
+  .project .container .content .project-area .projects .desc .tool {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill .container .content .skill-box {
+    width: 80px;
+    height: 80px;
+  }
+
+  .section .image img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .section .description h2 {
+    font-size: 3rem;
+  }
+}
+
+/* Mobile - Large (600px - 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 2rem;
+  }
+
+  header .container .content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  header .container .content nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 8rem 0 4rem;
+  }
+
+  .hero .container .content {
+    gap: 2rem;
+  }
+
+  .hero .container .content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero .container .content .row-2 {
+    font-size: 2.5rem;
+  }
+
+  .hero .container .content p {
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  .hero .container .content .btn {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  .project .container .content .header .title .row-1,
+  .project .container .content .header .title .row-2 {
+    font-size: 2rem;
+  }
+
+  .project .container .content .project-area {
+    flex-direction: column;
+    height: auto;
+    gap: 1.5rem;
+  }
+
+  .project .container .content .project-area .projects {
+    width: 100%;
+    min-height: 200px;
+  }
+
+  .project .container .content .project-area .projects .desc {
+    padding: 1.5rem;
+  }
+
+  .project .container .content .project-area .projects .desc h1 {
+    font-size: 1.1rem;
+  }
+
+  .skill .container .content h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Tablet - Large (1024px - 1200px) */
+@media (max-width: 1200px) {
+  .container {
+    padding: 1.5rem 4rem;
+  }
+
+  .hero .container .content h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero .container .content .row-2 {
+    font-size: 3.5rem;
+  }
+
+  .project .container .content .header .title .row-1,
+  .project .container .content .header .title .row-2 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Tablet - Medium (768px - 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem 3rem;
+  }
+
+  header .container .content nav {
+    gap: 1.5rem;
+  }
+
+  header .container .content nav a
   .skill .container .content .skills {
     grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
     gap: 1rem;
@@ -2346,6 +2583,45 @@ footer .container .content .social p {
     font-size: 2rem;
   }
 
+.category-section {
+  margin: 4rem 0;
+  width: 100%;
+}
+
+.category-title {
+  font: italic bold 2.5rem "IBM Plex Sans", sans-serif;
+  color: var(--white);
+  text-align: left;
+  margin-bottom: 2rem;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.category-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: linear-gradient(180deg, var(--primary), var(--white));
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .category-title {
+    font-size: 2rem;
+    padding-left: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-title {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+  }
+}
   .section .description p {
     font-size: 0.9rem;
   }
@@ -2677,3 +2953,5 @@ img {
     break-inside: avoid;
   }
 }
+
+
