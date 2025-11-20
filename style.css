@@ -2320,6 +2320,164 @@ footer .container .content .social p {
   }
 }
 
+/* Tablet - Medium (768px - 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem 3rem;
+  }
+
+  header .container .content nav {
+    gap: 1.5rem;
+  }
+
+  header .container .content nav a {
+    font-size: 0.9rem;
+  }
+
+  .hero .container .content h1 {
+    font-size: 3rem;
+  }
+
+  .hero .container .content .row-2 {
+    font-size: 3rem;
+  }
+
+  .hero .container .content p {
+    font-size: 1rem;
+    width: 80%;
+  }
+
+  .project .container .content .project-area {
+    height: 300px;
+    gap: 0.8rem;
+  }
+
+  .project .container .content .project-area .projects .desc h1 {
+    font-size: 1.2rem;
+  }
+
+  .project .container .content .project-area .projects .desc .tool {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill .container .content .skill-box {
+    width: 80px;
+    height: 80px;
+  }
+
+  .section .image img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .section .description h2 {
+    font-size: 3rem;
+  }
+}
+
+/* Tablet - Medium (768px - 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem 3rem;
+  }
+
+  header .container .content nav {
+    gap: 1.5rem;
+  }
+
+  header .container .content nav a {
+    font-size: 0.9rem;
+  }
+
+  .hero .container .content h1 {
+    font-size: 3rem;
+  }
+
+  .hero .container .content .row-2 {
+    font-size: 3rem;
+  }
+
+  .hero .container .content p {
+    font-size: 1rem;
+    width: 80%;
+  }
+
+  .project .container .content .project-area {
+    height: 300px;
+    gap: 0.8rem;
+  }
+
+  .project .container .content .project-area .projects .desc h1 {
+    font-size: 1.2rem;
+  }
+
+  .project .container .content .project-area .projects .desc .tool {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto
+    gap: 1.5rem;
+  }
+
+  header .container .content nav a {
+    font-size: 0.9rem;
+  }
+
+  .hero .container .content h1 {
+    font-size: 3rem;
+  }
+
+  .hero .container .content .row-2 {
+    font-size: 3rem;
+  }
+
+  .hero .container .content p {
+    font-size: 1rem;
+    width: 80%;
+  }
+
+  .project .container .content .project-area {
+    height: 300px;
+    gap: 0.8rem;
+  }
+
+  .project .container .content .project-area .projects .desc h1 {
+    font-size: 1.2rem;
+  }
+
+  .project .container .content .project-area .projects .desc .tool {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill .container .content .skill-box {
+    width: 80px;
+    height: 80px;
+  }
+
+  .section .image img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .section .description h2 {
+    font-size: 3rem;
+  }
+}
+
 /* Mobile - Large (600px - 768px) */
 @media (max-width: 768px) {
   .container {
@@ -2953,5 +3111,6 @@ img {
     break-inside: avoid;
   }
 }
+
 
 
