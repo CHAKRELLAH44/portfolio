@@ -454,6 +454,7 @@ header .container .content .extra-nav a:hover span {
   max-width: 80px; /* Limiter la taille maximale */
 }
 
+
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -3112,5 +3113,579 @@ img {
   }
 }
 
+/* Responsive layout refinements across all pages */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .container {
+    padding-inline: clamp(1.5rem, 4vw, 3rem);
+  }
 
+  header .container .content {
+    gap: 1.25rem;
+  }
 
+  header .container .content nav {
+    gap: clamp(1rem, 2vw, 2rem);
+  }
+
+  header .container .content .extra-nav a {
+    padding-inline: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .profile-and-text {
+    gap: 3rem;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section .image img {
+    width: min(34vw, 300px);
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: clip;
+  }
+
+  .container {
+    width: 100%;
+    padding: 1rem clamp(1rem, 5vw, 2rem);
+  }
+
+  header {
+    height: auto;
+    min-height: 0;
+    padding: 0.35rem 0;
+    background: rgba(15, 15, 15, 0.96);
+    mix-blend-mode: normal;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  header .container {
+    padding-block: 0.5rem;
+  }
+
+  header .container .content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.65rem 1rem;
+    align-items: center;
+  }
+
+  header .container .content .logo {
+    justify-content: flex-start;
+    grid-column: 1;
+  }
+
+  header .container .content .logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  header .container .content nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.35rem;
+  }
+
+  header .container .content nav a {
+    padding: 0.4rem 0.65rem;
+    font-size: 0.88rem;
+  }
+
+  header .container .content .extra-nav {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  header .container .content .extra-nav a {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  header .container .content .theme-toggle {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .hero {
+    min-height: 100svh;
+    height: auto;
+    padding: 9.5rem 0 2rem;
+  }
+
+  .hero .container .content {
+    gap: 1.5rem;
+  }
+
+  .hero .container .content .text {
+    width: 100%;
+    margin: 0;
+    gap: 0.25rem;
+  }
+
+  .hero .container .content .text .row-1 {
+    font-size: clamp(3.5rem, 14vw, 6rem);
+    line-height: 0.95;
+  }
+
+  .hero .container .content .text .row-2 {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .hero .container .content .text .row-2 svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 3;
+  }
+
+  .hero .container .content .text .row-3 {
+    font-size: clamp(1.2rem, 5vw, 2.2rem);
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+  }
+
+  .hero .container .content .arrow {
+    display: none;
+  }
+
+  .hero .container .content .short-info {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    padding: 0;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .hero .container .content .short-info .left-side h1 {
+    font-size: 1rem;
+  }
+
+  .hero .container .content .short-info .right-side {
+    align-items: flex-start;
+  }
+
+  .about {
+    min-height: 0;
+    margin: 2rem 0;
+    overflow: hidden;
+  }
+
+  .about .container .content {
+    height: auto;
+    min-height: 0;
+  }
+
+  .about .container .content .title {
+    margin-bottom: 0.75rem;
+  }
+
+  .about .container .content .title h2 {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+  }
+
+  .about .container .content .title h1 {
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+  }
+
+  .profile-and-text {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .profile-container,
+  .about-me {
+    width: 100%;
+  }
+
+  .profile-container .profile {
+    max-width: 520px;
+    margin-inline: auto;
+    border-radius: 28px;
+  }
+
+  .about-me {
+    gap: 1.25rem;
+  }
+
+  .about-me button {
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  .about .container .content .text-wrapper {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+
+  .about .container .content .text-wrapper .text h1 {
+    font-size: clamp(3.5rem, 14vw, 7rem);
+  }
+
+  .project,
+  .contact {
+    min-height: 0;
+    margin: 2rem 0;
+  }
+
+  .project .container .content .header {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .project .container .content .header .title {
+    align-items: flex-start;
+  }
+
+  .project .container .content .header .title .row-1,
+  .project .container .content .header .title .row-2 {
+    font-size: clamp(1.6rem, 8vw, 2.5rem);
+    text-align: left;
+  }
+
+  .project .container .content .header button {
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .project .container .content .project-area {
+    height: auto;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .project .container .content .project-area .projects {
+    width: 100%;
+    height: auto;
+    min-height: 250px;
+    border-radius: 24px;
+  }
+
+  .project .container .content .project-area .projects .desc {
+    opacity: 1;
+    padding: 1rem;
+  }
+
+  .project .container .content .project-area .projects .desc h1 {
+    font-size: clamp(1.2rem, 6vw, 1.8rem);
+  }
+
+  .project .container .content .project-area .projects .desc p {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .project .container .content .project-area .projects img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .skill {
+    min-height: 0;
+    padding: 3rem 0;
+  }
+
+  .skill .container .content {
+    gap: 1.75rem;
+  }
+
+  .skill .container .content .title {
+    font-size: clamp(1.7rem, 8vw, 2.5rem);
+  }
+
+  .skill .container .content .skills {
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .skill .container .content .skills .skill-box {
+    width: auto;
+    height: auto;
+    min-height: 64px;
+    padding: 0.75rem;
+    border-radius: 12px;
+  }
+
+  .skill .container .content .skills .skill-box img {
+    width: 100%;
+    max-width: 48px;
+    max-height: 48px;
+    object-fit: contain;
+  }
+
+  .contact .container .content {
+    height: auto;
+    gap: 1.5rem;
+  }
+
+  .contact .container .content .title h1 {
+    font-size: clamp(2.5rem, 11vw, 4rem);
+  }
+
+  .contact .container .content .contact-area {
+    height: auto;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact .container .content .contact-area .left-side,
+  .contact .container .content .contact-area .right-side {
+    width: 100%;
+    height: auto;
+  }
+
+  .contact .container .content .contact-area .left-side h1 {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+    line-height: 1.1;
+    transform: none;
+    overflow-wrap: anywhere;
+  }
+
+  .contact .container .content .contact-area .left-side h1:nth-child(2) {
+    margin-left: 0;
+  }
+
+  .contact .container .content .contact-area .right-side form {
+    height: auto;
+  }
+
+  .contact .container .content .contact-area .right-side form input,
+  .contact .container .content .contact-area .right-side form textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .social-media .container .content .social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .social-media .social-link {
+    max-width: 100%;
+  }
+
+  .hidden-me,
+  .all-projects {
+    min-height: 0;
+    padding-top: 8rem;
+  }
+
+  #contact-form {
+    padding-top: 6rem;
+  }
+
+  .social-media {
+    min-height: 0;
+    padding-block: 2.5rem;
+  }
+
+  .hidden-me .content .section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hidden-me .content .section .image,
+  .hidden-me .content .section .description {
+    flex: initial;
+    width: 100%;
+  }
+
+  .hidden-me .content .section .image img {
+    display: block;
+    width: min(100%, 480px);
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    margin-inline: auto;
+  }
+
+  .hidden-me .content .section .description {
+    padding: 0.5rem 0;
+  }
+
+  .hidden-me .content .section .description h2 {
+    font-size: clamp(2rem, 9vw, 3rem);
+    overflow-wrap: anywhere;
+  }
+
+  .category-section {
+    margin: 2.5rem 0;
+  }
+
+  .all-projects h1 {
+    font-size: clamp(1.8rem, 9vw, 3rem);
+    overflow-wrap: anywhere;
+  }
+
+  .category-title {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+    padding-left: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-grid {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    padding: 0;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: auto;
+    min-height: 0;
+  }
+
+  .project-card .project-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    transform: none;
+    filter: none;
+  }
+
+  .project-card .desc {
+    position: relative;
+    inset: auto;
+    z-index: 1;
+    display: flex;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    opacity: 1;
+    transform: none;
+  }
+
+  .project-card .desc h1 {
+    font-size: 1.1rem;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .project-card .desc p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .project-card .desc .tool {
+    margin: 0.15rem 0.15rem 0.15rem 0;
+  }
+
+  .project-modal {
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 0.75rem;
+  }
+
+  .project-modal .panel {
+    width: min(100%, 680px);
+    max-height: calc(100dvh - 1.5rem);
+    overflow-y: auto;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .project-modal .carousel {
+    height: clamp(220px, 42svh, 420px);
+  }
+
+  .project-modal .carousel .nav {
+    display: flex;
+  }
+
+  .project-modal .carousel .nav button {
+    width: 42px;
+    height: 42px;
+  }
+
+  .project-modal .panel .right {
+    min-width: 0;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .project-modal .meta .desc-text {
+    overflow-wrap: anywhere;
+  }
+
+  footer {
+    min-height: 0;
+  }
+
+  footer .container .content {
+    text-align: center;
+  }
+
+  footer .container .content h1 {
+    font-size: clamp(1rem, 5vw, 1.4rem);
+  }
+}
+
+@media (max-width: 420px) {
+  header .container .content nav {
+    gap: 0.15rem;
+  }
+
+  header .container .content nav a {
+    padding-inline: 0.45rem;
+    font-size: 0.8rem;
+  }
+
+  .hero .container .content .short-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .project-modal .panel {
+    padding: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

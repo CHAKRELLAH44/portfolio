@@ -16,10 +16,18 @@ window.addEventListener("scroll", () => {
 
 // Update local time display only if the target element exists on the page
 if (timeText) {
-  const now = new Date();
-  const rabatTime = now.toLocaleString("en-US", { timeZone: "Africa/Casablanca" });
-  const [date, time] = rabatTime.split(", ");
-  timeText.textContent = `${time} GMT+1`;
+  const updateParisTime = () => {
+    timeText.textContent = new Date().toLocaleTimeString("en-US", {
+      timeZone: "Europe/Paris",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      timeZoneName: "short",
+    });
+  };
+
+  updateParisTime();
+  setInterval(updateParisTime, 1000);
 }
 
 const yearText = document.getElementById("year");
@@ -56,8 +64,7 @@ function initProjectModal() {
       }
     };
 
-    // Attach both pointerdown and click to be robust across browsers / overlays
-    btn.addEventListener('pointerdown', handler);
+    // Use click so mouse, touch, and keyboard activation open the modal once.
     btn.addEventListener('click', handler);
   });
 
@@ -272,5 +279,3 @@ if (document.readyState === 'loading') {
 } else {
   initProjectModal();
 }
-
-
