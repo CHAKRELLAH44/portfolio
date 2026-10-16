@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Imanska's Portfolio - Software Engineer based in Paris, France. Building Tech, Adding Fun." />
+    <meta name="description" content="Imanska's Portfolio - Software Engineer based in Rabat, Morocco. Building Tech, Adding Fun." />
     <meta name="theme-color" content="#00ffdd" />
 
     <!-- Google Font -->
@@ -20,7 +20,7 @@
 
     <link rel="icon" href="assets/c-.png" />
     <link rel="stylesheet" href="style.css" />
-    <title>Imanska - Software Engineer Portfolio</title>
+    <title data-i18n="index.pageTitle">Imanska - Software Engineer Portfolio</title>
   </head>
   <body>
     <header data-aos="fade-down" data-aos-delay="200">
@@ -31,20 +31,27 @@
             <a href="">IMANSKA</a>
           </div>
 
-          <nav>
-            <a href="#about">About</a>
-            <a href="projects.html">Projects</a>
-            <a href="hidden-me.html">Hidden Me</a>
-            <a href="contact.html">Contact</a>
+          <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+            <span></span><span></span><span></span>
+          </button>
+          <nav id="primary-nav">
+            <a href="#about" data-i18n="nav.about">About</a>
+            <a href="projects.html" data-i18n="nav.projects">Projects</a>
+            <a href="hidden-me.html" data-i18n="nav.hidden">Hidden Me</a>
+            <a href="contact.html" data-i18n="nav.contact">Contact</a>
+            <a href="assets/cv.pdf" download="Imane_CV.pdf" class="nav-cv" data-i18n="nav.cv">Download CV</a>
           </nav>
 
           <div class="extra-nav">
-            <a href="assets/cv.pdf" download="Imane_CV.pdf"><span>AVAILABLE FOR WORK</span></a>
+            <a href="contact.html"><span data-i18n="header.available">AVAILABLE FOR WORK</span></a>
+            <a href="assets/cv.pdf" download="Imane_CV.pdf" class="cv-link" aria-label="Download my CV" data-i18n-attr="aria-label:header.cvAria"><span>CV</span></a>
           </div>
-            <!-- Bouton switch thème (logo) 
-            <div class="theme-toggle" title="Changer le thème" onclick="toggleTheme()">
-              <box-icon id="theme-icon" name="moon" type="solid" color="#fff" size="md"></box-icon>
-            </div>-->
+            <button type="button" class="lang-toggle" onclick="toggleLanguage()" aria-label="Passer en français" title="Passer en français">
+              <svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>
+            </button>
+            <div class="theme-toggle" title="Toggle theme" onclick="toggleTheme()">
+  <box-icon id="theme-icon" name="moon" type="solid" color="#fff" size="md"></box-icon>
+</div>
         </div>
       </div>
     </header>
@@ -57,7 +64,7 @@
           <div class="line"></div>
     
           <div class="text">
-            <h1 class="row-1" data-aos="fade-right" data-aos-duration="2000">I'M</h1>
+            <h1 class="row-1" data-aos="fade-right" data-aos-duration="2000" data-i18n="hero.im">I'M</h1>
             
             <div class="row-2" data-aos="flip-down" data-aos-duration="2000">
               <svg viewBox="0 0 1600 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="IMANE">
@@ -66,7 +73,7 @@
                 </text>
               </svg>
             </div>
-            <h1 class="row-3" data-aos="fade-left" data-aos-duration="2000">
+            <h1 class="row-3" data-aos="fade-left" data-aos-duration="2000" data-i18n="hero.tagline">
               BUILDING TECH, ADDING FUN.
             </h1>
           </div>
@@ -75,15 +82,15 @@
     
           <div class="short-info">
             <div class="left-side" data-aos="fade-up-right" data-aos-delay="300">
-              <h1>Based in Rabat, Morocco</h1>
+              <h1 data-i18n="hero.based">Based in Rabat, Morocco</h1>
               <p class="time"></p>
             </div>
     
             <div class="right-side" data-aos="fade-up-left" data-aos-delay="300">
-              <p>Freelance Availibility</p>
+              <p data-i18n="hero.freelance">Freelance Availability</p>
               <h1>
                 <div class="pulse"></div>
-                LIMITED HOURS
+                <span data-i18n="hero.limited">LIMITED HOURS</span>
               </h1>
             </div>
           </div>
@@ -96,7 +103,7 @@
       <div class="container">
         <div class="content">
           <div class="title">
-            <h2 data-aos="fade-right" data-aos-duration="500" data-aos-delay="300">About <hr></h2>
+            <h2 data-aos="fade-right" data-aos-duration="500" data-aos-delay="300"><span data-i18n="about.label">About</span> <hr></h2>
             <h1 data-aos="fade-right" data-aos-duration="500" data-aos-delay="500">IMANE</h1>
           </div>
     
@@ -104,16 +111,29 @@
           <div class="profile-and-text">
             <div class="profile-container" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
               <div class="profile">
-                  <img src="assets/dark/ai__profile.png" alt="profile">
+                  <img src="assets/dark/ai__profile.png" data-light-src="assets/light/ai_profile.png" alt="profile">
               </div>
             </div>
     
             <div class="about-me" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
-              <p>I’m an engineer, but I’m also a tech enthusiast and a challenge-seeker. My goal? To improve the world, one bug at a time. Or at least make the world a little more fun through tech!.</p>
+              <p data-i18n="about.text">I’m an engineer, but I’m also a tech enthusiast and a challenge-seeker. My goal? To improve the world, one bug at a time. Or at least make it a little more fun through tech!</p>
+
+              <ul class="about-stats" aria-label="Key figures" data-i18n-attr="aria-label:stats.aria">
+                <li><strong data-count="15">15+</strong><span data-i18n="stats.projects">Projects</span></li>
+                <li><strong data-count="5">5</strong><span data-i18n="stats.domains">Domains</span></li>
+                <li><strong data-count="25">25+</strong><span data-i18n="stats.certs">Certifications</span></li>
+              </ul>
+
+              <div class="about-actions">
               <button onclick="window.location.href='hidden-me.html'">
-                SEE THE HIDDEN ME
+                <span data-i18n="about.hiddenBtn">SEE THE HIDDEN ME</span>
                 <box-icon class="arrow" name='arrow-back'></box-icon>
               </button>
+              <a class="about-cv" href="assets/cv.pdf" download="Imane_CV.pdf">
+                <span data-i18n="about.cvBtn">DOWNLOAD MY CV</span>
+                <box-icon name='download'></box-icon>
+              </a>
+              </div>
             </div>
           </div>
     
@@ -131,91 +151,58 @@
       </div>
     </section>
 
-    <!-- Project Section -->
-    <section class="project" id="project">
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
       <div class="container">
         <div class="content">
-          <div class="header">
-            <button data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
-              <a href="projects.html" style="color: inherit; text-decoration: none;">
-                UNVEIL MY PROJECTS
-                <box-icon class="arrow" name='arrow-back'></box-icon>
-              </a>
-            </button>
-    
-            <div class="title">
-              <h1 class="row-1" data-aos="fade-left" data-aos-duration="500" data-aos-delay="300"><hr> Recent</h1>
-              <h1 class="row-2" data-aos="fade-left" data-aos-duration="500" data-aos-delay="500">PROJECTS</h1>
-            </div>
+          <div class="title">
+            <h2 data-aos="fade-right" data-aos-duration="500" data-aos-delay="300"><span data-i18n="exp.label">Experience</span> <hr></h2>
+            <h1 data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-i18n="exp.heading">MY JOURNEY</h1>
           </div>
-    
-          <div class="project-area" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-            <!-- Projet 1 -->
-            <div class="projects" data-screenshots="assets/dark/S4/1.jpg,assets/dark/S4/2.jpg,assets/dark/S4/3.jpg">
-              <button class="expand-btn" aria-label="Open project details">+</button>
-              <a href="https://github.com/CHAKRELLAH44/Auto-Twet-.ft-ELIZAOS" class="github-link" target="_blank">
-                <box-icon name='github' type='logo'></box-icon>
-              </a>
-              <div class="project-overlay"></div>
-                <img src="assets/dark/project-1.png" alt="Gestion Cinema Project" class="project-image">
-              <div class="desc">
-                <h1>Twitter Automation Agent</h1>
-                <div class="tools-container">
-                  <span class="tool">Python</span>
-                  <span class="tool">ElizaOS</span>
-                  <span class="tool">Twisnscrape</span>
-                </div>
-              </div>
-            </div>
 
-            <!-- Projet 2 -->
-            <div class="projects" data-screenshots="assets/dark/S3/1.png,assets/dark/S3/2.png,assets/dark/S3/3.png,assets/dark/S3/archi.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
-              <a href="https://github.com/CHAKRELLAH44/CoffeShop" class="github-link" target="_blank">
-                <box-icon name='github' type='logo'></box-icon>
-              </a>
-              <div class="project-overlay"></div>
-                <img src="assets/dark/project-2.png" alt="Coffee Shop Project" class="project-image">
-              <div class="desc">
-                <h1>Coffee Shop</h1>
-                <div class="tools-container">
-                  <span class="tool">AWS Step Functions</span>
-                  <span class="tool">Amazon EventBridge</span>
-                  <span class="tool">AWS Lambda</span>
-                  <span class="tool">Angular</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Projet 3 -->
-            <div class="projects" data-screenshots="assets/dark/TIW/1.png,assets/dark/TIW/2.png,assets/dark/TIW/3.png">
-              <button class="expand-btn" aria-label="Open project details">+</button>
-              <a href="https://github.com/CHAKRELLAH44/AI-Death-Prediction" class="github-link" target="_blank">
-                <box-icon name='github' type='logo'></box-icon>
-              </a>
-              <div class="project-overlay"></div>
-                <img src="assets/dark/project-3.png" alt="Healthcare AI Project" class="project-image">
-              <div class="desc">
-                <h1>Healthcare AI – Predicting</h1>
-                <div class="tools-container">
-                  <span class="tool">Python</span>
-                  <span class="tool">Scikit-learn</span>
-                  <span class="tool">TensorFlow</span>
-                  <span class="tool">Power BI</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ol class="timeline">
+            <li class="timeline-item" data-aos="fade-up" data-aos-duration="600">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <p class="timeline-date" data-i18n="exp.1.date">February 2026 – August 2026 · Casablanca, Morocco</p>
+              <h3 class="timeline-title" data-i18n="exp.1.title">Purchasing Information System – Procure-to-Pay</h3>
+              <p class="timeline-role" data-i18n="exp.1.role">Salesforce Consultant &amp; Developer Intern – D&amp;A Technologies</p>
+              <ul class="timeline-points">
+                <li data-i18n="exp.1.p1">Contributed to the study and development of a Purchasing Information System, designing and building a quality-driven Procure-to-Pay system for an enterprise client, and modeling business processes with BPMN within a Salesforce consulting firm.</li>
+                <li data-i18n="exp.1.p2">Developed backend logic, approval workflows and Lightning Web Components (LWC) using Apex and SOQL, delivered supplier-facing features on Experience Cloud, and contributed to unit and integration testing in an Agile environment.</li>
+              </ul>
+            </li>
+            <li class="timeline-item" data-aos="fade-up" data-aos-duration="600">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <p class="timeline-date" data-i18n="exp.2.date">July 2025 – September 2025 · Paris, France</p>
+              <h3 class="timeline-title" data-i18n="exp.2.title">Twitter Automation Agent</h3>
+              <p class="timeline-role" data-i18n="exp.2.role">AIOps &amp; Automation Intern – PROVIROLL</p>
+              <ul class="timeline-points">
+                <li data-i18n="exp.2.p1">Built the Twitter Automation Agent, an AI agent automating content creation and posting on Twitter/X, using ElizaOS to orchestrate agent behavior and integrate the Twitter API.</li>
+                <li data-i18n="exp.2.p2">Used snscrape/Tweepy to collect and build tweet datasets, and Hugging Face NLP models for coherent, context-aware content generation.</li>
+              </ul>
+            </li>
+            <li class="timeline-item" data-aos="fade-up" data-aos-duration="600">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <p class="timeline-date" data-i18n="exp.3.date">July 2024 – August 2024 · Rabat, Morocco</p>
+              <h3 class="timeline-title" data-i18n="exp.3.title">Coffee Shop App</h3>
+              <p class="timeline-role" data-i18n="exp.3.role">Full-Stack Developer Intern – LUMINALINK</p>
+              <ul class="timeline-points">
+                <li data-i18n="exp.3.p1">Developed the Coffee Shop App, a full-stack, serverless coffee ordering system on AWS with an Angular frontend.</li>
+                <li data-i18n="exp.3.p2">Implemented backend logic with AWS Lambda, REST APIs with API Gateway, NoSQL storage with DynamoDB, and static hosting with S3.</li>
+              </ul>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
+
 
 
 <!-- Skills Section -->
 <section id="skill" class="skill">
   <div class="container">
     <div class="content">
-      <h1 data-aos="zoom-in-down" data-aos-delay="300" class="title">
+      <h1 data-aos="zoom-in-down" data-aos-delay="300" class="title" data-i18n="skills.title">
         MY SUPERPOWERS
       </h1>
 
@@ -329,25 +316,25 @@
       <div class="container">
         <div class="content">
           <div class="title" data-aos="fade-down" data-aos-delay="300">
-            <h2>LET'S</h2>
-            <h1>CONNECT</h1>
+            <h2 data-i18n="contact.lets">LET'S</h2>
+            <h1 data-i18n="contact.connect">CONNECT</h1>
           </div>
 
           <div class="contact-area">
             <div data-aos="fade-right" data-aos-delay="300" class="left-side">
-              <h1>SEND ME BUGS</h1>
-              <h1>(OR LOVE </h1>
-              <h1>        NOTES)</h1>
+              <h1 data-i18n="contact.line1">SEND ME BUGS</h1>
+              <h1 data-i18n="contact.line2">(OR LOVE </h1>
+              <h1 data-i18n="contact.line3">        NOTES)</h1>
             </div>
 
             <div class="right-side">
               <form action="https://formsubmit.co/chakrellaah@gmail.com" method="POST" data-aos="fade-left" data-aos-delay="500">
-                <input type="text" name="name" placeholder="YOUR NAME" required>
-                <input type="email" name="email" placeholder="YOUR EMAIL ADDRESS" required>
-                <textarea name="message" placeholder="WHAT CAN I HELP FOR YOU?" required></textarea>
-                <input type="hidden" name="_next" value="https://chakrellah44.github.io/portfolio/thankyou.html">
+                <input type="text" name="name" placeholder="YOUR NAME" data-i18n-attr="placeholder:contact.name" required>
+                <input type="email" name="email" placeholder="YOUR EMAIL ADDRESS" data-i18n-attr="placeholder:contact.email" required>
+                <textarea name="message" placeholder="HOW CAN I HELP YOU?" data-i18n-attr="placeholder:contact.message" required></textarea>
+                <input type="hidden" name="_next" value="https://chakrellah44.github.io/portfolio/contact.html?sent=1">
                 <input type="hidden" name="_subject" value="New Portfolio Contact!">
-                <button type="submit">SEND</button>
+                <button type="submit" data-i18n="contact.send">SEND</button>
               </form>
             </div>
           </div>
@@ -359,27 +346,28 @@
     <footer>
       <div class="container">
         <div class="content"> 
-          <h1>Imanska's PORTFOLIO</h1>
+          <h1 data-i18n="footer.title">Imanska's PORTFOLIO</h1>
           <div class="social">
             <a href="https://www.linkedin.com/in/chakrellah" target="_blank" rel="noopener noreferrer" class="logo" title="LinkedIn">
               <box-icon name='linkedin-square' type='logo' ></box-icon>
             </a>
-            <a href="https://discord.com/channels/@me/1199855363697152142" target="_blank" rel="noopener noreferrer" class="logo" title="Discord">
+            <a href="https://discord.com/app" data-discord="imane.chakre" target="_blank" rel="noopener noreferrer" class="logo" title="Discord: imane.chakre">
               <box-icon name='discord' type='logo' ></box-icon>
             </a>
             <a href="https://github.com/CHAKRELLAH44" target="_blank" rel="noopener noreferrer" class="logo" title="GitHub">
               <box-icon name='github' type='logo' ></box-icon>
             </a>
-            <div class="logo">
+            <a href="https://x.com/iman_chakre" target="_blank" rel="noopener noreferrer" class="logo" title="X (Twitter)">
               <box-icon name='twitter' type='logo' ></box-icon>
-            </div>
+            </a>
 
           </div>
-          <p>&copy; Imanska <span id="year"></span></p>
+          <p>&copy; Imanska <span id="year"></span> | <span data-i18n="footer.tagline">Building Tech, Adding Fun</span></p>
         </div>
       </div>
     </footer>
 
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 
     <!-- Box Icon -->

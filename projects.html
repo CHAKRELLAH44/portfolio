@@ -16,297 +16,330 @@
     
         <link rel="icon" href="assets/c-.png" />
         <link rel="stylesheet" href="style.css" />
-        <title>Imanska</title>
+        <title data-i18n="projectsPage.pageTitle">Projects - Imanska</title>
       </head>
   <body>
-    <!-- Message d'alerte flottant -->
-    <div class="update-alert">
-        <div class="alert-content">
-            <span class="alert-icon">⚠️</span>
-            <span class="alert-text">ATTENTION : Cette section projets est actuellement en cours de mise à jour</span>
-            <button class="alert-close" onclick="this.parentElement.parentElement.style.display='none'">×</button>
-        </div>
-    </div>
-
     <header data-aos="fade-down" data-aos-delay="200">
-        <div class="container">
-          <div class="content">
-            <div class="logo">
+      <div class="container">
+        <div class="content">
+          <div class="logo">
               <img src="assets/dark/c--.png" alt="logo" />
-              <a href="">IMANSKA</a>
-            </div>
-  
-            <nav>
-              <a href="index.html#about">About</a>
-              <a href="projects.html">Projects</a>
-              <a href="hidden-me.html">Hidden Me</a>
-              <a href="contact.html">Contact</a>
-            </nav>
-  
-            <div class="extra-nav">
-              <a href="#"><span>AVAILABLE FOR WORK</span></a>
-            </div>
-              <!-- Bouton switch thème (logo) -->
-              <div class="theme-toggle" title="Changer le thème" onclick="toggleTheme()">
-                <box-icon id="theme-icon" name="moon" type="solid" color="#fff" size="md"></box-icon>
-              </div>
+            <a href="index.html">IMANSKA</a>
           </div>
+
+          <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+            <span></span><span></span><span></span>
+          </button>
+          <nav id="primary-nav">
+            <a href="index.html#about" data-i18n="nav.about">About</a>
+            <a href="projects.html" data-i18n="nav.projects">Projects</a>
+            <a href="hidden-me.html" data-i18n="nav.hidden">Hidden Me</a>
+            <a href="contact.html" data-i18n="nav.contact">Contact</a>
+            <a href="assets/cv.pdf" download="Imane_CV.pdf" class="nav-cv" data-i18n="nav.cv">Download CV</a>
+          </nav>
+
+          <div class="extra-nav">
+            <a href="contact.html"><span data-i18n="header.available">AVAILABLE FOR WORK</span></a>
+            <a href="assets/cv.pdf" download="Imane_CV.pdf" class="cv-link" aria-label="Download my CV" data-i18n-attr="aria-label:header.cvAria"><span>CV</span></a>
+          </div>
+            <button type="button" class="lang-toggle" onclick="toggleLanguage()" aria-label="Passer en français" title="Passer en français">
+              <svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>
+            </button>
+            <div class="theme-toggle" title="Toggle theme" onclick="toggleTheme()">
+              <box-icon id="theme-icon" name="moon" type="solid" color="#fff" size="md"></box-icon>
+            </div>
         </div>
-      </header>
+      </div>
+    </header>
 
     <!-- Section pour afficher tous les projets -->
     <section class="all-projects">
       <div class="container">
         <div class="content">
-          <h1 data-aos="zoom-in-down" data-aos-delay="300">ALL PROJECTS</h1>
+          <h1 data-aos="zoom-in-down" data-aos-delay="300" data-i18n="projectsPage.all">ALL PROJECTS</h1>
+
+          <div class="project-filters" role="group" aria-label="Filter projects by domain" data-i18n-attr="aria-label:filters.aria">
+            <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true" data-i18n="filters.all">All</button>
+            <button type="button" class="filter-btn" data-filter="devops" aria-pressed="false" data-i18n="filters.devops">DevOps &amp; Cloud</button>
+            <button type="button" class="filter-btn" data-filter="data" aria-pressed="false" data-i18n="filters.data">Data &amp; ML</button>
+            <button type="button" class="filter-btn" data-filter="web" aria-pressed="false" data-i18n="filters.web">Web</button>
+            <button type="button" class="filter-btn" data-filter="mobile" aria-pressed="false" data-i18n="filters.mobile">Mobile</button>
+            <button type="button" class="filter-btn" data-filter="salesforce" aria-pressed="false">Salesforce</button>
+          </div>
 
           <!-- DevOps & Cloud Engineering -->
-          <div class="category-section">
-            <h2 class="category-title" data-aos="fade-right" data-aos-delay="200">DevOps & Cloud Engineering</h2>
+          <details class="category-section" data-category="devops" open><summary class="category-title"><span class="category-heading"><span class="category-eyebrow"><span data-i18n="cat.eyebrow">Projects</span><span class="category-heading-rule" aria-hidden="true"></span></span><span class="category-name" data-i18n="cat.devops">DevOps & Cloud Engineering</span></span></summary>
             <div class="project-grid">
               <!-- CI/CD Pipeline Automation -->
-              <div class="project-card" data-long-desc="Implemented a complete CI/CD pipeline to automate application deployment and scaling. The setup ensured fast delivery, containerized workloads, and full observability through monitoring dashboards. Kubernetes (Minikube) for orchestration and cluster environment, Jenkins for CI pipeline & automation, ArgoCD for GitOps CD & deployment sync, Docker for containerization, GitHub for version control, and Prometheus + Grafana for metrics collection & visualization." data-screenshots="assets/dark/project-cicd.png, assets/dark/project-cicd.png, assets/dark/project-cicd.png">
+              <div class="project-card" data-i18n-attr="data-long-desc:proj.cicd.long" data-proj="cicd" data-long-desc="Implemented a complete CI/CD pipeline to automate application deployment and scaling. The setup ensured fast delivery, containerized workloads, and full observability through monitoring dashboards. Kubernetes (Minikube) for orchestration and cluster environment, Jenkins for CI pipeline & automation, ArgoCD for GitOps CD & deployment sync, Docker for containerization, GitHub for version control, and Prometheus + Grafana for metrics collection & visualization." data-screenshots="assets/dark/project-5.png, assets/dark/project-5.png, assets/dark/project-5.png">
                 <button class="expand-btn" aria-label="Open project details">+</button>
                 <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-cicd.png" alt="CI/CD Pipeline Project" class="project-image">
+                <img src="assets/dark/project-5.png" alt="CI/CD Pipeline Project" class="project-image" data-light-src="assets/light/project-14.png">
                 <div class="desc">
-                  <h1>CI/CD Pipeline Automation</h1>
-                  <p><strong>Tools:</strong> <span class="tool">Kubernetes</span>, <span class="tool">Jenkins</span>, <span class="tool">ArgoCD</span>, <span class="tool">Docker</span></p>
+                  <h1 data-i18n="proj.cicd.title">CI/CD Pipeline Automation</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">Kubernetes</span>, <span class="tool">Jenkins</span>, <span class="tool">ArgoCD</span>, <span class="tool">Docker</span></p>
                 </div>
               </div>
 
               <!-- Automated Package Deployment -->
-              <div class="project-card" data-long-desc="Created an automated system to install and configure packages across multiple servers, eliminating manual work and ensuring consistent configuration. Built a reproducible multi-VM infrastructure for testing. Ansible for playbooks, inventory, and automation, SSH for secure remote execution, and VirtualBox/Vagrant for multi-machine development environment." data-screenshots="assets/dark/project-ansible.png, assets/dark/project-ansible.png, assets/dark/project-ansible.png">
+              <div class="project-card" data-i18n-attr="data-long-desc:proj.ansible.long" data-proj="ansible" data-long-desc="Created an automated system to install and configure packages across multiple servers, eliminating manual work and ensuring consistent configuration. Built a reproducible multi-VM infrastructure for testing. Ansible for playbooks, inventory, and automation, SSH for secure remote execution, and VirtualBox/Vagrant for multi-machine development environment." data-screenshots="assets/dark/project-10.png, assets/dark/project-10.png, assets/dark/project-10.png">
                 <button class="expand-btn" aria-label="Open project details">+</button>
                 <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-ansible.png" alt="Automated Package Deployment Project" class="project-image">
+                <img src="assets/dark/project-10.png" alt="Automated Package Deployment Project" class="project-image" data-light-src="assets/light/project-15.png">
                 <div class="desc">
-                  <h1>Automated Package Deployment</h1>
-                  <p><strong>Tools:</strong> <span class="tool">Ansible</span>, <span class="tool">SSH</span>, <span class="tool">VirtualBox</span>, <span class="tool">Vagrant</span></p>
+                  <h1 data-i18n="proj.ansible.title">Automated Package Deployment</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">Ansible</span>, <span class="tool">SSH</span>, <span class="tool">VirtualBox</span>, <span class="tool">Vagrant</span></p>
                 </div>
               </div>
 
               <!-- DMZ Virtual Network Architecture -->
-              <div class="project-card" data-long-desc="Designed a secure DMZ architecture with segmentation, firewall rules, and NAT to expose external services safely. Verified isolation and controlled traffic flow across all network zones. Proxmox for virtualization & network configuration, pfSense for firewalling, NAT, and routing, Network Bridges for interface isolation, and Windows Server IIS for web service hosting & validation." data-screenshots="assets/dark/project-dmz.png, assets/dark/project-dmz.png, assets/dark/project-dmz.png">
+              <div class="project-card" data-i18n-attr="data-long-desc:proj.dmz.long" data-proj="dmz" data-long-desc="Designed a secure DMZ architecture with segmentation, firewall rules, and NAT to expose external services safely. Verified isolation and controlled traffic flow across all network zones. Proxmox for virtualization & network configuration, pfSense for firewalling, NAT, and routing, Network Bridges for interface isolation, and Windows Server IIS for web service hosting & validation." data-screenshots="assets/dark/project-11.png, assets/dark/project-11.png, assets/dark/project-11.png">
                 <button class="expand-btn" aria-label="Open project details">+</button>
                 <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-dmz.png" alt="DMZ Network Architecture Project" class="project-image">
+                <img src="assets/dark/project-11.png" alt="DMZ Network Architecture Project" class="project-image" data-light-src="assets/light/project-4.png">
                 <div class="desc">
-                  <h1>DMZ Virtual Network Architecture</h1>
-                  <p><strong>Tools:</strong> <span class="tool">Proxmox</span>, <span class="tool">pfSense</span>, <span class="tool">Windows Server IIS</span></p>
+                  <h1 data-i18n="proj.dmz.title">DMZ Virtual Network Architecture</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">Proxmox</span>, <span class="tool">pfSense</span>, <span class="tool">Windows Server IIS</span></p>
                 </div>
               </div>
 
               <!-- PROVIROLL Twitter Agent -->
-              <div class="project-card" data-long-desc="Developed an AI agent capable of creating, scheduling, and posting coherent tweets automatically. Built datasets and fine-tuned NLP models for high-quality generated content. ElizaOS for agent orchestration, Twitter API for automated posting, snscrape/Tweepy for data scraping, and Hugging Face for NLP model fine-tuning." data-screenshots="assets/dark/S4/1.jpg,assets/dark/S4/2.jpg,assets/dark/S4/3.jpg">
+              <div class="project-card" data-i18n-attr="data-long-desc:proj.twitter.long" data-proj="twitter" data-long-desc="Developed an AI agent capable of creating, scheduling, and posting coherent tweets automatically. Built datasets and fine-tuned NLP models for high-quality generated content. ElizaOS for agent orchestration, Twitter API for automated posting, snscrape/Tweepy for data scraping, and Hugging Face for NLP model fine-tuning." data-screenshots="assets/dark/S4/1.jpg,assets/dark/S4/2.jpg,assets/dark/S4/3.jpg">
                 <button class="expand-btn" aria-label="Open project details">+</button>
                 <a href="https://github.com/CHAKRELLAH44/Auto-Twet-.ft-ELIZAOS" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-1.png" alt="Twitter Automation Agent Project" class="project-image">
+                <img src="assets/dark/project-1.png" alt="Twitter Automation Agent Project" class="project-image" data-light-src="assets/light/project-8.png">
                 <div class="desc">
-                  <h1>PROVIROLL – Twitter Automation Agent</h1>
-                  <p><strong>Tools:</strong> <span class="tool">ElizaOS</span>, <span class="tool">Python</span>, <span class="tool">Hugging Face</span></p>
+                  <h1 data-i18n="proj.twitter.title">PROVIROLL – Twitter Automation Agent</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">ElizaOS</span>, <span class="tool">Python</span>, <span class="tool">Hugging Face</span></p>
                 </div>
               </div>
 
               <!-- LUMINALINK Coffee Shop -->
-              <div class="project-card" data-long-desc="Built a fully serverless ordering platform to automate coffee orders with a modern Angular interface. Ensured scalability, low cost, and real-time back-end execution. AWS Lambda for serverless backend logic, API Gateway for REST API routing, DynamoDB for NoSQL storage, S3 for static assets & backups, and Angular for frontend UI." data-screenshots="assets/dark/S3/1.png,assets/dark/S3/2.png,assets/dark/S3/3.png,assets/dark/S3/archi.png">
+              <div class="project-card" data-i18n-attr="data-long-desc:proj.coffee.long" data-proj="coffee" data-long-desc="Built a fully serverless ordering platform to automate coffee orders with a modern Angular interface. Ensured scalability, low cost, and real-time back-end execution. AWS Lambda for serverless backend logic, API Gateway for REST API routing, DynamoDB for NoSQL storage, S3 for static assets & backups, and Angular for frontend UI." data-screenshots="assets/dark/S3/1.png,assets/dark/S3/2.png,assets/dark/S3/3.png,assets/dark/S3/archi.png">
                 <button class="expand-btn" aria-label="Open project details">+</button>
                 <a href="https://github.com/CHAKRELLAH44/CoffeShop" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-2.png" alt="Coffee Shop Project" class="project-image">
+                <img src="assets/dark/project-2.png" alt="Coffee Shop Project" class="project-image" data-light-src="assets/light/project-1.png">
                 <div class="desc">
-                  <h1>LUMINALINK – Coffee Shop</h1>
-                  <p><strong>Tools:</strong> <span class="tool">AWS Lambda</span>, <span class="tool">DynamoDB</span>, <span class="tool">Angular</span></p>
+                  <h1 data-i18n="proj.coffee.title">LUMINALINK – Coffee Shop</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">AWS Lambda</span>, <span class="tool">DynamoDB</span>, <span class="tool">Angular</span></p>
                 </div>
               </div>
-            </div>
-          </div>
+            </div></details>
 
           <!-- Data Engineering & Machine Learning -->
-          <div class="category-section">
-            <h2 class="category-title" data-aos="fade-right" data-aos-delay="200">Data Engineering & Machine Learning</h2>
+          <details class="category-section" data-category="data" open><summary class="category-title"><span class="category-heading"><span class="category-eyebrow"><span data-i18n="cat.eyebrow">Projects</span><span class="category-heading-rule" aria-hidden="true"></span></span><span class="category-name" data-i18n="cat.data">Data Engineering & Machine Learning</span></span></summary>
             <div class="project-grid">
               <!-- Healthcare AI -->
-              <div class="project-card" data-long-desc="Designed a predictive model estimating patient survival based on medical features, with an interactive UI for clinicians. Streamlined data processing through ETL pipelines. Scikit-learn for classical ML models, TensorFlow for deep learning architecture, Streamlit for web interface, Power BI for visualization & reporting, and ETL for data cleaning & transformation." data-screenshots="assets/dark/TIW/1.png,assets/dark/TIW/2.png,assets/dark/TIW/3.png">
+              <div class="project-card" data-i18n-attr="data-long-desc:proj.health.long" data-proj="health" data-long-desc="Designed a predictive model estimating patient survival based on medical features, with an interactive UI for clinicians. Streamlined data processing through ETL pipelines. Scikit-learn for classical ML models, TensorFlow for deep learning architecture, Streamlit for web interface, Power BI for visualization & reporting, and ETL for data cleaning & transformation." data-screenshots="assets/dark/TIW/1.png,assets/dark/TIW/2.png,assets/dark/TIW/3.png">
                 <button class="expand-btn" aria-label="Open project details">+</button>
                 <a href="https://github.com/CHAKRELLAH44/AI-Death-Prediction" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-3.png" alt="Healthcare AI Project" class="project-image">
+                <img src="assets/dark/project-3.png" alt="Healthcare AI Project" class="project-image" data-light-src="assets/light/project-10.png">
                 <div class="desc">
-                  <h1>Healthcare AI – Predicting Patient Survival</h1>
-                  <p><strong>Tools:</strong> <span class="tool">Scikit-learn</span>, <span class="tool">TensorFlow</span>, <span class="tool">Streamlit</span>, <span class="tool">Power BI</span></p>
+                  <h1 data-i18n="proj.health.title">Healthcare AI – Predicting Patient Survival</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">Scikit-learn</span>, <span class="tool">TensorFlow</span>, <span class="tool">Streamlit</span>, <span class="tool">Power BI</span></p>
                 </div>
               </div>
 
               <!-- Recommendation System -->
-              <div class="project-card" data-long-desc="Implemented a hybrid recommendation engine combining collaborative filtering and content-based analysis for personalized product suggestions. Integrated real-time indexing for fast search. PySpark + MLlib (ALS) for collaborative filtering model, Kafka for real-time data streams, and Elasticsearch for indexing & fast search." data-screenshots="assets/dark/PFA4/1.png, assets/dark/PFA4/2.png, assets/dark/PFA4/3.png, assets/dark/PFA4/4.png, assets/dark/PFA4/5.png">
+              <div class="project-card" data-i18n-attr="data-long-desc:proj.reco.long" data-proj="reco" data-long-desc="Implemented a hybrid recommendation engine combining collaborative filtering and content-based analysis for personalized product suggestions. Integrated real-time indexing for fast search. PySpark + MLlib (ALS) for collaborative filtering model, Kafka for real-time data streams, and Elasticsearch for indexing & fast search." data-screenshots="assets/dark/PFA4/1.png, assets/dark/PFA4/2.png, assets/dark/PFA4/3.png, assets/dark/PFA4/4.png, assets/dark/PFA4/5.png">
                 <button class="expand-btn" aria-label="Open project details">+</button>
                 <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-4.png" alt="Recommendation System Project" class="project-image">
+                <img src="assets/dark/project-4.png" alt="Recommendation System Project" class="project-image" data-light-src="assets/light/project-6.png">
                 <div class="desc">
-                  <h1>Recommendation System – E-commerce</h1>
-                  <p><strong>Tools:</strong> <span class="tool">PySpark</span>, <span class="tool">MLlib</span>, <span class="tool">Kafka</span>, <span class="tool">Elasticsearch</span></p>
+                  <h1 data-i18n="proj.reco.title">Recommendation System – E-commerce</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">PySpark</span>, <span class="tool">MLlib</span>, <span class="tool">Kafka</span>, <span class="tool">Elasticsearch</span></p>
                 </div>
               </div>
-            </div>
-          </div>
+            </div></details>
 
           <!-- Web Development -->
-          <div class="category-section">
-            <h2 class="category-title" data-aos="fade-right" data-aos-delay="200">Web Development</h2>
+          <details class="category-section" data-category="web" open><summary class="category-title"><span class="category-heading"><span class="category-eyebrow"><span data-i18n="cat.eyebrow">Projects</span><span class="category-heading-rule" aria-hidden="true"></span></span><span class="category-name" data-i18n="cat.web">Web Development</span></span></summary>
             <div class="project-grid">
               <!-- Bank Management System -->
-              <div class="project-card" data-long-desc="Developed a secure banking management web application with client management, bank account creation, account balance tracking, transaction history, and money transfers. Implemented role-based access control and JWT authentication to secure REST APIs and manage permissions for clients and bank agents." data-screenshots="assets/projects/bank/1.png,assets/projects/bank/4.png,assets/projects/bank/5.png,assets/projects/bank/8-1.png,assets/projects/bank/9.png,assets/projects/bank/9-1.png,assets/projects/bank/7.png,assets/projects/bank/8.png,assets/projects/bank/10.png,assets/projects/bank/11.png">
+              <div class="project-card is-featured" data-i18n-attr="data-long-desc:proj.bank.long" data-proj="bank" data-long-desc="Developed a secure banking management web application with client management, bank account creation, account balance tracking, transaction history, and money transfers. Implemented role-based access control and JWT authentication to secure REST APIs and manage permissions for clients and bank agents." data-screenshots="assets/projects/bank/1.png,assets/projects/bank/4.png,assets/projects/bank/5.png,assets/projects/bank/8-1.png,assets/projects/bank/9.png,assets/projects/bank/9-1.png,assets/projects/bank/7.png,assets/projects/bank/8.png,assets/projects/bank/10.png,assets/projects/bank/11.png">
                 <button class="expand-btn" aria-label="View Bank Management System photos">+</button>
+                <span class="featured-badge" data-i18n="proj.featured">Featured</span>
                 <a href="https://github.com/CHAKRELLAH44/ARCHITECTURE-PROJECT" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-4.png" alt="Bank Management System login screen" class="project-image">
+                <img src="assets/dark/project-4.png" alt="Bank Management System login screen" class="project-image" data-light-src="assets/light/project-5.png">
                 <div class="desc">
-                  <h1>Bank Management System</h1>
-                  <p><strong>Tools:</strong> <span class="tool">Spring Boot 3</span>, <span class="tool">React.js</span>, <span class="tool">Spring Security</span>, <span class="tool">JWT</span>, <span class="tool">Spring Data JPA</span>, <span class="tool">MySQL 8</span>, <span class="tool">REST API</span></p>
+                  <h1 data-i18n="proj.bank.title">Bank Management System</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">Spring Boot 3</span>, <span class="tool">React.js</span>, <span class="tool">Spring Security</span>, <span class="tool">JWT</span>, <span class="tool">Spring Data JPA</span>, <span class="tool">MySQL 8</span>, <span class="tool">REST API</span></p>
                 </div>
               </div>
 
               <!-- E-commerce Microservices Platform -->
-              <div class="project-card" data-long-desc="Developed a microservices-based e-commerce platform for product and order management using Spring Boot and Spring Cloud. Implemented CRUD operations, centralized configuration, service discovery, API Gateway routing, load balancing, and fault tolerance with timeout and fallback mechanisms. Integrated a React.js frontend and documented REST APIs using Swagger/OpenAPI." data-screenshots="assets/projects/ecommerce/1.png,assets/projects/ecommerce/2.png,assets/projects/ecommerce/3.png,assets/projects/ecommerce/4.png,assets/projects/ecommerce/5.png,assets/projects/ecommerce/6.png">
+              <div class="project-card is-featured" data-i18n-attr="data-long-desc:proj.ecom.long" data-proj="ecom" data-long-desc="Developed a microservices-based e-commerce platform for product and order management using Spring Boot and Spring Cloud. Implemented CRUD operations, centralized configuration, service discovery, API Gateway routing, load balancing, and fault tolerance with timeout and fallback mechanisms. Integrated a React.js frontend and documented REST APIs using Swagger/OpenAPI." data-screenshots="assets/projects/ecommerce/1.png,assets/projects/ecommerce/2.png,assets/projects/ecommerce/3.png,assets/projects/ecommerce/4.png,assets/projects/ecommerce/5.png,assets/projects/ecommerce/6.png">
                 <button class="expand-btn" aria-label="View E-commerce Microservices Platform photos">+</button>
+                <span class="featured-badge" data-i18n="proj.featured">Featured</span>
                 <a href="https://github.com/CHAKRELLAH44/JEE-PROJECT" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-1.png" alt="E-commerce Microservices Platform" class="project-image">
+                <img src="assets/dark/project-1.png" alt="E-commerce Microservices Platform" class="project-image" data-light-src="assets/light/project-13.png">
                 <div class="desc">
-                  <h1>E-commerce Microservices Platform</h1>
-                  <p><strong>Tools:</strong> <span class="tool">Java</span>, <span class="tool">Spring Boot</span>, <span class="tool">Spring Cloud</span>, <span class="tool">React.js</span>, <span class="tool">Spring Data JPA</span>, <span class="tool">H2 Database</span>, <span class="tool">Eureka</span>, <span class="tool">API Gateway</span>, <span class="tool">Config Server</span>, <span class="tool">Hystrix</span>, <span class="tool">Maven</span>, <span class="tool">Swagger/OpenAPI</span></p>
+                  <h1 data-i18n="proj.ecom.title">E-commerce Microservices Platform</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">Java</span>, <span class="tool">Spring Boot</span>, <span class="tool">Spring Cloud</span>, <span class="tool">React.js</span>, <span class="tool">Spring Data JPA</span>, <span class="tool">H2 Database</span>, <span class="tool">Eureka</span>, <span class="tool">API Gateway</span>, <span class="tool">Config Server</span>, <span class="tool">Hystrix</span>, <span class="tool">Maven</span>, <span class="tool">Swagger/OpenAPI</span></p>
                 </div>
               </div>
 
               <!-- Ech Store -->
-              <div class="project-card" data-long-desc="Developed a JEE-based e-commerce website with full CRUD operations, authentication, and product catalog management. Delivered a fast and secure backend architecture. Jakarta EE (JEE) for backend servlets, JDK 17 for Java runtime, and Tomcat 10 for server deployment." data-screenshots="assets/dark/project-echstore.png, assets/dark/project-echstore.png, assets/dark/project-echstore.png">
+              <div class="project-card is-featured" data-i18n-attr="data-long-desc:proj.echstore.long" data-proj="echstore" data-long-desc="Developed a JEE-based e-commerce website with full CRUD operations, authentication, and product catalog management. Delivered a fast and secure backend architecture. Jakarta EE (JEE) for backend servlets, JDK 17 for Java runtime, and Tomcat 10 for server deployment." data-screenshots="assets/dark/project-8.png, assets/dark/project-8.png, assets/dark/project-8.png">
                 <button class="expand-btn" aria-label="Open project details">+</button>
+                <span class="featured-badge" data-i18n="proj.featured">Featured</span>
                 <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-4.png" alt="Ech Store Project" class="project-image">
+                <img src="assets/dark/project-4.png" alt="Ech Store Project" class="project-image" data-light-src="assets/light/project-11.png">
                 <div class="desc">
-                  <h1>Ech Store – JEE Website</h1>
-                  <p><strong>Tools:</strong> <span class="tool">Jakarta EE</span>, <span class="tool">JDK 17</span>, <span class="tool">Tomcat 10</span></p>
+                  <h1 data-i18n="proj.echstore.title">Ech Store – JEE Website</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">Jakarta EE</span>, <span class="tool">JDK 17</span>, <span class="tool">Tomcat 10</span></p>
                 </div>
               </div>
 
               <!-- Movie Management System -->
-              <div class="project-card" data-long-desc="Built a movie and actor management platform with full CRUD, split into a modern React frontend and a robust .NET backend connected to SQL storage. C# (.NET) for backend logic, SQL for relational database, and React + Vite for frontend UI." data-screenshots="assets/dark/project-1.png, assets/dark/project-12.png, assets/dark/project-1.png">
+              <div class="project-card" data-i18n-attr="data-long-desc:proj.movie.long" data-proj="movie" data-long-desc="Built a movie and actor management platform with full CRUD, split into a modern React frontend and a robust .NET backend connected to SQL storage. C# (.NET) for backend logic, SQL for relational database, and React + Vite for frontend UI." data-screenshots="assets/dark/project-1.png, assets/dark/project-12.png, assets/dark/project-1.png">
                 <button class="expand-btn" aria-label="Open project details">+</button>
                 <a href="https://github.com/CHAKRELLAH44/YI-Movie" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-1.png" alt="Movie Management System Project" class="project-image">
+                <img src="assets/dark/project-1.png" alt="Movie Management System Project" class="project-image" data-light-src="assets/light/project-7.png">
                 <div class="desc">
-                  <h1>Movie Management System</h1>
-                  <p><strong>Tools:</strong> <span class="tool">React + Vite</span>, <span class="tool">C#</span>, <span class="tool">.NET</span>, <span class="tool">SQL</span></p>
+                  <h1 data-i18n="proj.movie.title">Movie Management System</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">React + Vite</span>, <span class="tool">C#</span>, <span class="tool">.NET</span>, <span class="tool">SQL</span></p>
                 </div>
               </div>
 
               <!-- Online Taxi Reservation System -->
-              <div class="project-card" data-long-desc="Created an online taxi booking system with secure user authentication and ride management. Delivered a responsive interface suitable for both desktop and mobile. Django for backend + authentication, HTML/CSS for frontend, and SQL for data persistence." data-screenshots="assets/dark/project-4.png, assets/dark/project-4.png, assets/dark/project-4.png">
+              <div class="project-card" data-i18n-attr="data-long-desc:proj.taxi.long" data-proj="taxi" data-long-desc="Created an online taxi booking system with secure user authentication and ride management. Delivered a responsive interface suitable for both desktop and mobile. Django for backend + authentication, HTML/CSS for frontend, and SQL for data persistence." data-screenshots="assets/dark/project-4.png, assets/dark/project-4.png, assets/dark/project-4.png">
                 <button class="expand-btn" aria-label="Open project details">+</button>
                 <a href="https://github.com/CHAKRELLAH44/T-SIR.git" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-4.png" alt="Online Taxi Reservation System Project" class="project-image">
+                <img src="assets/dark/project-4.png" alt="Online Taxi Reservation System Project" class="project-image" data-light-src="assets/light/project-9.png">
                 <div class="desc">
-                  <h1>Online Taxi Reservation System</h1>
-                  <p><strong>Tools:</strong> <span class="tool">Django</span>, <span class="tool">HTML/CSS</span>, <span class="tool">SQL</span></p>
+                  <h1 data-i18n="proj.taxi.title">Online Taxi Reservation System</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">Django</span>, <span class="tool">HTML/CSS</span>, <span class="tool">SQL</span></p>
                 </div>
               </div>
 
               <!-- Hotel Management Systems -->
-              <div class="project-card" data-long-desc="Solution de réception hôtelière écrite en Java. Comprend la gestion des réservations, le suivi des clients, la génération de factures et un module pour gérer les services annexes (spa, restauration)." data-screenshots="assets/dark/project-3.png, assets/dark/project-3.png, assets/dark/project-3.png">
+              <div class="project-card is-featured" data-i18n-attr="data-long-desc:proj.hotelJava.long" data-proj="hotelJava" data-long-desc="Hotel front-desk application written in Java. Covers reservation management, guest tracking, invoice generation, and a module for additional services (spa, restaurant)." data-screenshots="assets/dark/project-3.png, assets/dark/project-3.png, assets/dark/project-3.png">
                 <button class="expand-btn" aria-label="Open project details">+</button>
+                <span class="featured-badge" data-i18n="proj.featured">Featured</span>
                 <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-3.png" alt="Hotel Management System Project" class="project-image">
+                <img src="assets/dark/project-3.png" alt="Hotel Management System Project" class="project-image" data-light-src="assets/light/project-2.png">
                 <div class="desc">
-                  <h1>Hotel Management System (Java)</h1>
-                  <p><strong>Tools:</strong> <span class="tool">Java</span>, <span class="tool">NetBeans</span></p>
+                  <h1 data-i18n="proj.hotelJava.title">Hotel Management System (Java)</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">Java</span>, <span class="tool">NetBeans</span></p>
                 </div>
               </div>
 
-              <div class="project-card" data-long-desc="Application C++ optimisée pour la gestion opérationnelle d'un hôtel. Propose des routines rapides pour l'allocation des chambres, la gestion des disponibilités et de la tarification, avec export CSV des rapports." data-screenshots="assets/dark/project-5.png, assets/dark/project-5.png, assets/dark/project-5.png">
+              <div class="project-card" data-i18n-attr="data-long-desc:proj.hotelCpp.long" data-proj="hotelCpp" data-long-desc="Optimized C++ application for day-to-day hotel operations. Provides fast routines for room allocation, availability and pricing management, with CSV export of reports." data-screenshots="assets/dark/project-5.png, assets/dark/project-5.png, assets/dark/project-5.png">
                 <button class="expand-btn" aria-label="Open project details">+</button>
                 <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-5.png" alt="Hotel Management System C++ Project" class="project-image">
+                <img src="assets/dark/project-5.png" alt="Hotel Management System C++ Project" class="project-image" data-light-src="assets/light/project-3.png">
                 <div class="desc">
-                  <h1>Hotel Management System (C++)</h1>
-                  <p><strong>Tools:</strong> <span class="tool">C++</span></p>
+                  <h1 data-i18n="proj.hotelCpp.title">Hotel Management System (C++)</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">C++</span></p>
                 </div>
               </div>
-            </div>
-          </div>
+            </div></details>
 
           <!-- Mobile Development -->
-          <div class="category-section">
-            <h2 class="category-title" data-aos="fade-right" data-aos-delay="200">Mobile Development</h2>
+          <details class="category-section" data-category="mobile" open><summary class="category-title"><span class="category-heading"><span class="category-eyebrow"><span data-i18n="cat.eyebrow">Projects</span><span class="category-heading-rule" aria-hidden="true"></span></span><span class="category-name" data-i18n="cat.mobile">Mobile Development</span></span></summary>
             <div class="project-grid">
               <!-- Mobile Application – Online Exams App -->
-              <div class="project-card" data-long-desc="Developed an Android app enabling users to create, share, and take quizzes with detailed history tracking. Provided a clean UI and real-time storage synchronization. Java for app logic & UI components, Android Studio for development environment, and Firebase for authentication & real-time database." data-screenshots="assets/dark/project-mobile.png, assets/dark/project-mobile.png, assets/dark/project-mobile.png">
+              <div class="project-card is-featured" data-i18n-attr="data-long-desc:proj.exams.long" data-proj="exams" data-long-desc="Developed an Android app enabling users to create, share, and take quizzes with detailed history tracking. Provided a clean UI and real-time storage synchronization. Java for app logic & UI components, Android Studio for development environment, and Firebase for authentication & real-time database." data-screenshots="assets/dark/project-3.png, assets/dark/project-3.png, assets/dark/project-3.png">
                 <button class="expand-btn" aria-label="Open project details">+</button>
+                <span class="featured-badge" data-i18n="proj.featured">Featured</span>
                 <a href="https://github.com/CHAKRELLAH44" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
                   <box-icon name='github' type='logo'></box-icon>
                 </a>
-                <img src="assets/dark/project-mobile.png" alt="Online Exams Mobile App Project" class="project-image">
+                <img src="assets/dark/project-3.png" alt="Online Exams Mobile App Project" class="project-image" data-light-src="assets/light/project-12.png">
                 <div class="desc">
-                  <h1>Mobile Application – Online Exams App</h1>
-                  <p><strong>Tools:</strong> <span class="tool">Java</span>, <span class="tool">Android Studio</span>, <span class="tool">Firebase</span></p>
+                  <h1 data-i18n="proj.exams.title">Mobile Application – Online Exams App</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">Java</span>, <span class="tool">Android Studio</span>, <span class="tool">Firebase</span></p>
                 </div>
               </div>
-            </div>
-          </div>
+
+              <!-- Car Rental Application -->
+              <div class="project-card" data-i18n-attr="data-long-desc:proj.carRental.long" data-proj="carRental" data-long-desc="Cross-platform car rental mobile application built with Flutter. A single Dart codebase targets Android and iOS, with Firebase as the backend for data and hosting configuration." data-screenshots="assets/dark/project-9.png">
+                <button class="expand-btn" aria-label="Open project details">+</button>
+                <a href="https://github.com/YassineEch-chaoui/mobile-app-car-rental" class="github-link" target="_blank" rel="noopener noreferrer" title="View on GitHub">
+                  <box-icon name='github' type='logo'></box-icon>
+                </a>
+                <img src="assets/dark/project-9.png" alt="Car Rental Application Project" class="project-image" data-light-src="assets/light/project-16.png">
+                <div class="desc">
+                  <h1 data-i18n="proj.carRental.title">Car Rental Application</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">Flutter</span>, <span class="tool">Dart</span>, <span class="tool">Firebase</span></p>
+                </div>
+              </div>
+            </div></details>
+
+          <!-- Salesforce -->
+          <details class="category-section" data-category="salesforce" open><summary class="category-title"><span class="category-heading"><span class="category-eyebrow"><span data-i18n="cat.eyebrow">Projects</span><span class="category-heading-rule" aria-hidden="true"></span></span><span class="category-name">Salesforce</span></span></summary>
+            <div class="project-grid">
+              <!-- Purchasing Information System (Salesforce, confidential) -->
+              <div class="project-card is-featured" data-confidential data-i18n-attr="data-long-desc:proj.p2p.long" data-proj="p2p" data-long-desc="Procure-to-Pay system built on Salesforce for an enterprise client during my internship at D&amp;A Technologies. I modeled the business processes in BPMN, developed backend logic and approval workflows in Apex and SOQL, built Lightning Web Components, and delivered supplier-facing features on Experience Cloud.">
+                <button class="expand-btn" aria-label="Open project details">+</button>
+                <span class="featured-badge" data-i18n="proj.featured">Featured</span>
+                <img src="assets/dark/project-3.png" alt="Purchasing Information System Project" class="project-image" data-light-src="assets/light/project-16.png">
+                <div class="desc">
+                  <h1 data-i18n="proj.p2p.title">Purchasing Information System – Procure-to-Pay</h1>
+                  <p><strong data-i18n="proj.tools">Tools:</strong> <span class="tool">Salesforce</span>, <span class="tool">Apex</span>, <span class="tool">SOQL</span>, <span class="tool">LWC</span>, <span class="tool">Experience Cloud</span>, <span class="tool">BPMN</span></p>
+                </div>
+              </div>
+            </div></details>
 
           <!-- Bouton pour retourner à la page d'accueil -->
           <div class="back-to-home">
-            <a href="index.html" class="back-button">RETURN TO HOME</a>
+            <a href="index.html" class="back-button" data-i18n="common.returnHome">RETURN TO HOME</a>
           </div>
         </div>
       </div>
     </section>
 
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 
     <footer>
         <div class="container">
           <div class="content"> 
-            <h1>Imanska's PORTFOLIO</h1>
+            <h1 data-i18n="footer.title">Imanska's PORTFOLIO</h1>
             <div class="social">
               <a href="https://www.linkedin.com/in/chakrellah" target="_blank" rel="noopener noreferrer" class="logo" title="LinkedIn">
                 <box-icon name='linkedin-square' type='logo'></box-icon>
               </a>
-              <a href="https://discord.com/channels/@me/1199855363697152142" target="_blank" rel="noopener noreferrer" class="logo" title="Discord">
+              <a href="https://discord.com/app" data-discord="imane.chakre" target="_blank" rel="noopener noreferrer" class="logo" title="Discord: imane.chakre">
                 <box-icon name='discord' type='logo'></box-icon>
               </a>
               <a href="https://github.com/CHAKRELLAH44" target="_blank" rel="noopener noreferrer" class="logo" title="GitHub">
                 <box-icon name='github' type='logo'></box-icon>
               </a>
-              <a href="https://x.com/iman_chakre" target="_blank" class="logo" title="X (Twitter)">
+              <a href="https://x.com/iman_chakre" target="_blank" rel="noopener noreferrer" class="logo" title="X (Twitter)">
                 <box-icon name='twitter' type='logo'></box-icon>
               </a>
             </div>
-            <p>&copy; Imanska <span id="year"></span> | Building Tech, Adding Fun</p>
+            <p>&copy; Imanska <span id="year"></span> | <span data-i18n="footer.tagline">Building Tech, Adding Fun</span></p>
           </div>
         </div>
       </footer>
@@ -348,5 +381,4 @@
       </script>-->
     </body>
   </html>
-
 

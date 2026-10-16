@@ -16,7 +16,7 @@
     
         <link rel="icon" href="assets/c-.png" />
         <link rel="stylesheet" href="style.css" />
-        <title>Imanska</title>
+        <title data-i18n="hidden.pageTitle">Hidden Me - Imanska</title>
       </head>
 <body>
     <header data-aos="fade-down" data-aos-delay="200">
@@ -27,18 +27,25 @@
               <a href="">IMANSKA</a>
             </div>
   
-            <nav>
-              <a href="index.html#about">About</a>
-              <a href="projects.html">Projects</a>
-              <a href="hidden-me.html">Hidden Me</a>
-              <a href="contact.html">Contact</a>
+            <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+              <span></span><span></span><span></span>
+            </button>
+            <nav id="primary-nav">
+              <a href="index.html#about" data-i18n="nav.about">About</a>
+              <a href="projects.html" data-i18n="nav.projects">Projects</a>
+              <a href="hidden-me.html" data-i18n="nav.hidden">Hidden Me</a>
+              <a href="contact.html" data-i18n="nav.contact">Contact</a>
+              <a href="assets/cv.pdf" download="Imane_CV.pdf" class="nav-cv" data-i18n="nav.cv">Download CV</a>
             </nav>
   
             <div class="extra-nav">
-              <a href="#"><span>AVAILABLE FOR WORK</span></a>
-            </div>
-              <!-- Bouton switch thème (logo) -->
-              <div class="theme-toggle" title="Changer le thème" onclick="toggleTheme()">
+            <a href="contact.html"><span data-i18n="header.available">AVAILABLE FOR WORK</span></a>
+            <a href="assets/cv.pdf" download="Imane_CV.pdf" class="cv-link" aria-label="Download my CV" data-i18n-attr="aria-label:header.cvAria"><span>CV</span></a>
+          </div>
+              <button type="button" class="lang-toggle" onclick="toggleLanguage()" aria-label="Passer en français" title="Passer en français">
+              <svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>
+            </button>
+            <div class="theme-toggle" title="Toggle theme" onclick="toggleTheme()">
                 <box-icon id="theme-icon" name="moon" type="solid" color="#fff" size="md"></box-icon>
               </div>
           </div>
@@ -56,11 +63,11 @@
                 <img src="assets/dark/2.png" alt="Photo 1">
               </div>
               <div class="description">
-                <h2>My Love for Technology</h2>
-                <p>The world of computer engineering is not just my career. I thrive on solving problems, writing code, and exploring new technologies. For me, every bug is an opportunity to learn, and every new project is a chance to innovate. I believe in creating solutions that make life easier, smarter, and a little more fun. If you are interested in my journey, download my CV</p>
+                <h2 data-i18n="hidden.tech.title">My Love for Technology</h2>
+                <p data-i18n="hidden.tech.text">Computer engineering is not just my career. I thrive on solving problems, writing code, and exploring new technologies. For me, every bug is an opportunity to learn, and every new project is a chance to innovate. I believe in building solutions that make life easier, smarter, and a little more fun. Curious about my journey? Download my CV.</p>
                 <a href="assets/cv.pdf" target="_blank" class="download-button" onclick="event.preventDefault(); window.open('assets/cv.pdf', '_blank')" oncontextmenu="this.download='Imane_CV.pdf'; return true;">
                   CV
-                  <box-icon name='download' color="#ffffff"></box-icon>
+                  <box-icon name='download'></box-icon>
                 </a>
               </div>
             </div>
@@ -68,8 +75,8 @@
             <!-- Section 2 : Description à gauche, photo à droite -->
             <div class="section" data-aos="fade-left">
               <div class="description">
-                <h2>A Need for Speed</h2>
-                <p>Motorsports are my adrenaline rush, and Formula 1 is the ultimate obsession. My love for racing runs deep, especially for Lewis Hamilton, An 8-time world champion. I admire the determination and skill of the driver who push the limits every race -- "Life is about LESSONS, not Perfection", Lewis</p>
+                <h2 data-i18n="hidden.speed.title">A Need for Speed</h2>
+                <p data-i18n="hidden.speed.text">Motorsport is my adrenaline rush, and Formula 1 is the ultimate obsession. My love for racing runs deep, especially for Lewis Hamilton, the 7-time world champion. I admire the determination and skill of drivers who push the limits every race. "Life is about lessons, not perfection." – Lewis Hamilton</p>
               </div>
               <div class="image">
                   <img src="assets/dark/lewis.jpg" alt="Photo 2">
@@ -82,16 +89,16 @@
                   <img src="assets/dark/fcb.png" alt="Photo 3">
               </div>
               <div class="description">
-                <h2>The Beautiful Game</h2>
-                <p>Football is more than a sport to me; it’s a lifelong passion. As a die-hard FC Barcelona fan, I’ve been following the team since I could kick a ball. Playing football has been a part of my life since childhood, and it’s where I learned teamwork, perseverance, and the joy of chasing goals (literally and figuratively).</p>
+                <h2 data-i18n="hidden.football.title">The Beautiful Game</h2>
+                <p data-i18n="hidden.football.text">Football is more than a sport to me; it’s a lifelong passion. As a die-hard FC Barcelona fan, I’ve been following the team since I could kick a ball. Playing football has been part of my life since childhood, and it’s where I learned teamwork, perseverance, and the joy of chasing goals (literally and figuratively).</p>
               </div>
             </div>
       
             <!-- Section 4 : Description à gauche, photo à droite -->
             <div class="section" data-aos="fade-left">
               <div class="description">
-                <h2>My Passion for Baking</h2>
-                <p>Baking is my creative outlet. From cakes to cookies, I love experimenting with flavors and techniques. It’s a delicious way to unwind and share joy with others. Whether it’s a classic chocolate cake or a new recipe I’m trying, baking is always a sweet adventure.</p>
+                <h2 data-i18n="hidden.baking.title">My Passion for Baking</h2>
+                <p data-i18n="hidden.baking.text">Baking is my creative outlet. From cakes to cookies, I love experimenting with flavors and techniques. It’s a delicious way to unwind and share joy with others. Whether it’s a classic chocolate cake or a new recipe I’m trying, baking is always a sweet adventure.</p>
                  
               </div>
               <div class="image">
@@ -105,48 +112,47 @@
                   <img src="assets/dark/musique.jpg" alt="Photo 5">
               </div>
               <div class="description">
-                <h2>The Universal Language</h2>
-                <p>Music is my constant companion and the soundtrack to my life. I believe music transcends boundaries and connects people in ways words can’t. As someone once said, “Music is a language that everyone can understand.” Whether I’m coding, baking, or just relaxing, there’s always a playlist for the moment. Curious? Check out my Spotify account.</p>
+                <h2 data-i18n="hidden.music.title">The Universal Language</h2>
+                <p data-i18n="hidden.music.text">Music is my constant companion and the soundtrack to my life. I believe music transcends boundaries and connects people in ways words can’t. As someone once said, “Music is a language that everyone can understand.” Whether I’m coding, baking, or just relaxing, there’s always a playlist for the moment. Curious? Check out my Spotify account.</p>
              <a href="https://open.spotify.com/user/jkcgqgeum9gcmp3x23skg6h5e?si=1d4126aad0f54b71" class="download-button">
                   Spotify
-                  <box-icon name='download' color="#ffffff"></box-icon>
+                  <box-icon name='download'></box-icon>
                 </a>
               </div>
             </div>
                 
             <!-- Bouton pour retourner à la page d'accueil -->
             <div class="back-to-home">
-              <a href="index.html" class="back-button">RETURN TO HOME</a>
+              <a href="index.html" class="back-button" data-i18n="common.returnHome">RETURN TO HOME</a>
             </div>
           </div>
         </div>
       </section>
-  <script src="script.js"></script>
-
   <footer>
     <div class="container">
       <div class="content"> 
-        <h1>Imanska's PORTFOLIO</h1>
+        <h1 data-i18n="footer.title">Imanska's PORTFOLIO</h1>
           <div class="social">
           <a href="https://www.linkedin.com/in/chakrellah" target="_blank" rel="noopener noreferrer" class="logo" title="LinkedIn">
             <box-icon name='linkedin-square' type='logo'></box-icon>
           </a>
-          <a href="https://discord.com/channels/@me/1199855363697152142" target="_blank" rel="noopener noreferrer" class="logo" title="Discord">
+          <a href="https://discord.com/app" data-discord="imane.chakre" target="_blank" rel="noopener noreferrer" class="logo" title="Discord: imane.chakre">
             <box-icon name='discord' type='logo'></box-icon>
           </a>
           <a href="https://github.com/CHAKRELLAH44" target="_blank" rel="noopener noreferrer" class="logo" title="GitHub">
             <box-icon name='github' type='logo'></box-icon>
           </a>
-          <a href="https://x.com/iman_chakre" target="_blank" class="logo" title="X (Twitter)">
+          <a href="https://x.com/iman_chakre" target="_blank" rel="noopener noreferrer" class="logo" title="X (Twitter)">
             <box-icon name='twitter' type='logo'></box-icon>
           </a>
         </div>
-        <p>&copy; Imanska <span id="year"></span> | Building Tech, Adding Fun</p>
+        <p>&copy; Imanska <span id="year"></span> | <span data-i18n="footer.tagline">Building Tech, Adding Fun</span></p>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="i18n.js"></script>
+    <script src="script.js"></script>
 
   <!-- Box Icon -->
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
