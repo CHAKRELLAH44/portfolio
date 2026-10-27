@@ -5152,3 +5152,66 @@ html body .hidden-me .container .content .back-to-home {
   .certification-controls { gap: 0.65rem; }
   .certification-dots { gap: 0.35rem; }
 }
+
+/* ===== Mobile polish: touch targets, form fonts, modal header, dynamic viewport ===== */
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+}
+a,
+button,
+.expand-btn,
+.nav-toggle,
+.lang-toggle {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Mobile browsers shrink 100vh behind the URL bar; svh keeps the hero fully visible. */
+@supports (min-height: 100svh) {
+  .hero { min-height: 100svh; }
+}
+
+@media (max-width: 768px) {
+  /* Comfortable tap areas without changing how things look. */
+  header .container .content .logo a {
+    display: inline-block;
+    padding-block: 0.6rem;
+  }
+  .certifications-page-link,
+  a[data-i18n="certs.pageLink"] {
+    display: inline-block;
+    padding-block: 0.5rem;
+  }
+  .certification-dots { gap: 0; }
+  .certification-dot,
+  .certification-dot.is-active {
+    box-sizing: content-box;
+    border: 6px solid transparent;
+    background-clip: padding-box;
+  }
+  .certification-controls { gap: 0.4rem; }
+  .certification-arrow {
+    flex: 0 0 auto;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  /* Keep the modal title clear of the GitHub and close buttons. */
+  .project-modal .panel .title {
+    padding-inline: 2.9rem;
+  }
+
+  /* Placeholders match the inputs instead of the browser's monospace default. */
+  .contact .container .content .contact-area .right-side form input::placeholder,
+  .contact .container .content .contact-area .right-side form textarea::placeholder {
+    font-family: inherit;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .certification-page { display: none; }
+}
