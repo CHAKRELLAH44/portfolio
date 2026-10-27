@@ -57,14 +57,15 @@
       <div class="container">
         <div class="content">
           <h1 data-aos="zoom-in-down" data-aos-delay="300" data-i18n="projectsPage.all">ALL PROJECTS</h1>
+          <p class="certifications-hint"><span data-i18n="certs.pageHint">My certifications and courses are at the bottom of this page.</span> <a href="#certifications" data-i18n="certs.pageLink">Go to certifications ↓</a></p>
 
           <div class="project-filters" role="group" aria-label="Filter projects by domain" data-i18n-attr="aria-label:filters.aria">
             <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true" data-i18n="filters.all">All</button>
-            <button type="button" class="filter-btn" data-filter="devops" aria-pressed="false" data-i18n="filters.devops">DevOps &amp; Cloud</button>
-            <button type="button" class="filter-btn" data-filter="data" aria-pressed="false" data-i18n="filters.data">Data &amp; ML</button>
+            <button type="button" class="filter-btn" data-filter="salesforce" aria-pressed="false">Salesforce</button>
             <button type="button" class="filter-btn" data-filter="web" aria-pressed="false" data-i18n="filters.web">Web</button>
             <button type="button" class="filter-btn" data-filter="mobile" aria-pressed="false" data-i18n="filters.mobile">Mobile</button>
-            <button type="button" class="filter-btn" data-filter="salesforce" aria-pressed="false">Salesforce</button>
+            <button type="button" class="filter-btn" data-filter="devops" aria-pressed="false" data-i18n="filters.devops">DevOps &amp; Cloud</button>
+            <button type="button" class="filter-btn" data-filter="data" aria-pressed="false" data-i18n="filters.data">Data &amp; ML</button>
           </div>
 
           <!-- DevOps & Cloud Engineering -->
@@ -335,6 +336,65 @@
                 </div>
               </div>
             </div></details>
+
+          <section class="certifications" id="certifications" aria-labelledby="certifications-title">
+            <div class="certifications-heading">
+              <div>
+                <p class="certifications-eyebrow" data-i18n="certs.eyebrow">Learning</p>
+                <h2 id="certifications-title" data-i18n="certs.title">CERTIFICATIONS &amp; COURSES</h2>
+              </div>
+              <span class="certifications-count">30 <span data-i18n="certs.completed">courses and credentials</span></span>
+            </div>
+            <div class="certification-carousel" aria-roledescription="carousel" data-i18n-attr="aria-label:certs.carouselAria">
+              <div class="certification-slides" aria-live="polite">
+                <div class="certification-slide is-active" data-slide="0"></div>
+                <div class="certification-slide" data-slide="1" hidden></div>
+                <div class="certification-slide" data-slide="2" hidden></div>
+                <div class="certification-slide" data-slide="3" hidden></div>
+                <div class="certification-slide" data-slide="4" hidden></div>
+                <div class="certification-slide" data-slide="5" hidden></div>
+                <div class="certification-slide" data-slide="6" hidden></div>
+              </div>
+              <div class="certification-controls">
+                <button type="button" class="certification-arrow" data-cert-prev aria-label="Previous slide" data-i18n-attr="aria-label:certs.previous">←</button>
+                <div class="certification-dots" role="group" aria-label="Choose a slide" data-i18n-attr="aria-label:certs.chooseSlide"></div>
+                <button type="button" class="certification-arrow" data-cert-next aria-label="Next slide" data-i18n-attr="aria-label:certs.next">→</button>
+                <span class="certification-page" aria-live="polite">1 / 8</span>
+              </div>
+            </div>
+            <div class="certification-data" hidden>
+              <a href="https://www.coursera.org/learn/packt-advanced-spring-cloud-microservices-and-deployment-with-docker-1nbvc/home/welcome" data-provider="Packt">Advanced Spring Cloud Microservices &amp; Deployment with Docker</a>
+              <a href="https://www.coursera.org/learn/machine-learning-with-python/home/welcome" data-provider="IBM">Machine Learning with Python</a>
+              <a href="https://www.coursera.org/learn/react-native-course/home/welcome" data-provider="Meta">React Native</a>
+              <a href="https://www.coursera.org/learn/ibm-containers-docker-kubernetes-openshift/home/welcome" data-provider="IBM">Introduction to Containers w/ Docker, Kubernetes &amp; OpenShift</a>
+              <a href="https://www.coursera.org/learn/introduction-git-github/home/welcome" data-provider="Google">Introduction to Git and GitHub</a>
+              <a href="https://www.coursera.org/learn/azure-virtual-networks/home/welcome" data-provider="Whizlabs">Virtual Networks in Azure</a>
+              <a href="https://www.coursera.org/learn/wireframes-low-fidelity-prototypes/home/welcome" data-provider="Google">Build Wireframes and Low-Fidelity Prototypes</a>
+              <a href="https://www.coursera.org/learn/aws-amazon-ec2-basics/home/welcome" data-provider="Amazon Web Services">Amazon EC2 Basics</a>
+              <a href="https://www.coursera.org/learn/aws-flash-saas-technical-fundamentals/home/welcome" data-provider="Amazon Web Services">AWS Flash - SaaS Technical Fundamentals</a>
+              <a href="https://www.coursera.org/learn/programmation-orientee-objet-cpp/home/welcome" data-provider="École Polytechnique Fédérale de Lausanne">Introduction à la programmation orientée objet (en C++)</a>
+              <a href="https://www.coursera.org/learn/java-object-oriented-programming/home/welcome" data-provider="University of Pennsylvania">Introduction to Java and Object-Oriented Programming</a>
+              <a href="https://www.coursera.org/learn/react-basics/home/welcome" data-provider="Meta">React Basics</a>
+              <a href="https://www.coursera.org/learn/impact-for-sdgs/home/welcome" data-provider="Duke University">Impact Measurement &amp; Management for the SDGs</a>
+              <a href="https://www.coursera.org/learn/environnement-urbain-afrique/home/welcome" data-provider="École Polytechnique Fédérale de Lausanne">Villes africaines: Environnement et enjeux de développement durable</a>
+              <a href="https://www.coursera.org/learn/python/home/welcome" data-provider="University of Michigan">Programming for Everybody (Getting Started with Python)</a>
+              <a href="https://www.coursera.org/learn/recherche-documentaire/home/welcome" data-provider="École Polytechnique">La recherche documentaire</a>
+              <a href="https://www.coursera.org/learn/unix/home/welcome" data-provider="Johns Hopkins University">The Unix Workbench</a>
+              <a href="https://www.coursera.org/learn/software-engineering-software-design-and-project-management/home/welcome" data-provider="The Hong Kong University of Science and Technology">Software Engineering: Software Design and Project Management</a>
+              <a href="https://www.coursera.org/learn/introcss/home/welcome" data-provider="University of Michigan">Introduction to CSS3</a>
+              <a href="https://www.coursera.org/learn/html/home/welcome" data-provider="University of Michigan">Introduction to HTML5</a>
+              <a href="https://www.coursera.org/learn/javascript/home/welcome" data-provider="University of Michigan">Interactivity with JavaScript</a>
+              <a href="https://www.coursera.org/learn/basic-sql-syntax/home/welcome" data-provider="Coursera">Understanding Basic SQL Syntax</a>
+              <a href="https://www.coursera.org/learn/html-css-javascript-for-web-developers/home/welcome" data-provider="Johns Hopkins University">HTML, CSS, and Javascript for Web Developers</a>
+              <a href="https://www.coursera.org/learn/the-structured-query-language-sql/home/welcome" data-provider="University of Colorado Boulder">The Structured Query Language (SQL)</a>
+              <a href="https://trailhead.salesforce.com/credentials/" data-provider="Salesforce" data-status="credential">Intermediate Administrator – Salesforce 2026</a>
+              <a href="https://trailhead.salesforce.com/credentials/" data-provider="Salesforce" data-status="credential">Beginner Administrator – Salesforce 2026</a>
+              <a href="https://trailhead.salesforce.com/credentials/" data-provider="Salesforce" data-status="credential">Intermediate Developer – Salesforce 2026</a>
+              <a href="https://trailhead.salesforce.com/credentials/" data-provider="Salesforce" data-status="credential">Lightning Experience Basics – Salesforce 2026</a>
+              <a href="https://trailhead.salesforce.com/credentials/" data-provider="Salesforce" data-status="credential">Flow Builder – Salesforce 2026</a>
+              <a href="https://www.oracle.com/education/certification/" data-provider="Oracle" data-status="credential">Oracle Database 19c Admin Professional Credential</a>
+            </div>
+          </section>
 
           <!-- Bouton pour retourner à la page d'accueil -->
           <div class="back-to-home">

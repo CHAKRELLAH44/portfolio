@@ -1491,6 +1491,8 @@ footer .container .content .social p {
   transform: translateY(-50%);
   display: flex;
   gap: 0.5rem;
+  z-index: 5;
+  pointer-events: auto;
 }
 
 .project-modal .carousel .prev { left: 0.8rem; }
@@ -1506,6 +1508,8 @@ footer .container .content .social p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .project-modal .panel .right .meta {
@@ -5085,4 +5089,66 @@ html body .hidden-me .container .content .back-to-home {
 .toast.is-visible {
   opacity: 1;
   transform: translate(-50%, 0);
+}
+
+/* Compact course carousel */
+.certifications {
+  width: 100%;
+  margin: 1.25rem 0 0;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  border: 1px solid rgba(var(--accent-rgb), 0.22);
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.07), rgba(255, 255, 255, 0.015) 55%);
+}
+.certifications-hint {
+  margin-top: -1rem;
+  color: var(--gray);
+  text-align: center;
+  font-size: 0.9rem;
+}
+.certifications-hint a { color: var(--primary); font-weight: 700; }
+.certifications-hint a:hover { text-decoration: underline; }
+.certifications-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.2rem; }
+.certifications-eyebrow { margin-bottom: 0.35rem; color: var(--primary); font: 600 0.78rem "IBM Plex Sans", sans-serif; letter-spacing: 0.16em; text-transform: uppercase; }
+.certifications h2 { color: var(--white); font: italic 700 clamp(1.35rem, 3vw, 2rem) "IBM Plex Sans", sans-serif; }
+.certifications-count { flex: 0 0 auto; color: var(--gray); font-size: 0.82rem; }
+.certification-slide { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+.certification-slide[hidden] { display: none; }
+.certification-card { min-height: 132px; display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 1rem 1.1rem; border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 14px; background: rgba(15, 15, 15, 0.48); }
+.certification-provider { color: var(--primary); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; }
+.certification-name { color: var(--white); font: 600 0.98rem/1.35 "IBM Plex Sans", sans-serif; }
+.certification-name:hover { color: var(--primary); }
+.certification-status { margin-top: auto; color: var(--gray); font-size: 0.75rem; }
+.certification-controls { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1rem; pointer-events: auto; }
+.certification-arrow { position: relative; z-index: 3; width: 2.2rem; height: 2.2rem; border: 1px solid rgba(var(--accent-rgb), 0.4); border-radius: 50%; color: var(--white); background: transparent; cursor: pointer; font-size: 1.1rem; pointer-events: auto; }
+.certification-arrow:hover, .certification-arrow:focus-visible { color: var(--black); background: var(--primary); }
+.certification-dots { display: flex; align-items: center; gap: 0.45rem; }
+.certification-dot { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.35); cursor: pointer; }
+.certification-dot.is-active { width: 20px; border-radius: 8px; background: var(--primary); }
+.certification-page { min-width: 2.5rem; color: var(--gray); font-size: 0.78rem; }
+.certification-arrow:focus-visible, .certification-dot:focus-visible, .certification-name:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+.about-actions .about-certifications {
+  flex: 1 1 14rem;
+  width: auto;
+  max-width: 22rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 12px;
+  border: 2px solid rgba(var(--accent-rgb), 0.55);
+  border-radius: 32px;
+  color: var(--primary);
+  font: 700 0.9rem "IBM Plex Sans", sans-serif;
+  text-align: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.about-actions .about-certifications:hover { background: var(--primary); color: var(--black); }
+.about-actions .about-certifications box-icon { fill: currentColor; }
+@media (max-width: 600px) {
+  .certifications-heading { align-items: flex-start; flex-direction: column; }
+  .certification-slide { grid-template-columns: 1fr; }
+  .certification-card { min-height: 112px; }
+  .certification-controls { gap: 0.65rem; }
+  .certification-dots { gap: 0.35rem; }
 }

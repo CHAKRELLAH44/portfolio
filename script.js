@@ -171,6 +171,9 @@ function initProjectModal() {
       </div>
     </div>
   `;
+  modal.querySelectorAll('.carousel .nav button').forEach((button) => {
+    button.type = 'button';
+  });
   document.body.appendChild(modal);
 
   const backdrop = modal.querySelector('.backdrop');
@@ -320,6 +323,17 @@ function initProjectModal() {
     renderSlides();
   });
 
+  modal.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('open') || currentSlides.length < 2) return;
+    if (e.key === 'ArrowRight') {
+      currentIndex = (currentIndex + 1) % currentSlides.length;
+      renderSlides();
+    } else if (e.key === 'ArrowLeft') {
+      currentIndex = (currentIndex - 1 + currentSlides.length) % currentSlides.length;
+      renderSlides();
+    }
+  });
+
   function closeModal(e) {
     if (e) {
       e.preventDefault();
@@ -385,6 +399,14 @@ document.addEventListener("portfolio:languagechange", () => {
 const filterButtons = document.querySelectorAll(".project-filters .filter-btn");
 if (filterButtons.length) {
   const sections = document.querySelectorAll(".all-projects details.category-section[data-category]");
+  const sectionOrder = ["salesforce", "web", "mobile", "devops", "data"];
+  const sectionParent = sections[0]?.parentElement;
+  if (sectionParent) {
+    const sectionAnchor = sectionParent.querySelector(".certifications") || null;
+    [...sections]
+      .sort((a, b) => sectionOrder.indexOf(a.dataset.category) - sectionOrder.indexOf(b.dataset.category))
+      .forEach((section) => sectionParent.insertBefore(section, sectionAnchor));
+  }
   filterButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const filter = btn.dataset.filter;
@@ -401,6 +423,104 @@ if (filterButtons.length) {
       if (window.AOS) AOS.refresh();
     });
   });
+}
+
+// Compact, keyboard-accessible course carousel on the projects page.
+const certificationCarousel = document.querySelector(".certification-carousel");
+if (certificationCarousel) {
+  const courseLinks = [...document.querySelectorAll(".certification-data a")];
+  const slidesContainer = certificationCarousel.querySelector(".certification-slides");
+  const dots = certificationCarousel.querySelector(".certification-dots");
+  const pageLabel = certificationCarousel.querySelector(".certification-page");
+  const pageSize = 4;
+  let currentSlide = 0;
+
+  courseLinks.sort((a, b) => {
+    const priority = (course) => course.dataset.provider === "Salesforce" ? 0 : course.dataset.provider === "Oracle" ? 1 : 2;
+    return priority(a) - priority(b);
+  });
+
+  const slideCount = Math.ceil(courseLinks.length / pageSize);
+  slidesContainer.innerHTML = "";
+  for (let index = 0; index < slideCount; index += 1) {
+    const slide = document.createElement("div");
+    slide.className = "certification-slide";
+    slide.dataset.slide = String(index);
+    slide.hidden = index !== 0;
+    slidesContainer.append(slide);
+  }
+  const slides = [...slidesContainer.querySelectorAll(".certification-slide")];
+  dots.innerHTML = "";
+
+  courseLinks.forEach((course, index) => {
+    const card = document.createElement("article");
+    card.className = "certification-card";
+    const provider = document.createElement("span");
+    provider.className = "certification-provider";
+    provider.textContent = course.dataset.provider;
+    const title = document.createElement("a");
+    title.className = "certification-name";
+    title.href = course.href;
+    title.target = "_blank";
+    title.rel = "noopener noreferrer";
+    if (course.dataset.status) title.dataset.status = course.dataset.status;
+    title.textContent = course.textContent;
+    const status = document.createElement("span");
+    status.className = "certification-status";
+    status.textContent = course.dataset.status === "credential"
+      ? tr("certs.credential", "Credential")
+      : tr("certs.status", "100% complete");
+    card.append(provider, title, status);
+    slides[Math.floor(index / pageSize)].append(card);
+  });
+
+  slides.forEach((_, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "certification-dot";
+    dot.setAttribute("aria-label", `${tr("certs.slide", "Slide")} ${index + 1}`);
+    dot.addEventListener("click", () => showCertificationSlide(index));
+    dots.append(dot);
+  });
+
+  function showCertificationSlide(index) {
+    if (!slides.length) return;
+    currentSlide = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      const active = slideIndex === currentSlide;
+      slide.hidden = !active;
+      slide.classList.toggle("is-active", active);
+    });
+    [...dots.children].forEach((dot, dotIndex) => {
+      dot.classList.toggle("is-active", dotIndex === currentSlide);
+      dot.setAttribute("aria-current", dotIndex === currentSlide ? "true" : "false");
+    });
+    pageLabel.textContent = `${currentSlide + 1} / ${slides.length}`;
+  }
+
+  certificationCarousel.addEventListener("click", (event) => {
+    if (event.target.closest("[data-cert-prev]")) {
+      event.preventDefault();
+      showCertificationSlide(currentSlide - 1);
+    } else if (event.target.closest("[data-cert-next]")) {
+      event.preventDefault();
+      showCertificationSlide(currentSlide + 1);
+    }
+  });
+  certificationCarousel.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") showCertificationSlide(currentSlide - 1);
+    if (event.key === "ArrowRight") showCertificationSlide(currentSlide + 1);
+  });
+  document.addEventListener("portfolio:languagechange", () => {
+    certificationCarousel.querySelectorAll(".certification-status").forEach((status) => {
+      const isCredential = status.closest(".certification-card")?.querySelector(".certification-name")?.dataset.status === "credential";
+      status.textContent = isCredential ? tr("certs.credential", "Credential") : tr("certs.status", "100% complete");
+    });
+    [...dots.children].forEach((dot, index) => {
+      dot.setAttribute("aria-label", `${tr("certs.slide", "Slide")} ${index + 1}`);
+    });
+  });
+  showCertificationSlide(0);
 }
 
 // -------------------------------
