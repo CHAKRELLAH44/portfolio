@@ -2,7 +2,7 @@
 
 > *Building tech, adding fun.*
 
-**👉 [chakrellah44.github.io/portfolio](https://chakrellah44.github.io/portfolio/)**
+**[chakrellah44.github.io/portfolio](https://chakrellah44.github.io/portfolio/)**
 
 The README won't tell you who I am. That's what the site is for.
 
@@ -12,18 +12,18 @@ The README won't tell you who I am. That's what the site is for.
 
 | | |
 |---|---|
-| 🏠 **Home** | An animated intro, my journey, a filterable wall of *superpowers*, and kind words from people I've worked with. |
-| 🗂️ **Projects** | Every project sorted by domain, with screenshots, stacks and details, plus the courses and certifications behind them. |
-| 🕵️ **Hidden Me** | The person behind the code. Five chapters, two mini-games, and a few cards worth turning over. |
-| ✉️ **Contact** | Send me bugs (or love notes). |
-| 🚧 **404** | Getting lost is part of the experience. Try typing something. |
+| **Home** | An animated intro, my journey, a filterable wall of *superpowers*, and kind words from people I've worked with. |
+| **Projects** | Every project sorted by domain, with screenshots, stacks and details, plus the courses and certifications behind them. |
+| **Hidden Me** | The person behind the code. Five chapters, two mini-games, and a few cards worth turning over. |
+| **Contact** | Send me bugs (or love notes). |
+| **404** | Getting lost is part of the experience. Try typing something. |
 
 A few things you might notice along the way:
 
-- 🇫🇷 / 🇬🇧 fully bilingual, 🌗 dark and light themes
-- 📱 designed for phones first: swipe, tap, long press, and a little haptic feedback
-- 🖱️ small interactions everywhere: tilting cards, a glowing cursor, typed text, confetti when it's earned
-- 🥚 easter eggs. I won't say where.
+- Fully bilingual (French / English), dark and light themes
+- Designed for phones first: swipe, tap, long press, and a little haptic feedback
+- Small interactions everywhere: tilting cards, a glowing cursor, typed text, confetti when it's earned
+- Easter eggs. I won't say where.
 
 ## Under the hood
 
@@ -63,7 +63,7 @@ Visits from `localhost` and `file://` are never counted.
 1. Create a free Supabase project.
 2. Run `supabase/testimonials.sql`, then `supabase/admin.sql`, then `supabase/analytics.sql` in the SQL Editor.
 3. Put your project URL and publishable key in `supabase-config.js` and `.github/workflows/supabase-keepalive.yml`.
-4. Replace the content, the images and the CV with your own. Please don't ship mine 🙂
+4. Replace the content, the images and the CV with your own. Please don't ship mine.
 
 </details>
 

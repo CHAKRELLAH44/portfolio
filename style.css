@@ -6605,3 +6605,13 @@ html body .hidden-me .container .content .section .image.flip-card .flip-front i
 .game-slot .pen-head { justify-content: flex-end; }
 .game-slot .f1-game,
 .game-slot .penalty-game { max-width: none; }
+
+/* Line icons (replace emoji): inherit the text colour and size. */
+.ui-icon { display: inline-block; flex: none; width: 1em; height: 1em; vertical-align: -0.125em; }
+.chapter-nav a { color: var(--white); }
+.chapter-nav a.is-active { color: var(--primary); }
+.chapter-nav .ui-icon { font-size: 1.25rem; }
+.game-launch-emoji { display: grid; place-items: center; color: var(--primary); font-size: 1.6rem; }
+.game-launch-icon .ui-icon { font-size: 1.05rem; }
+.admin-btn .ui-icon { margin-right: 0.3rem; }
+.lock-icon .ui-icon { display: block; margin: 0 auto; font-size: 1.8rem; color: var(--primary); }

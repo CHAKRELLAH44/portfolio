@@ -135,7 +135,7 @@ function render() {
   if (!shown.length) {
     const empty = document.createElement("li");
     empty.className = "empty";
-    empty.textContent = currentTab === "pending" ? "Aucune remarque en attente. 🎉" : "Aucune remarque publiée pour l'instant.";
+    empty.textContent = currentTab === "pending" ? "Aucune remarque en attente." : "Aucune remarque publiée pour l'instant.";
     list.append(empty);
     return;
   }

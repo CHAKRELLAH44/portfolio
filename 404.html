@@ -210,18 +210,18 @@
       (() => {
         const fr = typeof getLanguage === "function" && getLanguage() === "fr";
         const T = fr ? {
-          resolving: "Résolution de la route", notFound: "route introuvable", errLine: "ERREUR 404 : cette page est partie en pause café ☕",
+          resolving: "Résolution de la route", notFound: "route introuvable", errLine: "ERREUR 404 : cette page est partie en pause café",
           didYouMean: "Tu voulais dire", hint: "Tape une commande ou touche un bouton. Essaie", hint2: "pour la liste.",
           unknown: "commande introuvable", tryHelp: "Tape « help » pour voir les commandes.", redirect: "Redirection vers",
-          whoami: "Toi : un·e visiteur·se curieux·se 👀\nImane : ingénieure logiciel · Salesforce · DevOps & Cloud · full-stack, basée à Rabat.",
-          sudo: "Bien essayé 😄 Cet incident sera signalé à Imane.", matrixOn: "Mode Matrix activé. Suis le lapin blanc 🐇", matrixOff: "Retour à la réalité.",
+          whoami: "Toi : un·e visiteur·se curieux·se\nImane : ingénieure logiciel · Salesforce · DevOps & Cloud · full-stack, basée à Rabat.",
+          sudo: "Bien essayé. Cet incident sera signalé à Imane.", matrixOn: "Mode Matrix activé. Suis le lapin blanc.", matrixOff: "Retour à la réalité.",
           cv: "Ouverture du CV…", help: "Commandes disponibles :", noHistory: "Historique vide.",
         } : {
-          resolving: "Resolving route", notFound: "route not found", errLine: "ERROR 404: this page went on a coffee break ☕",
+          resolving: "Resolving route", notFound: "route not found", errLine: "ERROR 404: this page went on a coffee break",
           didYouMean: "Did you mean", hint: "Type a command or tap a button. Try", hint2: "to list them.",
           unknown: "command not found", tryHelp: "Type 'help' to see what you can do.", redirect: "Redirecting to",
-          whoami: "You: a curious visitor 👀\nImane: software engineer · Salesforce · DevOps & Cloud · full-stack, based in Rabat.",
-          sudo: "Nice try 😄 This incident will be reported to Imane.", matrixOn: "Matrix mode on. Follow the white rabbit 🐇", matrixOff: "Back to reality.",
+          whoami: "You: a curious visitor\nImane: software engineer · Salesforce · DevOps & Cloud · full-stack, based in Rabat.",
+          sudo: "Nice try. This incident will be reported to Imane.", matrixOn: "Matrix mode on. Follow the white rabbit.", matrixOff: "Back to reality.",
           cv: "Opening the CV…", help: "Available commands:", noHistory: "History is empty.",
         };
         const PAGES = { home: "index.html", projects: "projects.html", contact: "contact.html", "hidden-me": "hidden-me.html" };
@@ -309,7 +309,7 @@
           await typeLine(T.errLine, "err", 18);
           if (suggestion) {
             print("");
-            print({ text: `💡 ${T.didYouMean} `, cls: "dim" }, { text: suggestion[1], cmd: `cd ${suggestion[0]}` }, { text: " ?", cls: "dim" });
+            print({ text: `hint: ${T.didYouMean} `, cls: "dim" }, { text: suggestion[1], cmd: `cd ${suggestion[0]}` }, { text: " ?", cls: "dim" });
           }
           print("");
           print({ text: `${T.hint} `, cls: "dim" }, { text: "help", cmd: "help" }, { text: ` ${T.hint2}`, cls: "dim" });
@@ -361,7 +361,7 @@
           clear: () => { out.replaceChildren(); },
           matrix: () => { const on = document.body.classList.toggle("matrix"); on ? startRain() : stopRain(); print({ text: on ? T.matrixOn : T.matrixOff, cls: "ok" }); },
           sudo: () => print({ text: T.sudo, cls: "warn" }),
-          rm: () => print({ text: "rm: permission denied (and please don't 🙏)", cls: "err" }),
+          rm: () => print({ text: "rm: permission denied (and please don't)", cls: "err" }),
         };
         const run = (line) => {
           const raw = line.trim();

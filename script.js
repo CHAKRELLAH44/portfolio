@@ -1362,7 +1362,7 @@ function addShareButtons() {
     button.type = "button";
     button.className = "share-btn";
     const label = () => tr("share.label", "Share my portfolio");
-    button.innerHTML = '<span aria-hidden="true">↗</span> <span class="share-label"></span>';
+    button.innerHTML = '<svg class="ui-icon" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg> <span class="share-label"></span>';
     button.querySelector(".share-label").textContent = label();
     document.addEventListener("portfolio:languagechange", () => {
       button.querySelector(".share-label").textContent = label();
@@ -1433,6 +1433,11 @@ if (hiddenPage) {
   });
 
   // Mini-games stay folded behind a "Play" button until someone wants to play.
+  const icon = (body) => `<svg class="ui-icon" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
+  const ICON_FLAG = icon('<path d="M4 22V4"/><path d="M4 4h15l-3 4.5 3 4.5H4"/><path d="M9 4v9M14 4v9M4 8.5h15"/>');
+  const ICON_BALL = icon('<circle cx="12" cy="12" r="9"/><path d="m12 7.5 4 2.9-1.5 4.7h-5L8 10.4z"/><path d="M12 3v4.5M16 10.4l4.3-1.4M14.5 15.1l2.7 3.7M9.5 15.1l-2.7 3.7M8 10.4 3.7 9"/>');
+  const ICON_PLAY = icon('<path d="M8 5v14l11-7z" fill="currentColor"/>');
+  const ICON_CLOSE = icon('<path d="M6 6l12 12M18 6 6 18"/>');
   hiddenPage.querySelectorAll(".f1-game, .penalty-game").forEach((game) => {
     const isF1 = game.classList.contains("f1-game");
     const slot = document.createElement("div");
@@ -1443,7 +1448,7 @@ if (hiddenPage) {
     launch.setAttribute("aria-expanded", "false");
     const bodyId = isF1 ? "game-f1" : "game-penalty";
     launch.setAttribute("aria-controls", bodyId);
-    launch.innerHTML = `<span class="game-launch-icon" aria-hidden="true"></span><span class="game-launch-text"><strong></strong><small></small></span><span class="game-launch-emoji" aria-hidden="true">${isF1 ? "🏎️" : "⚽"}</span>`;
+    launch.innerHTML = `<span class="game-launch-icon" aria-hidden="true"></span><span class="game-launch-text"><strong></strong><small></small></span><span class="game-launch-emoji" aria-hidden="true">${isF1 ? ICON_FLAG : ICON_BALL}</span>`;
     const body = document.createElement("div");
     body.className = "game-body";
     body.id = bodyId;
@@ -1454,7 +1459,7 @@ if (hiddenPage) {
 
     const label = () => {
       const open = slot.classList.contains("is-open");
-      launch.querySelector(".game-launch-icon").textContent = open ? "✕" : "▶";
+      launch.querySelector(".game-launch-icon").innerHTML = open ? ICON_CLOSE : ICON_PLAY;
       launch.querySelector("strong").textContent = open ? tr("hidden.game.close", "Close the game") : tr("hidden.game.play", "Play");
       launch.querySelector("small").textContent = game.querySelector(".game-title").textContent;
     };
@@ -1537,7 +1542,7 @@ if (hiddenPage) {
       if (state === "lights") {
         clearTimers();
         lights.forEach((light) => light.classList.remove("is-on"));
-        result.textContent = tr("hidden.f1.jump", "Jump start! Drive-through penalty 😅");
+        result.textContent = tr("hidden.f1.jump", "Jump start! Drive-through penalty.");
         result.dataset.kind = "error";
         buzz([30, 40, 30]);
         return setState("done", "hidden.f1.again", "Tap to play again");
@@ -1545,7 +1550,7 @@ if (hiddenPage) {
       if (state === "go") {
         const reaction = performance.now() - goTime;
         const verdict = reaction < 250
-          ? tr("hidden.f1.great", "F1 driver level! 🏆")
+          ? tr("hidden.f1.great", "F1 driver level!")
           : reaction < 350
             ? tr("hidden.f1.good", "Not bad, almost ready for F2!")
             : tr("hidden.f1.slow", "A bit more simulator practice needed.");
@@ -1675,10 +1680,10 @@ if (hiddenPage) {
     };
     const fmt = (value, digits = 2) => value.toLocaleString(isFrench() ? "fr-FR" : "en-GB", { minimumFractionDigits: digits, maximumFractionDigits: digits });
     const outcomeLabel = (outcome) => ({
-      goal: tr("hidden.pen.goal", "GOAL! Visca el Barça! 🔵🔴"),
-      saved: tr("hidden.pen.saved", "Saved by the keeper… 🧤"),
+      goal: tr("hidden.pen.goal", "GOAL! Visca el Barça!"),
+      saved: tr("hidden.pen.saved", "Saved by the keeper…"),
       off: tr("hidden.pen.off", "Off target, over or wide."),
-      post: tr("hidden.pen.post", "Off the woodwork! 🔔"),
+      post: tr("hidden.pen.post", "Off the woodwork!"),
     })[outcome];
     const outcomeShort = (outcome) => ({
       goal: tr("hidden.pen.r.goal", "Goal"),

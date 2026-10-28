@@ -11,7 +11,7 @@
   let cache = { days: null, rows: null };
 
   const PAGE_NAMES = { index: "Accueil", projects: "Projets", contact: "Contact", "hidden-me": "Hidden Me", 404: "Page 404" };
-  const DEVICE_NAMES = { mobile: "📱 Mobile", tablet: "📲 Tablette", desktop: "💻 Ordinateur" };
+  const DEVICE_NAMES = { mobile: "Mobile", tablet: "Tablette", desktop: "Ordinateur" };
   const nf = new Intl.NumberFormat("fr-FR");
   const fmtDuration = (ms) => {
     if (!ms) return "–";
@@ -227,7 +227,7 @@
   };
 
   function renderLists(rows, visits) {
-    const sourceName = (s) => (s === "Shared link" ? "🔗 Lien partagé" : s === "Direct" ? "Accès direct / favori" : s || "Inconnu");
+    const sourceName = (s) => (s === "Shared link" ? "Lien partagé" : s === "Direct" ? "Accès direct / favori" : s || "Inconnu");
     renderBars("bars-source", tally(visits.map((v) => sourceName(v.source))));
     const views = rows.filter((row) => row.type === "view");
     const pageTime = {};
@@ -245,7 +245,7 @@
     ], { limit: 9, format: (n) => nf.format(n) });
     renderBars("bars-outbound", tally(rows.filter((row) => row.type === "outbound").map((row) => row.detail || "?")), { format: (n) => `${nf.format(n)} clic${n > 1 ? "s" : ""}` });
     renderBars("bars-lang", [
-      ...tally(visits.map((v) => `🌐 ${(v.lang || "?").toLowerCase()}`)),
+      ...tally(visits.map((v) => `Langue : ${(v.lang || "?").toLowerCase()}`)),
       ...tally(visits.filter((v) => v.ref && v.ref !== "share").map((v) => `?ref=${v.ref}`)),
     ], { limit: 8, format: (n) => nf.format(n) });
   }
@@ -260,13 +260,13 @@
       return visitsBody.replaceChildren(tr);
     }
     const when = new Intl.DateTimeFormat("fr-FR", { dateStyle: "short", timeStyle: "short" });
-    const ACTION_ICONS = { cv: "📄 CV", contact: "✉️ Contact", share: "↗ Partage", testimonial: "💬 Remarque", outbound: "🔗", game: "🎮" };
+    const ACTION_ICONS = { cv: "CV", contact: "Contact", share: "Partage", testimonial: "Remarque", outbound: "Lien", game: "Jeu" };
     visitsBody.replaceChildren(...rows.map((visit) => {
       const tr = el("tr");
-      const actions = visit.actions.map((a) => (a.type === "outbound" ? `🔗 ${a.detail}` : a.type === "game" ? `🎮 ${a.detail}` : ACTION_ICONS[a.type] || a.type));
+      const actions = visit.actions.map((a) => (a.type === "outbound" ? `Lien : ${a.detail}` : a.type === "game" ? `Jeu : ${a.detail}` : ACTION_ICONS[a.type] || a.type));
       [
         when.format(new Date(visit.start)),
-        visit.source === "Shared link" ? "🔗 Lien partagé" : visit.source || "–",
+        visit.source === "Shared link" ? "Lien partagé" : visit.source || "–",
         visit.pages.map((p) => PAGE_NAMES[p] || p).join(" → "),
         fmtDuration(visit.durationMs),
         visit.scroll ? `${visit.scroll} %` : "–",
