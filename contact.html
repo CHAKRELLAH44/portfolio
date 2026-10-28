@@ -3,6 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Get in touch with Imane, software engineer (Salesforce, DevOps, full-stack), available for work." />
+    <link rel="canonical" href="https://chakrellah44.github.io/portfolio/contact.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Imanska" />
+    <meta property="og:title" content="Contact - Imanska" />
+    <meta property="og:description" content="Get in touch with Imane, software engineer (Salesforce, DevOps, full-stack), available for work." />
+    <meta property="og:url" content="https://chakrellah44.github.io/portfolio/contact.html" />
+    <meta property="og:image" content="https://chakrellah44.github.io/portfolio/assets/og-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Imanska: I'm Imane, software engineer, Salesforce, DevOps and Cloud" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://chakrellah44.github.io/portfolio/assets/og-cover.jpg" />
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +27,8 @@
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-    <link rel="icon" href="assets/c-.png" />
+    <link rel="icon" type="image/png" href="assets/favicon-64.png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
     <link rel="stylesheet" href="style.css" />
     <title data-i18n="contact.pageTitle">Contact - Imanska</title>
   </head>
@@ -46,9 +60,9 @@
             <button type="button" class="lang-toggle" onclick="toggleLanguage()" aria-label="Passer en français" title="Passer en français">
               <svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>
             </button>
-            <div class="theme-toggle" title="Toggle theme" onclick="toggleTheme()">
+            <button type="button" class="theme-toggle" title="Toggle theme" aria-label="Toggle theme" onclick="toggleTheme()">
               <box-icon id="theme-icon" name="moon" type="solid" color="#fff" size="md"></box-icon>
-            </div>
+            </button>
         </div>
       </div>
     </header>
@@ -140,7 +154,9 @@
     </footer>
 
     <script src="i18n.js"></script>
+    <script src="supabase-config.js"></script>
     <script src="script.js"></script>
+    <script src="analytics.js" defer></script>
 
     <!-- Box Icon -->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>

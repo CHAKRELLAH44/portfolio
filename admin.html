@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;0,800;1,500;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="assets/favicon-64.png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Modération - Imanska</title>
+    <style>
+      body { min-height: 100vh; font-family: "IBM Plex Sans", sans-serif; }
+      .admin { width: min(56rem, 100% - 32px); margin: 0 auto; padding: 2rem 0 4rem; }
+      .admin-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
+      [hidden] { display: none !important; }
+      .admin-head h1 { margin: 0; color: var(--white); font: italic 800 clamp(1.6rem, 5vw, 2.6rem) "IBM Plex Sans", sans-serif; }
+      .admin-head p { margin: 0.2rem 0 0; color: var(--gray); font-size: 0.85rem; }
+      .admin-btn {
+        padding: 0.55rem 1.1rem; border: 1.5px solid rgba(var(--accent-rgb), 0.5); border-radius: 999px;
+        background: transparent; color: var(--white); font: 700 0.85rem "IBM Plex Sans", sans-serif; cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      }
+      .admin-btn:hover, .admin-btn:focus-visible { border-color: var(--primary); color: var(--primary); }
+      .admin-btn.is-primary { border-color: var(--primary); background: var(--primary); color: var(--black); }
+      .admin-btn.is-primary:hover { box-shadow: 0 0 16px rgba(var(--accent-rgb), 0.5); color: var(--black); }
+      .admin-btn.is-danger:hover, .admin-btn.is-danger:focus-visible { border-color: #ff6b6b; color: #ff6b6b; }
+      .admin-btn:disabled { opacity: 0.5; cursor: wait; }
+
+      /* iPhone-style passcode screen */
+      .lock {
+        display: flex; flex-direction: column; align-items: center; gap: 1.1rem;
+        min-height: calc(100vh - 6rem); padding-top: clamp(1rem, 8vh, 5rem);
+        color: var(--white); -webkit-user-select: none; user-select: none;
+      }
+      .lock-icon { margin: 0; font-size: 1.6rem; }
+      .lock h1 { margin: 0; font: 500 1.25rem "IBM Plex Sans", sans-serif; }
+      .lock-dots { display: flex; gap: 1.1rem; margin: 0.4rem 0; }
+      .lock-dots span {
+        width: 0.85rem; height: 0.85rem; border: 1.5px solid var(--white); border-radius: 50%;
+        transition: background-color 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+      }
+      .lock-dots span.is-filled { border-color: var(--primary); background: var(--primary); box-shadow: 0 0 8px rgba(var(--accent-rgb), 0.6); }
+      .lock-dots.is-wrong { animation: lock-shake 0.45s ease; }
+      .lock-dots.is-wrong span { border-color: #ff6b6b; }
+      @keyframes lock-shake {
+        15%, 55% { transform: translateX(-12px); }
+        35%, 75% { transform: translateX(12px); }
+        90% { transform: translateX(-4px); }
+      }
+      .lock-status { min-height: 1.3em; margin: 0; color: var(--gray); font-size: 0.9rem; font-weight: 600; text-align: center; }
+      .lock-status[data-kind="error"] { color: #ff6b6b; }
+      .keypad {
+        display: grid; grid-template-columns: repeat(3, auto); gap: clamp(0.9rem, 3.5vh, 1.4rem) clamp(1.4rem, 7vw, 2rem);
+        margin-top: clamp(0.5rem, 4vh, 2rem);
+      }
+      .keypad button:not(.keypad-text) {
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        width: clamp(4.4rem, 20vw, 5rem); height: clamp(4.4rem, 20vw, 5rem); border: 0; border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1); color: var(--white); font: 400 2rem/1 "IBM Plex Sans", sans-serif;
+        cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+        transition: background-color 0.25s ease;
+      }
+      .keypad button:not(.keypad-text) small { margin-top: 0.15rem; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; opacity: 0.8; }
+      .keypad button:not(.keypad-text):active,
+      .keypad button.is-pressed { background: rgba(var(--accent-rgb), 0.55); transition: none; }
+      .keypad button:focus-visible, .keypad a:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+      .keypad-text {
+        align-self: center; justify-self: center; padding: 0.6rem; border: 0; background: none;
+        color: var(--white); font: 500 1rem "IBM Plex Sans", sans-serif; cursor: pointer;
+      }
+      .keypad.is-locked button { opacity: 0.35; pointer-events: none; }
+      body[data-theme="light"] .keypad button:not(.keypad-text) { background: rgba(56, 41, 31, 0.1); }
+
+      .admin-status { min-height: 1.3em; margin: 0 0 1rem; color: var(--gray); font-weight: 600; font-size: 0.9rem; }
+      .admin-status[data-kind="ok"] { color: var(--primary); }
+      .admin-status[data-kind="error"] { color: #ff6b6b; }
+
+      .tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+      .tabs .admin-btn[aria-selected="true"] { border-color: var(--primary); background: var(--primary); color: var(--black); }
+      .count { display: inline-block; min-width: 1.4em; margin-left: 0.3rem; padding: 0 0.35rem; border-radius: 999px; background: rgba(0, 0, 0, 0.25); text-align: center; }
+
+      .notes { display: grid; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+      .note {
+        display: grid; gap: 0.75rem; padding: 1.25rem; border: 1px solid rgba(var(--accent-rgb), 0.2);
+        border-radius: 16px; background: rgba(255, 255, 255, 0.02); animation: note-in 0.3s ease-out;
+      }
+      .note.is-leaving { opacity: 0; transform: translateX(24px); transition: opacity 0.25s ease, transform 0.25s ease; }
+      @keyframes note-in { from { opacity: 0; transform: translateY(6px); } }
+      .note-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.75rem; }
+      .note-name { margin: 0; color: var(--white); font-weight: 700; }
+      .note-meta { margin: 0; color: var(--gray); font-size: 0.82rem; }
+      .note-badge {
+        padding: 0.15rem 0.55rem; border: 1px solid rgba(var(--accent-rgb), 0.45); border-radius: 999px;
+        color: var(--primary); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      }
+      .note blockquote { margin: 0; color: var(--white); font-style: italic; line-height: 1.6; overflow-wrap: anywhere; }
+      .note-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+      .note-date { display: inline-flex; align-items: center; gap: 0.5rem; margin-left: auto; color: var(--gray); font-size: 0.8rem; font-weight: 600; }
+      .note-date input {
+        padding: 0.45rem 0.6rem; border: 1px solid rgba(var(--accent-rgb), 0.35); border-radius: 10px;
+        background: rgba(0, 0, 0, 0.25); color: var(--white); color-scheme: dark; font: 500 0.85rem "IBM Plex Sans", sans-serif;
+      }
+      body[data-theme="light"] .note-date input { color-scheme: light; background: rgba(255, 255, 255, 0.6); }
+      .note-date input:focus { outline: none; border-color: var(--primary); }
+      @media (max-width: 600px) { .note-date { width: 100%; margin-left: 0; justify-content: space-between; } }
+
+      /* Statistics dashboard */
+      .admin { width: min(72rem, 100% - 32px); }
+      .stats { position: relative; display: grid; gap: 1rem; }
+      .stats-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; }
+      .range { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+      .range .admin-btn[aria-pressed="true"] { border-color: var(--primary); background: var(--primary); color: var(--black); }
+      .ignore-me { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--gray); font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+      .ignore-me input { accent-color: var(--primary); width: 1rem; height: 1rem; }
+      .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 0.75rem; }
+      .kpi { padding: 0.9rem 1rem; border: 1px solid rgba(var(--accent-rgb), 0.2); border-radius: 14px; background: rgba(255, 255, 255, 0.02); }
+      .kpi-label { margin: 0; color: var(--gray); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+      .kpi-value { margin: 0.25rem 0 0; color: var(--white); font: 700 1.7rem/1.1 "IBM Plex Sans", sans-serif; font-variant-numeric: tabular-nums; }
+      .kpi-sub { margin: 0.25rem 0 0; color: var(--gray); font-size: 0.75rem; line-height: 1.3; }
+      .kpi.is-live { border-color: rgba(var(--accent-rgb), 0.6); }
+      .kpi.is-live .kpi-label::before { content: ""; display: inline-block; width: 0.5rem; height: 0.5rem; margin-right: 0.4rem; border-radius: 50%; background: var(--primary); box-shadow: 0 0 8px var(--primary); animation: live 1.6s ease-in-out infinite; }
+      @keyframes live { 50% { opacity: 0.3; } }
+      .panel-card { min-width: 0; padding: 1rem 1.1rem; border: 1px solid rgba(var(--accent-rgb), 0.18); border-radius: 16px; background: rgba(255, 255, 255, 0.02); }
+      .panel-head { margin-bottom: 0.75rem; }
+      .panel-card h2 { margin: 0; color: var(--white); font: italic 700 1.05rem "IBM Plex Sans", sans-serif; }
+      .panel-sub { margin: 0.2rem 0 0; color: var(--gray); font-size: 0.78rem; }
+      .panel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: 1rem; }
+      .chart svg { display: block; width: 100%; height: auto; }
+      .chart .bar { fill: var(--primary); }
+      .chart .grid { stroke: rgba(255, 255, 255, 0.08); stroke-width: 1; }
+      .chart .axis { stroke: rgba(255, 255, 255, 0.3); stroke-width: 1; }
+      .chart .tick { fill: var(--gray); font: 500 11px "IBM Plex Sans", sans-serif; }
+      .chart .hit { fill: transparent; }
+      .chart .hit:hover { fill: rgba(var(--accent-rgb), 0.08); }
+      .bars { display: grid; gap: 0.6rem; margin: 0; padding: 0; list-style: none; }
+      .bar-head { display: flex; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.25rem; font-size: 0.82rem; }
+      .bar-label { overflow: hidden; color: var(--white); font-weight: 600; text-overflow: ellipsis; white-space: pre; }
+      .bar-value { flex: none; color: var(--gray); font-variant-numeric: tabular-nums; }
+      .bar-track { height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.06); }
+      .bar-fill { height: 100%; border-radius: 3px; background: var(--primary); transition: width 0.5s ease; }
+      .bars-empty { color: var(--gray); font-size: 0.85rem; font-style: italic; }
+      .table-wrap { overflow-x: auto; }
+      .visits { width: 100%; min-width: 52rem; border-collapse: collapse; font-size: 0.82rem; }
+      .visits th { padding: 0.5rem; border-bottom: 1px solid rgba(var(--accent-rgb), 0.3); color: var(--gray); font-size: 0.7rem; letter-spacing: 0.05em; text-align: left; text-transform: uppercase; }
+      .visits td { padding: 0.55rem 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); color: var(--white); vertical-align: top; }
+      .visits tbody tr:hover td { background: rgba(var(--accent-rgb), 0.05); }
+      .stats-foot { line-height: 1.5; }
+      .stats-foot code { padding: 0.05rem 0.3rem; border-radius: 4px; background: rgba(255, 255, 255, 0.08); }
+      .tooltip {
+        position: absolute; z-index: 10; padding: 0.4rem 0.6rem; border: 1px solid rgba(var(--accent-rgb), 0.4); border-radius: 8px;
+        background: var(--black); color: var(--white); font-size: 0.8rem; font-weight: 600; pointer-events: none; white-space: nowrap;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      }
+      body[data-theme="light"] .chart .grid { stroke: rgba(56, 41, 31, 0.1); }
+      body[data-theme="light"] .chart .axis { stroke: rgba(56, 41, 31, 0.35); }
+      body[data-theme="light"] .bar-track { background: rgba(56, 41, 31, 0.08); }
+      .empty { padding: 2rem 1rem; border: 1px dashed rgba(var(--accent-rgb), 0.35); border-radius: 16px; color: var(--gray); font-style: italic; text-align: center; }
+      @media (max-width: 600px) {
+        .note-actions .admin-btn { flex: 1; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="admin">
+      <section class="lock" id="login" hidden>
+        <p class="lock-icon" aria-hidden="true">🔒</p>
+        <h1 id="lock-title">Saisir le code</h1>
+        <div class="lock-dots" id="lock-dots" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p class="lock-status" id="login-status" role="status" aria-live="assertive"></p>
+        <div class="keypad" id="keypad" role="group" aria-labelledby="lock-title">
+          <button type="button" data-key="1">1<small>&nbsp;</small></button>
+          <button type="button" data-key="2">2<small>ABC</small></button>
+          <button type="button" data-key="3">3<small>DEF</small></button>
+          <button type="button" data-key="4">4<small>GHI</small></button>
+          <button type="button" data-key="5">5<small>JKL</small></button>
+          <button type="button" data-key="6">6<small>MNO</small></button>
+          <button type="button" data-key="7">7<small>PQRS</small></button>
+          <button type="button" data-key="8">8<small>TUV</small></button>
+          <button type="button" data-key="9">9<small>WXYZ</small></button>
+          <a href="index.html" class="keypad-text">Retour</a>
+          <button type="button" data-key="0">0</button>
+          <button type="button" class="keypad-text" data-key="delete" aria-label="Effacer">Effacer</button>
+        </div>
+      </section>
+
+      <section id="panel" hidden>
+        <div class="admin-head">
+          <div>
+            <h1>Remarques</h1>
+            <p id="who"></p>
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+            <a href="index.html#testimonials" class="admin-btn">Voir le site</a>
+            <button type="button" class="admin-btn" id="logout">Déconnexion</button>
+          </div>
+        </div>
+        <div class="tabs" role="tablist">
+          <button type="button" class="admin-btn" role="tab" data-tab="pending" aria-selected="true">En attente <span class="count" data-count="pending">0</span></button>
+          <button type="button" class="admin-btn" role="tab" data-tab="approved" aria-selected="false">Publiées <span class="count" data-count="approved">0</span></button>
+          <button type="button" class="admin-btn" role="tab" data-tab="stats" aria-selected="false">📊 Statistiques</button>
+          <button type="button" class="admin-btn" id="refresh">↻ Actualiser</button>
+        </div>
+        <p class="admin-status" id="status" role="status"></p>
+        <ul class="notes" id="notes"></ul>
+
+        <!-- Visit statistics (admin-stats.js) -->
+        <section class="stats" id="stats" hidden>
+          <div class="stats-bar">
+            <div class="range" role="group" aria-label="Période">
+              <button type="button" class="admin-btn" data-range="1">24 h</button>
+              <button type="button" class="admin-btn" data-range="7" aria-pressed="true">7 jours</button>
+              <button type="button" class="admin-btn" data-range="30">30 jours</button>
+              <button type="button" class="admin-btn" data-range="90">90 jours</button>
+            </div>
+            <label class="ignore-me"><input type="checkbox" id="ignore-me"> Ne pas compter mes visites sur cet appareil</label>
+          </div>
+
+          <div class="kpis" id="kpis"></div>
+
+          <article class="panel-card">
+            <div class="panel-head"><h2 id="chart-title">Visites par jour</h2><p class="panel-sub" id="chart-sub"></p></div>
+            <div class="chart" id="visits-chart"></div>
+          </article>
+
+          <div class="panel-grid">
+            <article class="panel-card"><div class="panel-head"><h2>Provenance</h2><p class="panel-sub">D'où arrivent les visiteurs</p></div><ol class="bars" id="bars-source"></ol></article>
+            <article class="panel-card"><div class="panel-head"><h2>Pages vues</h2><p class="panel-sub">Avec temps moyen passé</p></div><ol class="bars" id="bars-page"></ol></article>
+            <article class="panel-card"><div class="panel-head"><h2>Localisation</h2><p class="panel-sub">Fuseau horaire de l'appareil (≈ ville / région)</p></div><ol class="bars" id="bars-tz"></ol></article>
+            <article class="panel-card"><div class="panel-head"><h2>Appareils</h2><p class="panel-sub">Type · système · navigateur</p></div><ol class="bars" id="bars-device"></ol></article>
+            <article class="panel-card"><div class="panel-head"><h2>Liens cliqués</h2><p class="panel-sub">LinkedIn, GitHub, Spotify…</p></div><ol class="bars" id="bars-outbound"></ol></article>
+            <article class="panel-card"><div class="panel-head"><h2>Langue &amp; liens ?ref=</h2><p class="panel-sub">Langue du navigateur · liens traçables</p></div><ol class="bars" id="bars-lang"></ol></article>
+          </div>
+
+          <article class="panel-card">
+            <div class="panel-head"><h2>Dernières visites</h2><p class="panel-sub">Une ligne par visite, la plus récente en haut</p></div>
+            <div class="table-wrap">
+              <table class="visits">
+                <thead><tr><th>Quand</th><th>Provenance</th><th>Parcours</th><th>Durée</th><th>Lecture</th><th>Appareil</th><th>Lieu</th><th>Actions</th></tr></thead>
+                <tbody id="visits-body"></tbody>
+              </table>
+            </div>
+          </article>
+          <p class="panel-sub stats-foot">Données anonymes : pas d'adresse IP, pas de cookie. Les visites avec « Do Not Track » activé ne sont pas comptées. Astuce : partage des liens comme <code>…/index.html?ref=cv</code> ou <code>?ref=linkedin</code> pour savoir d'où vient chaque visite.</p>
+          <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="supabase-config.js"></script>
+    <script src="admin.js"></script>
+    <script src="admin-stats.js"></script>
+  </body>
+</html>

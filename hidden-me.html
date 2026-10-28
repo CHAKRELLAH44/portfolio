@@ -3,6 +3,19 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="The person behind the code: Formula 1, FC Barcelona, baking and music, plus two mini-games." />
+        <link rel="canonical" href="https://chakrellah44.github.io/portfolio/hidden-me.html" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Imanska" />
+        <meta property="og:title" content="Hidden Me - Imanska" />
+        <meta property="og:description" content="The person behind the code: Formula 1, FC Barcelona, baking and music, plus two mini-games." />
+        <meta property="og:url" content="https://chakrellah44.github.io/portfolio/hidden-me.html" />
+        <meta property="og:image" content="https://chakrellah44.github.io/portfolio/assets/og-cover.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Imanska: I'm Imane, software engineer, Salesforce, DevOps and Cloud" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://chakrellah44.github.io/portfolio/assets/og-cover.jpg" />
         <!-- Google Font -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +27,8 @@
         <!-- AOS -->
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     
-        <link rel="icon" href="assets/c-.png" />
+        <link rel="icon" type="image/png" href="assets/favicon-64.png" />
+        <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
         <link rel="stylesheet" href="style.css" />
         <title data-i18n="hidden.pageTitle">Hidden Me - Imanska</title>
       </head>
@@ -45,82 +59,257 @@
               <button type="button" class="lang-toggle" onclick="toggleLanguage()" aria-label="Passer en français" title="Passer en français">
               <svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>
             </button>
-            <div class="theme-toggle" title="Toggle theme" onclick="toggleTheme()">
+            <button type="button" class="theme-toggle" title="Toggle theme" aria-label="Toggle theme" onclick="toggleTheme()">
                 <box-icon id="theme-icon" name="moon" type="solid" color="#fff" size="md"></box-icon>
-              </div>
+              </button>
           </div>
         </div>
       </header>
 
       
       <section class="hidden-me">
+        <!-- Chapter navigation: lights up the chapter being read -->
+        <nav class="chapter-nav" aria-label="Chapters" data-i18n-attr="aria-label:hidden.navAria">
+          <a href="#chapter-tech" data-chapter-link="tech" title="Technology"><span aria-hidden="true">💻</span><span class="sr-only" data-i18n="hidden.nav.tech">Technology</span></a>
+          <a href="#chapter-speed" data-chapter-link="speed" title="Formula 1"><span aria-hidden="true">🏎️</span><span class="sr-only">Formula 1</span></a>
+          <a href="#chapter-football" data-chapter-link="football" title="Football"><span aria-hidden="true">⚽</span><span class="sr-only" data-i18n="hidden.nav.football">Football</span></a>
+          <a href="#chapter-baking" data-chapter-link="baking" title="Baking"><span aria-hidden="true">🧁</span><span class="sr-only" data-i18n="hidden.nav.baking">Baking</span></a>
+          <a href="#chapter-music" data-chapter-link="music" title="Music"><span aria-hidden="true">🎵</span><span class="sr-only" data-i18n="hidden.nav.music">Music</span></a>
+        </nav>
+        <div class="chapter-glow" aria-hidden="true"></div>
+
         <div class="container">
           <div class="content">
-            
-            <!-- Section 1 : Photo à gauche, description à droite -->
-            <div class="section" data-aos="fade-left">
-              <div class="image">
-                <img src="assets/dark/2.png" alt="Photo 1">
+
+            <!-- 01 · Technology -->
+            <div class="section" id="chapter-tech" data-chapter="tech" data-aos="fade-right">
+              <div class="image flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Flip the photo for fun facts" data-i18n-attr="aria-label:hidden.flipAria">
+                <div class="flip-inner">
+                  <div class="flip-front">
+                    <img src="assets/dark/2.png" alt="Glowing circuit board illustration" data-i18n-attr="alt:hidden.tech.alt">
+                    <span class="flip-hint" aria-hidden="true">↻</span>
+                  </div>
+                  <div class="flip-back">
+                    <p class="flip-title" data-i18n="hidden.facts">Fun facts</p>
+                    <ul>
+                      <li data-i18n="hidden.tech.f1">Every bug is a lesson in disguise.</li>
+                      <li data-i18n="hidden.tech.f2">Goal: make life easier, smarter and more fun.</li>
+                      <li data-i18n="hidden.tech.f3">43 technologies in my toolbox, from Salesforce to Kubernetes.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
               <div class="description">
                 <h2 data-i18n="hidden.tech.title">My Love for Technology</h2>
                 <p data-i18n="hidden.tech.text">Computer engineering is not just my career. I thrive on solving problems, writing code, and exploring new technologies. For me, every bug is an opportunity to learn, and every new project is a chance to innovate. I believe in building solutions that make life easier, smarter, and a little more fun. Curious about my journey? Download my CV.</p>
-                <a href="assets/cv.pdf" target="_blank" class="download-button" onclick="event.preventDefault(); window.open('assets/cv.pdf', '_blank')" oncontextmenu="this.download='Imane_CV.pdf'; return true;">
+                <a href="assets/cv.pdf" download="Imane_CV.pdf" class="download-button">
                   CV
                   <box-icon name='download'></box-icon>
                 </a>
               </div>
             </div>
-      
-            <!-- Section 2 : Description à gauche, photo à droite -->
-            <div class="section" data-aos="fade-left">
+
+            <!-- 02 · Formula 1 -->
+            <div class="section" id="chapter-speed" data-chapter="speed" data-aos="fade-left">
               <div class="description">
                 <h2 data-i18n="hidden.speed.title">A Need for Speed</h2>
                 <p data-i18n="hidden.speed.text">Motorsport is my adrenaline rush, and Formula 1 is the ultimate obsession. My love for racing runs deep, especially for Lewis Hamilton, the 7-time world champion. I admire the determination and skill of drivers who push the limits every race. "Life is about lessons, not perfection." – Lewis Hamilton</p>
+
+                <div class="f1-game" data-state="idle">
+                  <p class="game-title" data-i18n="hidden.f1.title">Lights out: are you as quick as a driver?</p>
+                  <button type="button" class="f1-board" aria-describedby="f1-result">
+                    <span class="f1-lights" aria-hidden="true">
+                      <span></span><span></span><span></span><span></span><span></span>
+                    </span>
+                    <span class="f1-prompt" data-i18n="hidden.f1.start">Tap to start</span>
+                  </button>
+                  <p class="game-result" id="f1-result" aria-live="polite"></p>
+                  <p class="game-best"><span data-i18n="hidden.f1.best">Best</span>: <strong class="f1-best">–</strong> · <span data-i18n="hidden.f1.pro">F1 drivers: ~0.200 s</span></p>
+                </div>
               </div>
-              <div class="image">
-                  <img src="assets/dark/lewis.jpg" alt="Photo 2">
+              <div class="image flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Flip the photo for fun facts" data-i18n-attr="aria-label:hidden.flipAria">
+                <div class="flip-inner">
+                  <div class="flip-front">
+                    <img loading="lazy" decoding="async" src="assets/dark/lewis.jpg" alt="Lewis Hamilton, Formula 1 driver" data-i18n-attr="alt:hidden.speed.alt">
+                    <span class="flip-hint" aria-hidden="true">↻</span>
+                  </div>
+                  <div class="flip-back">
+                    <p class="flip-title" data-i18n="hidden.facts">Fun facts</p>
+                    <ul>
+                      <li data-i18n="hidden.speed.f1">Favourite driver: Lewis Hamilton.</li>
+                      <li data-i18n="hidden.speed.f2">7 world titles, and counting the lessons.</li>
+                      <li data-i18n="hidden.speed.f3">Motto: “Life is about lessons, not perfection.”</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
-      
-            <!-- Section 3 : Photo à gauche, description à droite -->
-            <div class="section" data-aos="fade-left">
-              <div class="image">
-                  <img src="assets/dark/fcb.png" alt="Photo 3">
+
+            <!-- 03 · Football -->
+            <div class="section" id="chapter-football" data-chapter="football" data-aos="fade-right">
+              <div class="image flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Flip the photo for fun facts" data-i18n-attr="aria-label:hidden.flipAria">
+                <div class="flip-inner">
+                  <div class="flip-front">
+                    <img loading="lazy" decoding="async" src="assets/dark/fcb.webp" alt="FC Barcelona" data-i18n-attr="alt:hidden.football.alt">
+                    <span class="flip-hint" aria-hidden="true">↻</span>
+                  </div>
+                  <div class="flip-back">
+                    <p class="flip-title" data-i18n="hidden.facts">Fun facts</p>
+                    <ul>
+                      <li data-i18n="hidden.football.f1">Club: FC Barcelona, for life.</li>
+                      <li data-i18n="hidden.football.f2">A fan since I could kick a ball.</li>
+                      <li data-i18n="hidden.football.f3">What the pitch taught me: teamwork and perseverance.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
               <div class="description">
                 <h2 data-i18n="hidden.football.title">The Beautiful Game</h2>
                 <p data-i18n="hidden.football.text">Football is more than a sport to me; it’s a lifelong passion. As a die-hard FC Barcelona fan, I’ve been following the team since I could kick a ball. Playing football has been part of my life since childhood, and it’s where I learned teamwork, perseverance, and the joy of chasing goals (literally and figuratively).</p>
+
+                <div class="penalty-game" data-phase="aim">
+                  <div class="pen-head">
+                    <p class="game-title" data-i18n="hidden.pen.title">Penalty Lab: aim, time the power, beat the model</p>
+                    <label class="pen-toggle"><input type="checkbox" class="pen-heat-toggle"><span data-i18n="hidden.pen.heat">xG heatmap</span></label>
+                  </div>
+                  <div class="pen-stage" tabindex="0" role="group" aria-label="Penalty: arrow keys to aim, Enter to lock and shoot" data-i18n-attr="aria-label:hidden.pen.aria">
+                    <svg class="pen-svg" viewBox="-440 -320 880 410" aria-hidden="true">
+                      <defs>
+                        <pattern id="pen-net" width="18" height="18" patternUnits="userSpaceOnUse">
+                          <path d="M0 9 L9 0 L18 9 L9 18 Z" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+                        </pattern>
+                        <linearGradient id="pen-grass" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0" style="stop-color: rgba(var(--accent-rgb), 0.18)"/>
+                          <stop offset="1" style="stop-color: rgba(var(--accent-rgb), 0)"/>
+                        </linearGradient>
+                        <radialGradient id="pen-ball-shade" cx="0.35" cy="0.3" r="0.75">
+                          <stop offset="0" stop-color="#ffffff"/>
+                          <stop offset="1" stop-color="#bfc6d1"/>
+                        </radialGradient>
+                      </defs>
+                      <!-- Pitch: grass band, goal line, six-yard line, penalty spot -->
+                      <rect class="pen-grass" x="-440" y="0" width="880" height="90" fill="url(#pen-grass)"/>
+                      <line class="pen-line" x1="-440" y1="0" x2="440" y2="0"/>
+                      <path class="pen-line" d="M-440 34 L440 34"/>
+                      <ellipse class="pen-spot" cx="0" cy="70" rx="7" ry="3"/>
+                      <!-- Net, xG heatmap, earlier shots -->
+                      <rect x="-366" y="-244" width="732" height="244" fill="url(#pen-net)"/>
+                      <g class="pen-heat"></g>
+                      <g class="pen-shots"></g>
+                      <!-- Engineering dimensions -->
+                      <g class="pen-dims">
+                        <line x1="-366" y1="-282" x2="366" y2="-282"/>
+                        <line x1="-366" y1="-290" x2="-366" y2="-274"/>
+                        <line x1="366" y1="-290" x2="366" y2="-274"/>
+                        <text x="0" y="-290" text-anchor="middle">7.32 m</text>
+                        <line x1="404" y1="-244" x2="404" y2="0"/>
+                        <line x1="396" y1="-244" x2="412" y2="-244"/>
+                        <line x1="396" y1="0" x2="412" y2="0"/>
+                        <text x="0" y="0" transform="translate(424 -122) rotate(90)" text-anchor="middle">2.44 m</text>
+                        <text x="18" y="84">11 m</text>
+                      </g>
+                      <!-- Keeper (drawn in metres x100, origin at body centre) -->
+                      <g class="pen-keeper" transform="translate(0 -100)">
+                        <g class="pen-keeper-body">
+                          <line class="pk-limb" x1="-11" y1="32" x2="-24" y2="98"/>
+                          <line class="pk-limb" x1="11" y1="32" x2="24" y2="98"/>
+                          <rect class="pk-torso" x="-24" y="-42" width="48" height="80" rx="16"/>
+                          <line class="pk-limb pk-arm" x1="-20" y1="-30" x2="-56" y2="-2"/>
+                          <line class="pk-limb pk-arm" x1="20" y1="-30" x2="56" y2="-2"/>
+                          <circle class="pk-glove" cx="-58" cy="0" r="9"/>
+                          <circle class="pk-glove" cx="58" cy="0" r="9"/>
+                          <circle class="pk-head" cx="0" cy="-62" r="17"/>
+                        </g>
+                      </g>
+                      <!-- Frame: posts and crossbar, 12 cm wide -->
+                      <path class="pen-frame" d="M-372 0 V-250 H372 V0"/>
+                      <!-- Aim reticle -->
+                      <g class="pen-aim" transform="translate(0 -122)">
+                        <circle r="26"/>
+                        <line x1="-40" y1="0" x2="-14" y2="0"/><line x1="14" y1="0" x2="40" y2="0"/>
+                        <line x1="0" y1="-40" x2="0" y2="-14"/><line x1="0" y1="14" x2="0" y2="40"/>
+                        <text class="pen-aim-label" x="34" y="-30">xG –</text>
+                      </g>
+                      <polyline class="pen-trail" points=""/>
+                      <g class="pen-ball" transform="translate(0 60)">
+                        <circle r="20" fill="url(#pen-ball-shade)"/>
+                        <path d="M-6 -6 L6 -6 L9 5 L0 11 L-9 5 Z" transform="scale(1)" class="pen-ball-patch"/>
+                      </g>
+                      <!-- Power gauge -->
+                      <g class="pen-power" transform="translate(-424 -244)">
+                        <rect class="pen-power-frame" x="0" y="0" width="16" height="244" rx="8"/>
+                        <rect class="pen-power-fill" x="2" y="242" width="12" height="0" rx="6"/>
+                        <text x="8" y="-12" text-anchor="middle" data-i18n="hidden.pen.power">POWER</text>
+                      </g>
+                    </svg>
+                  </div>
+                  <p class="pen-help" data-i18n="hidden.pen.helpAim">Move to aim, then click or tap to lock the target.</p>
+                  <dl class="pen-telemetry">
+                    <div><dt data-i18n="hidden.pen.speed">Speed</dt><dd class="pen-t-speed">–</dd></div>
+                    <div><dt data-i18n="hidden.pen.flight">Flight time</dt><dd class="pen-t-flight">–</dd></div>
+                    <div><dt>xG</dt><dd class="pen-t-xg">–</dd></div>
+                    <div><dt data-i18n="hidden.pen.outcome">Result</dt><dd class="pen-t-result">–</dd></div>
+                  </dl>
+                  <p class="game-result" aria-live="polite"></p>
+                  <p class="game-best"><span data-i18n="hidden.pen.score">Goals</span>: <strong class="pen-score">0 / 0</strong> · <span data-i18n="hidden.pen.xgTotal">Total xG</span>: <strong class="pen-xg">0.00</strong> <span class="pen-delta"></span> <button type="button" class="pen-reset" data-i18n="hidden.pen.reset">New shootout</button></p>
+                </div>
               </div>
             </div>
-      
-            <!-- Section 4 : Description à gauche, photo à droite -->
-            <div class="section" data-aos="fade-left">
+
+            <!-- 04 · Baking -->
+            <div class="section" id="chapter-baking" data-chapter="baking" data-aos="fade-left">
               <div class="description">
                 <h2 data-i18n="hidden.baking.title">My Passion for Baking</h2>
                 <p data-i18n="hidden.baking.text">Baking is my creative outlet. From cakes to cookies, I love experimenting with flavors and techniques. It’s a delicious way to unwind and share joy with others. Whether it’s a classic chocolate cake or a new recipe I’m trying, baking is always a sweet adventure.</p>
-                 
               </div>
-              <div class="image">
-                  <img src="assets/dark/baking.png" alt="Photo 4">
+              <div class="image flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Flip the photo for fun facts" data-i18n-attr="aria-label:hidden.flipAria">
+                <div class="flip-inner">
+                  <div class="flip-front">
+                    <img loading="lazy" decoding="async" src="assets/dark/baking.webp" alt="Homemade baking" data-i18n-attr="alt:hidden.baking.alt">
+                    <span class="flip-hint" aria-hidden="true">↻</span>
+                  </div>
+                  <div class="flip-back">
+                    <p class="flip-title" data-i18n="hidden.facts">Fun facts</p>
+                    <ul>
+                      <li data-i18n="hidden.baking.f1">Signature bake: a classic chocolate cake.</li>
+                      <li data-i18n="hidden.baking.f2">Always testing new flavours and techniques.</li>
+                      <li data-i18n="hidden.baking.f3">Best part: sharing it with others.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
-      
-            <!-- Section 5 : Photo à gauche, description à droite -->
-            <div class="section" data-aos="fade-left">
-              <div class="image">
-                  <img src="assets/dark/musique.jpg" alt="Photo 5">
+
+            <!-- 05 · Music -->
+            <div class="section" id="chapter-music" data-chapter="music" data-aos="fade-right">
+              <div class="image flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Flip the photo for fun facts" data-i18n-attr="aria-label:hidden.flipAria">
+                <div class="flip-inner">
+                  <div class="flip-front">
+                    <img loading="lazy" decoding="async" src="assets/dark/musique.jpg" alt="Music" data-i18n-attr="alt:hidden.music.alt">
+                    <span class="flip-hint" aria-hidden="true">↻</span>
+                  </div>
+                  <div class="flip-back">
+                    <p class="flip-title" data-i18n="hidden.facts">Fun facts</p>
+                    <ul>
+                      <li data-i18n="hidden.music.f1">There's a playlist for every moment.</li>
+                      <li data-i18n="hidden.music.f2">Soundtrack for coding, baking and relaxing.</li>
+                      <li data-i18n="hidden.music.f3">Music connects people where words can't.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
               <div class="description">
                 <h2 data-i18n="hidden.music.title">The Universal Language</h2>
                 <p data-i18n="hidden.music.text">Music is my constant companion and the soundtrack to my life. I believe music transcends boundaries and connects people in ways words can’t. As someone once said, “Music is a language that everyone can understand.” Whether I’m coding, baking, or just relaxing, there’s always a playlist for the moment. Curious? Check out my Spotify account.</p>
-             <a href="https://open.spotify.com/user/jkcgqgeum9gcmp3x23skg6h5e?si=1d4126aad0f54b71" class="download-button">
+                <!-- Paste a Spotify playlist link in data-spotify (e.g. https://open.spotify.com/playlist/...) to show the player. -->
+                <div class="spotify-embed" data-spotify=""></div>
+                <a href="https://open.spotify.com/user/jkcgqgeum9gcmp3x23skg6h5e?si=1d4126aad0f54b71" class="download-button" target="_blank" rel="noopener noreferrer">
                   Spotify
-                  <box-icon name='download'></box-icon>
+                  <box-icon name='spotify' type='logo'></box-icon>
                 </a>
               </div>
             </div>
-                
+
             <!-- Bouton pour retourner à la page d'accueil -->
             <div class="back-to-home">
               <a href="index.html" class="back-button" data-i18n="common.returnHome">RETURN TO HOME</a>
@@ -152,7 +341,9 @@
   </footer>
 
   <script src="i18n.js"></script>
+    <script src="supabase-config.js"></script>
     <script src="script.js"></script>
+    <script src="analytics.js" defer></script>
 
   <!-- Box Icon -->
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>

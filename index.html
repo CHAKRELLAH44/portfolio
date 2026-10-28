@@ -3,22 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="Imanska's Portfolio - Software Engineer based in Rabat, Morocco. Building Tech, Adding Fun." />
+    <link rel="canonical" href="https://chakrellah44.github.io/portfolio/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Imanska" />
+    <meta property="og:title" content="Imanska - Software Engineer Portfolio" />
+    <meta property="og:description" content="Imanska's Portfolio - Software Engineer based in Rabat, Morocco. Building Tech, Adding Fun." />
+    <meta property="og:url" content="https://chakrellah44.github.io/portfolio/" />
+    <meta property="og:image" content="https://chakrellah44.github.io/portfolio/assets/og-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Imanska: I'm Imane, software engineer, Salesforce, DevOps and Cloud" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://chakrellah44.github.io/portfolio/assets/og-cover.jpg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="theme-color" content="#00ffdd" />
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Mono:wght@500;600&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
 
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-    <link rel="icon" href="assets/c-.png" />
+    <link rel="icon" type="image/png" href="assets/favicon-64.png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
     <link rel="stylesheet" href="style.css" />
     <title data-i18n="index.pageTitle">Imanska - Software Engineer Portfolio</title>
   </head>
@@ -49,9 +62,9 @@
             <button type="button" class="lang-toggle" onclick="toggleLanguage()" aria-label="Passer en français" title="Passer en français">
               <svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>
             </button>
-            <div class="theme-toggle" title="Toggle theme" onclick="toggleTheme()">
+            <button type="button" class="theme-toggle" title="Toggle theme" aria-label="Toggle theme" onclick="toggleTheme()">
   <box-icon id="theme-icon" name="moon" type="solid" color="#fff" size="md"></box-icon>
-</div>
+</button>
         </div>
       </div>
     </header>
@@ -76,6 +89,10 @@
             <h1 class="row-3" data-aos="fade-left" data-aos-duration="2000" data-i18n="hero.tagline">
               BUILDING TECH, ADDING FUN.
             </h1>
+            <p class="hero-roles" aria-hidden="true">
+              <span class="hero-roles-prefix">&gt;</span>
+              <span class="hero-roles-text"></span><span class="hero-roles-caret"></span>
+            </p>
           </div>
     
           <box-icon name="chevron-down" class="arrow"></box-icon>
@@ -111,7 +128,7 @@
           <div class="profile-and-text">
             <div class="profile-container" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
               <div class="profile">
-                  <img src="assets/dark/ai__profile.png" data-light-src="assets/light/ai_profile.png" alt="profile">
+                  <img loading="lazy" decoding="async" src="assets/dark/ai__profile.webp" data-light-src="assets/light/ai_profile.webp" alt="profile">
               </div>
             </div>
     
@@ -210,110 +227,177 @@
         MY SUPERPOWERS
       </h1>
 
+      <div class="skill-toolbar" data-aos="fade-up" data-aos-delay="300">
+        <div class="skill-filters" role="group" aria-label="Filter skills by domain" data-i18n-attr="aria-label:skills.filterAria">
+          <button type="button" class="filter-btn is-active" data-skill-filter="all" aria-pressed="true" data-i18n="filters.all">All</button>
+          <button type="button" class="filter-btn" data-skill-filter="front" aria-pressed="false">Front-end</button>
+          <button type="button" class="filter-btn" data-skill-filter="back" aria-pressed="false">Back-end</button>
+          <button type="button" class="filter-btn" data-skill-filter="data" aria-pressed="false" data-i18n="skills.data">Databases</button>
+          <button type="button" class="filter-btn" data-skill-filter="devops" aria-pressed="false" data-i18n="filters.devops">DevOps &amp; Cloud</button>
+          <button type="button" class="filter-btn" data-skill-filter="tools" aria-pressed="false" data-i18n="skills.tools">Tools &amp; Design</button>
+        </div>
+        <p class="skill-count" aria-live="polite"><span class="skill-count-num">43</span> <span data-i18n="skills.count">technologies in my toolbox</span></p>
+        <p class="skill-touch-hint" data-i18n="skills.longPressHint">Press and hold a logo to see where I used it</p>
+      </div>
+
       <div class="skills" data-aos-delay="500">
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/html5.svg" alt="html" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="HTML5" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/html5.svg" alt="html" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/css3.svg" alt="css" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="CSS3" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/css3.svg" alt="css" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/javascript.svg" alt="javascript" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="JavaScript" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/javascript.svg" alt="javascript" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/typescript.svg" alt="typescript" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="TypeScript" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/typescript.svg" alt="typescript" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/react.svg" alt="react" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="React" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/react.svg" alt="react" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/next.svg" alt="next" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="Next.js" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/next.svg" alt="next" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/tailwind.svg" alt="tailwind" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="Tailwind CSS" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/tailwind.svg" alt="tailwind" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/mysql.svg" alt="mysql" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="data" data-name="MySQL" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/mysql.svg" alt="mysql" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/postgresql.svg" alt="postgresql" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="data" data-name="PostgreSQL" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/postgresql.svg" alt="postgresql" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/figma.svg" alt="figma" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="tools" data-name="Figma" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/figma.svg" alt="figma" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/adobe.svg" alt="adobe" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="tools" data-name="Adobe" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/adobe.svg" alt="adobe" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/c.svg" alt="c" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="C" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/c.svg" alt="c" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/c++.svg" alt="c++" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="C++" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/c++.svg" alt="c++" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/grafana.svg" alt="Grafana" />
-        </div>
-        
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/prometheus.png" alt="prometheus" />
-        </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/ansible.svg" alt="ansible" />
-        </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/docker.svg" alt="docker" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Grafana" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/grafana.svg" alt="Grafana" />
         </div>
         
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/oracle.svg" alt="oracle" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Prometheus" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/prometheus.png" alt="prometheus" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/git.svg" alt="git" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Ansible" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/ansible.svg" alt="ansible" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/dotnet.svg" alt="dotnet" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Docker" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/docker.svg" alt="docker" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/aws.svg" alt="aws" />
+        
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="data" data-name="Oracle" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/oracle.svg" alt="oracle" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/c-.svg" alt="c-" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="tools" data-name="Git" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/git.svg" alt="git" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/linux.svg" alt="linux" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name=".NET" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/dotnet.svg" alt="dotnet" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/github.svg" alt="github" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="AWS" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/aws.svg" alt="aws" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/python.svg" alt="python" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="C#" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/c-.svg" alt="c-" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/java.svg" alt="java" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Linux" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/linux.svg" alt="linux" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box">
-          <img src="assets/icon/slack.svg" alt="slack" />
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="tools" data-name="GitHub" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/github.svg" alt="github" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box" title="Salesforce / Apex"><img src="assets/icon/Salesforce.svg" alt="Salesforce" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="Spring Boot / Spring Data JPA"><img src="https://cdn.simpleicons.org/springboot" alt="Spring Boot and Spring Data JPA" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="Node.js"><img src="https://cdn.simpleicons.org/nodedotjs" alt="Node.js" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="Django"><img src="https://cdn.simpleicons.org/django" alt="Django" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="Bootstrap"><img src="https://cdn.simpleicons.org/bootstrap" alt="Bootstrap" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="Microsoft Azure"><img src="assets/icon/azure.svg" alt="Microsoft Azure" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="MuleSoft"><img src="assets/icon/mulesoft.svg" alt="MuleSoft" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="REST APIs / Swagger"><img src="assets/icon/swagger.svg" alt="REST APIs and Swagger" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="Firebase"><img src="https://cdn.simpleicons.org/firebase" alt="Firebase" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="H2 Database"><img src="https://cdn.simpleicons.org/h2database" alt="H2 Database" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="Kubernetes"><img src="https://cdn.simpleicons.org/kubernetes" alt="Kubernetes" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="Jenkins / CI/CD"><img src="https://cdn.simpleicons.org/jenkins" alt="Jenkins and CI/CD" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="Argo CD"><img src="https://cdn.simpleicons.org/argo" alt="Argo CD" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="Proxmox"><img src="assets/icon/proxmox.svg" alt="Proxmox" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="pfSense"><img src="https://cdn.simpleicons.org/pfsense" alt="pfSense" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" title="VMware ESXi"><img src="https://cdn.simpleicons.org/vmware" alt="VMware ESXi" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Python" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/python.svg" alt="python" />
+        </div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Java" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/java.svg" alt="java" />
+        </div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="tools" data-name="Slack" tabindex="0">
+          <img loading="lazy" decoding="async" src="assets/icon/slack.svg" alt="slack" />
+        </div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Salesforce / Apex" tabindex="0"><img loading="lazy" decoding="async" src="assets/icon/Salesforce.svg" alt="Salesforce" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Spring Boot" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/springboot" alt="Spring Boot and Spring Data JPA" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Node.js" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/nodedotjs" alt="Node.js" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Django" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/django" alt="Django" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="Bootstrap" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/bootstrap" alt="Bootstrap" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Azure" tabindex="0"><img loading="lazy" decoding="async" src="assets/icon/azure.svg" alt="Microsoft Azure" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="MuleSoft" tabindex="0"><img loading="lazy" decoding="async" src="assets/icon/mulesoft.svg" alt="MuleSoft" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="REST / Swagger" tabindex="0"><img loading="lazy" decoding="async" src="assets/icon/swagger.svg" alt="REST APIs and Swagger" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="data" data-name="Firebase" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/firebase" alt="Firebase" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="data" data-name="H2 Database" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/h2database" alt="H2 Database" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Kubernetes" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/kubernetes" alt="Kubernetes" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Jenkins / CI/CD" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/jenkins" alt="Jenkins and CI/CD" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Argo CD" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/argo" alt="Argo CD" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Proxmox" tabindex="0"><img loading="lazy" decoding="async" src="assets/icon/proxmox.svg" alt="Proxmox" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="pfSense" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/pfsense" alt="pfSense" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="VMware ESXi" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/vmware" alt="VMware ESXi" /></div>
       </div>
     </div>
   </div>
 </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="content">
+          <div class="title">
+            <h2 data-aos="fade-right" data-aos-duration="500" data-aos-delay="300"><span data-i18n="testi.label">Kind words</span> <hr></h2>
+            <h1 data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-i18n="testi.heading">WE WORKED TOGETHER</h1>
+          </div>
+
+          <div class="testi-board" data-aos="fade-up">
+            <ul class="testi-track testi-pile" aria-live="polite">
+              <li class="testi-empty" data-i18n="testi.loading">Loading notes…</li>
+            </ul>
+          </div>
+
+          <div class="testi-cta" data-aos="fade-up">
+            <button type="button" class="testi-open" aria-expanded="false" aria-controls="testi-form">
+              <span data-i18n="testi.open">We already worked together? Leave me a note</span>
+              <span class="testi-open-icon" aria-hidden="true">+</span>
+            </button>
+          </div>
+
+          <form class="testi-form" id="testi-form" hidden novalidate>
+            <div class="testi-row">
+              <label>
+                <span data-i18n="testi.name">Your name</span>
+                <input type="text" name="name" maxlength="60" required autocomplete="name">
+              </label>
+              <label>
+                <span data-i18n="testi.role">Role &amp; company <em>(optional)</em></span>
+                <input type="text" name="role" maxlength="80" autocomplete="organization-title" placeholder="Lead Developer · Company" data-i18n-attr="placeholder:testi.rolePh">
+              </label>
+            </div>
+            <fieldset class="testi-relation">
+              <legend data-i18n="testi.relation">We worked together as…</legend>
+              <label><input type="radio" name="relation" value="colleague" checked><span data-i18n="testi.rel.colleague">Colleague</span></label>
+              <label><input type="radio" name="relation" value="manager"><span data-i18n="testi.rel.manager">Manager</span></label>
+              <label><input type="radio" name="relation" value="client"><span data-i18n="testi.rel.client">Client</span></label>
+              <label><input type="radio" name="relation" value="teammate"><span data-i18n="testi.rel.teammate">Teammate</span></label>
+            </fieldset>
+            <label>
+              <span data-i18n="testi.message">Your note</span>
+              <textarea name="note" minlength="20" maxlength="500" required></textarea>
+            </label>
+            <!-- Honeypot: hidden from people, filled in by bots. -->
+            <input type="text" name="website" class="testi-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <p class="testi-status" role="status"></p>
+            <button type="submit" class="testi-submit" data-i18n="testi.submit">SEND MY NOTE</button>
+            <p class="testi-disclaimer" data-i18n="testi.disclaimer">Notes appear on the site after a quick review.</p>
+          </form>
+        </div>
+      </div>
+    </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -372,7 +456,9 @@
     </footer>
 
     <script src="i18n.js"></script>
+    <script src="supabase-config.js"></script>
     <script src="script.js"></script>
+    <script src="analytics.js" defer></script>
 
     <!-- Box Icon -->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
