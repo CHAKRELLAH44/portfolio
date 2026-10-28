@@ -46,6 +46,8 @@ const I18N_FR = {
   "exp.3.role": "Stagiaire développeuse full-stack – LUMINALINK",
   "exp.3.p1": "Développement de la Coffee Shop App, un système full-stack et serverless de commande de café sur AWS, avec un front-end Angular.",
   "exp.3.p2": "Mise en œuvre de la logique back-end avec AWS Lambda, des API REST avec API Gateway, du stockage NoSQL avec DynamoDB et de l'hébergement statique avec S3.",
+  "exp.more": "Voir le détail",
+  "exp.less": "Masquer le détail",
   "projects.unveil": "VOIR MES PROJETS",
   "projects.recent": "Derniers",
   "projects.projects": "PROJETS",

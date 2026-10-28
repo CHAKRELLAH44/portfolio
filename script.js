@@ -742,6 +742,29 @@ if (timeline) {
     });
   };
   timeline.classList.add("is-scroll-linked");
+
+  // Each experience opens with its "+" button (or a tap on the card) to show the details.
+  timeline.classList.add("is-collapsible");
+  const setOpen = (item, open) => {
+    const toggle = item.querySelector(".timeline-toggle");
+    item.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? tr("exp.less", "Hide details") : tr("exp.more", "Show details"));
+  };
+  timelineItems.forEach((item) => {
+    if (!item.querySelector(".timeline-toggle")) return;
+    item.addEventListener("click", (event) => {
+      if (event.target.closest("a") || String(getSelection())) return;
+      setOpen(item, !item.classList.contains("is-open"));
+      buzz(6);
+      // The scroll-linked line depends on the new height.
+      requestAnimationFrame(updateTimeline);
+      setTimeout(updateTimeline, 450);
+    });
+  });
+  document.addEventListener("portfolio:languagechange", () => {
+    timelineItems.forEach((item) => item.querySelector(".timeline-toggle") && setOpen(item, item.classList.contains("is-open")));
+  });
   window.addEventListener("scroll", updateTimeline, { passive: true });
   window.addEventListener("resize", updateTimeline);
   updateTimeline();
