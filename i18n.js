@@ -124,6 +124,8 @@ const I18N_FR = {
   "hidden.speed.f1": "Pilote préféré : Lewis Hamilton.",
   "hidden.speed.f2": "7 titres mondiaux, et autant de leçons.",
   "hidden.speed.f3": "Devise : « La vie est faite de leçons, pas de perfection. »",
+  "hidden.game.play": "Jouer",
+  "hidden.game.close": "Fermer le jeu",
   "hidden.f1.title": "Lights out : es-tu aussi rapide qu'un pilote ?",
   "hidden.f1.start": "Touche pour démarrer",
   "hidden.f1.wait": "Attends que les feux s'éteignent…",

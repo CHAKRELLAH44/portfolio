@@ -1429,6 +1429,49 @@ if (hiddenPage) {
     });
   });
 
+  // Mini-games stay folded behind a "Play" button until someone wants to play.
+  hiddenPage.querySelectorAll(".f1-game, .penalty-game").forEach((game) => {
+    const isF1 = game.classList.contains("f1-game");
+    const slot = document.createElement("div");
+    slot.className = "game-slot";
+    const launch = document.createElement("button");
+    launch.type = "button";
+    launch.className = "game-launch";
+    launch.setAttribute("aria-expanded", "false");
+    const bodyId = isF1 ? "game-f1" : "game-penalty";
+    launch.setAttribute("aria-controls", bodyId);
+    launch.innerHTML = `<span class="game-launch-icon" aria-hidden="true"></span><span class="game-launch-text"><strong></strong><small></small></span><span class="game-launch-emoji" aria-hidden="true">${isF1 ? "🏎️" : "⚽"}</span>`;
+    const body = document.createElement("div");
+    body.className = "game-body";
+    body.id = bodyId;
+    body.inert = true;
+    game.before(slot);
+    slot.append(launch, body);
+    body.append(game);
+
+    const label = () => {
+      const open = slot.classList.contains("is-open");
+      launch.querySelector(".game-launch-icon").textContent = open ? "✕" : "▶";
+      launch.querySelector("strong").textContent = open ? tr("hidden.game.close", "Close the game") : tr("hidden.game.play", "Play");
+      launch.querySelector("small").textContent = game.querySelector(".game-title").textContent;
+    };
+    launch.addEventListener("click", () => {
+      const open = !slot.classList.contains("is-open");
+      slot.classList.toggle("is-open", open);
+      launch.setAttribute("aria-expanded", String(open));
+      body.inert = !open;
+      if (!open) game.dispatchEvent(new CustomEvent("gameclose"));
+      else window.portfolioTrack?.("game", `open:${isF1 ? "f1" : "penalty"}`);
+      label();
+      buzz(8);
+      if (open && !prefersReducedMotion) {
+        setTimeout(() => body.scrollIntoView({ behavior: "smooth", block: "nearest" }), 380);
+      }
+    });
+    document.addEventListener("portfolio:languagechange", label);
+    label();
+  });
+
   // Photos flip over to show fun facts.
   hiddenPage.querySelectorAll(".flip-card").forEach((card) => {
     const flip = () => {
@@ -1528,6 +1571,12 @@ if (hiddenPage) {
       }
     });
     board.addEventListener("click", (event) => event.preventDefault());
+    // Closing the game mid-start switches the lights off.
+    f1.addEventListener("gameclose", () => {
+      clearTimers();
+      lights.forEach((light) => light.classList.remove("is-on"));
+      setState("idle", "hidden.f1.start", "Tap to start");
+    });
     showBest();
   }
 
@@ -1857,6 +1906,12 @@ if (hiddenPage) {
     document.addEventListener("portfolio:languagechange", () => {
       updateScore();
       if (phase === "aim") startAim();
+    });
+    penalty.addEventListener("gameclose", () => {
+      if (phase === "power") {
+        cancelAnimationFrame(powerFrame);
+        startAim();
+      }
     });
     reset();
   }

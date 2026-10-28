@@ -6473,3 +6473,135 @@ html body .hidden-me { overflow-x: clip; }
   .timeline-toggle,
   .timeline-toggle span { transition: none; }
 }
+
+/* ===== Flip cards, mobile-safe =====
+   Both faces share one grid cell, so the card is as tall as its longer side
+   and the facts are never cut. Faces also switch visibility at mid-turn:
+   iOS Safari does not always honour backface-visibility on its own. */
+html body .hidden-me .container .content .section .image.flip-card {
+  container-type: inline-size;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+.flip-card .flip-inner {
+  display: grid;
+  -webkit-transform-style: preserve-3d;
+}
+.flip-card .flip-front,
+.flip-card .flip-back {
+  grid-area: 1 / 1;
+  min-width: 0;
+  transition: visibility 0s linear 0.35s;
+}
+.flip-card .flip-front {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+html body .hidden-me .container .content .section .image.flip-card .flip-front img {
+  position: static;
+  z-index: auto;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  transform: none;
+}
+.flip-card .flip-back {
+  position: relative;
+  inset: auto;
+  overflow: hidden;
+  visibility: hidden;
+  gap: clamp(0.6rem, 3.5cqw, 1rem);
+  padding: clamp(1rem, 7cqw, 2.25rem);
+}
+.flip-card .flip-title { font-size: clamp(1.15rem, 7cqw, 2rem); }
+.flip-card .flip-back ul { gap: clamp(0.45rem, 2.6cqw, 0.8rem); }
+.flip-card .flip-back li { font-size: clamp(0.84rem, 4.3cqw, 1.05rem); line-height: 1.45; }
+.flip-card.is-flipped .flip-back { visibility: visible; }
+.flip-card.is-flipped .flip-front { visibility: hidden; }
+@media (max-width: 768px) {
+  .flip-card .flip-front { aspect-ratio: 4 / 3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flip-card .flip-front,
+  .flip-card .flip-back { transition: none; }
+}
+
+/* ===== Mini-games folded behind a Play button ===== */
+.game-slot {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 34rem;
+  margin: 0 0 1.5rem;
+}
+.game-launch {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 0.7rem 1rem 0.7rem 0.7rem;
+  border: 1.5px solid rgba(var(--accent-rgb), 0.45);
+  border-radius: 999px;
+  background: rgba(var(--accent-rgb), 0.06);
+  color: var(--white);
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+.game-launch:hover,
+.game-launch:focus-visible {
+  border-color: var(--primary);
+  background: rgba(var(--accent-rgb), 0.12);
+  box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.3);
+  outline: none;
+}
+.game-launch:active { transform: scale(0.98); }
+.game-launch-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding-left: 0.15rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--black);
+  font-size: 1rem;
+  box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.55);
+  animation: game-pulse 2.2s ease-out infinite;
+}
+.game-slot.is-open .game-launch-icon { padding-left: 0; animation: none; }
+@keyframes game-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.55); }
+  70%, 100% { box-shadow: 0 0 0 12px rgba(var(--accent-rgb), 0); }
+}
+.game-launch-text { display: grid; flex: 1; min-width: 0; line-height: 1.25; }
+.game-launch-text strong { font: 800 0.95rem "IBM Plex Sans", sans-serif; letter-spacing: 0.03em; text-transform: uppercase; }
+.game-launch-text small { overflow: hidden; color: var(--gray); font: italic 600 0.82rem "IBM Plex Sans", sans-serif; text-overflow: ellipsis; white-space: nowrap; }
+.game-launch-emoji { flex: none; font-size: 1.5rem; transition: transform 0.35s ease; }
+.game-launch:hover .game-launch-emoji { transform: translateX(4px) rotate(-8deg); }
+
+/* grid 0fr -> 1fr unfolds the game to its real height. */
+.game-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.45s ease, opacity 0.3s ease;
+}
+.game-body > * { min-height: 0; overflow: hidden; }
+.game-slot.is-open .game-body { grid-template-rows: 1fr; opacity: 1; }
+.game-slot .f1-game,
+.game-slot .penalty-game { margin: 0; }
+.game-slot:not(.is-open) .game-body > * { padding-block: 0; border-width: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .game-body { transition: none; }
+  .game-launch-icon { animation: none; }
+}
+/* The launcher already shows the game's title. */
+.game-slot .f1-game > .game-title,
+.game-slot .pen-head > .game-title { display: none; }
+.game-slot .pen-head { justify-content: flex-end; }
+.game-slot .f1-game,
+.game-slot .penalty-game { max-width: none; }
