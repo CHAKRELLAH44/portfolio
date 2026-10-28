@@ -259,6 +259,7 @@ const I18N_FR = {
   "proj.p2p.long": "Système Procure-to-Pay développé sur Salesforce pour un client grand compte pendant mon stage chez D&amp;A Technologies. J'ai modélisé les processus métier en BPMN, développé la logique back-end et les workflows d'approbation en Apex et SOQL, créé des Lightning Web Components et livré des fonctionnalités destinées aux fournisseurs sur Experience Cloud.",
   "proj.confidential": "Les captures d'écran sont confidentielles et appartiennent à l'entreprise cliente.",
   "proj.featured": "À la une",
+  "proj.reportTitle": "Lire le rapport du projet",
 
   // Labels used by script.js
   "ui.themeToLight": "Activer le mode clair",

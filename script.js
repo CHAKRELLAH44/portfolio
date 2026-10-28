@@ -239,18 +239,21 @@ function initProjectModal() {
       toolsEl.appendChild(span);
     });
 
-    // place only a compact GitHub icon in the top-right of the panel
+    // place only a compact icon in the top-right of the panel: GitHub, or a document for a report
     githubArea.innerHTML = '';
     githubTopRight.innerHTML = '';
     if (githubHref) {
+      const isDoc = githubAnchor.dataset.linkType === 'doc';
       const topA = document.createElement('a');
       topA.href = githubHref;
       topA.target = '_blank';
       topA.rel = 'noopener noreferrer';
       topA.className = 'download-button';
-      topA.setAttribute('aria-label', 'Open GitHub in a new tab');
+      const label = isDoc ? tr("proj.reportTitle", "Read the project report") : 'Open GitHub in a new tab';
+      topA.setAttribute('aria-label', label);
+      topA.title = label;
       topA.style.display = 'inline-flex';
-      topA.innerHTML = `<box-icon name='github' type='logo'></box-icon>`;
+      topA.innerHTML = isDoc ? `<box-icon name='file' type='solid'></box-icon>` : `<box-icon name='github' type='logo'></box-icon>`;
       githubTopRight.appendChild(topA);
     }
 
