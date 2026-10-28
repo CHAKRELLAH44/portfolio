@@ -1,0 +1,21 @@
+# Supabase pauses free projects after 7 days without activity.
+# A tiny read every 3 days keeps the testimonials, analytics and admin online.
+name: Supabase keep-alive
+
+on:
+  schedule:
+    - cron: "17 6 */3 * *" # every 3 days at 06:17 UTC
+  workflow_dispatch: # also runnable by hand from the Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read one approved testimonial
+        run: |
+          # Same public URL and publishable key as supabase-config.js (safe to expose: RLS applies).
+          status=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://waqgkbexfypfuunpszev.supabase.co/rest/v1/testimonials?select=id&limit=1" \
+            -H "apikey: sb_publishable_BOmBMfEF3W5LdoUoBqx10g_ZPF_CusL")
+          echo "Supabase answered HTTP $status"
+          test "$status" = "200"
