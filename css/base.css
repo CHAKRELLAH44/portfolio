@@ -109,7 +109,7 @@ body {
   color: var(--black);
 }
 
-.download-button .bx {
+.download-button :is(.bx, .ico) {
   width: 20px;
   height: 20px;
 }
@@ -159,7 +159,7 @@ body {
   transition: .2s linear;
 }
 
-.download-button .bx {
+.download-button :is(.bx, .ico) {
   width: 20px;
   height: 20px;
 }
