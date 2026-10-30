@@ -34,6 +34,7 @@
     <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/hero.css" />
     <title data-i18n="index.pageTitle">Imanska - Software Engineer Portfolio</title>
   </head>
   <body>
@@ -74,46 +75,48 @@
 
     <main id="main">
 
-    <section class="hero">
+    <section class="hero" id="top">
       <div class="container">
         <div class="content">
-          <div class="shape-1"></div>
-          <div class="shape-2"></div>
-          <div class="line"></div>
-    
+          <div class="shape-1" aria-hidden="true"></div>
+          <div class="shape-2" aria-hidden="true"></div>
+          <div class="line" aria-hidden="true"></div>
+
           <div class="text">
-            <h1 class="row-1" data-aos="fade-right" data-aos-duration="2000" data-i18n="hero.im">I'M</h1>
-            
-            <div class="row-2" data-aos="flip-down" data-aos-duration="2000">
-              <svg viewBox="0 0 1600 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="IMANE">
-                <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">
-                  IMANE
-                </text>
+            <p class="row-1" data-aos="fade-right" data-aos-duration="2000" data-i18n="hero.im">I'M</p>
+
+            <h1 class="row-2" data-aos="flip-down" data-aos-duration="2000">
+              <span class="sr-only" data-i18n="hero.h1">Imane Chakrellah, software engineer</span>
+              <svg viewBox="0 0 1600 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+                <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">IMANE</text>
               </svg>
-            </div>
-            <h1 class="row-3" data-aos="fade-left" data-aos-duration="2000" data-i18n="hero.tagline">
-              BUILDING TECH, ADDING FUN.
             </h1>
-            <p class="hero-roles" aria-hidden="true">
-              <span class="hero-roles-prefix">&gt;</span>
-              <span class="hero-roles-text"></span><span class="hero-roles-caret"></span>
+
+            <p class="row-3" data-aos="fade-left" data-aos-duration="2000" data-i18n="hero.tagline">BUILDING TECH, ADDING FUN.</p>
+
+            <p class="hero-roles">
+              <span class="sr-only hero-roles-sr"></span>
+              <span class="hero-roles-prefix" aria-hidden="true">&gt;</span>
+              <span class="hero-roles-text" aria-hidden="true"></span><span class="hero-roles-caret" aria-hidden="true"></span>
             </p>
           </div>
-    
-          <box-icon name="chevron-down" class="arrow"></box-icon>
-    
+
           <div class="short-info">
-            <div class="left-side" data-aos="fade-up-right" data-aos-delay="300">
-              <h1 data-i18n="hero.based">Based in Rabat, Morocco</h1>
+            <div class="left-side" data-aos="fade-up-right" data-aos-delay="300" data-aos-offset="0">
+              <p class="place" data-i18n="hero.based">Based in Rabat, Morocco</p>
               <p class="time"></p>
             </div>
-    
-            <div class="right-side" data-aos="fade-up-left" data-aos-delay="300">
-              <p data-i18n="hero.freelance">Freelance Availability</p>
-              <h1>
-                <div class="pulse"></div>
-                <span data-i18n="hero.limited">LIMITED HOURS</span>
-              </h1>
+
+            <a class="arrow" href="#about" aria-label="Scroll to About" data-i18n-attr="aria-label:hero.scroll">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+
+            <div class="right-side" data-aos="fade-up-left" data-aos-delay="300" data-aos-offset="0">
+              <p class="label" data-i18n="hero.availability">Availability</p>
+              <p class="status-line">
+                <span class="pulse" aria-hidden="true"></span>
+                <span data-i18n="header.available">AVAILABLE FOR WORK</span>
+              </p>
             </div>
           </div>
         </div>

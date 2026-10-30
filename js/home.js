@@ -111,6 +111,13 @@ if (heroRoles) {
     en: ["Salesforce Developer", "Software Engineer", "DevOps & Cloud enthusiast", "Full-stack Developer", "Professional bug hunter"],
     fr: ["Développeuse Salesforce", "Ingénieure logicielle", "Passionnée DevOps & Cloud", "Développeuse full-stack", "Chasseuse de bugs pro"],
   };
+  // Screen readers get the full list once; the typing effect is hidden from them.
+  const rolesForScreenReaders = document.querySelector(".hero-roles-sr");
+  const describeRoles = () => {
+    if (rolesForScreenReaders) rolesForScreenReaders.textContent = (isFrench() ? roles.fr : roles.en).join(", ");
+  };
+  describeRoles();
+  document.addEventListener("portfolio:languagechange", describeRoles);
   let roleIndex = 0;
   let charIndex = 0;
   let deleting = false;
@@ -136,6 +143,12 @@ if (heroRoles) {
     setTimeout(tick, delay);
   };
   setTimeout(tick, 1200);
+}
+
+// Pause the hero's looping animations while it is off screen.
+const heroSection = document.querySelector(".hero");
+if (heroSection && "IntersectionObserver" in window) {
+  new IntersectionObserver(([entry]) => heroSection.classList.toggle("is-offscreen", !entry.isIntersecting)).observe(heroSection);
 }
 
 const heroName = document.querySelector(".hero .row-2");
