@@ -71,7 +71,7 @@ for name in PAGES:
         warnings.append(f"{name}: {p.no_alt} <img> without alt")
 
 for path in ROOT.rglob("*"):
-    if not path.is_file() or path.suffix.lower() not in TEXT or {".git", "tools"} & set(path.relative_to(ROOT).parts):
+    if not path.is_file() or path.suffix.lower() not in TEXT or {".git", ".claude", "tools"} & set(path.relative_to(ROOT).parts):
         continue
     text = path.read_text(encoding="utf-8", errors="replace")
     rel = path.relative_to(ROOT).as_posix()

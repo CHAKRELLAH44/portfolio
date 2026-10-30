@@ -132,7 +132,7 @@ const I18N_FR = {
   "hidden.tech.alt": "Illustration lumineuse d'un circuit imprimé",
   "hidden.tech.f1": "Chaque bug est une leçon déguisée.",
   "hidden.tech.f2": "Objectif : rendre la vie plus simple, plus intelligente et plus fun.",
-  "hidden.tech.f3": "43 technologies dans ma boîte à outils, de Salesforce à Kubernetes.",
+  "hidden.tech.f3": "48 technologies dans ma boîte à outils, de Salesforce à Kubernetes.",
   "hidden.speed.alt": "Lewis Hamilton, pilote de Formule 1",
   "hidden.speed.f1": "Pilote préféré : Lewis Hamilton.",
   "hidden.speed.f2": "7 titres mondiaux, et autant de leçons.",
