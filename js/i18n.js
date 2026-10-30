@@ -261,7 +261,7 @@ const I18N_FR = {
   "proj.featured": "À la une",
   "proj.reportTitle": "Lire le rapport du projet",
 
-  // Labels used by script.js
+  // Labels used by the page scripts (js/core.js and friends)
   "ui.themeToLight": "Activer le mode clair",
   "ui.themeToDark": "Activer le mode sombre",
   "ui.menuOpen": "Ouvrir le menu",

@@ -35,15 +35,32 @@ A few things you might notice along the way:
 - **Libraries:** [AOS](https://michalsnik.github.io/aos/) for scroll animations, [Boxicons](https://boxicons.com/) for icons, IBM Plex fonts.
 
 ```
-├── index.html · projects.html · contact.html · hidden-me.html · 404.html
-├── style.css            # all styles
-├── script.js            # interactions, mini-games, testimonials
-├── i18n.js              # English in the HTML, French dictionary here
-├── analytics.js         # anonymous visit tracking
-├── supabase-config.js   # public project URL + publishable key
+├── index.html · projects.html · contact.html · hidden-me.html · 404.html · admin.html
+├── css/
+│   ├── style.css        # shared styles (being split into one file per element)
+│   ├── 404.css          # terminal 404 page
+│   └── admin.css        # moderation dashboard
+├── js/
+│   ├── core.js          # every page: theme, navigation, toast, contact form, share
+│   ├── home.js          # home page: hero, stats, skills, timeline, testimonials
+│   ├── projects.js      # projects page: project modal, filters, course carousel
+│   ├── hidden-me.js     # Hidden Me page: chapters, F1 game, Penalty Lab
+│   ├── 404.js           # terminal 404 page
+│   ├── i18n.js          # English in the HTML, French dictionary here
+│   ├── analytics.js     # anonymous visit tracking
+│   ├── supabase-config.js  # public project URL + publishable key
+│   └── admin/           # moderation dashboard
 ├── supabase/            # SQL: tables and security policies
-└── assets/              # images (WebP), icons, CV
+└── assets/
+    ├── brand/           # logo, favicons, social cover
+    ├── profile/         # profile graphic (dark and light)
+    ├── projects/        # screenshots, one folder per project; tiles/ = placeholder thumbnails
+    ├── hidden-me/       # photos for the personal page
+    ├── icons/skills/    # skill logos
+    └── docs/            # CV (PDF)
 ```
+
+Load order on a page: `i18n.js`, `supabase-config.js`, `core.js`, then the page's own script.
 
 ## Run it locally
 

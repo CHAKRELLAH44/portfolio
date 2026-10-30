@@ -5720,7 +5720,7 @@ button,
   font: italic bold clamp(1.8rem, min(5vw, 7vh), 4.5rem)/1.12 "IBM Plex Sans", sans-serif;
 }
 
-/* Messy pile of notes: positioned by script.js (layoutPile), zoom on hover/tap. */
+/* Messy pile of notes: positioned by js/home.js (layoutPile), zoom on hover/tap. */
 .testi-track {
   position: relative;
   min-height: 16rem;
