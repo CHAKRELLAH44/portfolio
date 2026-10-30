@@ -164,59 +164,6 @@ body {
   height: 20px;
 }
 
-/* Styles pour la section des réseaux sociaux */
-
-.social-media {
-  padding: 4rem 0;
-  background-color: var(--black);
-}
-
-.social-media .container .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-}
-
-.social-media h2 {
-  font: italic bold 2rem var(--font-display);
-  color: var(--gray);
-}
-
-.social-links {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  background-color: var(--black);
-  border: 2px solid var(--white);
-  border-radius: 32px;
-  color: var(--white);
-  font: bold 1rem var(--font-display);
-  transition: all 0.3s ease;
-}
-
-.social-link:hover {
-  background-color: var(--primary);
-  color: var(--black);
-  transform: translateY(-5px);
-}
-
-.social-link .bx {
-  fill: var(--white);
-}
-
-.social-link:hover .bx {
-  fill: var(--black);
-}
-
 /* Style pour le bouton retour à l'accueil */
 
 .back-to-home {
@@ -454,24 +401,8 @@ img {
     padding: 1rem clamp(1rem, 5vw, 2rem);
   }
 
-  .social-media .container .content .social-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .social-media .social-link {
-    max-width: 100%;
-  }
-
   #contact-form {
     padding-top: 6rem;
-  }
-
-  .social-media {
-    min-height: 0;
-    padding-block: 2.5rem;
   }
 }
 
