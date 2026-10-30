@@ -30,41 +30,46 @@
         <link rel="icon" type="image/png" href="assets/brand/favicon-64.png" />
         <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
         <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header.css" />
         <title data-i18n="projectsPage.pageTitle">Projects - Imanska</title>
       </head>
   <body>
-    <header data-aos="fade-down" data-aos-delay="200">
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+    <header class="site-header">
       <div class="container">
         <div class="content">
-          <div class="logo">
-              <img src="assets/brand/logo.png" alt="logo" />
-            <a href="index.html">IMANSKA</a>
-          </div>
+          <a class="logo" href="index.html">
+            <img src="assets/brand/logo.png" alt="" width="80" height="80" />
+            <span>IMANSKA</span>
+          </a>
 
           <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
             <span></span><span></span><span></span>
           </button>
-          <nav id="primary-nav">
+          <nav id="primary-nav" aria-label="Main" data-i18n-attr="aria-label:nav.aria">
             <a href="index.html#about" data-i18n="nav.about">About</a>
-            <a href="projects.html" data-i18n="nav.projects">Projects</a>
-            <a href="hidden-me.html" data-i18n="nav.hidden">Hidden Me</a>
-            <a href="contact.html" data-i18n="nav.contact">Contact</a>
+        <a href="projects.html" aria-current="page" data-i18n="nav.projects">Projects</a>
+        <a href="hidden-me.html" data-i18n="nav.hidden">Hidden Me</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
             <a href="assets/docs/cv.pdf" download="Imane_CV.pdf" class="nav-cv" data-i18n="nav.cv">Download CV</a>
           </nav>
 
           <div class="extra-nav">
-            <a href="contact.html"><span data-i18n="header.available">AVAILABLE FOR WORK</span></a>
+            <a href="contact.html" class="status"><span class="dot" aria-hidden="true"></span><span data-i18n="header.available">AVAILABLE FOR WORK</span></a>
             <a href="assets/docs/cv.pdf" download="Imane_CV.pdf" class="cv-link" aria-label="Download my CV" data-i18n-attr="aria-label:header.cvAria"><span>CV</span></a>
           </div>
-            <button type="button" class="lang-toggle" onclick="toggleLanguage()" aria-label="Passer en français" title="Passer en français">
-              <svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>
-            </button>
-            <button type="button" class="theme-toggle" title="Toggle theme" aria-label="Toggle theme" onclick="toggleTheme()">
-              <box-icon id="theme-icon" name="moon" type="solid" color="#fff" size="md"></box-icon>
-            </button>
+          <button type="button" class="lang-toggle" onclick="toggleLanguage()" aria-label="Passer en français" title="Passer en français">
+            <svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>
+          </button>
+          <button type="button" class="theme-toggle" title="Toggle theme" aria-label="Toggle theme" onclick="toggleTheme()">
+            <svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.9 1.9M16.8 16.8l1.9 1.9M18.7 5.3l-1.9 1.9M7.2 16.8l-1.9 1.9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.3 14.6A8.6 8.6 0 0 1 9.4 3.7a8.6 8.6 0 1 0 10.9 10.9z"/></svg>
+          </button>
         </div>
       </div>
     </header>
+
+    <main id="main">
 
     <!-- Section pour afficher tous les projets -->
     <section class="all-projects">
@@ -420,6 +425,8 @@
         </div>
       </div>
     </section>
+
+    </main>
 
     <script src="js/i18n.js"></script>
     <script src="js/supabase-config.js"></script>

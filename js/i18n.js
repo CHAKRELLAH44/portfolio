@@ -7,6 +7,8 @@ const I18N_FR = {
   "nav.hidden": "Côté perso",
   "nav.contact": "Contact",
   "nav.cv": "Télécharger mon CV",
+  "nav.aria": "Navigation principale",
+  "a11y.skip": "Aller au contenu",
   "header.available": "DISPONIBLE",
   "header.cvAria": "Télécharger mon CV",
   "footer.title": "PORTFOLIO d'Imanska",

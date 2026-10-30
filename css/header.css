@@ -1,0 +1,457 @@
+/* Site header: logo, page links, availability + CV pills, language and theme buttons.
+   Transparent over the hero, a solid blurred bar once the page is scrolled, a panel menu on phones.
+   --black / --white are the page background / text colours and swap in the light theme. */
+
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: 0.75rem;
+  z-index: 10001;
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--primary);
+  color: #0f0f0f;
+  font: 600 0.9rem "IBM Plex Sans", sans-serif;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+.site-header {
+  --hot: var(--primary); /* accent that stays readable as text */
+  --on-primary: #0f0f0f; /* text colour on a --primary fill */
+  --rule: color-mix(in srgb, var(--white) 12%, transparent);
+  --bar: color-mix(in srgb, var(--black) 86%, transparent);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+  border-bottom: 1px solid transparent;
+  transition: transform 0.3s ease-in-out, background-color 0.25s, border-color 0.25s;
+  animation: header-in 0.6s 0.2s both;
+}
+
+body[data-theme="light"] .site-header {
+  --hot: #a84a05;
+  --on-primary: #38291f;
+}
+
+@keyframes header-in {
+  from {
+    opacity: 0;
+    translate: 0 -1rem;
+  }
+}
+
+.site-header.hidden {
+  transform: translateY(-100%);
+}
+
+.site-header.is-stuck,
+.site-header.nav-open {
+  border-bottom-color: var(--rule);
+  background: var(--bar);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.site-header .container {
+  padding-block: 0.6rem;
+}
+
+.site-header .content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+.site-header :is(a, button):focus-visible {
+  outline: 2px solid var(--hot);
+  outline-offset: 3px;
+}
+
+/* Logo */
+.site-header .logo {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--white);
+  font: italic 700 1.5rem "IBM Plex Sans", sans-serif;
+}
+
+.site-header .logo img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+}
+
+/* Page links */
+.site-header nav {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.25rem, 3.2vw, 4rem);
+}
+
+.site-header nav a {
+  position: relative;
+  padding-block: 0.5rem;
+  color: var(--white);
+  font: 600 1rem "IBM Plex Sans", sans-serif;
+  white-space: nowrap;
+}
+
+.site-header nav a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0.1rem;
+  left: 0;
+  border-bottom: 2px solid var(--white);
+  transform: scaleX(0);
+  transition: transform 0.2s linear;
+}
+
+body[data-theme="light"] .site-header nav a::after {
+  border-color: var(--primary);
+}
+
+.site-header nav a:hover::after,
+.site-header nav a:focus-visible::after,
+.site-header nav a[aria-current]::after {
+  transform: scaleX(1);
+}
+
+.site-header nav .nav-cv {
+  display: none;
+}
+
+/* Availability + CV pills: a circle of --primary grows from the centre on hover */
+.site-header .extra-nav {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-header .extra-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 2.5rem;
+  padding: 0.4rem 1.6rem;
+  border: 2px solid var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  color: var(--white);
+  font: 500 1rem "IBM Plex Sans", sans-serif;
+  white-space: nowrap;
+}
+
+.site-header .extra-nav .cv-link {
+  padding-inline: 1.1rem;
+}
+
+.site-header .extra-nav a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin: -2px 0 0 -2px;
+  border-radius: 50%;
+  background: var(--primary);
+  transform: scale(0);
+  transition: transform 0.25s ease-out;
+}
+
+.site-header .extra-nav a:hover::before,
+.site-header .extra-nav a:focus-visible::before {
+  transform: scale(120);
+}
+
+.site-header .extra-nav a > span {
+  position: relative;
+  transition: color 0.2s linear;
+}
+
+.site-header .extra-nav a:hover > span,
+.site-header .extra-nav a:focus-visible > span {
+  color: var(--on-primary);
+}
+
+.site-header .status .dot {
+  position: relative;
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #3ddc84;
+}
+
+/* Language + theme buttons */
+.site-header .lang-toggle,
+.site-header .theme-toggle {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.site-header .lang-toggle:hover,
+.site-header .theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.site-header .lang-toggle .flag {
+  display: block;
+  width: 1.75rem;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+body[data-theme="light"] .site-header .lang-toggle .flag {
+  box-shadow: 0 0 0 1px rgba(56, 41, 31, 0.3);
+}
+
+.site-header .theme-toggle svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+/* The button shows the theme you can switch to: sun in dark mode, moon in light mode. */
+.site-header .theme-moon,
+body[data-theme="light"] .site-header .theme-sun {
+  display: none;
+}
+
+body[data-theme="light"] .site-header .theme-moon {
+  display: block;
+}
+
+/* Menu button, phones only */
+.site-header .nav-toggle {
+  display: none;
+}
+
+/* Tablet widths: not enough room for the availability pill */
+@media (max-width: 1100px) {
+  .site-header .extra-nav .status {
+    display: none;
+  }
+
+  .site-header nav {
+    gap: clamp(1rem, 2.4vw, 2rem);
+  }
+
+  .site-header .content {
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .site-header .logo {
+    font-size: 1.2rem;
+  }
+
+  .site-header .logo img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .site-header nav {
+    gap: 1rem;
+  }
+}
+
+@media (pointer: coarse) {
+  .site-header .extra-nav a {
+    min-height: 2.75rem;
+  }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+  .site-header {
+    z-index: 10000;
+    border-bottom-color: var(--rule);
+    background: var(--bar);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  .site-header .container {
+    padding-block: 0.35rem;
+  }
+
+  .site-header .content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    gap: 0.25rem;
+  }
+
+  .site-header .logo {
+    justify-self: start;
+    padding-block: 0.1rem;
+    font-size: 1.15rem;
+  }
+
+  .site-header .logo img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .site-header .extra-nav {
+    display: none;
+  }
+
+  .site-header .logo,
+  .site-header .lang-toggle,
+  .site-header .theme-toggle {
+    grid-row: 1;
+  }
+
+  .site-header .logo {
+    grid-column: 1;
+  }
+
+  .site-header .lang-toggle {
+    grid-column: 2;
+  }
+
+  .site-header .theme-toggle {
+    grid-column: 3;
+  }
+
+  .site-header .nav-toggle {
+    grid-column: 4;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.34rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-left: 0.25rem;
+    padding: 0.45rem;
+    border: 1px solid color-mix(in srgb, var(--white) 60%, transparent);
+    border-radius: 0.65rem;
+    background: transparent;
+    color: var(--white);
+    cursor: pointer;
+  }
+
+  .site-header .nav-toggle span {
+    display: block;
+    width: 1.25rem;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+  }
+
+  .site-header.nav-open .nav-toggle span:first-child {
+    transform: translateY(0.46rem) rotate(45deg);
+  }
+
+  .site-header.nav-open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-header.nav-open .nav-toggle span:last-child {
+    transform: translateY(-0.46rem) rotate(-45deg);
+  }
+
+  .site-header nav {
+    position: absolute;
+    top: calc(100% + 0.45rem);
+    right: 0;
+    display: none;
+    flex: none;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0.2rem;
+    width: min(19rem, calc(100vw - 1.5rem));
+    padding: 0.65rem;
+    border: 1px solid rgba(var(--accent-rgb), 0.45);
+    border-radius: 0.9rem;
+    background: color-mix(in srgb, var(--black) 98%, transparent);
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+  }
+
+  .site-header.nav-open nav {
+    display: flex;
+  }
+
+  .site-header nav a {
+    padding: 0.75rem 0.85rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .site-header nav a::after {
+    display: none;
+  }
+
+  .site-header nav a:hover,
+  .site-header nav a:focus-visible {
+    background: rgba(var(--accent-rgb), 0.12);
+    color: var(--hot);
+  }
+
+  .site-header nav a[aria-current] {
+    background: rgba(var(--accent-rgb), 0.12);
+    box-shadow: inset 3px 0 0 var(--hot);
+    color: var(--hot);
+  }
+
+  .site-header nav .nav-cv {
+    display: block;
+    margin-top: 0.35rem;
+    border-top: 1px solid rgba(var(--accent-rgb), 0.3);
+    border-radius: 0 0 0.5rem 0.5rem;
+    color: var(--hot);
+  }
+}
+
+/* Keep the page from scrolling behind the open menu */
+html.nav-lock {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .site-header * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media print {
+  .site-header {
+    position: relative;
+  }
+}

@@ -2,7 +2,7 @@
 // Must load before the page-specific file (home.js, projects.js, hidden-me.js).
 
 let lastScrollTop = 0;
-const header = document.querySelector("header");
+const header = document.querySelector(".site-header");
 const timeText = document.querySelector(".time");
 
 // i18n.js provides t(); keep English if it is missing.
@@ -11,14 +11,9 @@ const isFrench = () => typeof getLanguage === "function" && getLanguage() === "f
 
 function updateThemeControl() {
   const isLight = document.body.dataset.theme === "light";
-  const themeIcon = document.querySelector("#theme-icon");
   const themeToggle = document.querySelector(".theme-toggle");
   const themeColor = document.querySelector('meta[name="theme-color"]');
 
-  if (themeIcon) {
-    themeIcon.setAttribute("name", isLight ? "moon" : "sun");
-    themeIcon.setAttribute("color", isLight ? "#38291f" : "#fff");
-  }
   if (themeToggle) {
     const themeLabel = isLight ? tr("ui.themeToDark", "Switch to dark mode") : tr("ui.themeToLight", "Switch to light mode");
     themeToggle.setAttribute("aria-label", themeLabel);
@@ -51,42 +46,61 @@ const navToggle = document.querySelector(".nav-toggle");
 const primaryNav = document.querySelector("#primary-nav");
 
 if (navToggle && primaryNav) {
-  const closeNav = () => {
-    header.classList.remove("nav-open");
-    navToggle.setAttribute("aria-expanded", "false");
-    navToggle.setAttribute("aria-label", tr("ui.menuOpen", "Open navigation menu"));
+  const setNav = (open, { restoreFocus = false } = {}) => {
+    header.classList.toggle("nav-open", open);
+    document.documentElement.classList.toggle("nav-lock", open);
+    navToggle.setAttribute("aria-expanded", String(open));
+    navToggle.setAttribute("aria-label", open ? tr("ui.menuClose", "Close navigation menu") : tr("ui.menuOpen", "Open navigation menu"));
+    if (open) header.classList.remove("hidden");
+    if (!open && restoreFocus) navToggle.focus();
   };
 
   navToggle.addEventListener("click", () => {
-    const isOpen = header.classList.toggle("nav-open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-    navToggle.setAttribute("aria-label", isOpen ? tr("ui.menuClose", "Close navigation menu") : tr("ui.menuOpen", "Open navigation menu"));
+    const open = !header.classList.contains("nav-open");
+    setNav(open);
+    if (open) primaryNav.querySelector("a")?.focus();
   });
 
   primaryNav.addEventListener("click", (event) => {
-    if (event.target.closest("a")) closeNav();
+    if (event.target.closest("a")) setNav(false);
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeNav();
+    if (event.key === "Escape" && header.classList.contains("nav-open")) setNav(false, { restoreFocus: true });
+  });
+
+  // Tap or click outside the header closes the menu.
+  document.addEventListener("click", (event) => {
+    if (header.classList.contains("nav-open") && !header.contains(event.target)) setNav(false);
+  });
+
+  // Tabbing out of the open menu closes it.
+  header.addEventListener("focusout", () => {
+    setTimeout(() => {
+      const active = document.activeElement;
+      if (header.classList.contains("nav-open") && active && active !== document.body && !header.contains(active)) setNav(false);
+    });
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 768) closeNav();
+    if (window.innerWidth > 768 && header.classList.contains("nav-open")) setNav(false);
   });
 }
 
-window.addEventListener("scroll", () => {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+// The header turns into a solid bar once the page moves, hides while reading down and returns on the way up.
+function updateHeader() {
+  const scrollTop = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
+  const keepOpen = header.classList.contains("nav-open") || header.contains(document.activeElement);
 
-  if (scrollTop > lastScrollTop) {
-    header.classList.add("hidden");
-  } else {
-    header.classList.remove("hidden");
-  }
-
+  header.classList.toggle("is-stuck", scrollTop > 8);
+  header.classList.toggle("hidden", scrollTop > lastScrollTop && scrollTop > 80 && !keepOpen);
   lastScrollTop = scrollTop;
-});
+}
+
+if (header) {
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  updateHeader();
+}
 
 // Update local time display only if the target element exists on the page
 if (timeText) {

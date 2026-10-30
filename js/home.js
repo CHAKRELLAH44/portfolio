@@ -585,3 +585,15 @@ function notifyNewNote(note) {
     }),
   }).catch(() => {});
 }
+
+// -------------------------------
+// Header: mark the About link while the About section is on screen
+// -------------------------------
+const aboutSection = document.querySelector("#about");
+const aboutLink = document.querySelector('#primary-nav a[href$="#about"]');
+if (aboutSection && aboutLink && "IntersectionObserver" in window) {
+  new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) aboutLink.setAttribute("aria-current", "location");
+    else aboutLink.removeAttribute("aria-current");
+  }, { rootMargin: "-40% 0px -40% 0px" }).observe(aboutSection);
+}
