@@ -18,9 +18,12 @@
 }
 
 .skill .container .content .title {
-  font: italic bold 3rem var(--font-display); 
-  color: var(--white); 
-  text-align: center; 
+  color: var(--white);
+  font: italic 800 var(--step-4) / 1.05 var(--font-display);
+  font-stretch: 112%;
+  letter-spacing: -0.01em;
+  text-align: center;
+  text-wrap: balance;
 }
 
 .skill .container .content .skills {
@@ -162,10 +165,6 @@
 
   .skill .container .content {
     gap: 1.75rem;
-  }
-
-  .skill .container .content .title {
-    font-size: clamp(1.7rem, 8vw, 2.5rem);
   }
 
   .skill .container .content .skills {
