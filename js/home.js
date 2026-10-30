@@ -572,6 +572,35 @@ function notifyNewNote(note) {
 }
 
 // -------------------------------
+// About: show a photo instead of the placeholder when assets/profile/photo.webp or photo.jpg exists
+// -------------------------------
+const portrait = document.querySelector(".portrait");
+if (portrait) {
+  const card = portrait.querySelector(".portrait-card");
+  const show = (src) => {
+    const photo = document.createElement("img");
+    photo.className = "portrait-photo";
+    photo.src = src;
+    photo.alt = tr("about.photoAlt", "Portrait of Imane Chakrellah");
+    photo.decoding = "async";
+    card.removeAttribute("role");
+    card.removeAttribute("aria-label");
+    card.append(photo);
+    portrait.classList.add("has-photo");
+  };
+  // Try the formats one after the other; a missing file just means the placeholder stays.
+  const tryPhoto = (formats) => {
+    if (!formats.length) return;
+    const probe = new Image();
+    const src = "assets/profile/photo." + formats[0];
+    probe.onload = () => show(src);
+    probe.onerror = () => tryPhoto(formats.slice(1));
+    probe.src = src;
+  };
+  tryPhoto(["webp", "jpg"]);
+}
+
+// -------------------------------
 // Header: mark the About link while the About section is on screen
 // -------------------------------
 const aboutSection = document.querySelector("#about");

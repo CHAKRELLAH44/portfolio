@@ -38,43 +38,124 @@
   margin-top: 4px;
 }
 
-/* Nouveau conteneur pour la photo et le texte */
+/* Portrait (a placeholder card until a photo is added) beside the text */
 
 .profile-and-text {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
   align-items: center;
-  gap: 8rem; /* Espace entre la photo et le texte */
+  gap: clamp(2rem, 6vw, 6rem);
   width: 100%;
-  margin-top: 2rem; /* Ajuste selon tes besoins */
+  margin-top: 2rem;
 }
 
-/* Ajustements pour la photo */
-
-.profile-container {
-  width: 60%; /* Largeur de la photo */
-  height: auto;
-  display: flex;
-  justify-content: flex-start; 
+.portrait {
+  --ink: var(--white);
+  container-type: inline-size;
+  width: 100%;
+  max-width: 32rem;
+  margin: 0;
 }
 
-.profile-container .profile {
-  width: 100%;
-  height: auto;
-  background: var(--gray);
-  border-radius: 64px;
+body[data-theme="light"] .portrait {
+  --ink: var(--primary-text);
+}
+
+.portrait-card {
+  position: relative;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
+  isolation: isolate;
+  border: 1px solid color-mix(in srgb, var(--primary) 38%, transparent);
+  border-radius: 28px;
+  background:
+    radial-gradient(90% 60% at 15% 0%, rgba(var(--accent-rgb), 0.3), transparent 62%),
+    radial-gradient(80% 55% at 100% 100%, rgba(var(--accent-rgb), 0.18), transparent 60%),
+    var(--black);
 }
 
-.profile-container .profile img {
-  width: 100%;
+/* A faint dot grid that fades towards the bottom */
+.portrait-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(color-mix(in srgb, var(--white) 22%, transparent) 1px, transparent 1.5px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent 80%);
+  mask-image: linear-gradient(to bottom, #000, transparent 80%);
+}
+
+.portrait-mark {
+  position: absolute;
+  top: 6cqi;
+  left: 6cqi;
+  width: 15cqi;
   height: auto;
+}
+
+/* IMANSKA in giant outlined italic letters, filled with the accent on hover */
+.portrait-word {
+  position: absolute;
+  right: 0;
+  bottom: 17cqi;
+  left: 0;
+  display: grid;
+  margin: 0;
+  padding-inline: 6cqi;
+  color: transparent;
+  font: italic 900 25cqi / 0.84 var(--font-display);
+  font-stretch: 125%;
+  letter-spacing: -0.01em;
+  -webkit-text-stroke: max(1.5px, 0.45cqi) var(--ink);
+  paint-order: stroke fill;
+  transition: color 0.7s ease, text-shadow 0.7s ease;
+}
+
+.portrait-word span:nth-child(2) {
+  padding-left: 9cqi;
+}
+
+.portrait-card:hover .portrait-word {
+  color: var(--primary);
+  text-shadow: 0 0 0.3em rgba(var(--accent-rgb), 0.45);
+}
+
+.portrait-caption {
+  position: absolute;
+  right: 6cqi;
+  bottom: 6cqi;
+  left: 6cqi;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid color-mix(in srgb, var(--white) 18%, transparent);
+  color: var(--gray);
+  font: 600 var(--step--1) var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+/* A real photo covers the placeholder (inserted by js/home.js) */
+.portrait-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portrait.has-photo .portrait-grid,
+.portrait.has-photo .portrait-mark,
+.portrait.has-photo .portrait-word,
+.portrait.has-photo .portrait-caption {
+  display: none;
 }
 
 /* Ajustements pour le texte */
 
 .about-me {
-  width: 70%; /* Largeur du texte */
-  padding-left: 0; /* Supprime le padding gauche */
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -165,12 +246,6 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 1100px) {
-  .profile-and-text {
-    gap: 3rem;
-  }
-}
-
 @media (max-width: 768px) {
   .about {
     min-height: 0;
@@ -192,21 +267,18 @@
   }
 
   .profile-and-text {
-    flex-direction: column;
-    align-items: stretch;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
     margin-top: 0.75rem;
   }
 
-  .profile-container,
-  .about-me {
-    width: 100%;
+  .portrait {
+    max-width: 22rem;
+    margin-inline: auto;
   }
 
-  .profile-container .profile {
-    max-width: 520px;
-    margin-inline: auto;
-    border-radius: 28px;
+  .portrait-card {
+    border-radius: 22px;
   }
 
   .about-me {

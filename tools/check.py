@@ -18,6 +18,8 @@ PAGES = ["index.html", "projects.html", "hidden-me.html", "contact.html", "404.h
 TEXT = {".html", ".css", ".js", ".md", ".xml", ".json", ".yml", ".webmanifest"}
 # Assets kept on purpose although no page uses them yet.
 KEEP = ()
+# Files a script looks for but that do not have to exist (the optional About photo).
+OPTIONAL = ("assets/profile/photo",)
 ATTRS = ("src", "href", "poster", "data-light-src")
 ASSET_RX = re.compile(r"assets/[A-Za-z0-9_\-./+]+")
 URL_RX = re.compile(r"url\(\s*['\"]?([^'\")]+)['\"]?\s*\)")
@@ -79,7 +81,7 @@ for path in ROOT.rglob("*"):
     for token in ASSET_RX.findall(text):
         token = token.rstrip(".")
         referenced.add(token)
-        if not (ROOT / token).exists() and not token.endswith("/"):
+        if not (ROOT / token).exists() and not token.endswith("/") and not token.startswith(OPTIONAL):
             errors.append(f"{rel}: missing asset {token}")
     if path.suffix == ".css":
         for ref in URL_RX.findall(text):

@@ -221,11 +221,18 @@
     
           <!-- Nouvelle structure pour la photo et le texte -->
           <div class="profile-and-text">
-            <div class="profile-container" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
-              <div class="profile">
-                  <img loading="lazy" decoding="async" src="assets/profile/profile-dark.webp" data-light-src="assets/profile/profile-light.webp" alt="Profile graphic: Imane Chakrellah" data-i18n-attr="alt:about.imgAlt" width="700" height="700">
+            <figure class="portrait" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
+              <div class="portrait-card" role="img" aria-label="Imanska, Imane Chakrellah" data-i18n-attr="aria-label:about.portraitAlt">
+                <div class="portrait-grid" aria-hidden="true"></div>
+                <img class="portrait-mark" src="assets/brand/logo.png" data-light-src="assets/brand/logo-light.png" alt="" width="80" height="80" />
+                <div class="portrait-word" aria-hidden="true"><span>IMAN</span><span>SKA</span></div>
+                <figcaption class="portrait-caption" aria-hidden="true">
+                  <span>Imane Chakrellah</span>
+                  <span data-i18n="about.portraitPlace">Rabat, Morocco</span>
+                </figcaption>
+                <!-- When assets/profile/photo.webp or photo.jpg exists, js/home.js shows it here instead. -->
               </div>
-            </div>
+            </figure>
     
             <div class="about-me" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
               <p data-i18n="about.text">I’m an engineer, but I’m also a tech enthusiast and a challenge-seeker. My goal? To improve the world, one bug at a time. Or at least make it a little more fun through tech!</p>

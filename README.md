@@ -61,7 +61,7 @@ A few things you might notice along the way:
 ├── site.webmanifest · robots.txt · sitemap.xml
 └── assets/
     ├── brand/           # logo, favicons, social cover
-    ├── profile/         # profile graphic (dark and light)
+    ├── profile/         # optional: photo.webp or photo.jpg replaces the About placeholder
     ├── projects/        # screenshots, one folder per project; tiles/ = placeholder thumbnails
     ├── hidden-me/       # photos for the personal page
     ├── fonts/           # WOFF2 files (Archivo, Instrument Sans, IBM Plex Mono)
@@ -70,6 +70,13 @@ A few things you might notice along the way:
 
 Load order on a page: `base.css`, then the partials the page needs; `i18n.js`, `supabase-config.js`, `core.js`, then the page's own script.
 Run `python tools/check.py` before committing.
+
+## Add your photo
+
+The About section shows an "IMANSKA" placeholder card. To show a real photo instead, save it as
+`assets/profile/photo.webp` (or `photo.jpg`) and reload. No code change is needed. A portrait shape works
+best (about 4 wide by 5 high, 1000 pixels wide is plenty). Until the file exists the browser tools list a
+harmless 404 for it; that is the page looking for the photo.
 
 ## Run it locally
 
