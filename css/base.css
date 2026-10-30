@@ -662,7 +662,7 @@ button,
   pointer-events: none;
 }
 
-/* ===== Touch: ripple, swipe nudge, gyroscope parallax, long-press bubble ===== */
+/* ===== Touch: ripple, swipe nudge, long-press bubble ===== */
 
 .touch-ripple {
   position: absolute;

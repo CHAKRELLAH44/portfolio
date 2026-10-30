@@ -95,16 +95,10 @@ body[data-theme="light"] .hero .line {
   margin-block: auto;
 }
 
-.hero .row-1,
 .hero .row-3 {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 700;
-}
-
-.hero .row-1 {
-  font-size: clamp(2.4rem, min(10vw, 17vh), 10rem);
-  line-height: 0.95;
 }
 
 .hero .row-3 {
@@ -114,47 +108,74 @@ body[data-theme="light"] .hero .line {
   overflow-wrap: anywhere;
 }
 
-/* Outlined name; the h1 holds the real text for screen readers */
-.hero .row-2 {
-  align-self: stretch;
+/* The name: "I'M" solid, "IMANE" outlined, on one baseline. The h1 holds the real text for screen readers.
+   It is sized from the width of the text block, so it fills it on a desktop and still fits one line on a phone
+   (the French "JE SUIS" wraps above the name when there is no room). */
+.hero .text {
+  container-type: inline-size;
+}
+
+.hero-name {
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --name-stroke: var(--white);
   margin: 0;
-  color: var(--black);
-  font-size: 1rem;
-  font-weight: 400;
-  cursor: crosshair;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: var(--white);
-}
-
-.row-2 svg {
-  display: block;
-  width: 100%;
-  height: clamp(5rem, 18vh, 8.4rem);
+  max-width: 100%;
   font-family: var(--font-display);
+  font-size: clamp(2.4rem, 15.2cqi, 12.5rem);
+  font-style: italic;
+  font-stretch: 125%;
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.015em;
 }
 
-.row-2 svg text {
-  text-transform: uppercase;
-  font-size: 20rem;
-  fill: transparent;
-  stroke: white;
-  stroke-width: 2;
-  animation: stroke 5s infinite alternate;
+body[data-theme="light"] .hero-name {
+  --name-stroke: var(--primary-text);
 }
 
-body[data-theme="light"] .hero .row-2 svg text {
-  stroke: #f28a29;
-  filter: drop-shadow(0 0 0.5rem rgba(var(--accent-rgb), 0.65));
-  animation: stroke-light 5s infinite alternate;
+.hero-name-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.2em;
+  padding: 0.04em 0.12em 0.02em 0;
+  overflow: hidden; /* the letters rise out of this edge */
 }
 
-.hero .row-2.is-glitching svg {
-  animation: hero-glitch 0.55s steps(2, end);
+.hero-name .im {
+  color: var(--white);
 }
 
-.hero .row-2.is-gyro svg {
-  transform: translate(calc(var(--gx, 0) * 14px), calc(var(--gy, 0) * 8px));
-  transition: transform 0.15s ease-out;
+.hero-name .name {
+  display: inline-flex;
+}
+
+.hero-name .ch {
+  display: inline-block;
+  color: transparent;
+  -webkit-text-stroke: max(1.5px, 0.012em) var(--name-stroke);
+  paint-order: stroke fill;
+}
+
+/* Load: the letters rise one after another, then a wave of fill runs through the outline once. */
+.hero-name .im,
+.hero-name .ch {
+  animation: ch-rise 0.95s var(--ease) both;
+}
+
+.hero-name .im {
+  animation-delay: 0.1s;
+}
+
+.hero-name .ch {
+  animation: ch-rise 0.95s var(--ease) both, ch-fill 1.4s ease-in-out both;
+  animation-delay: calc(0.3s + var(--i) * 70ms), calc(1.5s + var(--i) * 120ms);
+}
+
+/* Hover, click or tap: a wave of squeeze and fill runs through the letters (js/home.js adds .is-wave). */
+.hero-name .name.is-wave .ch {
+  animation: ch-wave 0.9s var(--ease) both;
+  animation-delay: calc(var(--i) * 70ms);
 }
 
 /* Typed roles */
@@ -287,10 +308,6 @@ body[data-theme="light"] .hero .arrow:focus-visible {
 
 /* Short screens: tighter name block */
 @media (max-height: 700px) and (min-width: 769px) {
-  .hero .row-1 {
-    font-size: clamp(3rem, 8vw, 7rem);
-  }
-
   .hero .short-info {
     font-size: 0.85rem;
   }
@@ -316,19 +333,9 @@ body[data-theme="light"] .hero .arrow:focus-visible {
     margin-block: 0;
   }
 
-  .hero .row-1 {
-    font-size: clamp(2.45rem, 10.5vw, 4rem);
-    line-height: 0.98;
-  }
-
   .hero .row-3 {
     font-size: clamp(1rem, 4vw, 1.55rem);
     line-height: 1.2;
-  }
-
-  .row-2 svg {
-    height: auto;
-    aspect-ratio: 16 / 3;
   }
 
   .hero .arrow {
@@ -355,10 +362,6 @@ body[data-theme="light"] .hero .arrow:focus-visible {
 }
 
 @media (max-width: 420px) {
-  .hero .row-1 {
-    font-size: clamp(2.15rem, 10vw, 2.8rem);
-  }
-
   .hero .row-3 {
     font-size: 0.95rem;
   }
@@ -380,7 +383,8 @@ body[data-theme="light"] .hero .arrow:focus-visible {
 .hero.is-offscreen .shape-2,
 .hero.is-offscreen .line,
 .hero.is-offscreen .arrow,
-.hero.is-offscreen .row-2 svg text,
+.hero.is-offscreen .im,
+.hero.is-offscreen .ch,
 .hero.is-offscreen .pulse::after,
 .hero.is-offscreen .hero-roles-caret {
   animation-play-state: paused;
@@ -391,37 +395,13 @@ body[data-theme="light"] .hero .arrow:focus-visible {
   .hero .shape-2,
   .hero .line,
   .hero .arrow,
-  .hero .row-2 svg text,
+  .hero .im,
+  .hero .ch,
   .hero .pulse::after,
   .hero .hero-roles-caret {
     animation: none;
   }
 
-  .row-2 svg text {
-    stroke-width: 2;
-  }
-}
-
-@keyframes stroke {
-  0% {
-    stroke: #5ce1e6;
-    stroke-width: 0;
-    stroke-dashoffset: 25%;
-    stroke-dasharray: 0 50%;
-  }
-  70% {
-    stroke: white;
-  }
-  80% {
-    stroke: #5ce1e6;
-    stroke-width: 3;
-  }
-  100% {
-    stroke: white;
-    stroke-width: 0;
-    stroke-dashoffset: -25%;
-    stroke-dasharray: 50% 0;
-  }
 }
 
 @keyframes line {
@@ -512,19 +492,45 @@ body[data-theme="light"] .hero .arrow:focus-visible {
   to { right: 100%; top: 100%; opacity: 0; }
 }
 
-@keyframes stroke-light {
-  0%, 100% { stroke: #F28A29; stroke-width: 1.5; }
-  70% { stroke: #D96D15; }
-  85% { stroke: #F28A29; stroke-width: 3; }
-}
-
 @keyframes hero-caret { 50% { opacity: 0; } }
 
-@keyframes hero-glitch {
-  0%   { transform: none; filter: none; }
-  15%  { transform: translate(-6px, 2px) skewX(-8deg); filter: drop-shadow(4px 0 0 rgba(var(--accent-rgb), 0.9)) drop-shadow(-4px 0 0 #ff2bd6); clip-path: inset(10% 0 45% 0); }
-  30%  { transform: translate(5px, -2px); filter: drop-shadow(-5px 0 0 rgba(var(--accent-rgb), 0.9)) drop-shadow(5px 0 0 #ff2bd6); clip-path: inset(55% 0 5% 0); }
-  45%  { transform: translate(-3px, 0) skewX(6deg); filter: drop-shadow(3px 0 0 rgba(var(--accent-rgb), 0.9)); clip-path: inset(30% 0 30% 0); }
-  60%  { transform: translate(2px, 1px); filter: drop-shadow(-2px 0 0 #ff2bd6); clip-path: none; }
-  100% { transform: none; filter: none; clip-path: none; }
+@keyframes ch-rise {
+  from {
+    opacity: 0;
+    transform: translateY(105%) skewY(8deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ch-fill {
+  0%,
+  100% {
+    color: transparent;
+    text-shadow: none;
+  }
+
+  35%,
+  55% {
+    color: var(--primary);
+    text-shadow: 0 0 0.3em rgba(var(--accent-rgb), 0.5);
+  }
+}
+
+@keyframes ch-wave {
+  0%,
+  100% {
+    color: transparent;
+    font-stretch: 125%;
+    transform: none;
+  }
+
+  40% {
+    color: var(--primary);
+    font-stretch: 72%;
+    transform: translateY(-0.035em);
+  }
 }

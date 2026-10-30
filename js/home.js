@@ -1,4 +1,4 @@
-// Home page: key figures, skills, hero, timeline, gyroscope, skill bubbles, testimonials.
+// Home page: key figures, skills, hero, timeline, skill bubbles, testimonials.
 // Needs core.js.
 
 // -------------------------------
@@ -151,19 +151,25 @@ if (heroSection && "IntersectionObserver" in window) {
   new IntersectionObserver(([entry]) => heroSection.classList.toggle("is-offscreen", !entry.isIntersecting)).observe(heroSection);
 }
 
-const heroName = document.querySelector(".hero .row-2");
+// The name: when you hover, click or tap it, a wave of squeeze and fill runs through the letters.
+const heroName = document.querySelector(".hero-name .name");
 if (heroName && !prefersReducedMotion) {
-  const glitch = () => {
-    heroName.classList.remove("is-glitching");
+  const lastLetter = heroName.querySelector(".ch:last-child");
+  let busy = true; // not during the intro
+  setTimeout(() => (busy = false), 3200);
+  const wave = () => {
+    if (busy) return;
+    busy = true;
+    heroName.classList.remove("is-wave");
     void heroName.offsetWidth; // restart the animation
-    heroName.classList.add("is-glitching");
+    heroName.classList.add("is-wave");
+    lastLetter.addEventListener("animationend", () => {
+      heroName.classList.remove("is-wave");
+      busy = false;
+    }, { once: true });
   };
-  heroName.addEventListener("pointerenter", glitch);
-  heroName.addEventListener("click", glitch);
-  heroName.addEventListener("animationend", () => heroName.classList.remove("is-glitching"));
-  setInterval(() => {
-    if (!document.hidden && window.scrollY < window.innerHeight) glitch();
-  }, 7000);
+  heroName.addEventListener("pointerenter", wave);
+  heroName.addEventListener("click", wave);
 }
 
 // -------------------------------
@@ -209,43 +215,6 @@ if (timeline) {
   window.addEventListener("scroll", updateTimeline, { passive: true });
   window.addEventListener("resize", updateTimeline);
   updateTimeline();
-}
-
-// -------------------------------
-// Gyroscope parallax on the hero name and the profile photo
-// -------------------------------
-const tiltTargets = document.querySelectorAll(".hero .row-2, .profile-container .profile");
-if (coarsePointer && !prefersReducedMotion && tiltTargets.length && "DeviceOrientationEvent" in window) {
-  let base = null;
-  let frame = 0;
-  const onOrientation = (event) => {
-    if (event.beta === null || event.gamma === null) return;
-    // Measure tilt from however the phone was held when the page opened.
-    if (!base) base = { beta: event.beta, gamma: event.gamma };
-    const clamp = (value) => Math.max(-1, Math.min(1, value / 25));
-    const tx = clamp(event.gamma - base.gamma);
-    const ty = clamp(event.beta - base.beta);
-    cancelAnimationFrame(frame);
-    frame = requestAnimationFrame(() => {
-      tiltTargets.forEach((el) => {
-        el.style.setProperty("--gx", tx.toFixed(3));
-        el.style.setProperty("--gy", ty.toFixed(3));
-        el.classList.add("is-gyro");
-      });
-    });
-  };
-  const startGyro = () => window.addEventListener("deviceorientation", onOrientation);
-  if (typeof DeviceOrientationEvent.requestPermission === "function") {
-    // iOS only allows motion access after a user gesture.
-    const ask = () => {
-      DeviceOrientationEvent.requestPermission()
-        .then((state) => state === "granted" && startGyro())
-        .catch(() => {});
-    };
-    document.addEventListener("touchend", ask, { once: true });
-  } else {
-    startGyro();
-  }
 }
 
 // -------------------------------

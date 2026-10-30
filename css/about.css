@@ -416,14 +416,3 @@
 
 .about-actions .about-certifications .bx { fill: currentColor; }
 
-.profile-container .profile.is-gyro {
-  transform: perspective(800px) rotateY(calc(var(--gx, 0) * 8deg)) rotateX(calc(var(--gy, 0) * -8deg));
-  transition: transform 0.15s ease-out;
-}
-
-.profile-container .profile.is-gyro img {
-  transform: translate(calc(var(--gx, 0) * -10px), calc(var(--gy, 0) * -10px)) scale(1.06);
-  transition: transform 0.15s ease-out;
-}
-
-
