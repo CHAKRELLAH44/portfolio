@@ -6,6 +6,19 @@
 // ===============================
 const hiddenPage = document.querySelector(".hidden-me");
 if (hiddenPage) {
+  // Photos flip over to show fun facts. This comes first so the cards keep working
+  // even if a mini-game below fails to start.
+  // The real control is the .flip-toggle button laid over the photo: it is focusable, Enter and
+  // Space activate it natively, and aria-pressed tells screen readers whether the facts are showing.
+  hiddenPage.querySelectorAll(".flip-card").forEach((card) => {
+    const toggle = card.querySelector(".flip-toggle");
+    card.addEventListener("click", () => {
+      const flipped = card.classList.toggle("is-flipped");
+      toggle?.setAttribute("aria-pressed", String(flipped));
+      if (typeof buzz === "function") buzz(8);
+    });
+  });
+
   // Each chapter tints its section, the side nav and a soft page glow.
   // Colours live in css/hidden-me.css (--chapter-rgb); Technology follows the theme accent.
   const chapters = [...hiddenPage.querySelectorAll("[data-chapter]")];
@@ -89,18 +102,6 @@ if (hiddenPage) {
     });
     document.addEventListener("portfolio:languagechange", label);
     label();
-  });
-
-  // Photos flip over to show fun facts.
-  // The real control is the .flip-toggle button laid over the photo: it is focusable, Enter and
-  // Space activate it natively, and aria-pressed tells screen readers whether the facts are showing.
-  hiddenPage.querySelectorAll(".flip-card").forEach((card) => {
-    const toggle = card.querySelector(".flip-toggle");
-    card.addEventListener("click", () => {
-      const flipped = card.classList.toggle("is-flipped");
-      toggle?.setAttribute("aria-pressed", String(flipped));
-      buzz(8);
-    });
   });
 
   // -------------------------------
