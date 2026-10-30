@@ -273,6 +273,8 @@ const I18N_FR = {
   "modal.shrink": "Réduire l'image",
   "modal.screenshot": "capture",
   "modal.openGithub": "Ouvrir GitHub dans un nouvel onglet",
+  "certs.of": "sur",
+  "certs.newTab": "s'ouvre dans un nouvel onglet",
   "proj.taxi.alts": "Page d'accueil T SIR avec un formulaire de réservation (départ, arrivée, prix) et une carte de la région Rabat-Salé-Kénitra|Écran de connexion avec champs e-mail et mot de passe à côté d'un panneau d'inscription Hello, Friend|Page d'informations du conducteur avec un taxi jaune et un formulaire de renseignements|Formulaire d'inscription du conducteur avec les cartes informations du conducteur, permis de conduire et informations du véhicule|Tableau des commandes disponibles (client, départ, arrivée, prix, statut) avec boutons accepter, décliner et supprimer|Fiche de réservation client avec lieu de départ, lieu d'arrivée, prix et état|Diagramme de classes UML du système de réservation : personne, client, conducteur, destination, voiture, demande et historique",
   "proj.exams.alts": "Écran de connexion de l'application Android avec champs e-mail et mot de passe et un lien pour créer un compte|Écran d'inscription de l'application Android avec photo de profil, nom d'utilisateur, e-mail et mot de passe|Écran d'accueil de l'application Android : démarrer un quiz, voir les quiz résolus et créer un quiz, avec total de questions et de points|Écran des résultats d'un quiz listant les questions et la bonne réponse, avec un score total de 2 sur 2",
 

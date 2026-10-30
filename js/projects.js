@@ -369,11 +369,15 @@ if (certificationCarousel) {
     const slide = document.createElement("div");
     slide.className = "certification-slide";
     slide.dataset.slide = String(index);
-    slide.hidden = index !== 0;
+    slide.hidden = index !== 0; // hidden slides are display:none: no focus, not read by screen readers
+    slide.setAttribute("role", "group");
+    slide.setAttribute("aria-roledescription", "slide");
     slidesContainer.append(slide);
   }
   const slides = [...slidesContainer.querySelectorAll(".certification-slide")];
   dots.innerHTML = "";
+  const slideLabel = (index) => `${tr("certs.slide", "Slide")} ${index + 1} ${tr("certs.of", "of")} ${slides.length}`;
+  const newTabHint = () => ` (${tr("certs.newTab", "opens in a new tab")})`;
 
   courseLinks.forEach((course, index) => {
     const card = document.createElement("article");
@@ -388,6 +392,10 @@ if (certificationCarousel) {
     title.rel = "noopener noreferrer";
     if (course.dataset.status) title.dataset.status = course.dataset.status;
     title.textContent = course.textContent;
+    const hint = document.createElement("span");
+    hint.className = "sr-only";
+    hint.textContent = newTabHint();
+    title.append(hint);
     const status = document.createElement("span");
     status.className = "certification-status";
     status.textContent = course.dataset.status === "credential"
@@ -401,7 +409,7 @@ if (certificationCarousel) {
     const dot = document.createElement("button");
     dot.type = "button";
     dot.className = "certification-dot";
-    dot.setAttribute("aria-label", `${tr("certs.slide", "Slide")} ${index + 1}`);
+    dot.setAttribute("aria-label", slideLabel(index));
     dot.addEventListener("click", () => showCertificationSlide(index));
     dots.append(dot);
   });
@@ -416,10 +424,12 @@ if (certificationCarousel) {
     });
     [...dots.children].forEach((dot, dotIndex) => {
       dot.classList.toggle("is-active", dotIndex === currentSlide);
-      dot.setAttribute("aria-current", dotIndex === currentSlide ? "true" : "false");
+      if (dotIndex === currentSlide) dot.setAttribute("aria-current", "true");
+      else dot.removeAttribute("aria-current");
     });
     pageLabel.textContent = `${currentSlide + 1} / ${slides.length}`;
   }
+  slides.forEach((slide, index) => slide.setAttribute("aria-label", slideLabel(index)));
 
   certificationCarousel.addEventListener("click", (event) => {
     if (event.target.closest("[data-cert-prev]")) {
@@ -439,9 +449,9 @@ if (certificationCarousel) {
       const isCredential = status.closest(".certification-card")?.querySelector(".certification-name")?.dataset.status === "credential";
       status.textContent = isCredential ? tr("certs.credential", "Credential") : tr("certs.status", "100% complete");
     });
-    [...dots.children].forEach((dot, index) => {
-      dot.setAttribute("aria-label", `${tr("certs.slide", "Slide")} ${index + 1}`);
-    });
+    [...dots.children].forEach((dot, index) => dot.setAttribute("aria-label", slideLabel(index)));
+    slides.forEach((slide, index) => slide.setAttribute("aria-label", slideLabel(index)));
+    certificationCarousel.querySelectorAll(".certification-name > .sr-only").forEach((hint) => { hint.textContent = newTabHint(); });
   });
   showCertificationSlide(0);
 }
