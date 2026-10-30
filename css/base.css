@@ -352,6 +352,7 @@ button, .btn, .expand-btn, .github-link, .close-btn {
 /* Smooth font rendering across browsers */
 
 body {
+  cursor: default; /* the text cursor only shows in form fields; links and buttons set their own */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
