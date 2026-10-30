@@ -238,7 +238,7 @@ const I18N_FR = {
   "proj.bank.long": "Développement d'une application web sécurisée de gestion bancaire : gestion des clients, création de comptes, suivi des soldes, historique des transactions et virements. Mise en place d'un contrôle d'accès par rôles et d'une authentification JWT pour sécuriser les API REST et gérer les permissions des clients et des agents bancaires.",
   "proj.ecom.title": "Plateforme e-commerce en microservices",
   "proj.ecom.long": "Développement d'une plateforme e-commerce en microservices pour la gestion des produits et des commandes avec Spring Boot et Spring Cloud. Mise en place des opérations CRUD, d'une configuration centralisée, de la découverte de services, du routage via API Gateway, de la répartition de charge et de la tolérance aux pannes (timeouts et mécanismes de repli). Intégration d'un front-end React.js et documentation des API REST avec Swagger/OpenAPI.",
-  "proj.echstore.title": "Ech Store – Site web JEE",
+  "proj.echstore.title": "Tech Store – Site web JEE",
   "proj.echstore.long": "Développement d'un site e-commerce en JEE avec opérations CRUD complètes, authentification et gestion du catalogue produits. Architecture back-end rapide et sécurisée. Jakarta EE (JEE) pour les servlets, JDK 17 pour l'environnement Java, et Tomcat 10 pour le déploiement.",
   "proj.movie.title": "Système de gestion de films",
   "proj.movie.long": "Création d'une plateforme de gestion de films et d'acteurs avec CRUD complet, composée d'un front-end React moderne et d'un back-end .NET robuste connecté à une base SQL. C# (.NET) pour la logique back-end, SQL pour la base relationnelle, et React + Vite pour l'interface.",
@@ -259,10 +259,22 @@ const I18N_FR = {
   "proj.carRental.long": "Application mobile multiplateforme de location de voitures développée avec Flutter. Une seule base de code Dart cible Android et iOS, avec Firebase comme back-end pour les données et la configuration d'hébergement.",
 
   "proj.p2p.title": "Système d'information achats – Procure-to-Pay",
-  "proj.p2p.long": "Système Procure-to-Pay développé sur Salesforce pour un client grand compte pendant mon stage chez D&amp;A Technologies. J'ai modélisé les processus métier en BPMN, développé la logique back-end et les workflows d'approbation en Apex et SOQL, créé des Lightning Web Components et livré des fonctionnalités destinées aux fournisseurs sur Experience Cloud.",
+  "proj.p2p.long": "Système Procure-to-Pay développé sur Salesforce pour un client grand compte pendant mon stage chez D&A Technologies. J'ai modélisé les processus métier en BPMN, développé la logique back-end et les workflows d'approbation en Apex et SOQL, créé des Lightning Web Components et livré des fonctionnalités destinées aux fournisseurs sur Experience Cloud.",
   "proj.confidential": "Les captures d'écran sont confidentielles et appartiennent à l'entreprise cliente.",
   "proj.featured": "À la une",
   "proj.reportTitle": "Lire le rapport du projet",
+  // --- projects page: dialog, images, accessible names ---
+  "proj.open": "Ouvrir les détails du projet",
+  "proj.github": "Voir sur GitHub",
+  "modal.close": "Fermer",
+  "modal.prev": "Image précédente",
+  "modal.next": "Image suivante",
+  "modal.enlarge": "Agrandir l'image",
+  "modal.shrink": "Réduire l'image",
+  "modal.screenshot": "capture",
+  "modal.openGithub": "Ouvrir GitHub dans un nouvel onglet",
+  "proj.taxi.alts": "Page d'accueil T SIR avec un formulaire de réservation (départ, arrivée, prix) et une carte de la région Rabat-Salé-Kénitra|Écran de connexion avec champs e-mail et mot de passe à côté d'un panneau d'inscription Hello, Friend|Page d'informations du conducteur avec un taxi jaune et un formulaire de renseignements|Formulaire d'inscription du conducteur avec les cartes informations du conducteur, permis de conduire et informations du véhicule|Tableau des commandes disponibles (client, départ, arrivée, prix, statut) avec boutons accepter, décliner et supprimer|Fiche de réservation client avec lieu de départ, lieu d'arrivée, prix et état|Diagramme de classes UML du système de réservation : personne, client, conducteur, destination, voiture, demande et historique",
+  "proj.exams.alts": "Écran de connexion de l'application Android avec champs e-mail et mot de passe et un lien pour créer un compte|Écran d'inscription de l'application Android avec photo de profil, nom d'utilisateur, e-mail et mot de passe|Écran d'accueil de l'application Android : démarrer un quiz, voir les quiz résolus et créer un quiz, avec total de questions et de points|Écran des résultats d'un quiz listant les questions et la bonne réponse, avec un score total de 2 sur 2",
 
   // Labels used by the page scripts (js/core.js and friends)
   "ui.themeToLight": "Activer le mode clair",

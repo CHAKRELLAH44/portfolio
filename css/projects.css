@@ -1689,6 +1689,37 @@ body[data-theme="light"] .project-card .desc .tool {
   animation: swipe-in-prev 0.35s ease-out;
 }
 
+/* Scroll lock while the project dialog is open (the gutter stays so the page does not shift). */
+html.modal-open {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+.project-modal .panel:focus {
+  outline: none;
+}
+
+/* The confidential notice fills the whole carousel frame instead of its upper half. */
+.project-modal .carousel .slides {
+  height: 100%;
+}
+
+/* Real screenshots on cards: phone screens keep their top in view. */
+.project-card .project-image--phone {
+  object-position: 50% 30%;
+}
+
+/* Visible keyboard focus on the page's own controls. */
+.project-card .expand-btn:focus-visible,
+.project-card .github-link:focus-visible,
+.project-modal .close-btn:focus-visible,
+.project-modal .carousel .nav button:focus-visible,
+.project-modal .download-button:focus-visible,
+.project-modal .carousel img.modal-slide:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
 /* Footer title: a paragraph on this page (the page keeps a single <h1>). */
 
 footer .container .content .footer-title {
