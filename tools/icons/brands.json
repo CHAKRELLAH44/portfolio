@@ -1,0 +1,434 @@
+{
+  "_comment": "Brand colour (hex, no #) and source of every icon in tools/icons. Simple Icons is CC0, Devicon is MIT; see README.md. Trademarks stay with their owners.",
+  "icons": {
+    "adobe": {
+      "title": "Adobe",
+      "hex": "FF0000",
+      "source": "simple-icons",
+      "version": "11.0.0",
+      "slug": "adobe",
+      "note": "no longer in current Simple Icons; kept from the last release that has it (CC0)"
+    },
+    "angular": {
+      "title": "Angular",
+      "hex": "0F0F11",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "angular"
+    },
+    "ansible": {
+      "title": "Ansible",
+      "hex": "EE0000",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "ansible"
+    },
+    "argo": {
+      "title": "Argo CD",
+      "hex": "EF7B4D",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "argo"
+    },
+    "aws": {
+      "title": "AWS",
+      "hex": "232F3E",
+      "source": "simple-icons",
+      "version": "11.0.0",
+      "slug": "amazonaws",
+      "note": "no longer in current Simple Icons; kept from the last release that has it (CC0)"
+    },
+    "azure": {
+      "title": "Microsoft Azure",
+      "hex": "0078D4",
+      "source": "devicon",
+      "version": "2.17.0",
+      "slug": "azure",
+      "variant": "plain",
+      "note": "not in current Simple Icons; Devicon plain (single-colour) variant (MIT)"
+    },
+    "bootstrap": {
+      "title": "Bootstrap",
+      "hex": "7952B3",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "bootstrap"
+    },
+    "c": {
+      "title": "C",
+      "hex": "A8B9CC",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "c"
+    },
+    "cpp": {
+      "title": "C++",
+      "hex": "00599C",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "cplusplus"
+    },
+    "csharp": {
+      "title": "C#",
+      "hex": "512BD4",
+      "source": "devicon",
+      "version": "2.17.0",
+      "slug": "csharp",
+      "variant": "plain",
+      "note": "not in current Simple Icons; Devicon plain (single-colour) variant (MIT)"
+    },
+    "css3": {
+      "title": "CSS3",
+      "hex": "663399",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "css"
+    },
+    "discord": {
+      "title": "Discord",
+      "hex": "5865F2",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "discord"
+    },
+    "django": {
+      "title": "Django",
+      "hex": "092E20",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "django"
+    },
+    "docker": {
+      "title": "Docker",
+      "hex": "2496ED",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "docker"
+    },
+    "dotnet": {
+      "title": ".NET",
+      "hex": "512BD4",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "dotnet"
+    },
+    "elasticsearch": {
+      "title": "Elasticsearch",
+      "hex": "005571",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "elasticsearch"
+    },
+    "figma": {
+      "title": "Figma",
+      "hex": "F24E1E",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "figma"
+    },
+    "firebase": {
+      "title": "Firebase",
+      "hex": "DD2C00",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "firebase"
+    },
+    "flutter": {
+      "title": "Flutter",
+      "hex": "02569B",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "flutter"
+    },
+    "git": {
+      "title": "Git",
+      "hex": "F03C2E",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "git"
+    },
+    "github": {
+      "title": "GitHub",
+      "hex": "181717",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "github"
+    },
+    "googlecloud": {
+      "title": "Google Cloud",
+      "hex": "4285F4",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "googlecloud"
+    },
+    "grafana": {
+      "title": "Grafana",
+      "hex": "F46800",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "grafana"
+    },
+    "h2": {
+      "title": "H2 Database",
+      "hex": "09476B",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "h2database"
+    },
+    "html5": {
+      "title": "HTML5",
+      "hex": "E34F26",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "html5"
+    },
+    "huggingface": {
+      "title": "Hugging Face",
+      "hex": "FFD21E",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "huggingface"
+    },
+    "java": {
+      "title": "Java",
+      "hex": "EA2D2E",
+      "source": "devicon",
+      "version": "2.17.0",
+      "slug": "java",
+      "variant": "plain",
+      "note": "not in current Simple Icons; Devicon plain (single-colour) variant (MIT)"
+    },
+    "javascript": {
+      "title": "JavaScript",
+      "hex": "F7DF1E",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "javascript"
+    },
+    "jenkins": {
+      "title": "Jenkins",
+      "hex": "D24939",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "jenkins"
+    },
+    "kafka": {
+      "title": "Apache Kafka",
+      "hex": "231F20",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "apachekafka"
+    },
+    "kubernetes": {
+      "title": "Kubernetes",
+      "hex": "326CE5",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "kubernetes"
+    },
+    "linkedin": {
+      "title": "LinkedIn",
+      "hex": "0A66C2",
+      "source": "simple-icons",
+      "version": "11.0.0",
+      "slug": "linkedin",
+      "note": "no longer in current Simple Icons; kept from the last release that has it (CC0)"
+    },
+    "linux": {
+      "title": "Linux",
+      "hex": "FCC624",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "linux"
+    },
+    "mulesoft": {
+      "title": "MuleSoft",
+      "hex": "00A0DF",
+      "source": "simple-icons",
+      "version": "11.0.0",
+      "slug": "mulesoft",
+      "note": "no longer in current Simple Icons; kept from the last release that has it (CC0)"
+    },
+    "mysql": {
+      "title": "MySQL",
+      "hex": "4479A1",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "mysql"
+    },
+    "nextjs": {
+      "title": "Next.js",
+      "hex": "000000",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "nextdotjs"
+    },
+    "nodejs": {
+      "title": "Node.js",
+      "hex": "5FA04E",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "nodedotjs"
+    },
+    "oracle": {
+      "title": "Oracle",
+      "hex": "F80000",
+      "source": "simple-icons",
+      "version": "11.0.0",
+      "slug": "oracle",
+      "note": "no longer in current Simple Icons; kept from the last release that has it (CC0)"
+    },
+    "pfsense": {
+      "title": "pfSense",
+      "hex": "212121",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "pfsense"
+    },
+    "postgresql": {
+      "title": "PostgreSQL",
+      "hex": "4169E1",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "postgresql"
+    },
+    "powerbi": {
+      "title": "Power BI",
+      "hex": "F2C811",
+      "source": "simple-icons",
+      "version": "11.0.0",
+      "slug": "powerbi",
+      "note": "no longer in current Simple Icons; kept from the last release that has it (CC0)"
+    },
+    "prometheus": {
+      "title": "Prometheus",
+      "hex": "E6522C",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "prometheus"
+    },
+    "proxmox": {
+      "title": "Proxmox",
+      "hex": "E57000",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "proxmox"
+    },
+    "python": {
+      "title": "Python",
+      "hex": "3776AB",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "python"
+    },
+    "react": {
+      "title": "React",
+      "hex": "61DAFB",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "react"
+    },
+    "salesforce": {
+      "title": "Salesforce",
+      "hex": "00A1E0",
+      "source": "devicon",
+      "version": "2.17.0",
+      "slug": "salesforce",
+      "variant": "plain",
+      "note": "not in current Simple Icons; Devicon plain (single-colour) variant (MIT)"
+    },
+    "scikitlearn": {
+      "title": "scikit-learn",
+      "hex": "F7931E",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "scikitlearn"
+    },
+    "slack": {
+      "title": "Slack",
+      "hex": "4A154B",
+      "source": "devicon",
+      "version": "2.17.0",
+      "slug": "slack",
+      "variant": "plain",
+      "note": "not in current Simple Icons; Devicon plain (single-colour) variant (MIT)"
+    },
+    "spark": {
+      "title": "Apache Spark",
+      "hex": "E25A1C",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "apachespark"
+    },
+    "spotify": {
+      "title": "Spotify",
+      "hex": "1ED760",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "spotify"
+    },
+    "springboot": {
+      "title": "Spring Boot",
+      "hex": "6DB33F",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "springboot"
+    },
+    "streamlit": {
+      "title": "Streamlit",
+      "hex": "FF4B4B",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "streamlit"
+    },
+    "swagger": {
+      "title": "Swagger",
+      "hex": "85EA2D",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "swagger"
+    },
+    "tailwind": {
+      "title": "Tailwind CSS",
+      "hex": "06B6D4",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "tailwindcss"
+    },
+    "tensorflow": {
+      "title": "TensorFlow",
+      "hex": "FF6F00",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "tensorflow"
+    },
+    "typescript": {
+      "title": "TypeScript",
+      "hex": "3178C6",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "typescript"
+    },
+    "vmware": {
+      "title": "VMware ESXi",
+      "hex": "607078",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "vmware"
+    },
+    "vuejs": {
+      "title": "Vue.js",
+      "hex": "4FC08D",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "vuedotjs"
+    },
+    "x": {
+      "title": "X",
+      "hex": "000000",
+      "source": "simple-icons",
+      "version": "16.35.0",
+      "slug": "x"
+    }
+  }
+}

@@ -8,6 +8,7 @@ Warnings (errors with --strict):
   - an image without an alt attribute
 """
 import re
+import subprocess
 import sys
 from html.parser import HTMLParser
 from pathlib import Path
@@ -90,6 +91,19 @@ for asset in sorted((ROOT / "assets").rglob("*")):
     rel = asset.relative_to(ROOT).as_posix()
     if asset.is_file() and rel not in referenced and not rel.startswith(KEEP):
         errors.append(f"unreferenced asset {rel}")
+
+# Brand icons: every <use href="#i-x"> needs a <symbol id="i-x"> on the same page, and the sprites must be current.
+for name in PAGES:
+    path = ROOT / name
+    if not path.exists():
+        continue
+    html = path.read_text(encoding="utf-8")
+    symbols = set(re.findall(r'<symbol[^>]*id="(i-[a-z0-9-]+)"', html))
+    for used in sorted(set(re.findall(r'href="#(i-[a-z0-9-]+)"', html)) - symbols):
+        errors.append(f"{name}: icon #{used} has no <symbol> in the page sprite (run python tools/build_icons.py)")
+sprite = subprocess.run([sys.executable, "-I", str(ROOT / "tools" / "build_icons.py"), "--check"], capture_output=True, text=True)
+if sprite.returncode != 0:
+    errors.append("icon sprites are out of date: run python tools/build_icons.py")
 
 strict = "--strict" in sys.argv
 for w in warnings:
