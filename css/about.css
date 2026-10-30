@@ -26,7 +26,6 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 2.5rem;
   color: var(--gray);
   margin-top: 6rem;
 }
@@ -37,10 +36,6 @@
   border: none;
   background-color: var(--gray);
   margin-top: 4px;
-}
-
-.about .container .content .title .heading {
-  font: italic bold 3.5rem var(--font-display);
 }
 
 /* Nouveau conteneur pour la photo et le texte */
@@ -194,11 +189,6 @@
 
   .about .container .content .title .label {
     margin-top: 1rem;
-    font-size: 1.6rem;
-  }
-
-  .about .container .content .title .heading {
-    font-size: clamp(2.5rem, 10vw, 3.5rem);
   }
 
   .profile-and-text {
@@ -243,19 +233,6 @@
   }
 }
 
-.about .container .content .title .heading {
-  font-size: clamp(1.8rem, min(5vw, 7vh), 4.5rem);
-  line-height: 1.12;
-}
-
-.about .container .content .title .label {
-  font-size: clamp(1.2rem, min(2.4vw, 4vh), 2.2rem);
-}
-
-.about .container .content .title h2 {
-  font-size: clamp(1.2rem, min(2.4vw, 4vh), 2.2rem);
-}
-
 @media (min-width: 769px) {
   .about .container .content {
     width: 100%;
@@ -278,10 +255,6 @@
     width: 100%;
     max-width: 100%;
   }
-
-  .about .container .content h2 { font-size: 1.3rem; }
-
-  .about .container .content h1 { font-size: clamp(1.9rem, 7.5vw, 2.7rem); line-height: 1.12; }
 
   .about .container .content p { font-size: 0.9rem; line-height: 1.55; }
 

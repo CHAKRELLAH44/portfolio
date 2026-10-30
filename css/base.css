@@ -10,6 +10,15 @@
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif; /* headings, navigation, buttons, labels */
   --font-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif; /* running text */
   --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace; /* typed roles line, game telemetry */
+
+  /* Type scale (fluid). Section titles, labels and body copy use these steps. */
+  --step--1: clamp(0.82rem, 0.8rem + 0.1vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --step-2: clamp(1.4rem, 1.2rem + 1vw, 2rem);
+  --step-3: clamp(1.8rem, 1.4rem + 2vw, 3rem);
+  --step-4: clamp(2.2rem, 1.6rem + 3vw, 4.25rem);
+  --step-5: clamp(3rem, 2rem + 5vw, 7rem);
 }
 
 * {

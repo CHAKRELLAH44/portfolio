@@ -22,10 +22,6 @@
   color: var(--gray);
 }
 
-.contact .container .content .title .heading {
-  font-size: 4rem;
-}
-
 .contact .container .content .contact-area {
   display: flex;
   height: 80%;
@@ -124,14 +120,6 @@ body[data-theme="light"] .contact .container .content .contact-area .right-side 
 }
 
 @media (max-width: 1024px) {
-  .contact .container .content .title .label {
-    font-size: 2rem;
-  }
-
-  .contact .container .content .title .heading {
-    font-size: 3rem;
-  }
-
   .contact .container .content .contact-area {
     flex-direction: column;
   }
@@ -142,14 +130,6 @@ body[data-theme="light"] .contact .container .content .contact-area .right-side 
 }
 
 @media (max-width: 600px) {
-  .contact .container .content .title .label {
-    font-size: 1.5rem;
-  }
-
-  .contact .container .content .title .heading {
-    font-size: 2.5rem;
-  }
-
   .contact .container .content .contact-area .left-side .pitch-line {
     font-size: 1.5rem;
   }
@@ -167,14 +147,6 @@ body[data-theme="light"] .contact .container .content .contact-area .right-side 
 }
 
 @media (max-width: 480px) {
-  .contact .container .content .title .label {
-    font-size: 1.2rem;
-  }
-
-  .contact .container .content .title .heading {
-    font-size: 2rem;
-  }
-
   .contact .container .content .contact-area .left-side .pitch-line {
     font-size: 1.2rem;
   }
@@ -200,10 +172,6 @@ body[data-theme="light"] .contact .container .content .contact-area .right-side 
   .contact .container .content {
     height: auto;
     gap: 1.5rem;
-  }
-
-  .contact .container .content .title .heading {
-    font-size: clamp(2.5rem, 11vw, 4rem);
   }
 
   .contact .container .content .contact-area {
@@ -240,11 +208,6 @@ body[data-theme="light"] .contact .container .content .contact-area .right-side 
   }
 }
 
-.contact .container .content .title .heading {
-  font-size: clamp(1.8rem, min(5vw, 7vh), 4.5rem);
-  line-height: 1.12;
-}
-
 .contact .container .content {
   width: 100%;
   max-width: none;
@@ -266,16 +229,6 @@ body[data-theme="light"] .contact .container .content .contact-area .right-side 
   height: auto;
   min-height: min(78vh, 52rem);
   gap: clamp(1rem, 3vh, 2.5rem);
-}
-
-.contact .container .content .title .label {
-  font-size: clamp(1.1rem, calc(0.9rem + 1vw + 0.25vh), 1.8rem);
-  line-height: 1.1;
-}
-
-.contact .container .content .title .heading {
-  font-size: clamp(2rem, min(6vw, 9vh), 5rem);
-  line-height: 0.98;
 }
 
 .contact .container .content .contact-area {
@@ -409,7 +362,6 @@ body[data-theme="light"] .contact .container .content .contact-area .right-side 
     max-width: 100%;
   }
 
-  .contact .container .content h1 { font-size: clamp(1.7rem, 7vw, 2.5rem); }
 
   .contact .container .content p,
   .contact .container .content label { font-size: 0.88rem; }

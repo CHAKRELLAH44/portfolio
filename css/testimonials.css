@@ -23,7 +23,6 @@
   align-items: center;
   gap: 0.5rem;
   color: var(--gray);
-  font-size: clamp(1.2rem, min(2.4vw, 4vh), 2.2rem);
 }
 
 .testimonials .container .content .title .label hr {
@@ -36,7 +35,6 @@
 
 .testimonials .container .content .title .heading {
   color: var(--white);
-  font: italic bold clamp(1.8rem, min(5vw, 7vh), 4.5rem)/1.12 var(--font-display);
 }
 
 /* Messy pile of notes: positioned by js/home.js (layoutPile), zoom on hover/tap. */

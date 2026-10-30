@@ -1,0 +1,27 @@
+/* Section titles: a small label with a rule, then the big title. One treatment for every section
+   (About, Experience, Education, Testimonials, Contact). Sizes come from the type scale in base.css. */
+
+.title .label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--gray);
+  font: 700 var(--step-2) var(--font-display);
+}
+
+.title .label hr {
+  width: clamp(3.5rem, 8vw, 5.5rem);
+  height: 2px;
+  margin-top: 0.15em;
+  padding: 0;
+  border: none;
+  background-color: currentColor;
+}
+
+.title .heading {
+  color: var(--white);
+  font: italic 800 var(--step-4) / 1.05 var(--font-display);
+  font-stretch: 112%;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
