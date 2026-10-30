@@ -375,11 +375,11 @@ const buzz = (pattern) => {
 };
 
 // -------------------------------
-// Swipe left/right in the project modal and the certification carousel
+// Swipe left/right in the project modal
 // -------------------------------
 let swipeStart = null;
 document.addEventListener("touchstart", (event) => {
-  const area = event.target.closest(".project-modal .carousel, .certification-carousel");
+  const area = event.target.closest(".project-modal .carousel");
   if (!area || event.touches.length > 1) return;
   swipeStart = { area, x: event.touches[0].clientX, y: event.touches[0].clientY };
 }, { passive: true });
@@ -391,9 +391,7 @@ document.addEventListener("touchend", (event) => {
   const dy = event.changedTouches[0].clientY - y;
   if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.3) return;
   const next = dx < 0;
-  const button = area.matches(".certification-carousel")
-    ? area.querySelector(next ? "[data-cert-next]" : "[data-cert-prev]")
-    : area.querySelector(next ? ".nav.next button" : ".nav.prev button");
+  const button = area.querySelector(next ? ".nav.next button" : ".nav.prev button");
   if (!button) return;
   button.click();
   buzz(8);

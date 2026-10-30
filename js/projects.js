@@ -351,112 +351,156 @@ if (filterButtons.length) {
   });
 }
 
-// Compact, keyboard-accessible course carousel on the projects page.
-const certificationCarousel = document.querySelector(".certification-carousel");
-if (certificationCarousel) {
-  const courseLinks = [...document.querySelectorAll(".certification-data a")];
-  const slidesContainer = certificationCarousel.querySelector(".certification-slides");
-  const dots = certificationCarousel.querySelector(".certification-dots");
-  const pageLabel = certificationCarousel.querySelector(".certification-page");
-  const pageSize = 4;
-  let currentSlide = 0;
+// Certifications & courses: credentials as cards, courses as a filterable list.
+// The hidden-from-view list `.certification-data` is the data source and the no-JavaScript fallback.
+const certSection = document.querySelector(".certifications");
+if (certSection && certSection.querySelector(".certs-app")) {
+  const COURSE_PREVIEW = 8;
+  const GROUP_ORDER = ["michigan", "epfl", "meta", "jhu", "ibm", "google", "aws", "other"];
+  const PROVIDER_GROUP = {
+    "University of Michigan": "michigan",
+    "École Polytechnique Fédérale de Lausanne": "epfl",
+    "Meta": "meta",
+    "Johns Hopkins University": "jhu",
+    "IBM": "ibm",
+    "Google": "google",
+    "Amazon Web Services": "aws"
+  };
+  const PROVIDER_SHORT = {
+    "University of Michigan": "Michigan",
+    "École Polytechnique Fédérale de Lausanne": "EPFL",
+    "Johns Hopkins University": "Johns Hopkins",
+    "Amazon Web Services": "AWS",
+    "University of Colorado Boulder": "CU Boulder",
+    "The Hong Kong University of Science and Technology": "HKUST"
+  };
+  const CHECK_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m7.8 12.3 2.75 2.75 5.65-5.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
-  courseLinks.sort((a, b) => {
-    const priority = (course) => course.dataset.provider === "Salesforce" ? 0 : course.dataset.provider === "Oracle" ? 1 : 2;
-    return priority(a) - priority(b);
+  const items = [...certSection.querySelectorAll(".certification-data a")].map((a, index) => {
+    const provider = a.dataset.provider || "";
+    const credential = a.dataset.status === "credential";
+    let title = a.textContent.trim();
+    let meta = PROVIDER_SHORT[provider] || provider;
+    const suffix = title.match(/^(.*?) – (Salesforce) (\d{4})$/);
+    if (suffix) { title = suffix[1]; meta = `${suffix[2]} ${suffix[3]}`; }
+    return { index, href: a.href, title, meta, credential, group: PROVIDER_GROUP[provider] || "other" };
   });
+  const credentials = items.filter((item) => item.credential);
+  const courses = items.filter((item) => !item.credential)
+    .sort((a, b) => GROUP_ORDER.indexOf(a.group) - GROUP_ORDER.indexOf(b.group) || a.index - b.index);
 
-  const slideCount = Math.ceil(courseLinks.length / pageSize);
-  slidesContainer.innerHTML = "";
-  for (let index = 0; index < slideCount; index += 1) {
-    const slide = document.createElement("div");
-    slide.className = "certification-slide";
-    slide.dataset.slide = String(index);
-    slide.hidden = index !== 0; // hidden slides are display:none: no focus, not read by screen readers
-    slide.setAttribute("role", "group");
-    slide.setAttribute("aria-roledescription", "slide");
-    slidesContainer.append(slide);
-  }
-  const slides = [...slidesContainer.querySelectorAll(".certification-slide")];
-  dots.innerHTML = "";
-  const slideLabel = (index) => `${tr("certs.slide", "Slide")} ${index + 1} ${tr("certs.of", "of")} ${slides.length}`;
+  const credentialList = certSection.querySelector("#cert-credentials");
+  const courseList = certSection.querySelector("#cert-course-list");
+  const statusLine = certSection.querySelector(".cert-status");
+  const toggle = certSection.querySelector(".cert-toggle");
+  const chips = [...certSection.querySelectorAll("[data-cert-filter]")];
+  let activeGroup = "all";
+  let expanded = false;
+
   const newTabHint = () => ` (${tr("certs.newTab", "opens in a new tab")})`;
+  const fill = (text, values) => text.replace(/\{(\w+)\}/g, (_, key) => values[key]);
 
-  courseLinks.forEach((course, index) => {
-    const card = document.createElement("article");
-    card.className = "certification-card";
-    const provider = document.createElement("span");
-    provider.className = "certification-provider";
-    provider.textContent = course.dataset.provider;
-    const title = document.createElement("a");
-    title.className = "certification-name";
-    title.href = course.href;
-    title.target = "_blank";
-    title.rel = "noopener noreferrer";
-    if (course.dataset.status) title.dataset.status = course.dataset.status;
-    title.textContent = course.textContent;
+  function makeLink(item, className) {
+    const link = document.createElement("a");
+    link.className = className;
+    link.href = item.href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = item.title;
     const hint = document.createElement("span");
     hint.className = "sr-only";
     hint.textContent = newTabHint();
-    title.append(hint);
-    const status = document.createElement("span");
-    status.className = "certification-status";
-    status.textContent = course.dataset.status === "credential"
-      ? tr("certs.credential", "Credential")
-      : tr("certs.status", "100% complete");
-    card.append(provider, title, status);
-    slides[Math.floor(index / pageSize)].append(card);
-  });
-
-  slides.forEach((_, index) => {
-    const dot = document.createElement("button");
-    dot.type = "button";
-    dot.className = "certification-dot";
-    dot.setAttribute("aria-label", slideLabel(index));
-    dot.addEventListener("click", () => showCertificationSlide(index));
-    dots.append(dot);
-  });
-
-  function showCertificationSlide(index) {
-    if (!slides.length) return;
-    currentSlide = (index + slides.length) % slides.length;
-    slides.forEach((slide, slideIndex) => {
-      const active = slideIndex === currentSlide;
-      slide.hidden = !active;
-      slide.classList.toggle("is-active", active);
-    });
-    [...dots.children].forEach((dot, dotIndex) => {
-      dot.classList.toggle("is-active", dotIndex === currentSlide);
-      if (dotIndex === currentSlide) dot.setAttribute("aria-current", "true");
-      else dot.removeAttribute("aria-current");
-    });
-    pageLabel.textContent = `${currentSlide + 1} / ${slides.length}`;
+    link.append(hint);
+    return link;
   }
-  slides.forEach((slide, index) => slide.setAttribute("aria-label", slideLabel(index)));
 
-  certificationCarousel.addEventListener("click", (event) => {
-    if (event.target.closest("[data-cert-prev]")) {
-      event.preventDefault();
-      showCertificationSlide(currentSlide - 1);
-    } else if (event.target.closest("[data-cert-next]")) {
-      event.preventDefault();
-      showCertificationSlide(currentSlide + 1);
-    }
+  function renderCredentials() {
+    credentialList.textContent = "";
+    credentials.forEach((item) => {
+      const li = document.createElement("li");
+      li.className = "cert-credential";
+      const meta = document.createElement("span");
+      meta.className = "cert-meta";
+      meta.textContent = item.meta;
+      const badge = document.createElement("span");
+      badge.className = "cert-badge";
+      badge.innerHTML = bxIcon("certificate");
+      badge.append(tr("certs.credential", "Credential"));
+      li.append(meta, makeLink(item, "cert-title"), badge);
+      credentialList.append(li);
+    });
+  }
+
+  function renderCourses() {
+    courseList.textContent = "";
+    courses.forEach((item) => {
+      const li = document.createElement("li");
+      li.className = "cert-course";
+      li.dataset.group = item.group;
+      const text = document.createElement("div");
+      text.className = "cert-course-text";
+      const meta = document.createElement("span");
+      meta.className = "cert-meta";
+      meta.textContent = item.meta;
+      text.append(meta, makeLink(item, "cert-course-link"));
+      const done = document.createElement("span");
+      done.className = "cert-done";
+      done.innerHTML = CHECK_SVG;
+      const label = document.createElement("span");
+      label.className = "sr-only";
+      label.textContent = tr("certs.done", "Completed");
+      done.append(label);
+      li.append(text, done);
+      courseList.append(li);
+    });
+  }
+
+  function update() {
+    const matching = courses.filter((item) => activeGroup === "all" || item.group === activeGroup);
+    const limited = matching.length > COURSE_PREVIEW;
+    let shown = 0;
+    [...courseList.children].forEach((li) => {
+      const match = activeGroup === "all" || li.dataset.group === activeGroup;
+      const visible = match && (expanded || !limited || shown < COURSE_PREVIEW);
+      if (visible) shown += 1;
+      li.hidden = !visible;
+    });
+    toggle.hidden = !limited;
+    toggle.setAttribute("aria-expanded", String(expanded));
+    toggle.textContent = expanded
+      ? tr("certs.showFewer", "Show fewer")
+      : fill(tr("certs.showAll", "Show all {n} courses"), { n: matching.length });
+    statusLine.textContent = fill(tr("certs.shown", "Showing {n} of {total} courses"), { n: shown, total: matching.length });
+    chips.forEach((chip) => {
+      const active = chip.dataset.certFilter === activeGroup;
+      chip.classList.toggle("is-active", active);
+      chip.setAttribute("aria-pressed", String(active));
+    });
+  }
+
+  chips.forEach((chip) => {
+    const group = chip.dataset.certFilter;
+    chip.querySelector(".cert-chip-n").textContent = String(group === "all" ? courses.length : courses.filter((c) => c.group === group).length);
+    chip.addEventListener("click", () => {
+      activeGroup = group;
+      update();
+    });
   });
-  certificationCarousel.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft") showCertificationSlide(currentSlide - 1);
-    if (event.key === "ArrowRight") showCertificationSlide(currentSlide + 1);
+  toggle.addEventListener("click", () => {
+    expanded = !expanded;
+    update();
+    if (!expanded) courseList.closest(".cert-block").scrollIntoView({ block: "nearest" });
   });
   document.addEventListener("portfolio:languagechange", () => {
-    certificationCarousel.querySelectorAll(".certification-status").forEach((status) => {
-      const isCredential = status.closest(".certification-card")?.querySelector(".certification-name")?.dataset.status === "credential";
-      status.textContent = isCredential ? tr("certs.credential", "Credential") : tr("certs.status", "100% complete");
-    });
-    [...dots.children].forEach((dot, index) => dot.setAttribute("aria-label", slideLabel(index)));
-    slides.forEach((slide, index) => slide.setAttribute("aria-label", slideLabel(index)));
-    certificationCarousel.querySelectorAll(".certification-name > .sr-only").forEach((hint) => { hint.textContent = newTabHint(); });
+    renderCredentials();
+    renderCourses();
+    update();
   });
-  showCertificationSlide(0);
+
+  renderCredentials();
+  renderCourses();
+  update();
+  certSection.classList.add("is-enhanced");
 }
 
 // -------------------------------

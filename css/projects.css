@@ -1427,7 +1427,7 @@ body[data-theme="light"] .project-card .desc .tool {
   display: none !important;
 }
 
-/* Compact course carousel */
+/* Certifications & courses: one calm panel (credentials as cards, courses as a filterable list) */
 
 .certifications {
   width: 100%;
@@ -1459,7 +1459,7 @@ body[data-theme="light"] .project-card .desc .tool {
   align-items: end;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.75rem;
 }
 
 .certifications-eyebrow {
@@ -1475,120 +1475,246 @@ body[data-theme="light"] .project-card .desc .tool {
   font: italic 700 clamp(1.35rem, 3vw, 2rem) var(--font-display);
 }
 
+/* The one loud element: the total, set big, with the split underneath. */
 .certifications-count {
   flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+  margin: 0;
   color: var(--gray);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
+  line-height: 1.2;
 }
 
-.certification-slide {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
+.certifications-total {
+  color: var(--primary-text);
+  font: italic 800 clamp(2.6rem, 6vw, 4rem)/0.9 var(--font-display);
+  letter-spacing: -0.02em;
 }
 
-.certification-slide[hidden] {
+/* Without the script the plain list of links stays; with it the rendered panel replaces the list. */
+.certifications:not(.is-enhanced) .certs-app,
+.certifications.is-enhanced .certification-data {
   display: none;
 }
 
-.certification-card {
-  min-height: 132px;
+.certification-data {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem 2rem;
+}
+
+.certification-data a {
+  padding-block: 0.35rem;
+  color: var(--white);
+  font-size: 0.95rem;
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--accent-rgb), 0.5);
+  text-underline-offset: 3px;
+}
+
+.cert-block + .cert-block {
+  margin-top: 2.25rem;
+}
+
+.cert-subtitle {
+  margin-bottom: 0.9rem;
+  color: var(--white);
+  font: italic 700 1.05rem var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cert-meta {
+  color: var(--primary-text);
+  font: 600 0.7rem var(--font-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Credentials: fewer, heavier cards with an accent border */
+.cert-credentials {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cert-credential {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
-  padding: 1rem 1.1rem;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  gap: 0.55rem;
+  min-height: 8.5rem;
+  padding: 1.1rem 1.2rem 1rem;
+  border: 1.5px solid rgba(var(--accent-rgb), 0.6);
   border-radius: 14px;
-  background: rgba(15, 15, 15, 0.48);
+  background: rgba(var(--accent-rgb), 0.07);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.certification-provider {
-  color: var(--accent-text);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+.cert-credential:hover {
+  border-color: var(--primary);
+  background: rgba(var(--accent-rgb), 0.14);
 }
 
-.certification-name {
+.cert-title {
   color: var(--white);
-  font: 600 0.98rem/1.35 var(--font-display);
+  font: italic 700 1.2rem/1.25 var(--font-display);
 }
 
-.certification-name:hover {
-  color: var(--accent-text);
+/* The title link covers the whole card. */
+.cert-title::after {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
 }
 
-.certification-status {
-  margin-top: auto;
-  color: var(--gray);
-  font-size: 0.75rem;
+.cert-title:focus-visible {
+  outline: none;
 }
 
-.certification-controls {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-  pointer-events: auto;
-}
-
-.certification-arrow {
-  position: relative;
-  z-index: 3;
-  width: 2.2rem;
-  height: 2.2rem;
-  border: 1px solid rgba(var(--accent-rgb), 0.4);
-  border-radius: 50%;
-  color: var(--white);
-  background: transparent;
-  cursor: pointer;
-  font-size: 1.1rem;
-  pointer-events: auto;
-}
-
-.certification-arrow:hover,
-.certification-arrow:focus-visible {
-  color: var(--black);
-  background: var(--primary);
-}
-
-.certification-dots {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.certification-dot {
-  width: 7px;
-  height: 7px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
-  cursor: pointer;
-}
-
-.certification-dot.is-active {
-  width: 20px;
-  border-radius: 8px;
-  background: var(--primary);
-}
-
-.certification-page {
-  min-width: 2.5rem;
-  color: var(--gray);
-  font-size: 0.78rem;
-}
-
-.certification-arrow:focus-visible,
-.certification-dot:focus-visible,
-.certification-name:focus-visible {
+.cert-title:focus-visible::after {
   outline: 2px solid var(--primary);
   outline-offset: 3px;
+}
+
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding: 0.2rem 0.65rem 0.2rem 0.45rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.55);
+  border-radius: 999px;
+  color: var(--primary-text);
+  font: 600 0.75rem var(--font-body);
+}
+
+.cert-badge .bx {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: currentColor;
+}
+
+/* Courses: a quiet ruled list */
+.cert-courses-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.cert-courses-head .cert-subtitle {
+  margin-bottom: 0;
+}
+
+.cert-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.cert-chips .filter-btn {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+.cert-chip-n {
+  margin-left: 0.15rem;
+  font-weight: 500;
+}
+
+.cert-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cert-course {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.9rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.22);
+}
+
+.cert-course[hidden] {
+  display: none;
+}
+
+.cert-course-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.cert-course-link {
+  color: var(--white);
+  font: 500 0.98rem/1.35 var(--font-body);
+  overflow-wrap: anywhere;
+}
+
+.cert-course-link:hover {
+  color: var(--primary-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cert-course-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.cert-done {
+  flex: 0 0 auto;
+  margin-top: 0.1rem;
+  color: var(--primary-text);
+}
+
+.cert-done svg {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.cert-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.1rem;
+}
+
+.cert-status {
+  margin: 0;
+  color: var(--gray);
+  font-size: 0.85rem;
+}
+
+.cert-toggle[hidden] {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .cert-credentials {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 600px) {
@@ -1597,20 +1723,36 @@ body[data-theme="light"] .project-card .desc .tool {
     flex-direction: column;
   }
 
-  .certification-slide {
+  .certifications-count {
+    align-items: flex-start;
+  }
+
+  .cert-credentials,
+  .cert-list,
+  .certification-data {
     grid-template-columns: 1fr;
   }
 
-  .certification-card {
-    min-height: 112px;
+  .cert-credential {
+    min-height: 0;
   }
 
-  .certification-controls {
-    gap: 0.65rem;
+  .cert-courses-head {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
-  .certification-dots {
-    gap: 0.35rem;
+  .cert-chips {
+    flex-wrap: nowrap;
+    max-width: 100%;
+    margin-inline: -0.25rem;
+    padding: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .cert-chips .filter-btn {
+    flex: 0 0 auto;
   }
 }
 
@@ -1621,37 +1763,10 @@ body[data-theme="light"] .project-card .desc .tool {
     padding-block: 0.5rem;
   }
 
-  .certification-dots {
-    gap: 0;
-  }
-
-  .certification-dot,
-  .certification-dot.is-active {
-    box-sizing: content-box;
-    border: 6px solid transparent;
-    background-clip: padding-box;
-  }
-
-  .certification-controls {
-    gap: 0.4rem;
-  }
-
-  .certification-arrow {
-    flex: 0 0 auto;
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
   /* Keep the modal title clear of the GitHub and close buttons. */
 
   .project-modal .panel .title {
     padding-inline: 2.9rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .certification-page {
-    display: none;
   }
 }
 
@@ -1679,13 +1794,11 @@ body[data-theme="light"] .project-card .desc .tool {
   }
 }
 
-.project-modal .carousel.swiped-next .slides,
-.certification-carousel.swiped-next .certification-slide.is-active {
+.project-modal .carousel.swiped-next .slides {
   animation: swipe-in-next 0.35s ease-out;
 }
 
-.project-modal .carousel.swiped-prev .slides,
-.certification-carousel.swiped-prev .certification-slide.is-active {
+.project-modal .carousel.swiped-prev .slides {
   animation: swipe-in-prev 0.35s ease-out;
 }
 
@@ -1751,12 +1864,18 @@ body[data-theme="light"] .project-card .github-link:not(:hover, :active, :focus,
   fill: #FFEEDE;
 }
 
-body[data-theme="light"] .certification-card {
+body[data-theme="light"] .cert-credential {
   background: rgba(255, 247, 238, 0.75);
-  border-color: rgba(var(--accent-rgb), 0.3);
 }
 
-body[data-theme="light"] .certification-arrow:hover,
-body[data-theme="light"] .certification-arrow:focus-visible {
+body[data-theme="light"] .cert-credential:hover {
+  background: rgba(var(--accent-rgb), 0.16);
+}
+
+body[data-theme="light"] .cert-chips .filter-btn:hover {
+  color: var(--accent-text);
+}
+
+body[data-theme="light"] .cert-chips .filter-btn.is-active {
   color: #38291F;
 }
