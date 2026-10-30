@@ -1,8 +1,539 @@
-/* Skills grid additions. The tile, grid and filter rules are still in css/style.css ("skill").
+/* Skills: domain filters, the logo grid, and (at the end) logo contrast.
 
    Logo contrast: tiles are greyscale until hovered. Logos that are black (or very dark) would
    vanish on the dark tile, and the white Next.js logo would vanish on the light tile.
    data-tone is set on the <img> in index.html: black | deep | white. */
+
+.skill {
+  padding: 4rem 0; 
+  min-height: 100vh; 
+  overflow: hidden; }
+
+.skill .container .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem; 
+}
+
+.skill .container .content .title {
+  font: italic bold 3rem "IBM Plex Sans", sans-serif; 
+  color: var(--white); 
+  text-align: center; 
+}
+
+.skill .container .content .skills {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr)); /* 6 colonnes par défaut */
+  gap: 1.5rem; /* Espacement entre les icônes */
+  width: 80%; /* Largeur de la grille */
+}
+
+.skill .container .content .skills .skill-box {
+  padding: 1rem;
+  border: 2px solid var(--white); /* Bordure blanche */
+  border-radius: 16px; /* Coins arrondis */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--black); /* Fond noir */
+  filter: grayscale(100); /* Icônes en noir et blanc par défaut */
+  transition: all 0.3s ease; /* Animation fluide */
+}
+
+.skill .container .content .skills .skill-box:hover {
+  filter: grayscale(0); /* Icônes en couleur au survol */
+  transform: scale(1.05); /* Légère mise à l'échelle */
+  border-color: var(--primary); /* Bordure violette au survol */
+}
+
+.skill .container .content .skills .skill-box img {
+  width: 100%; /* Taille des icônes */
+  height: auto; /* Conserver les proportions */
+  max-width: 80px; /* Limiter la taille maximale */
+}
+
+@media (max-width: 1024px) {
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill .container .content .skill-box {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skill .container .content h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill .container .content .skill-box {
+    width: 80px;
+    height: 80px;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill .container .content .skill-box {
+    width: 80px;
+    height: 80px;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill .container .content .skill-box {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skill .container .content h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .skill .container .content .skill-box {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  .skill .container .content h1 {
+    font-size: 1.8rem;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .skill .container .content .skill-box {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill .container .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .skill .container .content .skills {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .skill .container .content .skill-box {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skill {
+    min-height: 0;
+    padding: 3rem 0;
+  }
+
+  .skill .container .content {
+    gap: 1.75rem;
+  }
+
+  .skill .container .content .title {
+    font-size: clamp(1.7rem, 8vw, 2.5rem);
+  }
+
+  .skill .container .content .skills {
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .skill .container .content .skills .skill-box {
+    width: auto;
+    height: auto;
+    min-height: 64px;
+    padding: 0.75rem;
+    border-radius: 12px;
+  }
+
+  .skill .container .content .skills .skill-box img {
+    width: 100%;
+    max-width: 48px;
+    max-height: 48px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 420px) {
+  .skill .container .content .skills {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.skill .container .content {
+  width: 100%;
+  max-width: none;
+}
+
+.skill .container .content .skills {
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(3.5rem, 8vw, 7rem), 1fr));
+  gap: clamp(0.45rem, 1.3vw, 1.25rem);
+}
+
+.skill .container .content .skills .skill-box {
+  min-width: 0;
+  min-height: clamp(3.25rem, 8vh, 6rem);
+}
+
+@media (min-width: 769px) {
+  .skill .container .content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .skill .container .content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .skill .container .content .skills {
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(90px, 9vw, 140px), 1fr));
+    gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .skill .container .content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .skill .container .content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .skill .container .content .skills { gap: 0.55rem; }
+
+  .skill .container .content .skills .skill-box { min-width: 0; min-height: 3.5rem; padding: 0.45rem; }
+
+  .skill .container .content .skills .skill-box img { max-width: 2.2rem; max-height: 2.2rem; }
+}
+
+@media (max-width: 420px) {
+  .skill .container .content .skills { gap: 0.4rem; }
+
+  .skill .container .content .skills .skill-box { min-height: 3.15rem; }
+
+  .skill .container .content .skills .skill-box img { max-width: 1.9rem; max-height: 1.9rem; }
+}
+
+/* ===== Skills: domain filters, live count, tilt + spotlight, name labels ===== */
+
+.skill .container .content .skill-toolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  margin-top: -1.5rem;
+}
+
+.skill-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.skill-count {
+  margin: 0;
+  color: var(--gray);
+  font: 500 0.95rem "IBM Plex Sans", sans-serif;
+}
+
+.skill-count-num {
+  display: inline-block;
+  min-width: 2ch;
+  color: var(--primary-text);
+  font: italic 800 1.6rem "IBM Plex Sans", sans-serif;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.skill .container .content .skills .skill-box {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transform: perspective(600px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition:
+    transform 0.2s ease-out,
+    opacity 0.35s ease var(--delay, 0ms),
+    filter 0.35s ease var(--delay, 0ms),
+    border-color 0.35s ease var(--delay, 0ms),
+    box-shadow 0.35s ease var(--delay, 0ms);
+}
+
+/* Soft light that follows the pointer inside the box. */
+
+.skill .container .content .skills .skill-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(var(--accent-rgb), 0.3), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Technology name slides up from the bottom edge. */
+
+.skill .container .content .skills .skill-box::after {
+  content: attr(data-name);
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  padding: 0.2rem 0.3rem;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--black) 82%, transparent);
+  color: var(--primary);
+  font: 700 0.72rem "IBM Plex Sans", sans-serif;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transform: translateY(101%);
+  transition: transform 0.25s ease;
+  pointer-events: none;
+}
+
+.skill .container .content .skills .skill-box img {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.skill .container .content .skills .skill-box:hover,
+.skill .container .content .skills .skill-box:focus-visible,
+.skill .container .content .skills .skill-box.is-picked {
+  filter: grayscale(0);
+  border-color: var(--primary);
+  box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.35);
+  transform: perspective(600px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(1.06);
+  outline: none;
+}
+
+.skill .container .content .skills .skill-box:hover::before,
+.skill .container .content .skills .skill-box:focus-visible::before,
+.skill .container .content .skills .skill-box.is-picked::before,
+.skill .container .content .skills .skill-box:hover::after,
+.skill .container .content .skills .skill-box:focus-visible::after,
+.skill .container .content .skills .skill-box.is-picked::after {
+  opacity: 1;
+  transform: none;
+}
+
+.skill .container .content .skills .skill-box:hover img,
+.skill .container .content .skills .skill-box:focus-visible img,
+.skill .container .content .skills .skill-box.is-picked img {
+  transform: translateY(-14%) scale(0.9);
+}
+
+/* Filter states: the chosen domain lights up, the rest fades back. */
+
+.skill .container .content .skills .skill-box.is-match {
+  filter: grayscale(0);
+  border-color: var(--primary);
+  box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.3);
+}
+
+.skill .container .content .skills .skill-box.is-dim {
+  opacity: 0.15;
+  filter: grayscale(1);
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .skill .container .content .skill-toolbar { margin-top: -0.5rem; gap: 0.6rem; }
+
+  .skill-filters { gap: 0.4rem; }
+
+  .skill-filters .filter-btn { padding: 0.45rem 0.85rem; font-size: 0.8rem; }
+
+  .skill .container .content .skills .skill-box::after { font-size: 0.55rem; padding: 0.12rem 0.15rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill .container .content .skills .skill-box,
+  .skill .container .content .skills .skill-box:hover,
+  .skill .container .content .skills .skill-box.is-picked { transform: none; }
+}
+
+.skill-touch-hint { display: none; }
+
+@media (hover: none) and (pointer: coarse) {
+  .skill-touch-hint {
+    display: block;
+    margin: 0;
+    color: var(--gray);
+    font: italic 500 0.8rem "IBM Plex Sans", sans-serif;
+    text-align: center;
+  }
+
+  .skill .container .content .skills .skill-box {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Fill ring while the finger is held down. */
+
+.skill .container .content .skills .skill-box.is-pressing {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.6);
+  animation: skill-press 0.45s ease-out forwards;
+}
+
+.skill-bubble {
+  position: fixed;
+  z-index: 1200;
+  width: min(18rem, calc(100vw - 24px));
+  padding: 0.9rem 1rem 1rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.5);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--black) 94%, transparent);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), 0 0 18px rgba(var(--accent-rgb), 0.2);
+  color: var(--white);
+  font-family: "IBM Plex Sans", sans-serif;
+  opacity: 0;
+  transform: translateY(6px) scale(0.96);
+  transform-origin: var(--arrow-x, 50%) bottom;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.skill-bubble.is-below { transform-origin: var(--arrow-x, 50%) top; transform: translateY(-6px) scale(0.96); }
+
+.skill-bubble.is-open { opacity: 1; transform: none; }
+
+.skill-bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: calc(var(--arrow-x, 50%) - 7px);
+  border: 7px solid transparent;
+  border-top-color: rgba(var(--accent-rgb), 0.5);
+}
+
+.skill-bubble.is-below::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: rgba(var(--accent-rgb), 0.5);
+}
+
+.skill-bubble-close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 0;
+  background: transparent;
+  color: var(--gray);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.skill-bubble-domain {
+  margin: 0;
+  color: var(--gray);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skill-bubble-name {
+  margin: 0.1rem 2rem 0.55rem 0;
+  color: var(--primary);
+  font: italic 800 1.25rem/1.2 "IBM Plex Sans", sans-serif;
+}
+
+.skill-bubble-label {
+  margin: 0 0 0.35rem;
+  color: var(--gray);
+  font-size: 0.8rem;
+}
+
+.skill-bubble-list {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-bubble-list li {
+  position: relative;
+  padding-left: 0.9rem;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+.skill-bubble-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.skill-bubble-link {
+  display: inline-block;
+  padding-block: 0.3rem;
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-bubble { transition: none; }
+}
+
 .skill-box img[data-tone="black"] {
   filter: invert(1);
 }

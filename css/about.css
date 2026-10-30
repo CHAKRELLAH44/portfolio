@@ -1,0 +1,429 @@
+/* About: portrait, bio, key figures, buttons and the PORTFOLIO marquee. */
+
+.about {
+  position: relative;
+  margin: 4rem 0;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.about .container .content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  height: 100vh;
+  width: 100%;
+}
+
+.about .container .content .title {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Prend toute la largeur */
+  margin-bottom: 2rem; /* Espace sous le titre */
+}
+
+.about .container .content .title .label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2.5rem;
+  color: var(--gray);
+  margin-top: 6rem;
+}
+
+.about .container .content .title .label hr {
+  width: 90px;
+  padding: 2px;
+  border: none;
+  background-color: var(--gray);
+  margin-top: 4px;
+}
+
+.about .container .content .title .heading {
+  font: italic bold 3.5rem "IBM Plex Sans", sans-serif;
+}
+
+/* Nouveau conteneur pour la photo et le texte */
+
+.profile-and-text {
+  display: flex;
+  align-items: center;
+  gap: 8rem; /* Espace entre la photo et le texte */
+  width: 100%;
+  margin-top: 2rem; /* Ajuste selon tes besoins */
+}
+
+/* Ajustements pour la photo */
+
+.profile-container {
+  width: 60%; /* Largeur de la photo */
+  height: auto;
+  display: flex;
+  justify-content: flex-start; 
+}
+
+.profile-container .profile {
+  width: 100%;
+  height: auto;
+  background: var(--gray);
+  border-radius: 64px;
+  overflow: hidden;
+}
+
+.profile-container .profile img {
+  width: 100%;
+  height: auto;
+}
+
+/* Ajustements pour le texte */
+
+.about-me {
+  width: 70%; /* Largeur du texte */
+  padding-left: 0; /* Supprime le padding gauche */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.about-me p {
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.4rem;
+}
+
+.about-me .about-hidden {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 45%;
+  padding: 12px;
+  background-color: var(--black);
+  border: 2px solid #ffffff;
+  border-radius: 32px;
+  font-weight: bold;
+  color: var(--white);
+  transition: all 0.2s linear;
+}
+
+.about-me .about-hidden:hover {
+  color: var(--black);
+  background-color: var(--primary);
+}
+
+.about-me .about-hidden .arrow {
+  width: 20px;
+  transform: rotate(135deg);
+  fill: var(--white);
+  transition: all 0.2s linear;
+}
+
+.about-me .about-hidden:hover .arrow {
+  transform: rotate(180deg);
+  fill: var(--black);
+  transition: all 0.2s linear;
+}
+
+.about .container .content .text-wrapper {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  display: flex;
+  gap: 2rem;
+}
+
+.about .container .content .text-wrapper .text {
+  display: flex;
+  flex-shrink: 0;
+  gap: 2rem;
+  animation: marquee 8s linear infinite;
+}
+
+.about .container .content .text-wrapper .text p {
+  font: italic bold 9rem "IBM Plex Sans", sans-serif;
+  white-space: nowrap;
+}
+
+.about .container .content .text-wrapper .text p span {
+  color: transparent;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: var(--white);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+  .profile-and-text {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    min-height: 0;
+    margin: 2rem 0;
+    overflow: hidden;
+  }
+
+  .about .container .content {
+    height: auto;
+    min-height: 0;
+  }
+
+  .about .container .content .title {
+    margin-bottom: 0.75rem;
+  }
+
+  .about .container .content .title .label {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+  }
+
+  .about .container .content .title .heading {
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+  }
+
+  .profile-and-text {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .profile-container,
+  .about-me {
+    width: 100%;
+  }
+
+  .profile-container .profile {
+    max-width: 520px;
+    margin-inline: auto;
+    border-radius: 28px;
+  }
+
+  .about-me {
+    gap: 1.25rem;
+  }
+
+  .about-me .about-hidden {
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  .about .container .content .text-wrapper {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+
+  .about .container .content .text-wrapper .text p {
+    font-size: clamp(3.5rem, 14vw, 7rem);
+  }
+}
+
+.about .container .content .title .heading {
+  font-size: clamp(1.8rem, min(5vw, 7vh), 4.5rem);
+  line-height: 1.12;
+}
+
+.about .container .content .title .label {
+  font-size: clamp(1.2rem, min(2.4vw, 4vh), 2.2rem);
+}
+
+.about .container .content .title h2 {
+  font-size: clamp(1.2rem, min(2.4vw, 4vh), 2.2rem);
+}
+
+@media (min-width: 769px) {
+  .about .container .content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .about .container .content {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .about .container .content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about .container .content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about .container .content h2 { font-size: 1.3rem; }
+
+  .about .container .content h1 { font-size: clamp(1.9rem, 7.5vw, 2.7rem); line-height: 1.12; }
+
+  .about .container .content p { font-size: 0.9rem; line-height: 1.55; }
+
+  .about .container .content .marquee,
+  .about .container .content .marquee span { font-size: clamp(2.5rem, 10vw, 4.5rem); }
+}
+
+/* Final grid rules override older breakpoint styles elsewhere in this stylesheet. */
+
+/* ===== About: key figures + action buttons ===== */
+
+.about-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-stats li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--primary);
+}
+
+.about-stats strong {
+  color: var(--primary-text);
+  font: italic 700 clamp(1.8rem, 3.2vw, 2.75rem)/1 "IBM Plex Sans", sans-serif;
+}
+
+.about-stats span {
+  color: var(--gray);
+  font: 600 0.8rem/1.2 "IBM Plex Sans", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.about-me .about-actions .about-hidden,
+.about-actions .about-cv {
+  flex: 1 1 14rem;
+  width: auto;
+  max-width: 22rem;
+}
+
+.about-actions .about-cv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 12px;
+  border: 2px solid var(--primary);
+  border-radius: 32px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: bold;
+  transition: all 0.2s linear;
+}
+
+.about-actions .about-cv .bx {
+  width: 20px;
+  fill: var(--on-primary);
+  transition: fill 0.2s linear;
+}
+
+.about-actions .about-cv:hover {
+  background: transparent;
+  color: var(--primary-text);
+}
+
+.about-actions .about-cv:hover .bx {
+  fill: var(--primary-text);
+}
+
+/* ===== Project cards: title always visible, tools revealed on hover ===== */
+
+.about-me .about-actions .about-hidden,
+.about-actions .about-cv {
+  font: 700 0.9rem "IBM Plex Sans", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* About: let the section grow with its content and keep the marquee below the buttons. */
+
+.about .container .content {
+  height: auto;
+  min-height: 100vh;
+}
+
+.about .container .content .text-wrapper {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  width: 100vw;
+  margin: auto calc(50% - 50vw) 0;
+  padding-top: clamp(2rem, 6vh, 4rem);
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .about .container .content {
+    min-height: 0;
+  }
+}
+
+.about-actions .about-certifications {
+  flex: 1 1 14rem;
+  width: auto;
+  max-width: 22rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 12px;
+  border: 2px solid rgba(var(--accent-rgb), 0.55);
+  border-radius: 32px;
+  color: var(--primary-text);
+  font: 700 0.9rem "IBM Plex Sans", sans-serif;
+  text-align: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.about-actions .about-certifications:hover { background: var(--primary); color: var(--on-primary); }
+
+.about-actions .about-certifications .bx { fill: currentColor; }
+
+.profile-container .profile.is-gyro {
+  transform: perspective(800px) rotateY(calc(var(--gx, 0) * 8deg)) rotateX(calc(var(--gy, 0) * -8deg));
+  transition: transform 0.15s ease-out;
+}
+
+.profile-container .profile.is-gyro img {
+  transform: translate(calc(var(--gx, 0) * -10px), calc(var(--gy, 0) * -10px)) scale(1.06);
+  transition: transform 0.15s ease-out;
+}
+
+

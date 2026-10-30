@@ -32,16 +32,19 @@ A few things you might notice along the way:
 - **Testimonials:** submitted on the site, moderated before they appear, with an email alert for each new one.
 - **Analytics:** a small home-made tracker. No cookies, no IP addresses, no persistent visitor ID, and *Do Not Track* is respected.
 - **Hosting:** GitHub Pages, plus a scheduled GitHub Action that keeps the free database awake.
-- **Libraries:** [AOS](https://michalsnik.github.io/aos/) for scroll animations, [Boxicons](https://boxicons.com/) for icons, IBM Plex fonts.
+- **Libraries:** none. Scroll reveal and icons are built in (glyphs from [Boxicons](https://boxicons.com/), MIT); fonts are IBM Plex and Inter from Google Fonts.
 
 ```
 ├── index.html · projects.html · contact.html · hidden-me.html · 404.html · admin.html
 ├── css/
-│   ├── style.css        # shared styles (being split into one file per element)
-│   ├── 404.css          # terminal 404 page
-│   └── admin.css        # moderation dashboard
+│   ├── base.css         # page-wide rules: reset, colours (+ light theme), container, cursor, toast, touch
+│   ├── reveal.css       # scroll reveal (data-aos), icons.css = inline SVG icon sizing
+│   ├── header.css · hero.css · about.css · experience.css · skills.css
+│   ├── testimonials.css · contact.css · footer.css      # one file per element of the home page
+│   ├── projects.css · hidden-me.css                     # one file per page
+│   └── 404.css · admin.css
 ├── js/
-│   ├── core.js          # every page: theme, navigation, toast, contact form, share
+│   ├── core.js          # every page: scroll reveal, icons, theme, navigation, toast, contact form, share
 │   ├── home.js          # home page: hero, stats, skills, timeline, testimonials
 │   ├── projects.js      # projects page: project modal, filters, course carousel
 │   ├── hidden-me.js     # Hidden Me page: chapters, F1 game, Penalty Lab
@@ -51,6 +54,8 @@ A few things you might notice along the way:
 │   ├── supabase-config.js  # public project URL + publishable key
 │   └── admin/           # moderation dashboard
 ├── supabase/            # SQL: tables and security policies
+├── tools/check.py       # static checks: missing files, unreferenced assets, one h1 and one main per page
+├── site.webmanifest · robots.txt · sitemap.xml
 └── assets/
     ├── brand/           # logo, favicons, social cover
     ├── profile/         # profile graphic (dark and light)
@@ -60,7 +65,8 @@ A few things you might notice along the way:
     └── docs/            # CV (PDF)
 ```
 
-Load order on a page: `i18n.js`, `supabase-config.js`, `core.js`, then the page's own script.
+Load order on a page: `base.css`, then the partials the page needs; `i18n.js`, `supabase-config.js`, `core.js`, then the page's own script.
+Run `python tools/check.py` before committing.
 
 ## Run it locally
 

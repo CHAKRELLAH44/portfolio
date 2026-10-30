@@ -1,0 +1,711 @@
+:root {
+  --primary: #00ffdd;
+  --accent-rgb: 0, 255, 221;
+  --black: #0f0f0f;
+  --white: #fff;
+  --gray: #9a9a9a; /* secondary text, 4.5:1+ on the page background */
+  --primary-text: var(--primary); /* the accent when it is used as text colour */
+  --on-primary: #0f0f0f; /* text on a --primary fill */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--white);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1.5rem 6rem;
+}
+
+/* Small label above a section title (was an h2, which made it bold). */
+
+.title .label {
+  font-weight: bold;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.back-to-home {
+  margin-top: 2rem;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--white);
+  color: var(--black);
+  border-radius: 32px;
+  font: bold 1rem "IBM Plex Sans", sans-serif;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: var(--primary);
+}
+
+/* Bouton de téléchargement */
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 32px;
+  font: bold 1rem "IBM Plex Sans", sans-serif;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.download-button .bx {
+  width: 20px;
+  height: 20px;
+}
+
+/* Bouton pour retourner à la page d'accueil */
+
+.back-to-home {
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--white);
+  color: var(--black);
+  border-radius: 32px;
+  font: bold 1rem "IBM Plex Sans", sans-serif;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: var(--primary);
+}
+
+/* ------------------------------------------------------------------*/
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--black);
+  border: 2px solid #ffffff;
+  color: var(--white);
+  border-radius: 32px;
+  font: bold 1rem "IBM Plex Sans", sans-serif;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+  background-color: var(--primary);
+  color: var(--black);
+  transition: .2s linear;
+}
+
+.download-button .bx {
+  width: 20px;
+  height: 20px;
+}
+
+/* Styles pour la section des réseaux sociaux */
+
+.social-media {
+  padding: 4rem 0;
+  background-color: var(--black);
+}
+
+.social-media .container .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.social-media h2 {
+  font: italic bold 2rem "IBM Plex Sans", sans-serif;
+  color: var(--gray);
+}
+
+.social-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background-color: var(--black);
+  border: 2px solid var(--white);
+  border-radius: 32px;
+  color: var(--white);
+  font: bold 1rem "IBM Plex Sans", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: var(--primary);
+  color: var(--black);
+  transform: translateY(-5px);
+}
+
+.social-link .bx {
+  fill: var(--white);
+}
+
+.social-link:hover .bx {
+  fill: var(--black);
+}
+
+/* Style pour le bouton retour à l'accueil */
+
+.back-to-home {
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0;
+}
+
+.home-button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background-color: var(--black);
+  border: 2px solid var(--white);
+  border-radius: 32px;
+  color: var(--white);
+  font: bold 1rem "IBM Plex Sans", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.home-button:hover {
+  background-color: var(--primary);
+  color: var(--black);
+  transform: translateY(-5px);
+}
+
+.home-button .bx {
+  fill: var(--white);
+}
+
+.home-button:hover .bx {
+  fill: var(--black);
+}
+
+/* ============================================
+   RESPONSIVE MEDIA QUERIES - MOBILE & TABLET
+   ============================================ */
+
+/* Tablet - Large (1024px - 1200px) */
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 1.5rem 4rem;
+  }
+}
+
+/* Tablet - Medium (768px - 1024px) */
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem 3rem;
+  }
+}
+
+/* Mobile - Large (600px - 768px) */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 2rem;
+  }
+}
+
+/* Optional warm light theme, selected with the header theme control. */
+
+body[data-theme="light"] {
+  --primary: #F28A29;
+  --accent-rgb: 242, 138, 41;
+  --black: #FFEEDE;
+  --white: #38291F;
+  --gray: #6b5646;
+  --primary-text: #a84a05; /* the bright orange is only 2.2:1 on cream */
+  --on-primary: #38291F;
+  color-scheme: light;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+/* Tablet - Large (1024px - 1200px) */
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 1.5rem 4rem;
+  }
+}
+
+/* Tablet - Medium (768px - 1024px) */
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem 3rem;
+  }
+}
+
+/* Tablet - Medium (768px - 1024px) */
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem 3rem;
+  }
+}
+
+/* Tablet - Medium (768px - 1024px) */
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem 3rem;
+  }
+}
+
+/* Mobile - Large (600px - 768px) */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 2rem;
+  }
+}
+
+/* Tablet - Large (1024px - 1200px) */
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 1.5rem 4rem;
+  }
+}
+
+/* Tablet - Medium (768px - 1024px) */
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem 3rem;
+  }
+}
+
+/* Mobile - Medium (480px - 600px) */
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Mobile - Small (320px - 480px) */
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+}
+
+/* ============================================
+   CROSS-BROWSER COMPATIBILITY FIXES
+   ============================================ */
+
+/* Fix for Safari backdrop-filter */
+
+/* Fallback for browsers that don't support backdrop-filter */
+
+/* Fix for iOS Safari smooth scrolling */
+
+@supports (-webkit-overflow-scrolling: touch) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Fix for Firefox scrollbar */
+
+@-moz-document url-prefix() {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--white) transparent;
+  }
+}
+
+/* Prevent text selection on buttons and interactive elements */
+
+button, .btn, .expand-btn, .github-link, .close-btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth font rendering across browsers */
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Ensure images don't drag on mobile */
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+/* Fix for iOS input zoom */
+
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Landscape orientation fixes for mobile */
+
+/* Print styles */
+
+/* Responsive layout refinements across all pages */
+
+@media (min-width: 769px) and (max-width: 1100px) {
+  .container {
+    padding-inline: clamp(1.5rem, 4vw, 3rem);
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: clip;
+  }
+
+  .container {
+    width: 100%;
+    padding: 1rem clamp(1rem, 5vw, 2rem);
+  }
+
+  .social-media .container .content .social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .social-media .social-link {
+    max-width: 100%;
+  }
+
+  #contact-form {
+    padding-top: 6rem;
+  }
+
+  .social-media {
+    min-height: 0;
+    padding-block: 2.5rem;
+  }
+}
+
+/* Fluid type and spacing: respond to both viewport width and height. */
+
+html { font-size: clamp(14px, calc(13px + 0.35vw + 0.25vh), 18px); }
+
+body { font-size: 1rem; line-height: 1.55; }
+
+.container {
+  width: 100%;
+  max-width: none;
+  padding-inline: clamp(0.75rem, 4.2vw, 5rem);
+}
+
+@media (min-width: 769px) {
+  .container {
+    width: 100%;
+    max-width: none;
+    padding-inline: clamp(2rem, 5vw, 6rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Compact, fluid layouts for phones and narrow screens. */
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: clamp(0.75rem, 3.5vw, 1.25rem);
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 420px) {
+  .container { padding-inline: 0.7rem; }
+}
+
+.filter-btn {
+  padding: 0.5rem 1.1rem;
+  border: 1.5px solid rgba(var(--accent-rgb), 0.45);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--white);
+  font: 600 0.9rem "IBM Plex Sans", sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--primary-text);
+  color: var(--primary);
+}
+
+.filter-btn.is-active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.filter-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Toast (e.g. Discord username copied) */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  z-index: 10001;
+  max-width: calc(100vw - 2rem);
+  padding: 0.75rem 1.2rem;
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  background: var(--black);
+  color: var(--white);
+  font: 600 0.9rem "IBM Plex Sans", sans-serif;
+  box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 1rem);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ===== Mobile polish: touch targets, form fonts, modal header, dynamic viewport ===== */
+
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+}
+
+a,
+button,
+.expand-btn,
+.nav-toggle,
+.lang-toggle {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Mobile browsers shrink 100vh behind the URL bar; svh keeps the hero fully visible. */
+
+/* Thin reading-progress bar pinned to the top edge. */
+
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(var(--accent-rgb), 0.4), var(--primary));
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.6);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+/* ===== Desktop cursor glow ===== */
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.cursor-glow.is-visible { opacity: 1; }
+
+/* Ring that hugs the pointer. */
+
+.cursor-glow::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid rgba(var(--accent-rgb), 0.8);
+  border-radius: 50%;
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Wide soft halo behind it. */
+
+.cursor-glow::after {
+  content: "";
+  position: absolute;
+  top: -160px;
+  left: -160px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.09), transparent 65%);
+}
+
+.cursor-glow.is-active::before {
+  transform: scale(1.7);
+  border-color: var(--primary);
+  background-color: rgba(var(--accent-rgb), 0.12);
+}
+
+.cursor-glow.is-pressed::before { transform: scale(0.8); }
+
+.confetti-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ===== Touch: ripple, swipe nudge, gyroscope parallax, long-press bubble ===== */
+
+.touch-ripple {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.touch-ripple span {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.45) 0%, rgba(var(--accent-rgb), 0.15) 45%, transparent 70%);
+  transform: scale(0);
+  animation: touch-ripple 0.6s ease-out forwards;
+}
+
+@keyframes touch-ripple {
+  to { transform: scale(1); opacity: 0; }
+}
+
+@keyframes swipe-in-next { from { transform: translateX(28px); opacity: 0.4; } }
+
+@keyframes swipe-in-prev { from { transform: translateX(-28px); opacity: 0.4; } }
+
+@keyframes skill-press {
+  to { box-shadow: 0 0 0 6px rgba(var(--accent-rgb), 0.35); transform: scale(0.94); }
+}
+
+@keyframes testi-form-in { from { opacity: 0; transform: translateY(-8px); } }
+
+/* The Hidden Me page styles live in css/hidden-me.css. */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Line icons (replace emoji): inherit the text colour and size. */
+
+.ui-icon { display: inline-block; flex: none; width: 1em; height: 1em; vertical-align: -0.125em; }
+
+.admin-btn .ui-icon { margin-right: 0.3rem; }
+
+.lock-icon .ui-icon { display: block; margin: 0 auto; font-size: 1.8rem; color: var(--primary); }

@@ -7,7 +7,7 @@
 const hiddenPage = document.querySelector(".hidden-me");
 if (hiddenPage) {
   // Each chapter tints its section, the side nav and a soft page glow.
-  // Colours live in css/style.css (--chapter-rgb); Technology follows the theme accent.
+  // Colours live in css/hidden-me.css (--chapter-rgb); Technology follows the theme accent.
   const chapters = [...hiddenPage.querySelectorAll("[data-chapter]")];
   const chapterLinks = hiddenPage.querySelectorAll("[data-chapter-link]");
   const chapterGlow = hiddenPage.querySelector(".chapter-glow");
