@@ -187,6 +187,8 @@ const I18N_FR = {
   "hidden.baking.text": "La pâtisserie est mon espace de créativité. Des gâteaux aux cookies, j'adore expérimenter de nouvelles saveurs et techniques. C'est une façon délicieuse de décompresser et de partager de la joie. Qu'il s'agisse d'un classique gâteau au chocolat ou d'une nouvelle recette, la pâtisserie est toujours une douce aventure.",
   "hidden.music.title": "Le langage universel",
   "hidden.music.text": "La musique est ma compagne de tous les jours, la bande-son de ma vie. Je crois qu'elle dépasse les frontières et rapproche les gens comme les mots ne peuvent pas le faire. Comme on dit : « La musique est un langage que tout le monde comprend. » Que je code, que je pâtisse ou que je me détende, il y a toujours une playlist pour le moment. Curieux ? Jetez un œil à mon compte Spotify.",
+  // Hidden Me page: accessibility labels (added with the a11y pass)
+  "hidden.nav.speed": "Formule 1",
 
   // Projects page
   "projectsPage.pageTitle": "Projets - Imanska",

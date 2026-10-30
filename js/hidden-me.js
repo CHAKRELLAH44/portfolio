@@ -92,18 +92,14 @@ if (hiddenPage) {
   });
 
   // Photos flip over to show fun facts.
+  // The real control is the .flip-toggle button laid over the photo: it is focusable, Enter and
+  // Space activate it natively, and aria-pressed tells screen readers whether the facts are showing.
   hiddenPage.querySelectorAll(".flip-card").forEach((card) => {
-    const flip = () => {
+    const toggle = card.querySelector(".flip-toggle");
+    card.addEventListener("click", () => {
       const flipped = card.classList.toggle("is-flipped");
-      card.setAttribute("aria-pressed", String(flipped));
+      toggle?.setAttribute("aria-pressed", String(flipped));
       buzz(8);
-    };
-    card.addEventListener("click", flip);
-    card.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        flip();
-      }
     });
   });
 

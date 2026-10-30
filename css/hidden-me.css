@@ -243,7 +243,9 @@
 }
 
 .chapter-nav a:hover,
-.chapter-nav a:focus-visible { opacity: 0.9; filter: none; outline: none; }
+.chapter-nav a:focus-visible { opacity: 0.9; filter: none; }
+
+.chapter-nav a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
 .chapter-nav a.is-active {
   opacity: 1;
@@ -389,7 +391,23 @@
   80% { transform: rotate(180deg); }
 }
 
-.flip-card:focus-visible { outline: 2px solid var(--primary); outline-offset: 6px; border-radius: 20px; }
+/* The real control: a transparent button laid over the whole photo. */
+
+.flip-card .flip-toggle {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.flip-card .flip-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 6px; }
 
 @media (max-width: 768px) {
   .flip-card .flip-front { aspect-ratio: 4 / 3; }
