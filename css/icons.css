@@ -1,0 +1,14 @@
+/* Inline SVG icons (the glyphs come from Boxicons, MIT). Size and colour are set by the rules around each icon;
+   without a rule an icon is 24px (3rem for .bx-lg) and takes the colour inherited as "fill". */
+.bx {
+  display: inline-block;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.bx-lg {
+  width: 3rem;
+  height: 3rem;
+}

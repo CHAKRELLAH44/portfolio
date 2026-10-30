@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>document.documentElement.classList.add("js");setTimeout(function(){var d=document.documentElement;if(!d.classList.contains("reveal-ready"))d.classList.add("no-reveal")},3000)</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <meta name="description" content="Imane Chakrellah (Imanska) is a software engineer in Rabat, Morocco: Salesforce, full-stack and DevOps. Building tech, adding fun." />
     <link rel="canonical" href="https://chakrellah44.github.io/portfolio/" />
@@ -48,13 +49,12 @@
       rel="stylesheet"
     />
 
-    <!-- AOS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
     <link rel="manifest" href="site.webmanifest" />
     <link rel="icon" type="image/png" href="assets/brand/favicon-64.png" />
     <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/icons.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/hero.css" />
@@ -129,7 +129,7 @@
           </div>
 
           <div class="short-info">
-            <div class="left-side" data-aos="fade-up-right" data-aos-delay="300" data-aos-offset="0">
+            <div class="left-side" data-aos="fade" data-aos-delay="300" data-aos-offset="0">
               <p class="place" data-i18n="hero.based">Based in Rabat, Morocco</p>
               <p class="time"></p>
             </div>
@@ -138,7 +138,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </a>
 
-            <div class="right-side" data-aos="fade-up-left" data-aos-delay="300" data-aos-offset="0">
+            <div class="right-side" data-aos="fade" data-aos-delay="300" data-aos-offset="0">
               <p class="label" data-i18n="hero.availability">Availability</p>
               <p class="status-line">
                 <span class="pulse" aria-hidden="true"></span>
@@ -179,15 +179,15 @@
               <div class="about-actions">
               <a class="about-hidden" href="hidden-me.html">
                 <span data-i18n="about.hiddenBtn">SEE THE HIDDEN ME</span>
-                <box-icon class="arrow" name='arrow-back'></box-icon>
+                <svg class="bx arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"/></svg>
               </a>
               <a class="about-cv" href="assets/docs/cv.pdf" download="Imane_CV.pdf">
                 <span data-i18n="about.cvBtn">DOWNLOAD MY CV</span>
-                <box-icon name='download'></box-icon>
+                <svg class="bx" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 16 4-5h-3V4h-2v7H8z"/><path d="M20 18H4v-7H2v7c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2v-7h-2v7z"/></svg>
               </a>
               <a class="about-certifications" href="projects.html#certifications">
                 <span data-i18n="certs.homeInvite">Explore my 30 certifications &amp; courses</span>
-                <box-icon name="certificate" aria-hidden="true"></box-icon>
+                <svg class="bx" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8.999c0 1.902.765 3.627 2 4.89V21a.998.998 0 0 0 1.447.895L12 20.118l3.553 1.776a.992.992 0 0 0 .972-.043c.295-.183.475-.504.475-.851v-7.11a6.976 6.976 0 0 0 2-4.891C19 5.14 15.86 2 12 2S5 5.14 5 8.999zm7.447 9.106a1 1 0 0 0-.895 0L9 19.382v-4.067c.911.434 1.926.685 3 .685s2.089-.25 3-.685v4.066l-2.553-1.276zM12 4c2.756 0 5 2.242 5 4.999A5.006 5.006 0 0 1 12 14c-2.757 0-5-2.243-5-5.001A5.005 5.005 0 0 1 12 4z"/></svg>
               </a>
               </div>
             </div>
@@ -514,16 +514,16 @@
           <p class="footer-title" data-i18n="footer.title">Imanska's PORTFOLIO</p>
           <div class="social">
             <a href="https://www.linkedin.com/in/chakrellah" target="_blank" rel="noopener noreferrer" class="logo" aria-label="LinkedIn" title="LinkedIn">
-              <box-icon name='linkedin-square' type='logo' ></box-icon>
+              <svg class="bx" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM8.339 18.337H5.667v-8.59h2.672v8.59zM7.003 8.574a1.548 1.548 0 1 1 0-3.096 1.548 1.548 0 0 1 0 3.096zm11.335 9.763h-2.669V14.16c0-.996-.018-2.277-1.388-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248h-2.667v-8.59h2.56v1.174h.037c.355-.675 1.227-1.387 2.524-1.387 2.704 0 3.203 1.778 3.203 4.092v4.71z"/></svg>
             </a>
             <a href="https://discord.com/app" data-discord="imane.chakre" target="_blank" rel="noopener noreferrer" class="logo" aria-label="Discord: imane.chakre" title="Discord: imane.chakre">
-              <box-icon name='discord' type='logo' ></box-icon>
+              <svg class="bx" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.593 10.971c-.542 0-.969.475-.969 1.055 0 .578.437 1.055.969 1.055.541 0 .968-.477.968-1.055.011-.581-.427-1.055-.968-1.055zm3.468 0c-.542 0-.969.475-.969 1.055 0 .578.437 1.055.969 1.055.541 0 .968-.477.968-1.055-.001-.581-.427-1.055-.968-1.055z"/><path d="M17.678 3H4.947A1.952 1.952 0 0 0 3 4.957v12.844c0 1.083.874 1.957 1.947 1.957H15.72l-.505-1.759 1.217 1.131 1.149 1.064L19.625 22V4.957A1.952 1.952 0 0 0 17.678 3zM14.01 15.407s-.342-.408-.626-.771c1.244-.352 1.719-1.13 1.719-1.13-.39.256-.76.438-1.093.562a6.679 6.679 0 0 1-3.838.398 7.944 7.944 0 0 1-1.396-.41 5.402 5.402 0 0 1-.693-.321c-.029-.021-.057-.029-.085-.048a.117.117 0 0 1-.039-.03c-.171-.094-.266-.16-.266-.16s.456.76 1.663 1.121c-.285.36-.637.789-.637.789-2.099-.067-2.896-1.444-2.896-1.444 0-3.059 1.368-5.538 1.368-5.538 1.368-1.027 2.669-.998 2.669-.998l.095.114c-1.71.495-2.499 1.245-2.499 1.245s.21-.114.561-.275c1.016-.446 1.823-.57 2.156-.599.057-.009.105-.019.162-.019a7.756 7.756 0 0 1 4.778.893s-.751-.712-2.366-1.206l.133-.152s1.302-.029 2.669.998c0 0 1.368 2.479 1.368 5.538 0-.001-.807 1.376-2.907 1.443z"/></svg>
             </a>
             <a href="https://github.com/CHAKRELLAH44" target="_blank" rel="noopener noreferrer" class="logo" aria-label="GitHub" title="GitHub">
-              <box-icon name='github' type='logo' ></box-icon>
+              <svg class="bx" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"/></svg>
             </a>
             <a href="https://x.com/iman_chakre" target="_blank" rel="noopener noreferrer" class="logo" aria-label="X (Twitter)" title="X (Twitter)">
-              <box-icon name='twitter' type='logo' ></box-icon>
+              <svg class="bx" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.633 7.997c.013.175.013.349.013.523 0 5.325-4.053 11.461-11.46 11.461-2.282 0-4.402-.661-6.186-1.809.324.037.636.05.973.05a8.07 8.07 0 0 0 5.001-1.721 4.036 4.036 0 0 1-3.767-2.793c.249.037.499.062.761.062.361 0 .724-.05 1.061-.137a4.027 4.027 0 0 1-3.23-3.953v-.05c.537.299 1.16.486 1.82.511a4.022 4.022 0 0 1-1.796-3.354c0-.748.199-1.434.548-2.032a11.457 11.457 0 0 0 8.306 4.215c-.062-.3-.1-.611-.1-.923a4.026 4.026 0 0 1 4.028-4.028c1.16 0 2.207.486 2.943 1.272a7.957 7.957 0 0 0 2.556-.973 4.02 4.02 0 0 1-1.771 2.22 8.073 8.073 0 0 0 2.319-.624 8.645 8.645 0 0 1-2.019 2.083z"/></svg>
             </a>
 
           </div>
@@ -545,12 +545,5 @@
     <script src="js/analytics.js" defer></script>
 
     <!-- Box Icon -->
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-
-    <!-- AOS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
   </body>
 </html>

@@ -1,0 +1,42 @@
+/* Scroll reveal: elements with data-aos fade/slide in when they enter the screen (js/core.js adds .is-in).
+   Replaces the AOS library. The hidden state needs JavaScript (.js on <html>, set in each page's head); if
+   core.js does not load within 3 seconds, .no-reveal shows everything. */
+
+body {
+  overflow-x: clip; /* slide-in elements start outside the screen */
+}
+
+.js [data-aos] {
+  transition-property: opacity, transform;
+  transition-duration: var(--aos-duration, 400ms);
+  transition-delay: var(--aos-delay, 0ms);
+  transition-timing-function: ease;
+}
+
+.js [data-aos]:not(.is-in) {
+  opacity: 0;
+}
+
+/* data-aos="fade" only fades: use it where a shifted element would be clipped by its container (hero strip). */
+.js [data-aos="fade-up"]:not(.is-in) { transform: translate3d(0, 100px, 0); }
+.js [data-aos="fade-down"]:not(.is-in) { transform: translate3d(0, -100px, 0); }
+.js [data-aos="fade-right"]:not(.is-in) { transform: translate3d(-100px, 0, 0); }
+.js [data-aos="fade-left"]:not(.is-in) { transform: translate3d(100px, 0, 0); }
+.js [data-aos="fade-up-right"]:not(.is-in) { transform: translate3d(-100px, 100px, 0); }
+.js [data-aos="fade-up-left"]:not(.is-in) { transform: translate3d(100px, 100px, 0); }
+.js [data-aos="zoom-in-down"]:not(.is-in) { transform: translate3d(0, -100px, 0) scale(0.6); }
+.js [data-aos="flip-up"]:not(.is-in) { transform: perspective(2500px) rotateX(-100deg); }
+.js [data-aos="flip-down"]:not(.is-in) { transform: perspective(2500px) rotateX(100deg); }
+
+.no-reveal [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

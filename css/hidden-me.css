@@ -149,7 +149,7 @@ body[data-theme="light"] .hidden-me {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.hidden-me .section .download-button box-icon {
+.hidden-me .section .download-button .bx {
   fill: var(--accent-text);
   transition: fill 0.2s ease;
 }
@@ -159,7 +159,7 @@ body[data-theme="light"] .hidden-me {
   color: var(--black);
 }
 
-.hidden-me .section .download-button:hover box-icon {
+.hidden-me .section .download-button:hover .bx {
   fill: var(--black);
 }
 

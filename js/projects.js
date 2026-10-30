@@ -115,7 +115,7 @@ function initProjectModal() {
       link.setAttribute("aria-label", label);
       link.title = label;
       link.style.display = "inline-flex";
-      link.innerHTML = isDoc ? "<box-icon name='file' type='solid'></box-icon>" : "<box-icon name='github' type='logo'></box-icon>";
+      link.innerHTML = isDoc ? bxIcon("file") : bxIcon("github");
       githubTopRight.appendChild(link);
     }
   }
@@ -141,7 +141,7 @@ function initProjectModal() {
     if (currentConfidential) {
       const notice = document.createElement("div");
       notice.className = "confidential-visual";
-      notice.innerHTML = "<box-icon name='lock-alt' aria-hidden=\"true\"></box-icon><span></span>";
+      notice.innerHTML = bxIcon("lock-alt") + "<span></span>";
       notice.querySelector("span").textContent = tr("proj.confidential", "Screenshots are confidential to the client company.");
       slidesEl.appendChild(notice);
       return;

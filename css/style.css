@@ -421,7 +421,7 @@ body {
   color: var(--black);
 }
 
-.download-button box-icon {
+.download-button .bx {
   width: 20px;
   height: 20px;
 }
@@ -471,7 +471,7 @@ body {
   transition: .2s linear;
 }
 
-.download-button box-icon {
+.download-button .bx {
   width: 20px;
   height: 20px;
 }
@@ -521,11 +521,11 @@ body {
   transform: translateY(-5px);
 }
 
-.social-link box-icon {
+.social-link .bx {
   fill: var(--white);
 }
 
-.social-link:hover box-icon {
+.social-link:hover .bx {
   fill: var(--black);
 }
 
@@ -556,11 +556,11 @@ body {
   transform: translateY(-5px);
 }
 
-.home-button box-icon {
+.home-button .bx {
   fill: var(--white);
 }
 
-.home-button:hover box-icon {
+.home-button:hover .bx {
   fill: var(--black);
 }
 
@@ -1450,7 +1450,7 @@ body { font-size: 1rem; line-height: 1.55; }
   transition: all 0.2s linear;
 }
 
-.about-actions .about-cv box-icon {
+.about-actions .about-cv .bx {
   width: 20px;
   fill: var(--black);
   transition: fill 0.2s linear;
@@ -1461,7 +1461,7 @@ body { font-size: 1rem; line-height: 1.55; }
   color: var(--primary);
 }
 
-.about-actions .about-cv:hover box-icon {
+.about-actions .about-cv:hover .bx {
   fill: var(--primary);
 }
 
@@ -1739,7 +1739,7 @@ body[data-theme="light"] .timeline-item {
 
 .about-actions .about-certifications:hover { background: var(--primary); color: var(--black); }
 
-.about-actions .about-certifications box-icon { fill: currentColor; }
+.about-actions .about-certifications .bx { fill: currentColor; }
 
 /* ===== Mobile polish: touch targets, form fonts, modal header, dynamic viewport ===== */
 

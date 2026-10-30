@@ -142,7 +142,7 @@
   transition: transform 0.18s ease, background 0.18s ease;
 }
 
-.project-card .github-link box-icon {
+.project-card .github-link .bx {
   width: 22px;
   height: 22px;
   fill: var(--white);
@@ -155,9 +155,9 @@
   transform: translateY(-2px);
 }
 
-.project-card .github-link:active box-icon,
-.project-card .github-link:focus box-icon,
-.project-card .github-link:focus-visible box-icon {
+.project-card .github-link:active .bx,
+.project-card .github-link:focus .bx,
+.project-card .github-link:focus-visible .bx {
   fill: var(--primary);
   transform: scale(1.05);
   filter: drop-shadow(0 0 10px rgba(var(--accent-rgb), 0.35));
@@ -168,7 +168,7 @@
   transform: translateY(-2px) scale(1.02);
 }
 
-.project-card .github-link:hover box-icon {
+.project-card .github-link:hover .bx {
   fill: var(--primary);
   transform: scale(1.12);
   filter: drop-shadow(0 0 20px rgba(var(--accent-rgb), 0.45));
@@ -544,7 +544,7 @@
   box-shadow: 0 0 8px rgba(var(--accent-rgb), 0.4);
 }
 
-.project-modal .panel .github-top-right .download-button box-icon {
+.project-modal .panel .github-top-right .download-button .bx {
   fill: var(--accent-text);
   filter: drop-shadow(0 0 2px var(--primary));
 }
@@ -1410,7 +1410,7 @@ body[data-theme="light"] .project-card .desc .tool {
     var(--black);
 }
 
-.confidential-visual box-icon {
+.confidential-visual .bx {
   width: 2.5rem;
   height: 2.5rem;
   fill: var(--accent-text);
@@ -1746,7 +1746,7 @@ body[data-theme="light"] .project-card .featured-badge {
 }
 
 body[data-theme="light"] .project-card .expand-btn:not(:hover),
-body[data-theme="light"] .project-card .github-link:not(:hover, :active, :focus, :focus-visible) box-icon {
+body[data-theme="light"] .project-card .github-link:not(:hover, :active, :focus, :focus-visible) .bx {
   color: #FFEEDE;
   fill: #FFEEDE;
 }
