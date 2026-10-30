@@ -94,14 +94,14 @@
   -webkit-text-stroke: 1.5px rgba(var(--accent-rgb), 0.7);
 }
 
-.hidden-me .section .description h2 {
+.hidden-me .section .description .chapter-title {
   margin: 0 0 1.1rem;
   color: var(--white);
   font: italic 700 clamp(1.8rem, 3.6vw, 3rem)/1.1 "IBM Plex Sans", sans-serif;
   overflow-wrap: anywhere;
 }
 
-.hidden-me .section .description h2::after {
+.hidden-me .section .description .chapter-title::after {
   content: "";
   display: block;
   width: 64px;
@@ -811,4 +811,12 @@
   .pen-ripple,
   .pen-dot,
   .penalty-game.hit-goal .pen-stage { animation: none; }
+}
+
+/* ----- Footer title (a paragraph here: the page's only h1 is the first chapter) ----- */
+
+footer .container .content .footer-title { font: italic bold 1.5rem "IBM Plex Sans", sans-serif; }
+
+@media (max-width: 768px) {
+  footer .container .content .footer-title { font-size: 0.95rem; }
 }
