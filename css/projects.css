@@ -1,0 +1,10 @@
+/* projects.html */
+
+/* Footer title: a paragraph on this page (the page keeps a single <h1>). */
+footer .container .content .footer-title {
+  font: italic bold 1.5rem "IBM Plex Sans", sans-serif;
+}
+
+@media (max-width: 768px) {
+  footer .container .content .footer-title { font-size: 0.95rem; }
+}

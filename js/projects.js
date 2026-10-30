@@ -19,7 +19,7 @@ function initProjectModal() {
       const card = btn.closest('.project-card') || btn.closest('.projects');
       if (card) {
         // also log the project title if available
-        const t = card.querySelector('.desc h1')?.innerText || '<no-title>';
+        const t = card.querySelector('.desc h3')?.innerText || '<no-title>';
         try { console.log('opening modal for', t); } catch (e) {}
         openProjectModal(card);
       } else {
@@ -77,7 +77,7 @@ function initProjectModal() {
 
   function openProjectModal(card) {
     // read data from card
-    const title = card.querySelector('.desc h1')?.innerText || '';
+    const title = card.querySelector('.desc h3')?.innerText || '';
     const desc = card.querySelector('.desc p')?.innerText || '';
     const toolEls = card.querySelectorAll('.desc .tool');
     const tools = Array.from(toolEls).map(t => t.innerText.trim());
@@ -253,7 +253,7 @@ function initProjectModal() {
 
 // Add long descriptions to projects
 document.querySelectorAll('.project-card').forEach(card => {
-  const title = card.querySelector('.desc h1').innerText;
+  const title = card.querySelector('.desc h3').innerText;
   switch(title) {
     case 'CI/CD Pipeline Automation':
       card.setAttribute('data-long-desc', 'Implemented a complete CI/CD pipeline to automate application deployment and scaling. The setup ensured fast delivery, containerized workloads, and full observability through monitoring dashboards. Kubernetes (Minikube) for orchestration and cluster environment, Jenkins for CI pipeline & automation, ArgoCD for GitOps CD & deployment sync, Docker for containerization, GitHub for version control, and Prometheus + Grafana for metrics collection & visualization.');

@@ -801,7 +801,7 @@ footer .container .content .social p {
   opacity: 1;
 }
 
-.project-card .desc h1 {
+.project-card .desc h3 {
   font: italic 700 1.1rem "IBM Plex Sans", sans-serif;
   margin: 0;
   color: var(--white);
@@ -928,11 +928,12 @@ footer .container .content .social p {
   transform: translateY(0);
 }
 
-.project-card .desc h1 {
+.project-card .desc h3 {
   font: italic bold 1.25rem "IBM Plex Sans", sans-serif;
   margin: 0;
   color: var(--white);
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
 .project-card .desc p {
@@ -2445,7 +2446,7 @@ body[data-theme="light"] .contact .container .content .contact-area .right-side 
     gap: 1.5rem;
   }
 
-  .project-card .desc h1 {
+  .project-card .desc h3 {
     font-size: 0.95rem;
   }
 
@@ -2933,7 +2934,7 @@ img {
     transform: none;
   }
 
-  .project-card .desc h1 {
+  .project-card .desc h3 {
     font-size: 1.1rem;
     line-height: 1.25;
     overflow-wrap: anywhere;
@@ -3053,7 +3054,7 @@ body { font-size: 1rem; line-height: 1.55; }
 }
 
 .project .container .content .project-area .projects .desc h1,
-.project-card .desc h1 {
+.project-card .desc h3 {
   font-size: clamp(0.95rem, calc(0.8rem + 0.55vw + 0.2vh), 1.6rem);
 }
 
@@ -3263,7 +3264,7 @@ body { font-size: 1rem; line-height: 1.55; }
 
   .project-card .desc { padding: clamp(1rem, 1.7vw, 1.75rem); }
 
-  .project-card .desc h1 { font-size: clamp(1.1rem, 1.5vw, 1.65rem); }
+  .project-card .desc h3 { font-size: clamp(1.1rem, 1.5vw, 1.65rem); }
 
   .project-card .desc p { font-size: clamp(0.85rem, 1vw, 1.05rem); }
 
@@ -3322,7 +3323,7 @@ body { font-size: 1rem; line-height: 1.55; }
 
   .project-card .desc { padding: 0.75rem; gap: 0.4rem; }
 
-  .project-card .desc h1 { font-size: 1rem; line-height: 1.25; }
+  .project-card .desc h3 { font-size: 1rem; line-height: 1.25; }
 
   .project-card .desc p { font-size: 0.78rem; line-height: 1.45; }
 
