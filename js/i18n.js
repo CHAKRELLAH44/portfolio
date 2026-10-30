@@ -122,7 +122,7 @@ const I18N_FR = {
   "contact.sent": "Merci ! Votre message a bien été envoyé. Je vous réponds très vite.",
 
   // Hidden me
-  "hidden.pageTitle": "Côté perso - Imanska",
+  "hidden.pageTitle": "Côté perso : Imane Chakrellah hors du code | Imanska",
   "hidden.navAria": "Chapitres",
   "hidden.nav.tech": "Technologie",
   "hidden.nav.football": "Football",
@@ -205,7 +205,7 @@ const I18N_FR = {
   "hidden.alt.music": "Disque vinyle qui tourne sur une platine",
 
   // Projects page
-  "projectsPage.pageTitle": "Projets - Imanska",
+  "projectsPage.pageTitle": "Projets d'Imane Chakrellah | Imanska",
   "projectsPage.all": "TOUS LES PROJETS",
   "certs.eyebrow": "Apprentissage",
   "certs.title": "CERTIFICATIONS &amp; COURS",
