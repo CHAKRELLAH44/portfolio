@@ -483,31 +483,45 @@
     <section class="contact" id="contact">
       <div class="container">
         <div class="content">
-          <div class="title" data-aos="fade-down" data-aos-delay="300">
+          <div class="title">
             <div class="label" data-i18n="contact.lets">LET'S</div>
             <h2 class="heading" data-i18n="contact.connect">CONNECT</h2>
           </div>
 
           <div class="contact-area">
-            <div data-aos="fade-right" data-aos-delay="300" class="left-side">
-              <p class="pitch">
-                <span class="pitch-line" data-i18n="contact.line1">SEND ME BUGS</span>
-                <span class="pitch-line" data-i18n="contact.line2">(OR LOVE</span>
-                <span class="pitch-line" data-i18n="contact.line3">NOTES)</span>
-              </p>
+            <div class="intro" data-aos="fade-up">
+              <p class="pitch"><strong data-i18n="contact.line1">SEND ME BUGS</strong> <span data-i18n="contact.love">(OR LOVE NOTES)</span></p>
+              <p class="lead" data-i18n="contact.lead">Tell me about the project, the role or the bug.</p>
+              <div class="facts">
+                <p data-i18n="hero.based">Based in Rabat, Morocco</p>
+                <p class="avail"><span class="dot" aria-hidden="true"></span><span data-i18n="header.available">AVAILABLE FOR WORK</span></p>
+              </div>
+              <div class="socials">
+                <a class="round" href="https://www.linkedin.com/in/chakrellah" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg></a>
+                <a class="round" href="https://github.com/CHAKRELLAH44" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-github"/></svg></a>
+                <a class="round" href="https://discord.com/app" data-discord="imane.chakre" target="_blank" rel="noopener noreferrer" aria-label="Discord: imane.chakre" title="Discord: imane.chakre"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-discord"/></svg></a>
+                <a class="round" href="https://x.com/iman_chakre" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" title="X (Twitter)"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></a>
+              </div>
             </div>
 
-            <div class="right-side">
-              <form action="https://formsubmit.co/chakrellaah@gmail.com" method="POST" data-aos="fade-left" data-aos-delay="500">
-                <label class="sr-only" for="contact-name" data-i18n="contact.name">YOUR NAME</label>
-                <input id="contact-name" type="text" name="name" placeholder="YOUR NAME" data-i18n-attr="placeholder:contact.name" required autocomplete="name">
-                <label class="sr-only" for="contact-email" data-i18n="contact.email">YOUR EMAIL ADDRESS</label>
-                <input id="contact-email" type="email" name="email" placeholder="YOUR EMAIL ADDRESS" data-i18n-attr="placeholder:contact.email" required autocomplete="email">
-                <label class="sr-only" for="contact-message" data-i18n="contact.message">HOW CAN I HELP YOU?</label>
-                <textarea id="contact-message" name="message" placeholder="HOW CAN I HELP YOU?" data-i18n-attr="placeholder:contact.message" required></textarea>
+            <div class="form-wrap">
+              <form class="card" action="https://formsubmit.co/chakrellaah@gmail.com" method="POST" data-aos="fade-up" data-aos-delay="150">
+                <div class="field">
+                  <input id="contact-name" type="text" name="name" placeholder=" " required autocomplete="name">
+                  <label for="contact-name" data-i18n="contact.name">YOUR NAME</label>
+                </div>
+                <div class="field">
+                  <input id="contact-email" type="email" name="email" placeholder=" " required autocomplete="email">
+                  <label for="contact-email" data-i18n="contact.email">YOUR EMAIL ADDRESS</label>
+                </div>
+                <div class="field">
+                  <textarea id="contact-message" name="message" placeholder=" " rows="5" required></textarea>
+                  <label for="contact-message" data-i18n="contact.message">HOW CAN I HELP YOU?</label>
+                </div>
                 <input type="hidden" name="_next" value="https://chakrellah44.github.io/portfolio/contact.html?sent=1">
                 <input type="hidden" name="_subject" value="New Portfolio Contact!">
-                <button type="submit" data-i18n="contact.send">SEND</button>
+                <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <button type="submit" class="send"><span data-i18n="contact.send">SEND</span><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
               </form>
             </div>
           </div>

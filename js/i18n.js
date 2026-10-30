@@ -114,14 +114,15 @@ const I18N_FR = {
   "contact.lets": "RESTONS",
   "contact.connect": "EN CONTACT",
   "contact.line1": "ENVOYEZ-MOI DES BUGS",
-  "contact.line2": "(OU DES MOTS ",
-  "contact.line3": "        DOUX)",
   "contact.name": "VOTRE NOM",
   "contact.email": "VOTRE ADRESSE E-MAIL",
   "contact.message": "COMMENT PUIS-JE VOUS AIDER ?",
   "contact.send": "ENVOYER",
   "contact.findMe": "RETROUVEZ-MOI SUR",
   "contact.sent": "Merci ! Votre message a bien été envoyé. Je vous réponds très vite.",
+  // Contact rework: pitch second part, short line under it
+  "contact.love": "(OU DES MOTS DOUX)",
+  "contact.lead": "Parlez-moi du projet, du poste ou du bug.",
 
   // Hidden me
   "hidden.pageTitle": "Côté perso : Imane Chakrellah hors du code | Imanska",
