@@ -252,6 +252,9 @@ if (skillGrid) {
     "Salesforce / Apex": ["p2p"], "Spring Boot": ["bank", "ecom"], "Django": ["taxi"], "REST / Swagger": ["bank", "ecom"],
     "Grafana": ["cicd"], "Prometheus": ["cicd"], "Ansible": ["ansible"], "Docker": ["cicd"], "AWS": ["coffee"],
     "Kubernetes": ["cicd"], "Jenkins / CI/CD": ["cicd"], "Argo CD": ["cicd"], "Proxmox": ["dmz"], "pfSense": ["dmz"],
+    // Data & AI
+    "TensorFlow": ["health"], "scikit-learn": ["health"], "Streamlit": ["health"], "Power BI": ["health"],
+    "Apache Spark": ["reco"], "Elasticsearch": ["reco"], "Apache Kafka": ["reco"], "Hugging Face": ["twitter"],
   };
 
   const bubble = document.createElement("div");

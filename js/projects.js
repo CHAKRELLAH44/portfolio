@@ -1,6 +1,9 @@
 // Projects page: project dialog, domain filters, course carousel, card tilt.
 // Needs core.js (tr, finePointer, prefersReducedMotion).
 
+// The GitHub mark comes from the page sprite (projects.html), see tools/build_icons.py.
+const GITHUB_ICON = '<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-github"/></svg>';
+
 // -------------------------------
 // Accessible names for the buttons on each card (each one names its project)
 // -------------------------------
@@ -115,7 +118,7 @@ function initProjectModal() {
       link.setAttribute("aria-label", label);
       link.title = label;
       link.style.display = "inline-flex";
-      link.innerHTML = isDoc ? bxIcon("file") : bxIcon("github");
+      link.innerHTML = isDoc ? bxIcon("file") : GITHUB_ICON;
       githubTopRight.appendChild(link);
     }
   }
