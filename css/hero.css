@@ -160,7 +160,8 @@ body[data-theme="light"] .hero-name {
   padding: 0.06em 0.1em 0.06em 0.04em;
   overflow: hidden;
   color: transparent;
-  transition: color 0.4s, text-shadow 0.4s;
+  filter: drop-shadow(0 0 0 rgba(var(--accent-rgb), 0)); /* the glow is a filter: a text-shadow would be cut off by the window */
+  transition: color 0.4s, filter 0.4s;
 }
 
 .hero-name .strip {
@@ -188,7 +189,7 @@ body[data-theme="light"] .hero-name {
 @media (hover: hover) {
   .hero-name .name:hover .ch {
     color: var(--primary);
-    text-shadow: 0 0 0.3em rgba(var(--accent-rgb), 0.5);
+    filter: drop-shadow(0 0 0.16em rgba(var(--accent-rgb), 0.6));
   }
 }
 
@@ -543,13 +544,13 @@ body[data-theme="light"] .hero .arrow:focus-visible {
   0%,
   100% {
     color: transparent;
-    text-shadow: none;
+    filter: drop-shadow(0 0 0 rgba(var(--accent-rgb), 0));
   }
 
   35%,
   55% {
     color: var(--primary);
-    text-shadow: 0 0 0.3em rgba(var(--accent-rgb), 0.5);
+    filter: drop-shadow(0 0 0.16em rgba(var(--accent-rgb), 0.6));
   }
 }
 
