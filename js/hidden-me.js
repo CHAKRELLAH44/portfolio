@@ -547,5 +547,6 @@ if (hiddenPage) {
     frame.loading = "lazy";
     frame.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
     slot.append(frame);
+    slot.hidden = false;
   });
 }
