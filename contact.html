@@ -34,6 +34,7 @@
     <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/contact.css" />
     <title data-i18n="contact.pageTitle">Contact Imane Chakrellah | Imanska</title>
   </head>
@@ -149,21 +150,27 @@
     <footer>
       <div class="container">
         <div class="content"> 
-          <h1 data-i18n="footer.title">Imanska's PORTFOLIO</h1>
+          <p class="footer-title" data-i18n="footer.title">Imanska's PORTFOLIO</p>
             <div class="social">
-          <a href="https://www.linkedin.com/in/chakrellah" target="_blank" rel="noopener noreferrer" class="logo" title="LinkedIn">
+          <a href="https://www.linkedin.com/in/chakrellah" target="_blank" rel="noopener noreferrer" class="logo" aria-label="LinkedIn" title="LinkedIn">
               <box-icon name='linkedin-square' type='logo'></box-icon>
             </a>
-          <a href="https://discord.com/app" data-discord="imane.chakre" target="_blank" rel="noopener noreferrer" class="logo" title="Discord: imane.chakre">
+          <a href="https://discord.com/app" data-discord="imane.chakre" target="_blank" rel="noopener noreferrer" class="logo" aria-label="Discord: imane.chakre" title="Discord: imane.chakre">
               <box-icon name='discord' type='logo'></box-icon>
             </a>
-          <a href="https://github.com/CHAKRELLAH44" target="_blank" rel="noopener noreferrer" class="logo" title="GitHub">
+          <a href="https://github.com/CHAKRELLAH44" target="_blank" rel="noopener noreferrer" class="logo" aria-label="GitHub" title="GitHub">
               <box-icon name='github' type='logo'></box-icon>
             </a>
-            <a href="https://x.com/iman_chakre" target="_blank" rel="noopener noreferrer" class="logo" title="X (Twitter)">
+            <a href="https://x.com/iman_chakre" target="_blank" rel="noopener noreferrer" class="logo" aria-label="X (Twitter)" title="X (Twitter)">
               <box-icon name='twitter' type='logo'></box-icon>
             </a>
           </div>
+          <nav class="footer-nav" aria-label="Footer" data-i18n-attr="aria-label:footer.navAria">
+            <a href="projects.html" data-i18n="nav.projects">Projects</a>
+            <a href="hidden-me.html" data-i18n="nav.hidden">Hidden Me</a>
+            <a href="contact.html" data-i18n="nav.contact">Contact</a>
+            <a href="assets/docs/cv.pdf" download="Imane_CV.pdf" data-i18n="nav.cv">Download CV</a>
+          </nav>
           <p>&copy; Imanska <span id="year"></span> | <span data-i18n="footer.tagline">Building Tech, Adding Fun</span></p>
         </div>
       </div>

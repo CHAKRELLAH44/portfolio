@@ -1,0 +1,125 @@
+/* Footer: title, social icons, page links, share button, copyright. */
+
+footer {
+  --hot: var(--primary); /* accent that stays readable as text */
+  min-height: 20vh;
+}
+
+body[data-theme="light"] footer {
+  --hot: #a84a05;
+}
+
+footer .container .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+footer .footer-title {
+  margin: 0;
+  font: italic bold 1.5rem "IBM Plex Sans", sans-serif;
+}
+
+footer .social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+footer .social .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  background: var(--black);
+  fill: var(--white);
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+
+footer .social .logo:hover,
+footer .social .logo:focus-visible {
+  background-color: var(--primary);
+  fill: var(--black);
+}
+
+footer :is(a, button):focus-visible {
+  outline: 2px solid var(--hot);
+  outline-offset: 3px;
+}
+
+/* Page links */
+footer .footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1.5rem;
+}
+
+footer .footer-nav a {
+  padding-block: 0.4rem;
+  color: color-mix(in srgb, var(--white) 78%, transparent);
+  font: 600 0.85rem "IBM Plex Sans", sans-serif;
+}
+
+footer .footer-nav a:hover {
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+/* Share button (added by js/core.js) */
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0.25rem auto 0.75rem;
+  padding: 0.55rem 1.1rem;
+  border: 1.5px solid rgba(var(--accent-rgb), 0.55);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--hot);
+  font: 700 0.85rem "IBM Plex Sans", sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.share-btn:hover,
+.share-btn:focus-visible {
+  background: var(--primary);
+  color: var(--black);
+}
+
+@media (pointer: coarse) {
+  footer .social .logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  footer .footer-nav a {
+    padding-block: 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    min-height: 0;
+  }
+
+  footer .container {
+    padding-block: 1.25rem;
+  }
+
+  footer .container .content {
+    text-align: center;
+  }
+
+  footer .footer-title {
+    font-size: 0.95rem;
+  }
+}

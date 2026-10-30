@@ -11,6 +11,7 @@ const I18N_FR = {
   "a11y.skip": "Aller au contenu",
   "header.available": "DISPONIBLE",
   "header.cvAria": "Télécharger mon CV",
+  "footer.navAria": "Pied de page",
   "footer.title": "PORTFOLIO d'Imanska",
   "footer.tagline": "Construire la tech, avec le sourire",
   "common.returnHome": "RETOUR À L'ACCUEIL",

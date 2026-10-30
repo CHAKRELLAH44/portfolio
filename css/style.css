@@ -92,6 +92,7 @@ body {
 }
 
 /* Small label above a section title (was an h2, which made it bold). */
+
 .title .label {
   font-weight: bold;
 }
@@ -535,101 +536,6 @@ body {
   background-color: var(--primary);
   color: var(--black);
   transition: .2s linear;
-}
-
-footer {
-  min-height: 20vh;
-}
-
-footer .container .content {
-  footer {
-  min-height: 20vh;
-}
-
-footer .container .content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-footer .container .content h1 {
-  font: italic bold 1.5rem "IBM Plex Sans", sans-serif;
-}
-
-footer .container .content .social {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-footer .container .content .social .logo {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  background: var(--black);
-  border: 2px solid var(--white);
-  border-radius: 50%;
-  fill: var(--white);
-  transition: 0.2s linear;
-}
-
-footer .container .content .social .logo:hover {
-  background-color: var(--primary);
-  fill: var(--black);
-  transition: 0.2s linear;
-
-
-}
-
-footer .container .content .social p {
-  font-weight: bold;
-}
-display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-footer .container .content h1 {
-  font: italic bold 1.5rem "IBM Plex Sans", sans-serif;
-}
-
-footer .container .content .social {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-footer .container .content .social .logo {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  background: var(--black);
-  border: 2px solid var(--white);
-  border-radius: 50%;
-  fill: var(--white);
-  transition: 0.2s linear;
-}
-
-footer .container .content .social .logo:hover {
-  background-color: var(--primary);
-  fill: var(--black);
-  transition: 0.2s linear;
-
-
-}
-
-footer .container .content .social p {
-  font-weight: bold;
 }
 
 /*---------------------------------------------------------*/
@@ -2266,10 +2172,6 @@ body[data-theme="light"] .contact .container .content .contact-area .right-side 
     font-size: 0.85rem;
   }
 
-  footer .container .content h1 {
-    font-size: 1rem;
-  }
-
   .project-modal .panel {
     width: 95%;
     padding: 0.8rem;
@@ -2811,18 +2713,6 @@ img {
   .project-modal .meta .desc-text {
     overflow-wrap: anywhere;
   }
-
-  footer {
-    min-height: 0;
-  }
-
-  footer .container .content {
-    text-align: center;
-  }
-
-  footer .container .content h1 {
-    font-size: clamp(1rem, 5vw, 1.4rem);
-  }
 }
 
 @media (max-width: 420px) {
@@ -3176,10 +3066,6 @@ body { font-size: 1rem; line-height: 1.55; }
   .project-modal .meta p { font-size: 0.85rem; line-height: 1.45; }
 
   .project-modal .meta h2 { font-size: 1.25rem; }
-
-  footer .container { padding-block: 1.25rem; }
-
-  footer .container .content h1 { font-size: 0.95rem; }
 }
 
 @media (max-width: 420px) {
@@ -4942,26 +4828,6 @@ body[data-theme="light"] .testi-form textarea { background: rgba(255, 255, 255, 
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
-
-/* Footer share button */
-
-.share-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin: 0.25rem auto 0.75rem;
-  padding: 0.55rem 1.1rem;
-  border: 1.5px solid rgba(var(--accent-rgb), 0.55);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--primary);
-  font: 700 0.85rem "IBM Plex Sans", sans-serif;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.share-btn:hover,
-.share-btn:focus-visible { background: var(--primary); color: var(--black); outline: none; }
 
 /* Experience cards: details fold away behind a "+" button. */
 

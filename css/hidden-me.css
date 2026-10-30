@@ -859,11 +859,3 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
   .pen-dot,
   .penalty-game.hit-goal .pen-stage { animation: none; }
 }
-
-/* ----- Footer title (a paragraph here: the page's only h1 is the first chapter) ----- */
-
-footer .container .content .footer-title { font: italic bold 1.5rem "IBM Plex Sans", sans-serif; }
-
-@media (max-width: 768px) {
-  footer .container .content .footer-title { font-size: 0.95rem; }
-}
