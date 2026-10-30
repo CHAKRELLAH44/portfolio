@@ -366,26 +366,36 @@
                 <p class="certifications-eyebrow" data-i18n="certs.eyebrow">Learning</p>
                 <h2 id="certifications-title" data-i18n="certs.title">CERTIFICATIONS &amp; COURSES</h2>
               </div>
-              <span class="certifications-count">30 <span data-i18n="certs.completed">courses and credentials</span></span>
+              <p class="certifications-count"><strong class="certifications-total">30</strong> <span data-i18n="certs.split">6 credentials · 24 courses</span></p>
             </div>
-            <div class="certification-carousel" role="region" aria-roledescription="carousel" aria-label="Certifications and courses" data-i18n-attr="aria-label:certs.carouselAria">
-              <div class="certification-slides" aria-live="polite">
-                <div class="certification-slide is-active" data-slide="0"></div>
-                <div class="certification-slide" data-slide="1" hidden></div>
-                <div class="certification-slide" data-slide="2" hidden></div>
-                <div class="certification-slide" data-slide="3" hidden></div>
-                <div class="certification-slide" data-slide="4" hidden></div>
-                <div class="certification-slide" data-slide="5" hidden></div>
-                <div class="certification-slide" data-slide="6" hidden></div>
+            <div class="certs-app">
+              <div class="cert-block">
+                <h3 class="cert-subtitle" data-i18n="certs.credentials">Credentials</h3>
+                <ul class="cert-credentials" id="cert-credentials"></ul>
               </div>
-              <div class="certification-controls">
-                <button type="button" class="certification-arrow" data-cert-prev aria-label="Previous slide" data-i18n-attr="aria-label:certs.previous">←</button>
-                <div class="certification-dots" role="group" aria-label="Choose a slide" data-i18n-attr="aria-label:certs.chooseSlide"></div>
-                <button type="button" class="certification-arrow" data-cert-next aria-label="Next slide" data-i18n-attr="aria-label:certs.next">→</button>
-                <span class="certification-page" aria-hidden="true">1 / 8</span>
+              <div class="cert-block">
+                <div class="cert-courses-head">
+                  <h3 class="cert-subtitle" data-i18n="certs.courses">Courses</h3>
+                  <div class="cert-chips" role="group" aria-label="Filter courses by provider" data-i18n-attr="aria-label:certs.filterAria">
+                    <button type="button" class="filter-btn is-active" data-cert-filter="all" aria-pressed="true"><span data-i18n="certs.filterAll">All</span> <span class="cert-chip-n"></span></button>
+                    <button type="button" class="filter-btn" data-cert-filter="michigan" aria-pressed="false">Michigan <span class="cert-chip-n"></span></button>
+                    <button type="button" class="filter-btn" data-cert-filter="epfl" aria-pressed="false">EPFL <span class="cert-chip-n"></span></button>
+                    <button type="button" class="filter-btn" data-cert-filter="meta" aria-pressed="false">Meta <span class="cert-chip-n"></span></button>
+                    <button type="button" class="filter-btn" data-cert-filter="jhu" aria-pressed="false">Johns Hopkins <span class="cert-chip-n"></span></button>
+                    <button type="button" class="filter-btn" data-cert-filter="ibm" aria-pressed="false">IBM <span class="cert-chip-n"></span></button>
+                    <button type="button" class="filter-btn" data-cert-filter="google" aria-pressed="false">Google <span class="cert-chip-n"></span></button>
+                    <button type="button" class="filter-btn" data-cert-filter="aws" aria-pressed="false">AWS <span class="cert-chip-n"></span></button>
+                    <button type="button" class="filter-btn" data-cert-filter="other" aria-pressed="false"><span data-i18n="certs.filterOther">Other</span> <span class="cert-chip-n"></span></button>
+                  </div>
+                </div>
+                <ul class="cert-list" id="cert-course-list"></ul>
+                <div class="cert-foot">
+                  <p class="cert-status" aria-live="polite"></p>
+                  <button type="button" class="filter-btn cert-toggle" aria-expanded="false" aria-controls="cert-course-list" hidden></button>
+                </div>
               </div>
             </div>
-            <div class="certification-data" hidden>
+            <div class="certification-data">
               <a href="https://www.coursera.org/learn/packt-advanced-spring-cloud-microservices-and-deployment-with-docker-1nbvc/home/welcome" data-provider="Packt">Advanced Spring Cloud Microservices &amp; Deployment with Docker</a>
               <a href="https://www.coursera.org/learn/machine-learning-with-python/home/welcome" data-provider="IBM">Machine Learning with Python</a>
               <a href="https://www.coursera.org/learn/react-native-course/home/welcome" data-provider="Meta">React Native</a>
