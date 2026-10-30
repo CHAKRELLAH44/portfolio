@@ -1,0 +1,351 @@
+/* Testimonials: the notes wall and the leave-a-note form. */
+
+/* ===== Testimonials: approved notes + moderated form ===== */
+
+.testimonials {
+  padding-block: clamp(2rem, 6vh, 4rem);
+}
+
+.testimonials .container .content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 3vh, 2rem);
+  width: 100%;
+}
+
+.testimonials .container .content .title {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonials .container .content .title .label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gray);
+  font-size: clamp(1.2rem, min(2.4vw, 4vh), 2.2rem);
+}
+
+.testimonials .container .content .title .label hr {
+  width: 90px;
+  padding: 2px;
+  margin-top: 4px;
+  border: none;
+  background-color: var(--gray);
+}
+
+.testimonials .container .content .title .heading {
+  color: var(--white);
+  font: italic bold clamp(1.8rem, min(5vw, 7vh), 4.5rem)/1.12 "IBM Plex Sans", sans-serif;
+}
+
+/* Messy pile of notes: positioned by js/home.js (layoutPile), zoom on hover/tap. */
+
+.testi-track {
+  position: relative;
+  min-height: 16rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.testi-card {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: min(100% - 2rem, 21rem);
+  min-height: 13rem;
+  padding: 2.9rem 1.4rem 1.25rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.28);
+  border-radius: 6px 6px 18px 6px;
+  background:
+    linear-gradient(160deg, rgba(var(--accent-rgb), 0.1), rgba(255, 255, 255, 0.02)),
+    var(--black);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+  cursor: zoom-in;
+  transform: rotate(var(--angle, 0deg));
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Strip of tape holding each note. */
+
+.testi-card::after {
+  content: "";
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  width: 5.5rem;
+  height: 1.4rem;
+  border-radius: 2px;
+  background: rgba(var(--accent-rgb), 0.28);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  transform: translateX(-50%) rotate(calc(var(--angle, 0deg) * -1.5));
+}
+
+.testi-card:hover,
+.testi-card:focus-visible,
+.testi-card.is-zoomed {
+  z-index: 1000 !important;
+  border-color: rgba(var(--accent-rgb), 0.7);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 28px rgba(var(--accent-rgb), 0.22);
+  outline: none;
+  transform: rotate(0deg) scale(1.14);
+}
+
+.testi-card::before {
+  content: "\201C";
+  position: absolute;
+  top: 0.55rem;
+  left: 1.3rem;
+  color: rgba(var(--accent-rgb), 0.45);
+  font: italic 900 3.6rem/1 "IBM Plex Sans", serif;
+  pointer-events: none;
+}
+
+.testi-card blockquote {
+  margin: 0;
+  color: var(--white);
+  font: italic 500 1rem/1.6 "IBM Plex Sans", sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.testi-avatar {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--black);
+  font: 800 0.95rem "IBM Plex Sans", sans-serif;
+}
+
+.testi-author > div { min-width: 0; flex: 1; }
+
+.testi-name {
+  margin: 0;
+  color: var(--white);
+  font: 700 0.95rem/1.3 "IBM Plex Sans", sans-serif;
+}
+
+.testi-meta {
+  margin: 0;
+  color: var(--gray);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.testi-badge {
+  flex: none;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.45);
+  border-radius: 999px;
+  color: var(--primary);
+  font: 700 0.7rem "IBM Plex Sans", sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.testi-empty {
+  grid-column: 1 / -1;
+  width: 100%;
+  padding: 2rem 1.25rem;
+  border: 1px dashed rgba(var(--accent-rgb), 0.4);
+  border-radius: 18px;
+  color: var(--gray);
+  font-style: italic;
+  text-align: center;
+}
+
+.testimonials.is-empty .testi-track { min-height: 0; }
+
+.testi-cta { display: flex; justify-content: center; }
+
+.testi-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.4rem;
+  border: 2px solid var(--primary);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--primary);
+  font: 700 0.95rem "IBM Plex Sans", sans-serif;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.testi-open:hover,
+.testi-open:focus-visible { background: var(--primary); color: var(--black); }
+
+.testi-open-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.testimonials.form-open .testi-open-icon { transform: rotate(45deg); }
+
+.testi-form {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  max-width: 46rem;
+  margin-inline: auto;
+  padding: clamp(1.1rem, 3vw, 1.75rem);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.02);
+  animation: testi-form-in 0.35s ease-out;
+}
+
+.testi-form[hidden] { display: none; }
+
+.testi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+}
+
+.testi-form label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--gray);
+  font: 600 0.85rem "IBM Plex Sans", sans-serif;
+}
+
+.testi-form label em { font-weight: 400; }
+
+.testi-form input[type="text"],
+.testi-form textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  border-radius: 10px;
+  outline: none;
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--white);
+  font: 400 1rem "IBM Plex Sans", sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.testi-form input[type="text"]:focus,
+.testi-form textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
+}
+
+.testi-form input::placeholder { color: rgba(128, 128, 128, 0.7); }
+
+.testi-form textarea { min-height: 7.5rem; resize: vertical; }
+
+.testi-relation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.testi-relation legend {
+  width: 100%;
+  margin-bottom: 0.45rem;
+  color: var(--gray);
+  font: 600 0.85rem "IBM Plex Sans", sans-serif;
+}
+
+.testi-form .testi-relation label { display: block; cursor: pointer; }
+
+.testi-relation input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.testi-relation span {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1.5px solid rgba(var(--accent-rgb), 0.45);
+  border-radius: 999px;
+  color: var(--white);
+  font: 600 0.85rem "IBM Plex Sans", sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.testi-relation input:checked + span {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--black);
+}
+
+.testi-relation input:focus-visible + span { outline: 2px solid var(--primary); outline-offset: 3px; }
+
+.testi-hp {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+}
+
+.testi-status {
+  min-height: 1.2em;
+  margin: 0;
+  color: var(--gray);
+  font: 600 0.9rem "IBM Plex Sans", sans-serif;
+}
+
+.testi-status[data-kind="ok"] { color: var(--primary); }
+
+.testi-status[data-kind="error"] { color: #ff6b6b; }
+
+.testi-submit {
+  justify-self: start;
+  padding: 0.8rem 1.6rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--black);
+  font: 800 0.95rem "IBM Plex Sans", sans-serif;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.testi-submit:hover { box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.5); transform: translateY(-2px); }
+
+.testi-submit:disabled { opacity: 0.6; cursor: wait; transform: none; }
+
+.testi-disclaimer {
+  margin: -0.4rem 0 0;
+  color: var(--gray);
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+body[data-theme="light"] .testi-form input[type="text"],
+body[data-theme="light"] .testi-form textarea { background: rgba(255, 255, 255, 0.6); }
+
+@media (max-width: 600px) {
+  .testi-card { width: min(100% - 1.5rem, 19rem); min-height: 11rem; padding: 2.6rem 1.1rem 1.1rem; }
+
+  .testi-card:hover, .testi-card.is-zoomed { transform: rotate(0deg) scale(1.06); }
+
+  .testi-open { width: 100%; justify-content: space-between; font-size: 0.88rem; }
+
+  .testi-submit { justify-self: stretch; }
+}
+
+
