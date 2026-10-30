@@ -140,6 +140,40 @@ if (navToggle && primaryNav) {
   });
 }
 
+// The highlight in the navigation pill slides under the current page link (aria-current), and follows hover and focus.
+(function () {
+  const pill = document.querySelector("#primary-nav.nav-pill");
+  const indicator = pill && pill.querySelector(".nav-indicator");
+  if (!indicator) return;
+  const links = [...pill.querySelectorAll("a:not(.nav-cv)")];
+
+  const moveTo = (link) => {
+    if (!link || window.innerWidth <= 768) {
+      pill.classList.remove("has-indicator");
+      return;
+    }
+    indicator.style.setProperty("--x", link.offsetLeft + "px");
+    indicator.style.setProperty("--w", link.offsetWidth + "px");
+    pill.classList.add("has-indicator");
+  };
+  const rest = () => moveTo(pill.querySelector("a[aria-current]"));
+
+  links.forEach((link) => {
+    link.addEventListener("pointerenter", () => moveTo(link));
+    link.addEventListener("focus", () => moveTo(link));
+  });
+  pill.addEventListener("pointerleave", rest);
+  pill.addEventListener("focusout", (event) => {
+    if (!pill.contains(event.relatedTarget)) rest();
+  });
+  // The current link changes with the home page scroll-spy; the widths change with the language and the fonts.
+  new MutationObserver(rest).observe(pill, { attributes: true, attributeFilter: ["aria-current"], subtree: true });
+  window.addEventListener("resize", rest);
+  document.addEventListener("portfolio:languagechange", () => requestAnimationFrame(rest));
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(rest);
+  rest();
+})();
+
 // The header turns into a solid bar once the page moves, hides while reading down and returns on the way up.
 function updateHeader() {
   const scrollTop = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);

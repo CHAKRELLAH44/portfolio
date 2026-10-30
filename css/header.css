@@ -1,5 +1,5 @@
-/* Site header: logo, page links, availability + CV pills, language and theme buttons.
-   Transparent over the hero, a solid blurred bar once the page is scrolled, a panel menu on phones.
+/* Site header: a floating pill with the page links (a highlight slides under the current page), a small pill
+   with availability, CV, language and theme, and the logo on the left. On phones it becomes a bar with a menu sheet.
    --black / --white are the page background / text colours and swap in the light theme. */
 
 .skip-link {
@@ -21,21 +21,24 @@
 .site-header {
   --hot: var(--primary); /* accent that stays readable as text */
   --on-primary: #0f0f0f; /* text colour on a --primary fill */
-  --rule: color-mix(in srgb, var(--white) 12%, transparent);
-  --bar: color-mix(in srgb, var(--black) 86%, transparent);
+  --rule: color-mix(in srgb, var(--white) 14%, transparent);
+  --surface: color-mix(in srgb, var(--black) 62%, transparent);
+  --surface-strong: color-mix(in srgb, var(--black) 90%, transparent);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 9999;
-  border-bottom: 1px solid transparent;
-  transition: transform 0.3s ease-in-out, background-color 0.25s, border-color 0.25s;
+  pointer-events: none; /* only the pills catch clicks, the gaps let the page through */
+  transition: transform 0.3s ease-in-out;
   animation: header-in 0.6s 0.2s both;
 }
 
 body[data-theme="light"] .site-header {
   --hot: #a84a05;
   --on-primary: #38291f;
+  --surface: color-mix(in srgb, var(--black) 72%, transparent);
 }
 
 @keyframes header-in {
@@ -46,26 +49,28 @@ body[data-theme="light"] .site-header {
 }
 
 .site-header.hidden {
-  transform: translateY(-100%);
-}
-
-.site-header.is-stuck,
-.site-header.nav-open {
-  border-bottom-color: var(--rule);
-  background: var(--bar);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  transform: translateY(-110%);
 }
 
 .site-header .container {
-  padding-block: 0.6rem;
+  padding-block: 0.9rem;
+  transition: padding 0.25s var(--ease);
+}
+
+.site-header.is-stuck .container {
+  padding-block: 0.5rem;
 }
 
 .site-header .content {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  gap: clamp(1rem, 2.5vw, 2.5rem);
+  gap: 1rem;
+}
+
+.site-header .content > * {
+  pointer-events: auto;
 }
 
 .site-header :is(a, button):focus-visible {
@@ -76,175 +81,185 @@ body[data-theme="light"] .site-header {
 /* Logo */
 .site-header .logo {
   display: inline-flex;
-  flex: none;
   align-items: center;
   gap: 0.35rem;
+  justify-self: start;
   color: var(--white);
-  font: italic 700 1.5rem var(--font-display);
+  font: italic 800 1.3rem var(--font-display);
+  font-stretch: 112%;
 }
 
 .site-header .logo img {
-  width: 4rem;
-  height: 4rem;
+  width: 3.4rem;
+  height: 3.4rem;
   object-fit: contain;
 }
 
+/* The two pills */
+.nav-pill,
+.nav-actions {
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  transition: background-color 0.25s, box-shadow 0.25s;
+}
+
+.site-header.is-stuck .nav-pill,
+.site-header.is-stuck .nav-actions {
+  background: var(--surface-strong);
+  box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.55);
+}
+
 /* Page links */
-.site-header nav {
+.nav-pill {
+  position: relative;
   display: flex;
-  flex: 1;
   align-items: center;
-  justify-content: center;
-  gap: clamp(1.25rem, 3.2vw, 4rem);
+  gap: 0.1rem;
+  padding: 0.3rem;
 }
 
-.site-header nav a {
+.nav-pill a {
   position: relative;
-  padding-block: 0.5rem;
-  color: var(--white);
-  font: 600 1rem var(--font-display);
+  z-index: 1;
+  padding: 0.6rem 1.15rem;
+  border-radius: 999px;
+  color: color-mix(in srgb, var(--white) 76%, transparent);
+  font: 600 0.95rem var(--font-display);
   white-space: nowrap;
+  transition: color 0.2s;
 }
 
-.site-header nav a::after {
-  content: "";
+.nav-pill a:hover,
+.nav-pill a:focus-visible,
+.nav-pill a[aria-current] {
+  color: var(--white);
+}
+
+.nav-pill .nav-cv {
+  display: none; /* the CV button lives in the right pill on desktop */
+}
+
+/* The highlight that slides under the current (or hovered) link; positioned by js/core.js */
+.nav-indicator {
   position: absolute;
-  right: 0;
-  bottom: 0.1rem;
+  top: 0.3rem;
+  bottom: 0.3rem;
   left: 0;
-  border-bottom: 2px solid var(--white);
-  transform: scaleX(0);
-  transition: transform 0.2s linear;
+  width: var(--w, 0);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary) 42%, transparent);
+  opacity: 0;
+  transform: translateX(var(--x, 0));
+  transition: transform 0.4s var(--ease), width 0.4s var(--ease), opacity 0.25s;
+  pointer-events: none;
 }
 
-body[data-theme="light"] .site-header nav a::after {
-  border-color: var(--primary);
+.nav-pill.has-indicator .nav-indicator {
+  opacity: 1;
 }
 
-.site-header nav a:hover::after,
-.site-header nav a:focus-visible::after,
-.site-header nav a[aria-current]::after {
-  transform: scaleX(1);
-}
-
-.site-header nav .nav-cv {
-  display: none;
-}
-
-/* Availability + CV pills: a circle of --primary grows from the centre on hover */
-.site-header .extra-nav {
+/* Availability, CV, language, theme */
+.nav-actions {
   display: flex;
-  flex: none;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.25rem;
+  justify-self: end;
+  padding: 0.3rem;
 }
 
-.site-header .extra-nav a {
-  position: relative;
+.nav-actions .status {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  min-height: 2.5rem;
-  padding: 0.4rem 1.6rem;
-  border: 2px solid var(--white);
-  border-radius: 16px;
-  overflow: hidden;
-  color: var(--white);
-  font: 500 1rem var(--font-display);
+  gap: 0.5rem;
+  padding: 0 0.75rem 0 0.85rem;
+  color: color-mix(in srgb, var(--white) 86%, transparent);
+  font: 600 0.78rem var(--font-display);
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
-.site-header .extra-nav .cv-link {
-  padding-inline: 1.1rem;
+.nav-actions .status:hover {
+  color: var(--white);
 }
 
-.site-header .extra-nav a::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  margin: -2px 0 0 -2px;
-  border-radius: 50%;
-  background: var(--primary);
-  transform: scale(0);
-  transition: transform 0.25s ease-out;
-}
-
-.site-header .extra-nav a:hover::before,
-.site-header .extra-nav a:focus-visible::before {
-  transform: scale(120);
-}
-
-.site-header .extra-nav a > span {
-  position: relative;
-  transition: color 0.2s linear;
-}
-
-.site-header .extra-nav a:hover > span,
-.site-header .extra-nav a:focus-visible > span {
-  color: var(--on-primary);
-}
-
-.site-header .status .dot {
-  position: relative;
+.nav-actions .status .dot {
   flex: none;
   width: 0.55rem;
   height: 0.55rem;
   border-radius: 50%;
   background: #3ddc84;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #3ddc84 22%, transparent);
 }
 
-/* Language + theme buttons */
-.site-header .lang-toggle,
-.site-header .theme-toggle {
+.nav-actions .cv-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font: 700 0.85rem var(--font-display);
+  letter-spacing: 0.02em;
+  transition: filter 0.2s, transform 0.2s;
+}
+
+.nav-actions .cv-link:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.nav-actions .lang-toggle,
+.nav-actions .theme-toggle {
   display: inline-flex;
   flex: none;
   align-items: center;
   justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: 0;
   border: 0;
   border-radius: 50%;
   background: transparent;
   color: var(--white);
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: background-color 0.2s;
 }
 
-.site-header .lang-toggle:hover,
-.site-header .theme-toggle:hover {
-  transform: scale(1.1);
+.nav-actions .lang-toggle:hover,
+.nav-actions .theme-toggle:hover {
+  background: color-mix(in srgb, var(--white) 12%, transparent);
 }
 
-.site-header .lang-toggle .flag {
+.nav-actions .lang-toggle .flag {
   display: block;
-  width: 1.75rem;
+  width: 1.55rem;
   height: auto;
   aspect-ratio: 3 / 2;
   border-radius: 3px;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
 }
 
-body[data-theme="light"] .site-header .lang-toggle .flag {
+body[data-theme="light"] .nav-actions .lang-toggle .flag {
   box-shadow: 0 0 0 1px rgba(56, 41, 31, 0.3);
 }
 
-.site-header .theme-toggle svg {
-  width: 1.75rem;
-  height: 1.75rem;
+.nav-actions .theme-toggle svg {
+  width: 1.45rem;
+  height: 1.45rem;
 }
 
 /* The button shows the theme you can switch to: sun in dark mode, moon in light mode. */
-.site-header .theme-moon,
-body[data-theme="light"] .site-header .theme-sun {
+.nav-actions .theme-moon,
+body[data-theme="light"] .nav-actions .theme-sun {
   display: none;
 }
 
-body[data-theme="light"] .site-header .theme-moon {
+body[data-theme="light"] .nav-actions .theme-moon {
   display: block;
 }
 
@@ -253,50 +268,49 @@ body[data-theme="light"] .site-header .theme-moon {
   display: none;
 }
 
-/* Tablet widths: not enough room for the availability pill */
-@media (max-width: 1100px) {
-  .site-header .extra-nav .status {
+/* Narrower desktops: drop the availability text, then the CV button */
+@media (max-width: 1180px) {
+  .nav-actions .status {
     display: none;
-  }
-
-  .site-header nav {
-    gap: clamp(1rem, 2.4vw, 2rem);
-  }
-
-  .site-header .content {
-    gap: 1rem;
   }
 }
 
 @media (min-width: 769px) and (max-width: 900px) {
-  .site-header .logo {
-    font-size: 1.2rem;
+  .site-header .logo span {
+    display: none;
   }
 
-  .site-header .logo img {
-    width: 3rem;
-    height: 3rem;
+  .nav-pill a {
+    padding: 0.55rem 0.8rem;
+    font-size: 0.88rem;
   }
 
-  .site-header nav {
-    gap: 1rem;
+  .nav-actions .cv-link {
+    display: none;
   }
 }
 
 @media (pointer: coarse) {
-  .site-header .extra-nav a {
+  .nav-actions .cv-link {
     min-height: 2.75rem;
+  }
+
+  .nav-actions .lang-toggle,
+  .nav-actions .theme-toggle {
+    width: 2.75rem;
+    height: 2.75rem;
   }
 }
 
-/* Phones */
+/* Phones: a bar with the logo, language, theme and a menu button; the links open as a sheet */
 @media (max-width: 768px) {
   .site-header {
     z-index: 10000;
-    border-bottom-color: var(--rule);
-    background: var(--bar);
+    border-bottom: 1px solid var(--rule);
+    background: var(--surface-strong);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
+    pointer-events: auto;
   }
 
   .site-header .container {
@@ -304,47 +318,34 @@ body[data-theme="light"] .site-header .theme-moon {
   }
 
   .site-header .content {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    grid-template-columns: minmax(0, 1fr) auto auto;
     gap: 0.25rem;
   }
 
   .site-header .logo {
-    justify-self: start;
-    padding-block: 0.1rem;
     font-size: 1.15rem;
   }
 
   .site-header .logo img {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.6rem;
+    height: 2.6rem;
   }
 
-  .site-header .extra-nav {
+  .nav-actions {
+    padding: 0;
+    border: 0;
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none !important;
+  }
+
+  .nav-actions .status,
+  .nav-actions .cv-link {
     display: none;
   }
 
-  .site-header .logo,
-  .site-header .lang-toggle,
-  .site-header .theme-toggle {
-    grid-row: 1;
-  }
-
-  .site-header .logo {
-    grid-column: 1;
-  }
-
-  .site-header .lang-toggle {
-    grid-column: 2;
-  }
-
-  .site-header .theme-toggle {
-    grid-column: 3;
-  }
-
   .site-header .nav-toggle {
-    grid-column: 4;
-    grid-row: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -382,58 +383,55 @@ body[data-theme="light"] .site-header .theme-moon {
     transform: translateY(-0.46rem) rotate(-45deg);
   }
 
-  .site-header nav {
+  .nav-pill {
     position: absolute;
     top: calc(100% + 0.45rem);
     right: 0;
+    left: 0;
     display: none;
-    flex: none;
     flex-direction: column;
     align-items: stretch;
-    justify-content: flex-start;
     gap: 0.2rem;
-    width: min(19rem, calc(100vw - 1.5rem));
     padding: 0.65rem;
     border: 1px solid rgba(var(--accent-rgb), 0.45);
     border-radius: 0.9rem;
     background: color-mix(in srgb, var(--black) 98%, transparent);
     box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.4);
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
   }
 
-  .site-header.nav-open nav {
+  .site-header.nav-open .nav-pill {
     display: flex;
   }
 
-  .site-header nav a {
-    padding: 0.75rem 0.85rem;
+  .nav-pill a {
+    padding: 0.8rem 0.9rem;
     border-radius: 0.5rem;
+    color: var(--white);
     font-size: 1rem;
   }
 
-  .site-header nav a::after {
-    display: none;
-  }
-
-  .site-header nav a:hover,
-  .site-header nav a:focus-visible {
+  .nav-pill a:hover,
+  .nav-pill a:focus-visible {
     background: rgba(var(--accent-rgb), 0.12);
     color: var(--hot);
   }
 
-  .site-header nav a[aria-current] {
+  .nav-pill a[aria-current] {
     background: rgba(var(--accent-rgb), 0.12);
     box-shadow: inset 3px 0 0 var(--hot);
     color: var(--hot);
   }
 
-  .site-header nav .nav-cv {
+  .nav-pill .nav-cv {
     display: block;
     margin-top: 0.35rem;
     border-top: 1px solid rgba(var(--accent-rgb), 0.3);
     border-radius: 0 0 0.5rem 0.5rem;
     color: var(--hot);
+  }
+
+  .nav-indicator {
+    display: none;
   }
 }
 
@@ -444,7 +442,8 @@ html.nav-lock {
 
 @media (prefers-reduced-motion: reduce) {
   .site-header,
-  .site-header * {
+  .site-header *,
+  .nav-indicator {
     transition: none !important;
     animation: none !important;
   }
