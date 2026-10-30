@@ -1,12 +1,12 @@
-      body { min-height: 100vh; font-family: "IBM Plex Sans", sans-serif; }
+      body { min-height: 100vh; font-family: var(--font-display); }
       .admin { width: min(56rem, 100% - 32px); margin: 0 auto; padding: 2rem 0 4rem; }
       .admin-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
       [hidden] { display: none !important; }
-      .admin-head h1 { margin: 0; color: var(--white); font: italic 800 clamp(1.6rem, 5vw, 2.6rem) "IBM Plex Sans", sans-serif; }
+      .admin-head h1 { margin: 0; color: var(--white); font: italic 800 clamp(1.6rem, 5vw, 2.6rem) var(--font-display); }
       .admin-head p { margin: 0.2rem 0 0; color: var(--gray); font-size: 0.85rem; }
       .admin-btn {
         padding: 0.55rem 1.1rem; border: 1.5px solid rgba(var(--accent-rgb), 0.5); border-radius: 999px;
-        background: transparent; color: var(--white); font: 700 0.85rem "IBM Plex Sans", sans-serif; cursor: pointer;
+        background: transparent; color: var(--white); font: 700 0.85rem var(--font-display); cursor: pointer;
         transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
       }
       .admin-btn:hover, .admin-btn:focus-visible { border-color: var(--primary); color: var(--primary); }
@@ -22,7 +22,7 @@
         color: var(--white); -webkit-user-select: none; user-select: none;
       }
       .lock-icon { margin: 0; font-size: 1.6rem; }
-      .lock h1 { margin: 0; font: 500 1.25rem "IBM Plex Sans", sans-serif; }
+      .lock h1 { margin: 0; font: 500 1.25rem var(--font-display); }
       .lock-dots { display: flex; gap: 1.1rem; margin: 0.4rem 0; }
       .lock-dots span {
         width: 0.85rem; height: 0.85rem; border: 1.5px solid var(--white); border-radius: 50%;
@@ -45,7 +45,7 @@
       .keypad button:not(.keypad-text) {
         display: flex; flex-direction: column; align-items: center; justify-content: center;
         width: clamp(4.4rem, 20vw, 5rem); height: clamp(4.4rem, 20vw, 5rem); border: 0; border-radius: 50%;
-        background: rgba(255, 255, 255, 0.1); color: var(--white); font: 400 2rem/1 "IBM Plex Sans", sans-serif;
+        background: rgba(255, 255, 255, 0.1); color: var(--white); font: 400 2rem/1 var(--font-display);
         cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
         transition: background-color 0.25s ease;
       }
@@ -55,7 +55,7 @@
       .keypad button:focus-visible, .keypad a:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
       .keypad-text {
         align-self: center; justify-self: center; padding: 0.6rem; border: 0; background: none;
-        color: var(--white); font: 500 1rem "IBM Plex Sans", sans-serif; cursor: pointer;
+        color: var(--white); font: 500 1rem var(--font-display); cursor: pointer;
       }
       .keypad.is-locked button { opacity: 0.35; pointer-events: none; }
       body[data-theme="light"] .keypad button:not(.keypad-text) { background: rgba(56, 41, 31, 0.1); }
@@ -87,7 +87,7 @@
       .note-date { display: inline-flex; align-items: center; gap: 0.5rem; margin-left: auto; color: var(--gray); font-size: 0.8rem; font-weight: 600; }
       .note-date input {
         padding: 0.45rem 0.6rem; border: 1px solid rgba(var(--accent-rgb), 0.35); border-radius: 10px;
-        background: rgba(0, 0, 0, 0.25); color: var(--white); color-scheme: dark; font: 500 0.85rem "IBM Plex Sans", sans-serif;
+        background: rgba(0, 0, 0, 0.25); color: var(--white); color-scheme: dark; font: 500 0.85rem var(--font-display);
       }
       body[data-theme="light"] .note-date input { color-scheme: light; background: rgba(255, 255, 255, 0.6); }
       .note-date input:focus { outline: none; border-color: var(--primary); }
@@ -104,21 +104,21 @@
       .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 0.75rem; }
       .kpi { padding: 0.9rem 1rem; border: 1px solid rgba(var(--accent-rgb), 0.2); border-radius: 14px; background: rgba(255, 255, 255, 0.02); }
       .kpi-label { margin: 0; color: var(--gray); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-      .kpi-value { margin: 0.25rem 0 0; color: var(--white); font: 700 1.7rem/1.1 "IBM Plex Sans", sans-serif; font-variant-numeric: tabular-nums; }
+      .kpi-value { margin: 0.25rem 0 0; color: var(--white); font: 700 1.7rem/1.1 var(--font-display); font-variant-numeric: tabular-nums; }
       .kpi-sub { margin: 0.25rem 0 0; color: var(--gray); font-size: 0.75rem; line-height: 1.3; }
       .kpi.is-live { border-color: rgba(var(--accent-rgb), 0.6); }
       .kpi.is-live .kpi-label::before { content: ""; display: inline-block; width: 0.5rem; height: 0.5rem; margin-right: 0.4rem; border-radius: 50%; background: var(--primary); box-shadow: 0 0 8px var(--primary); animation: live 1.6s ease-in-out infinite; }
       @keyframes live { 50% { opacity: 0.3; } }
       .panel-card { min-width: 0; padding: 1rem 1.1rem; border: 1px solid rgba(var(--accent-rgb), 0.18); border-radius: 16px; background: rgba(255, 255, 255, 0.02); }
       .panel-head { margin-bottom: 0.75rem; }
-      .panel-card h2 { margin: 0; color: var(--white); font: italic 700 1.05rem "IBM Plex Sans", sans-serif; }
+      .panel-card h2 { margin: 0; color: var(--white); font: italic 700 1.05rem var(--font-display); }
       .panel-sub { margin: 0.2rem 0 0; color: var(--gray); font-size: 0.78rem; }
       .panel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: 1rem; }
       .chart svg { display: block; width: 100%; height: auto; }
       .chart .bar { fill: var(--primary); }
       .chart .grid { stroke: rgba(255, 255, 255, 0.08); stroke-width: 1; }
       .chart .axis { stroke: rgba(255, 255, 255, 0.3); stroke-width: 1; }
-      .chart .tick { fill: var(--gray); font: 500 11px "IBM Plex Sans", sans-serif; }
+      .chart .tick { fill: var(--gray); font: 500 11px var(--font-display); }
       .chart .hit { fill: transparent; }
       .chart .hit:hover { fill: rgba(var(--accent-rgb), 0.08); }
       .bars { display: grid; gap: 0.6rem; margin: 0; padding: 0; list-style: none; }

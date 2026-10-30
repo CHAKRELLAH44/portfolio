@@ -40,7 +40,7 @@
 }
 
 .about .container .content .title .heading {
-  font: italic bold 3.5rem "IBM Plex Sans", sans-serif;
+  font: italic bold 3.5rem var(--font-display);
 }
 
 /* Nouveau conteneur pour la photo et le texte */
@@ -142,7 +142,7 @@
 }
 
 .about .container .content .text-wrapper .text p {
-  font: italic bold 9rem "IBM Plex Sans", sans-serif;
+  font: italic bold 9rem var(--font-display);
   white-space: nowrap;
 }
 
@@ -312,12 +312,12 @@
 
 .about-stats strong {
   color: var(--primary-text);
-  font: italic 700 clamp(1.8rem, 3.2vw, 2.75rem)/1 "IBM Plex Sans", sans-serif;
+  font: italic 700 clamp(1.8rem, 3.2vw, 2.75rem)/1 var(--font-display);
 }
 
 .about-stats span {
   color: var(--gray);
-  font: 600 0.8rem/1.2 "IBM Plex Sans", sans-serif;
+  font: 600 0.8rem/1.2 var(--font-display);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -368,7 +368,7 @@
 
 .about-me .about-actions .about-hidden,
 .about-actions .about-cv {
-  font: 700 0.9rem "IBM Plex Sans", sans-serif;
+  font: 700 0.9rem var(--font-display);
   letter-spacing: 0.02em;
 }
 
@@ -407,7 +407,7 @@
   border: 2px solid rgba(var(--accent-rgb), 0.55);
   border-radius: 32px;
   color: var(--primary-text);
-  font: 700 0.9rem "IBM Plex Sans", sans-serif;
+  font: 700 0.9rem var(--font-display);
   text-align: center;
   transition: background 0.2s ease, color 0.2s ease;
 }

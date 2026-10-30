@@ -19,7 +19,7 @@ footer .container .content {
 
 footer .footer-title {
   margin: 0;
-  font: italic bold 1.5rem "IBM Plex Sans", sans-serif;
+  font: italic bold 1.5rem var(--font-display);
 }
 
 footer .social {
@@ -64,7 +64,7 @@ footer .footer-nav {
 footer .footer-nav a {
   padding-block: 0.4rem;
   color: color-mix(in srgb, var(--white) 78%, transparent);
-  font: 600 0.85rem "IBM Plex Sans", sans-serif;
+  font: 600 0.85rem var(--font-display);
 }
 
 footer .footer-nav a:hover {
@@ -84,7 +84,7 @@ footer .footer-nav a:hover {
   border-radius: 999px;
   background: transparent;
   color: var(--hot);
-  font: 700 0.85rem "IBM Plex Sans", sans-serif;
+  font: 700 0.85rem var(--font-display);
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
 }

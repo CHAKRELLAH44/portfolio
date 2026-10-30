@@ -6,6 +6,10 @@
   --gray: #9a9a9a; /* secondary text, 4.5:1+ on the page background */
   --primary-text: var(--primary); /* the accent when it is used as text colour */
   --on-primary: #0f0f0f; /* text on a --primary fill */
+
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif; /* headings, navigation, buttons, labels */
+  --font-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif; /* running text */
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace; /* typed roles line, game telemetry */
 }
 
 * {
@@ -32,7 +36,7 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-body);
   background-color: var(--black);
   color: var(--white);
 }
@@ -67,7 +71,7 @@ body {
   background-color: var(--white);
   color: var(--black);
   border-radius: 32px;
-  font: bold 1rem "IBM Plex Sans", sans-serif;
+  font: bold 1rem var(--font-display);
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
@@ -86,7 +90,7 @@ body {
   background-color: var(--primary);
   color: var(--white);
   border-radius: 32px;
-  font: bold 1rem "IBM Plex Sans", sans-serif;
+  font: bold 1rem var(--font-display);
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
@@ -115,7 +119,7 @@ body {
   background-color: var(--white);
   color: var(--black);
   border-radius: 32px;
-  font: bold 1rem "IBM Plex Sans", sans-serif;
+  font: bold 1rem var(--font-display);
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
@@ -135,7 +139,7 @@ body {
   border: 2px solid #ffffff;
   color: var(--white);
   border-radius: 32px;
-  font: bold 1rem "IBM Plex Sans", sans-serif;
+  font: bold 1rem var(--font-display);
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
@@ -166,7 +170,7 @@ body {
 }
 
 .social-media h2 {
-  font: italic bold 2rem "IBM Plex Sans", sans-serif;
+  font: italic bold 2rem var(--font-display);
   color: var(--gray);
 }
 
@@ -186,7 +190,7 @@ body {
   border: 2px solid var(--white);
   border-radius: 32px;
   color: var(--white);
-  font: bold 1rem "IBM Plex Sans", sans-serif;
+  font: bold 1rem var(--font-display);
   transition: all 0.3s ease;
 }
 
@@ -221,7 +225,7 @@ body {
   border: 2px solid var(--white);
   border-radius: 32px;
   color: var(--white);
-  font: bold 1rem "IBM Plex Sans", sans-serif;
+  font: bold 1rem var(--font-display);
   transition: all 0.3s ease;
 }
 
@@ -517,7 +521,7 @@ body { font-size: 1rem; line-height: 1.55; }
   border-radius: 999px;
   background: transparent;
   color: var(--white);
-  font: 600 0.9rem "IBM Plex Sans", sans-serif;
+  font: 600 0.9rem var(--font-display);
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
@@ -551,7 +555,7 @@ body { font-size: 1rem; line-height: 1.55; }
   border-radius: 999px;
   background: var(--black);
   color: var(--white);
-  font: 600 0.9rem "IBM Plex Sans", sans-serif;
+  font: 600 0.9rem var(--font-display);
   box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.35);
   opacity: 0;
   pointer-events: none;

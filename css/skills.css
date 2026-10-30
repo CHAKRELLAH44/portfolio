@@ -17,7 +17,7 @@
 }
 
 .skill .container .content .title {
-  font: italic bold 3rem "IBM Plex Sans", sans-serif; 
+  font: italic bold 3rem var(--font-display); 
   color: var(--white); 
   text-align: center; 
 }
@@ -276,14 +276,14 @@
 .skill-count {
   margin: 0;
   color: var(--gray);
-  font: 500 0.95rem "IBM Plex Sans", sans-serif;
+  font: 500 0.95rem var(--font-display);
 }
 
 .skill-count-num {
   display: inline-block;
   min-width: 2ch;
   color: var(--primary-text);
-  font: italic 800 1.6rem "IBM Plex Sans", sans-serif;
+  font: italic 800 1.6rem var(--font-display);
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
@@ -324,7 +324,7 @@
   overflow: hidden;
   background: color-mix(in srgb, var(--black) 82%, transparent);
   color: var(--primary);
-  font: 700 0.72rem "IBM Plex Sans", sans-serif;
+  font: 700 0.72rem var(--font-display);
   letter-spacing: 0.02em;
   text-align: center;
   text-overflow: ellipsis;
@@ -404,7 +404,7 @@
     display: block;
     margin: 0;
     color: var(--gray);
-    font: italic 500 0.8rem "IBM Plex Sans", sans-serif;
+    font: italic 500 0.8rem var(--font-display);
     text-align: center;
   }
 
@@ -433,7 +433,7 @@
   background: color-mix(in srgb, var(--black) 94%, transparent);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), 0 0 18px rgba(var(--accent-rgb), 0.2);
   color: var(--white);
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-display);
   opacity: 0;
   transform: translateY(6px) scale(0.96);
   transform-origin: var(--arrow-x, 50%) bottom;
@@ -487,7 +487,7 @@
 .skill-bubble-name {
   margin: 0.1rem 2rem 0.55rem 0;
   color: var(--primary);
-  font: italic 800 1.25rem/1.2 "IBM Plex Sans", sans-serif;
+  font: italic 800 1.25rem/1.2 var(--font-display);
 }
 
 .skill-bubble-label {

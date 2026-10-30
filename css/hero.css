@@ -98,7 +98,7 @@ body[data-theme="light"] .hero .line {
 .hero .row-1,
 .hero .row-3 {
   margin: 0;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
 }
 
@@ -130,7 +130,7 @@ body[data-theme="light"] .hero .line {
   display: block;
   width: 100%;
   height: clamp(5rem, 18vh, 8.4rem);
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-display);
 }
 
 .row-2 svg text {
@@ -165,7 +165,7 @@ body[data-theme="light"] .hero .row-2 svg text {
   min-height: 1.6em;
   margin: 0.4rem 0 0;
   color: var(--hot);
-  font: 600 clamp(0.95rem, calc(0.8rem + 0.8vw), 1.6rem) "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  font: 600 clamp(0.95rem, calc(0.8rem + 0.8vw), 1.6rem) var(--font-mono);
   letter-spacing: 0.02em;
 }
 
@@ -216,7 +216,7 @@ body[data-theme="light"] .hero .row-2 svg text {
 .hero .label {
   margin: 0;
   color: var(--dim);
-  font: 700 0.9rem "IBM Plex Sans", sans-serif;
+  font: 700 0.9rem var(--font-display);
 }
 
 .hero .time {
@@ -230,7 +230,7 @@ body[data-theme="light"] .hero .row-2 svg text {
   gap: 0.5rem;
   min-height: 25px;
   margin: 0;
-  font: 700 0.9rem "IBM Plex Sans", sans-serif;
+  font: 700 0.9rem var(--font-display);
 }
 
 .hero .pulse {

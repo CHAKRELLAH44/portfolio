@@ -110,14 +110,14 @@ body[data-theme="light"] .hidden-me {
   display: block;
   margin-bottom: 0.35rem;
   color: transparent;
-  font: italic 700 clamp(3rem, 7vw, 5.5rem)/1 "IBM Plex Sans", sans-serif;
+  font: italic 700 clamp(3rem, 7vw, 5.5rem)/1 var(--font-display);
   -webkit-text-stroke: 1.5px rgba(var(--accent-rgb), 0.7);
 }
 
 .hidden-me .section .description .chapter-title {
   margin: 0 0 1.1rem;
   color: var(--white);
-  font: italic 700 clamp(1.8rem, 3.6vw, 3rem)/1.1 "IBM Plex Sans", sans-serif;
+  font: italic 700 clamp(1.8rem, 3.6vw, 3rem)/1.1 var(--font-display);
   overflow-wrap: anywhere;
 }
 
@@ -372,7 +372,7 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
 .flip-card .flip-title {
   margin: 0;
   color: var(--accent-text);
-  font: italic 800 clamp(1.15rem, 7cqw, 2rem) "IBM Plex Sans", sans-serif;
+  font: italic 800 clamp(1.15rem, 7cqw, 2rem) var(--font-display);
 }
 
 .flip-card .flip-back ul {
@@ -387,7 +387,7 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
   position: relative;
   padding-left: 1.4rem;
   color: var(--white);
-  font: 500 clamp(0.84rem, 4.3cqw, 1.05rem)/1.45 "IBM Plex Sans", sans-serif;
+  font: 500 clamp(0.84rem, 4.3cqw, 1.05rem)/1.45 var(--font-display);
 }
 
 .flip-card .flip-back li::before {
@@ -503,9 +503,9 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
 
 .game-launch-text { display: grid; flex: 1; min-width: 0; line-height: 1.25; }
 
-.game-launch-text strong { font: 800 0.95rem "IBM Plex Sans", sans-serif; letter-spacing: 0.03em; text-transform: uppercase; }
+.game-launch-text strong { font: 800 0.95rem var(--font-display); letter-spacing: 0.03em; text-transform: uppercase; }
 
-.game-launch-text small { overflow: hidden; color: var(--gray); font: italic 600 0.82rem "IBM Plex Sans", sans-serif; text-overflow: ellipsis; white-space: nowrap; }
+.game-launch-text small { overflow: hidden; color: var(--gray); font: italic 600 0.82rem var(--font-display); text-overflow: ellipsis; white-space: nowrap; }
 
 .game-launch-emoji { display: grid; flex: none; place-items: center; color: var(--accent-text); font-size: 1.6rem; transition: transform 0.35s ease; }
 
@@ -553,7 +553,7 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
 .game-title {
   margin: 0;
   color: var(--accent-text);
-  font: italic 700 1rem "IBM Plex Sans", sans-serif;
+  font: italic 700 1rem var(--font-display);
 }
 
 .hidden-me .section .description p.game-title,
@@ -612,7 +612,7 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
   box-shadow: 0 0 16px rgba(255, 30, 30, 0.9), inset 0 0 6px rgba(255, 255, 255, 0.4);
 }
 
-.f1-prompt { font: 800 0.95rem "IBM Plex Sans", sans-serif; letter-spacing: 0.04em; text-transform: uppercase; }
+.f1-prompt { font: 800 0.95rem var(--font-display); letter-spacing: 0.04em; text-transform: uppercase; }
 
 .f1-game[data-state="go"] .f1-board {
   border-color: #2bff88;
@@ -638,7 +638,7 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
   align-items: center;
   gap: 0.45rem;
   color: var(--gray);
-  font: 600 0.8rem "IBM Plex Sans", sans-serif;
+  font: 600 0.8rem var(--font-display);
   cursor: pointer;
 }
 
@@ -691,7 +691,7 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
 
 .pen-svg { display: block; width: 100%; height: auto; }
 
-.pen-svg text { font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace; }
+.pen-svg text { font-family: var(--font-mono); }
 
 .pen-line { stroke: rgba(255, 255, 255, 0.35); stroke-width: 2; fill: none; }
 
@@ -796,7 +796,7 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
 
 .pen-telemetry dt {
   color: var(--gray);
-  font: 600 0.65rem "IBM Plex Sans", sans-serif;
+  font: 600 0.65rem var(--font-display);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -804,7 +804,7 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
 .pen-telemetry dd {
   margin: 0.15rem 0 0;
   color: var(--white);
-  font: 600 0.95rem "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  font: 600 0.95rem var(--font-mono);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -822,7 +822,7 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
   border-radius: 999px;
   background: transparent;
   color: var(--accent-text);
-  font: 700 0.8rem "IBM Plex Sans", sans-serif;
+  font: 700 0.8rem var(--font-display);
   cursor: pointer;
 }
 

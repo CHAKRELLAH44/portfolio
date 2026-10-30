@@ -7,7 +7,7 @@
 }
 
 .all-projects h1 {
-  font: italic bold 3rem "IBM Plex Sans", sans-serif;
+  font: italic bold 3rem var(--font-display);
   color: var(--white);
   text-align: center;
 }
@@ -293,7 +293,7 @@
 
 .project-modal .panel .title {
   text-align: center;
-  font: italic bold 2.2rem "IBM Plex Sans", sans-serif;
+  font: italic bold 2.2rem var(--font-display);
   color: var(--white);
   text-shadow: 0 0 12px rgba(var(--accent-rgb), 0.12);
 }
@@ -395,7 +395,7 @@
 }
 
 .project-modal .meta .desc-heading {
-  font: italic bold 1.25rem "IBM Plex Sans", sans-serif;
+  font: italic bold 1.25rem var(--font-display);
   color: var(--white);
 }
 
@@ -604,7 +604,7 @@ body[data-theme="light"] .project-card .desc .tool {
   }
 
   .category-title {
-    font: italic bold 2.5rem "IBM Plex Sans", sans-serif;
+    font: italic bold 2.5rem var(--font-display);
     color: var(--white);
     text-align: left;
     margin-bottom: 2rem;
@@ -900,7 +900,7 @@ body[data-theme="light"] .project-card .desc .tool {
 }
 
 .project-card .desc h3 {
-  font: italic bold 1.25rem "IBM Plex Sans", sans-serif;
+  font: italic bold 1.25rem var(--font-display);
   margin: 0;
   color: var(--white);
   letter-spacing: 0.5px;
@@ -1135,7 +1135,7 @@ body[data-theme="light"] .project-card .desc .tool {
   top: 50%;
   transform: translateY(-50%);
   color: var(--accent-text);
-  font: 400 2rem/1 "Inter", sans-serif;
+  font: 400 2rem/1 var(--font-body);
 }
 
 .all-projects details.category-section[open] > summary.category-title::after {
@@ -1170,7 +1170,7 @@ body[data-theme="light"] .project-card .desc .tool {
   min-height: 3.5rem;
   margin: 0 0 clamp(1rem, 2.5vw, 2rem);
   color: var(--white);
-  font: italic 700 clamp(1.25rem, 2.7vw, 2.5rem)/1.15 "IBM Plex Sans", sans-serif;
+  font: italic 700 clamp(1.25rem, 2.7vw, 2.5rem)/1.15 var(--font-display);
   text-transform: uppercase;
   cursor: pointer;
   list-style: none;
@@ -1215,7 +1215,7 @@ body[data-theme="light"] .project-card .desc .tool {
   align-items: center;
   gap: 0.6rem;
   color: var(--gray);
-  font: normal 700 clamp(1.25rem, min(2.4vw, 4vh), 2.2rem)/1.2 "IBM Plex Sans", sans-serif;
+  font: normal 700 clamp(1.25rem, min(2.4vw, 4vh), 2.2rem)/1.2 var(--font-display);
   text-transform: none;
 }
 
@@ -1231,7 +1231,7 @@ body[data-theme="light"] .project-card .desc .tool {
 .all-projects .category-name {
   display: block;
   color: var(--accent-text-large);
-  font: italic 700 clamp(2.4rem, min(6vw, 8.5vh), 5.25rem)/1.08 "IBM Plex Sans", sans-serif;
+  font: italic 700 clamp(2.4rem, min(6vw, 8.5vh), 5.25rem)/1.08 var(--font-display);
   overflow-wrap: anywhere;
   text-transform: uppercase;
   transition: text-shadow 180ms ease;
@@ -1382,7 +1382,7 @@ body[data-theme="light"] .project-card .desc .tool {
   border-radius: 999px;
   background: var(--primary);
   color: var(--black);
-  font: 700 0.72rem/1.2 "IBM Plex Sans", sans-serif;
+  font: 700 0.72rem/1.2 var(--font-display);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.45);
@@ -1404,7 +1404,7 @@ body[data-theme="light"] .project-card .desc .tool {
   padding: 1.5rem;
   text-align: center;
   color: var(--gray);
-  font: italic 600 0.9rem/1.4 "IBM Plex Sans", sans-serif;
+  font: italic 600 0.9rem/1.4 var(--font-display);
   background:
     repeating-linear-gradient(135deg, rgba(var(--accent-rgb), 0.07) 0 12px, transparent 12px 24px),
     var(--black);
@@ -1465,14 +1465,14 @@ body[data-theme="light"] .project-card .desc .tool {
 .certifications-eyebrow {
   margin-bottom: 0.35rem;
   color: var(--accent-text);
-  font: 600 0.78rem "IBM Plex Sans", sans-serif;
+  font: 600 0.78rem var(--font-display);
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
 .certifications h2 {
   color: var(--white);
-  font: italic 700 clamp(1.35rem, 3vw, 2rem) "IBM Plex Sans", sans-serif;
+  font: italic 700 clamp(1.35rem, 3vw, 2rem) var(--font-display);
 }
 
 .certifications-count {
@@ -1512,7 +1512,7 @@ body[data-theme="light"] .project-card .desc .tool {
 
 .certification-name {
   color: var(--white);
-  font: 600 0.98rem/1.35 "IBM Plex Sans", sans-serif;
+  font: 600 0.98rem/1.35 var(--font-display);
 }
 
 .certification-name:hover {

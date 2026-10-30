@@ -15,7 +15,7 @@
 
 .contact .container .content .title {
   text-align: center;
-  font: italic bold 1.3rem "IBM Plex Sans", sans-serif;
+  font: italic bold 1.3rem var(--font-display);
 }
 
 .contact .container .content .title .label {
@@ -40,7 +40,7 @@
 }
 
 .contact .container .content .contact-area .left-side .pitch-line {
-  font: 500 5rem "IBM Plex Sans", sans-serif;
+  font: 500 5rem var(--font-display);
   margin-top: .5rem;
   transform: scale(1, 1.5);
 }
@@ -96,7 +96,7 @@
   margin-bottom: 1rem;
   border: 2px solid var(--white);
   border-radius: 16px;
-  font: bold 1.2rem "IBM Plex Sans", sans-serif;
+  font: bold 1.2rem var(--font-display);
   background: var(--black);
   color: var(--white);
   transition: .2s linear;
@@ -451,7 +451,7 @@ body[data-theme="light"] .contact .container .content .contact-area .right-side 
 .char-counter {
   margin: -0.25rem 0 0;
   color: var(--gray);
-  font: 500 0.8rem "IBM Plex Sans", sans-serif;
+  font: 500 0.8rem var(--font-display);
   text-align: right;
   transition: color 0.2s ease;
 }
