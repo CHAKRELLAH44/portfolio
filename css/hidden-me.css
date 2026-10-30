@@ -7,6 +7,26 @@
 
 /* ----- Page ----- */
 
+/* Text colours that keep 4.5:1 on the page background in both themes. The
+   bright --primary stays for borders, glows and fills; --accent-text is for
+   text and icons drawn on the page background. */
+
+.hidden-me {
+  --accent-text: var(--primary);
+  --on-accent: var(--black);
+  --error-text: #ff8a8a;
+  --nav-idle: 0.45;
+  --gray: #9a9a9a;
+}
+
+body[data-theme="light"] .hidden-me {
+  --accent-text: #a84a05;
+  --on-accent: var(--white);
+  --error-text: #b3261e;
+  --nav-idle: 0.6;
+  --gray: #574333;
+}
+
 .hidden-me {
   min-height: 100vh;
   padding: 4rem 0;
@@ -125,17 +145,17 @@
   padding: 0.65rem 1.4rem;
   border: 2px solid var(--primary);
   background: transparent;
-  color: var(--primary);
+  color: var(--accent-text);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .hidden-me .section .download-button box-icon {
-  fill: var(--primary);
+  fill: var(--accent-text);
   transition: fill 0.2s ease;
 }
 
 .hidden-me .section .download-button:hover {
-  background: var(--primary);
+  background: var(--accent-text);
   color: var(--black);
 }
 
@@ -181,13 +201,21 @@
 
 /* ----- Chapter colours: each chapter re-tints everything inside it that uses the accent ----- */
 
-.hidden-me .section[data-chapter="speed"] { --chapter-rgb: 230, 30, 45; }
+.hidden-me .section[data-chapter="speed"] { --chapter-rgb: 230, 30, 45; --accent-text: #ee5560; --on-accent: #fff; }
 
-.hidden-me .section[data-chapter="football"] { --chapter-rgb: 70, 130, 255; }
+.hidden-me .section[data-chapter="football"] { --chapter-rgb: 70, 130, 255; --accent-text: #5b90ff; }
 
-.hidden-me .section[data-chapter="baking"] { --chapter-rgb: 255, 128, 191; }
+.hidden-me .section[data-chapter="baking"] { --chapter-rgb: 255, 128, 191; --accent-text: #ff80bf; }
 
-.hidden-me .section[data-chapter="music"] { --chapter-rgb: 30, 215, 96; }
+.hidden-me .section[data-chapter="music"] { --chapter-rgb: 30, 215, 96; --accent-text: #1ed760; }
+
+body[data-theme="light"] .hidden-me .section[data-chapter="speed"] { --accent-text: #b31420; }
+
+body[data-theme="light"] .hidden-me .section[data-chapter="football"] { --accent-text: #0044d2; }
+
+body[data-theme="light"] .hidden-me .section[data-chapter="baking"] { --accent-text: #b8005b; }
+
+body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-text: #0f6c30; }
 
 .hidden-me .section[data-chapter]:not([data-chapter="tech"]) {
   --accent-rgb: var(--chapter-rgb);
@@ -237,7 +265,7 @@
   border-radius: 50%;
   color: var(--white);
   font-size: 1.2rem;
-  opacity: 0.45;
+  opacity: var(--nav-idle);
   filter: grayscale(0.8);
   transition: opacity 0.3s ease, filter 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -245,14 +273,14 @@
 .chapter-nav a:hover,
 .chapter-nav a:focus-visible { opacity: 0.9; filter: none; }
 
-.chapter-nav a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.chapter-nav a:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 2px; }
 
 .chapter-nav a.is-active {
   opacity: 1;
   filter: none;
   background: rgba(var(--active-rgb, var(--accent-rgb)), 0.22);
   box-shadow: 0 0 14px rgba(var(--active-rgb, var(--accent-rgb)), 0.45);
-  color: var(--primary);
+  color: var(--accent-text);
   transform: scale(1.1);
 }
 
@@ -343,7 +371,7 @@
 
 .flip-card .flip-title {
   margin: 0;
-  color: var(--primary);
+  color: var(--accent-text);
   font: italic 800 clamp(1.15rem, 7cqw, 2rem) "IBM Plex Sans", sans-serif;
 }
 
@@ -366,7 +394,7 @@
   content: "✦";
   position: absolute;
   left: 0;
-  color: var(--primary);
+  color: var(--accent-text);
 }
 
 .flip-card .flip-hint {
@@ -381,7 +409,7 @@
   border: 1px solid rgba(var(--accent-rgb), 0.6);
   border-radius: 50%;
   background: color-mix(in srgb, var(--black) 70%, transparent);
-  color: var(--primary);
+  color: var(--accent-text);
   font-size: 1.15rem;
   animation: flip-hint 2.8s ease-in-out infinite;
 }
@@ -407,7 +435,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.flip-card .flip-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 6px; }
+.flip-card .flip-toggle:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 6px; }
 
 @media (max-width: 768px) {
   .flip-card .flip-front { aspect-ratio: 4 / 3; }
@@ -443,8 +471,9 @@
   border-color: var(--primary);
   background: rgba(var(--accent-rgb), 0.12);
   box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.3);
-  outline: none;
 }
+
+.game-launch:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
 
 .game-launch:active { transform: scale(0.98); }
 
@@ -457,7 +486,7 @@
   padding-left: 0.15rem;
   border-radius: 50%;
   background: var(--primary);
-  color: var(--black);
+  color: var(--on-accent);
   font-size: 1rem;
   box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.55);
   animation: game-pulse 2.2s ease-out infinite;
@@ -478,7 +507,7 @@
 
 .game-launch-text small { overflow: hidden; color: var(--gray); font: italic 600 0.82rem "IBM Plex Sans", sans-serif; text-overflow: ellipsis; white-space: nowrap; }
 
-.game-launch-emoji { display: grid; flex: none; place-items: center; color: var(--primary); font-size: 1.6rem; transition: transform 0.35s ease; }
+.game-launch-emoji { display: grid; flex: none; place-items: center; color: var(--accent-text); font-size: 1.6rem; transition: transform 0.35s ease; }
 
 .game-launch:hover .game-launch-emoji { transform: translateX(4px) rotate(-8deg); }
 
@@ -523,7 +552,7 @@
 
 .game-title {
   margin: 0;
-  color: var(--primary);
+  color: var(--accent-text);
   font: italic 700 1rem "IBM Plex Sans", sans-serif;
 }
 
@@ -538,9 +567,9 @@
 
 .game-result { font-weight: 700; }
 
-.game-result[data-kind="ok"] { color: var(--primary); }
+.game-result[data-kind="ok"] { color: var(--accent-text); }
 
-.game-result[data-kind="error"] { color: #ff8a8a; }
+.game-result[data-kind="error"] { color: var(--error-text); }
 
 .game-best { color: var(--gray); }
 
@@ -565,7 +594,7 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.f1-board:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+.f1-board:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
 
 .f1-lights { display: flex; gap: clamp(0.4rem, 2vw, 0.75rem); }
 
@@ -642,7 +671,7 @@
 
 .pen-toggle input:checked::after { transform: translateX(0.9rem); }
 
-.pen-toggle input:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.pen-toggle input:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 2px; }
 
 .pen-stage {
   position: relative;
@@ -658,7 +687,7 @@
   overflow: hidden;
 }
 
-.pen-stage:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+.pen-stage:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
 
 .pen-svg { display: block; width: 100%; height: auto; }
 
@@ -781,10 +810,10 @@
 }
 
 .pen-telemetry dd[data-kind="ok"],
-.pen-delta[data-kind="ok"] { color: var(--primary); }
+.pen-delta[data-kind="ok"] { color: var(--accent-text); }
 
 .pen-telemetry dd[data-kind="error"],
-.pen-delta[data-kind="error"] { color: #ff8a8a; }
+.pen-delta[data-kind="error"] { color: var(--error-text); }
 
 .pen-reset {
   margin-left: 0.5rem;
@@ -792,13 +821,13 @@
   border: 1px solid rgba(var(--accent-rgb), 0.5);
   border-radius: 999px;
   background: transparent;
-  color: var(--primary);
+  color: var(--accent-text);
   font: 700 0.8rem "IBM Plex Sans", sans-serif;
   cursor: pointer;
 }
 
 .pen-reset:hover,
-.pen-reset:focus-visible { background: var(--primary); color: var(--black); }
+.pen-reset:focus-visible { background: var(--accent-text); color: var(--black); }
 
 @media (max-width: 480px) {
   .pen-telemetry { grid-template-columns: repeat(2, minmax(0, 1fr)); }
