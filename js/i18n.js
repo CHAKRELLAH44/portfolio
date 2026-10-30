@@ -189,6 +189,9 @@ const I18N_FR = {
   "hidden.music.text": "La musique est ma compagne de tous les jours, la bande-son de ma vie. Je crois qu'elle dépasse les frontières et rapproche les gens comme les mots ne peuvent pas le faire. Comme on dit : « La musique est un langage que tout le monde comprend. » Que je code, que je pâtisse ou que je me détende, il y a toujours une playlist pour le moment. Curieux ? Jetez un œil à mon compte Spotify.",
   // Hidden Me page: accessibility labels (added with the a11y pass)
   "hidden.nav.speed": "Formule 1",
+  "hidden.alt.football": "Écusson du FC Barcelone dessiné à la main",
+  "hidden.alt.baking": "Illustration de pâtisserie dessinée à la main : fouet, robot pâtissier, gâteaux et viennoiseries",
+  "hidden.alt.music": "Disque vinyle qui tourne sur une platine",
 
   // Projects page
   "projectsPage.pageTitle": "Projets - Imanska",
