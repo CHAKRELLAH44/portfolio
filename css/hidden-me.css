@@ -299,9 +299,11 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
 }
 
 /* ----- Flip cards: the photo turns over to show fun facts -----
-   Both faces share one grid cell, so the card is as tall as its longer side
-   and the facts are never cut. Faces also switch visibility at mid-turn:
-   iOS Safari does not always honour backface-visibility on its own. */
+   Both faces share one grid cell. The cell has the photo's proportions (4:5, 4:3 on phones)
+   and grows if the facts need more room, so both faces always fill the same box.
+   The turn is symmetric (ease-in-out, 0.7 s), so 0.35 s is exactly the edge-on moment: that is
+   when each face switches visibility. Chromium and Firefox already hide the back of a face on
+   their own; iOS Safari does not always honour backface-visibility, hence the switch. */
 
 .hidden-me .section .image.flip-card {
   container-type: inline-size;
@@ -317,9 +319,10 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
   position: relative;
   z-index: 1;
   display: grid;
+  aspect-ratio: 4 / 5;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.7s cubic-bezier(0.45, 0, 0.55, 1);
 }
 
 .flip-card.is-flipped .flip-inner { transform: rotateY(180deg); }
@@ -327,6 +330,7 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
 .flip-card .flip-front,
 .flip-card .flip-back {
   grid-area: 1 / 1;
+  align-self: stretch;
   min-width: 0;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -336,17 +340,20 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
 
 .flip-card .flip-front {
   position: relative;
-  aspect-ratio: 4 / 5;
   overflow: hidden;
 }
 
 .hidden-me .section .image.flip-card .flip-front img {
-  position: static;
+  position: absolute;
+  inset: 0;
   z-index: auto;
   width: 100%;
   height: 100%;
   aspect-ratio: auto;
+  object-fit: cover;
   transform: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .flip-card .flip-back {
@@ -435,10 +442,15 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
   -webkit-tap-highlight-color: transparent;
 }
 
-.flip-card .flip-toggle:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 6px; }
+/* Keyboard focus: an accent ring inside the card, on a darker band so it shows on any photo. */
+.flip-card .flip-toggle:focus-visible {
+  outline: 3px solid var(--accent-text);
+  outline-offset: -8px;
+  box-shadow: inset 0 0 0 8px color-mix(in srgb, var(--black) 55%, transparent);
+}
 
 @media (max-width: 768px) {
-  .flip-card .flip-front { aspect-ratio: 4 / 3; }
+  .flip-card .flip-inner { aspect-ratio: 4 / 3; }
 }
 
 /* ----- Mini-games folded behind a Play button ----- */
