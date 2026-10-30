@@ -17,7 +17,7 @@ const I18N_FR = {
   "common.backHome": "RETOUR À L'ACCUEIL",
 
   // Home page
-  "index.pageTitle": "Imanska - Portfolio d'ingénieure logiciel",
+  "index.pageTitle": "Imane Chakrellah - Ingénieure logicielle | Imanska",
   "hero.im": "JE SUIS",
   "hero.tagline": "CONSTRUIRE LA TECH, AVEC LE SOURIRE.",
   "hero.based": "Basée à Rabat, Maroc",
@@ -107,7 +107,7 @@ const I18N_FR = {
   "skills.count": "technologies dans ma boîte à outils",
 
   // Contact
-  "contact.pageTitle": "Contact - Imanska",
+  "contact.pageTitle": "Contacter Imane Chakrellah | Imanska",
   "contact.lets": "RESTONS",
   "contact.connect": "EN CONTACT",
   "contact.line1": "ENVOYEZ-MOI DES BUGS",

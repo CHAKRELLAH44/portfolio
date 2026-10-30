@@ -1,0 +1,9 @@
+/* Contact additions. The section layout is still in css/style.css ("contact"). */
+
+/* The pitch used to be three h1 elements that were flex items of the left column.
+   It is now one paragraph; making it a flex column keeps each line behaving the same. */
+.contact .contact-area .left-side .pitch {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}

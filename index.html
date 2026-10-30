@@ -3,21 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-    <meta name="description" content="Imanska's Portfolio - Software Engineer based in Rabat, Morocco. Building Tech, Adding Fun." />
+    <meta name="description" content="Imane Chakrellah (Imanska) is a software engineer in Rabat, Morocco: Salesforce, full-stack and DevOps. Building tech, adding fun." />
     <link rel="canonical" href="https://chakrellah44.github.io/portfolio/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Imanska" />
-    <meta property="og:title" content="Imanska - Software Engineer Portfolio" />
-    <meta property="og:description" content="Imanska's Portfolio - Software Engineer based in Rabat, Morocco. Building Tech, Adding Fun." />
+    <meta property="og:title" content="Imane Chakrellah - Software Engineer | Imanska" />
+    <meta property="og:description" content="Imane Chakrellah (Imanska) is a software engineer in Rabat, Morocco: Salesforce, full-stack and DevOps. Building tech, adding fun." />
     <meta property="og:url" content="https://chakrellah44.github.io/portfolio/" />
     <meta property="og:image" content="https://chakrellah44.github.io/portfolio/assets/brand/og-cover.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Imanska: I'm Imane, software engineer, Salesforce, DevOps and Cloud" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Imane Chakrellah - Software Engineer | Imanska" />
+    <meta name="twitter:description" content="Imane Chakrellah (Imanska) is a software engineer in Rabat, Morocco: Salesforce, full-stack and DevOps. Building tech, adding fun." />
     <meta name="twitter:image" content="https://chakrellah44.github.io/portfolio/assets/brand/og-cover.jpg" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="theme-color" content="#00ffdd" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Imane Chakrellah",
+        "alternateName": "Imanska",
+        "jobTitle": "Software Engineer",
+        "url": "https://chakrellah44.github.io/portfolio/",
+        "address": { "@type": "PostalAddress", "addressLocality": "Rabat", "addressCountry": "MA" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "École Marocaine des Sciences de l'Ingénieur (EMSI)" },
+        "knowsLanguage": ["fr", "en", "ar", "tr"],
+        "sameAs": [
+          "https://www.linkedin.com/in/chakrellah",
+          "https://github.com/CHAKRELLAH44",
+          "https://x.com/iman_chakre"
+        ]
+      }
+    </script>
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,6 +51,7 @@
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
+    <link rel="manifest" href="site.webmanifest" />
     <link rel="icon" type="image/png" href="assets/brand/favicon-64.png" />
     <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
     <link rel="stylesheet" href="css/style.css" />
@@ -37,7 +59,8 @@
     <link rel="stylesheet" href="css/hero.css" />
     <link rel="stylesheet" href="css/experience.css" />
     <link rel="stylesheet" href="css/skills.css" />
-    <title data-i18n="index.pageTitle">Imanska - Software Engineer Portfolio</title>
+    <link rel="stylesheet" href="css/contact.css" />
+    <title data-i18n="index.pageTitle">Imane Chakrellah - Software Engineer | Imanska</title>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
@@ -455,16 +478,21 @@
 
           <div class="contact-area">
             <div data-aos="fade-right" data-aos-delay="300" class="left-side">
-              <h1 data-i18n="contact.line1">SEND ME BUGS</h1>
-              <h1 data-i18n="contact.line2">(OR LOVE </h1>
-              <h1 data-i18n="contact.line3">        NOTES)</h1>
+              <p class="pitch">
+                <span class="pitch-line" data-i18n="contact.line1">SEND ME BUGS</span>
+                <span class="pitch-line" data-i18n="contact.line2">(OR LOVE</span>
+                <span class="pitch-line" data-i18n="contact.line3">NOTES)</span>
+              </p>
             </div>
 
             <div class="right-side">
               <form action="https://formsubmit.co/chakrellaah@gmail.com" method="POST" data-aos="fade-left" data-aos-delay="500">
-                <input type="text" name="name" placeholder="YOUR NAME" data-i18n-attr="placeholder:contact.name" required>
-                <input type="email" name="email" placeholder="YOUR EMAIL ADDRESS" data-i18n-attr="placeholder:contact.email" required>
-                <textarea name="message" placeholder="HOW CAN I HELP YOU?" data-i18n-attr="placeholder:contact.message" required></textarea>
+                <label class="sr-only" for="contact-name" data-i18n="contact.name">YOUR NAME</label>
+                <input id="contact-name" type="text" name="name" placeholder="YOUR NAME" data-i18n-attr="placeholder:contact.name" required autocomplete="name">
+                <label class="sr-only" for="contact-email" data-i18n="contact.email">YOUR EMAIL ADDRESS</label>
+                <input id="contact-email" type="email" name="email" placeholder="YOUR EMAIL ADDRESS" data-i18n-attr="placeholder:contact.email" required autocomplete="email">
+                <label class="sr-only" for="contact-message" data-i18n="contact.message">HOW CAN I HELP YOU?</label>
+                <textarea id="contact-message" name="message" placeholder="HOW CAN I HELP YOU?" data-i18n-attr="placeholder:contact.message" required></textarea>
                 <input type="hidden" name="_next" value="https://chakrellah44.github.io/portfolio/contact.html?sent=1">
                 <input type="hidden" name="_subject" value="New Portfolio Contact!">
                 <button type="submit" data-i18n="contact.send">SEND</button>

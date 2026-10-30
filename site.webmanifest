@@ -1,0 +1,14 @@
+{
+  "name": "Imanska - Imane Chakrellah",
+  "short_name": "Imanska",
+  "description": "Portfolio of Imane Chakrellah, software engineer in Rabat, Morocco.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#0f0f0f",
+  "theme_color": "#0f0f0f",
+  "icons": [
+    { "src": "assets/brand/favicon-64.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "assets/brand/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

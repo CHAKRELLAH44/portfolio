@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#050607" />
-    <!-- GitHub Pages serves this file at any broken URL: resolve links from the site root. -->
-    <base href="/portfolio/" />
+    <!-- GitHub Pages serves this file at any broken URL: resolve links from the site root.
+         That root is /portfolio/ on github.io and / on a custom domain. -->
+    <script>
+      document.write('<base href="' + (/github\.io$/.test(location.hostname) || location.pathname.indexOf("/portfolio/") === 0 ? "/portfolio/" : "/") + '">');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -17,6 +20,7 @@
   <body>
     <canvas id="rain" aria-hidden="true"></canvas>
     <main>
+      <h1 class="sr-only">404 · page not found</h1>
       <section class="window" aria-label="Terminal">
         <div class="bar" aria-hidden="true">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
