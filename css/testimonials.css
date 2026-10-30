@@ -126,7 +126,7 @@
   height: 2.6rem;
   border-radius: 50%;
   background: var(--primary);
-  color: var(--black);
+  color: var(--on-primary);
   font: 800 0.95rem "IBM Plex Sans", sans-serif;
 }
 
@@ -150,7 +150,7 @@
   padding: 0.25rem 0.6rem;
   border: 1px solid rgba(var(--accent-rgb), 0.45);
   border-radius: 999px;
-  color: var(--primary);
+  color: var(--primary-text);
   font: 700 0.7rem "IBM Plex Sans", sans-serif;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -179,7 +179,7 @@
   border: 2px solid var(--primary);
   border-radius: 999px;
   background: transparent;
-  color: var(--primary);
+  color: var(--primary-text);
   font: 700 0.95rem "IBM Plex Sans", sans-serif;
   text-align: left;
   cursor: pointer;
@@ -190,6 +190,7 @@
 .testi-open:focus-visible { background: var(--primary); color: var(--black); }
 
 .testi-open-icon {
+  color: var(--primary-text);
   font-size: 1.3rem;
   line-height: 1;
   transition: transform 0.3s ease;
@@ -307,7 +308,7 @@
   font: 600 0.9rem "IBM Plex Sans", sans-serif;
 }
 
-.testi-status[data-kind="ok"] { color: var(--primary); }
+.testi-status[data-kind="ok"] { color: var(--primary-text); }
 
 .testi-status[data-kind="error"] { color: #ff6b6b; }
 
