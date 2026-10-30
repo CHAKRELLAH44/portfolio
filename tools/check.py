@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PAGES = ["index.html", "projects.html", "hidden-me.html", "contact.html", "404.html", "admin.html"]
 TEXT = {".html", ".css", ".js", ".md", ".xml", ".json", ".yml", ".webmanifest"}
 # Assets kept on purpose although no page uses them yet.
-KEEP = ("assets/projects/taxi/", "assets/projects/exams/")
+KEEP = ()
 ATTRS = ("src", "href", "poster", "data-light-src")
 ASSET_RX = re.compile(r"assets/[A-Za-z0-9_\-./+]+")
 URL_RX = re.compile(r"url\(\s*['\"]?([^'\")]+)['\"]?\s*\)")
