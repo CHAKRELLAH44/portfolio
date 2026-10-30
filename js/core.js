@@ -145,7 +145,7 @@ if (navToggle && primaryNav) {
   const pill = document.querySelector("#primary-nav.nav-pill");
   const indicator = pill && pill.querySelector(".nav-indicator");
   if (!indicator) return;
-  const links = [...pill.querySelectorAll("a:not(.nav-cv)")];
+  const links = [...pill.querySelectorAll(":scope > a")];
 
   const moveTo = (link) => {
     if (!link || window.innerWidth <= 768) {

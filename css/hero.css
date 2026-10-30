@@ -150,32 +150,63 @@ body[data-theme="light"] .hero-name {
   display: inline-flex;
 }
 
+/* Each letter is a one-letter-tall window onto a strip: its own letter, three others, then its own letter again.
+   Leaving the name scrolls every strip down to its last letter, which looks exactly like where it started
+   (js/home.js adds .is-roll). Hovering only fills the letters; nothing restarts. */
 .hero-name .ch {
-  display: inline-block;
+  display: block;
+  height: 1.04em;
+  margin: -0.06em -0.1em -0.06em -0.04em;
+  padding: 0.06em 0.1em 0.06em 0.04em;
+  overflow: hidden;
   color: transparent;
+  transition: color 0.4s, text-shadow 0.4s;
+}
+
+.hero-name .strip {
+  --to: -80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-name .g {
+  display: block;
+  height: 0.92em;
   -webkit-text-stroke: max(1.5px, 0.012em) var(--name-stroke);
   paint-order: stroke fill;
 }
 
-/* Load: the letters rise one after another, then a wave of fill runs through the outline once. */
-.hero-name .im,
-.hero-name .ch {
-  animation: ch-rise 0.95s var(--ease) both;
+/* The other letters never widen the slot: they are centred in the width of the real letter */
+.hero-name .g.f {
+  display: grid;
+  justify-content: center;
+  width: 100%;
+  contain: inline-size;
+  white-space: nowrap;
 }
 
-.hero-name .im {
-  animation-delay: 0.1s;
+@media (hover: hover) {
+  .hero-name .name:hover .ch {
+    color: var(--primary);
+    text-shadow: 0 0 0.3em rgba(var(--accent-rgb), 0.5);
+  }
 }
 
-.hero-name .ch {
+/* Load: the letters rise one after another, then a wave of fill runs through the outline once.
+   js/home.js removes .is-intro afterwards so nothing can start it again. */
+.hero-name.is-intro .im {
+  animation: ch-rise 0.95s var(--ease) 0.1s both;
+}
+
+.hero-name.is-intro .ch {
   animation: ch-rise 0.95s var(--ease) both, ch-fill 1.4s ease-in-out both;
   animation-delay: calc(0.3s + var(--i) * 70ms), calc(1.5s + var(--i) * 120ms);
 }
 
-/* Hover, click or tap: a wave of squeeze and fill runs through the letters (js/home.js adds .is-wave). */
-.hero-name .name.is-wave .ch {
-  animation: ch-wave 0.9s var(--ease) both;
-  animation-delay: calc(var(--i) * 70ms);
+/* Pointer leaves (or a tap ends): the letters scroll one by one, I to E */
+.hero-name.is-roll .strip {
+  animation: ch-roll 0.95s cubic-bezier(0.2, 0.75, 0.2, 1) both;
+  animation-delay: calc(var(--i) * 90ms);
 }
 
 /* Typed roles */
@@ -385,6 +416,7 @@ body[data-theme="light"] .hero .arrow:focus-visible {
 .hero.is-offscreen .arrow,
 .hero.is-offscreen .im,
 .hero.is-offscreen .ch,
+.hero.is-offscreen .strip,
 .hero.is-offscreen .pulse::after,
 .hero.is-offscreen .hero-roles-caret {
   animation-play-state: paused;
@@ -397,6 +429,7 @@ body[data-theme="light"] .hero .arrow:focus-visible {
   .hero .arrow,
   .hero .im,
   .hero .ch,
+  .hero .strip,
   .hero .pulse::after,
   .hero .hero-roles-caret {
     animation: none;
@@ -520,17 +553,8 @@ body[data-theme="light"] .hero .arrow:focus-visible {
   }
 }
 
-@keyframes ch-wave {
-  0%,
-  100% {
-    color: transparent;
-    font-stretch: 125%;
-    transform: none;
-  }
-
-  40% {
-    color: var(--primary);
-    font-stretch: 72%;
-    transform: translateY(-0.035em);
+@keyframes ch-roll {
+  to {
+    transform: translateY(var(--to));
   }
 }

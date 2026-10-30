@@ -151,25 +151,31 @@ if (heroSection && "IntersectionObserver" in window) {
   new IntersectionObserver(([entry]) => heroSection.classList.toggle("is-offscreen", !entry.isIntersecting)).observe(heroSection);
 }
 
-// The name: when you hover, click or tap it, a wave of squeeze and fill runs through the letters.
-const heroName = document.querySelector(".hero-name .name");
-if (heroName && !prefersReducedMotion) {
-  const lastLetter = heroName.querySelector(".ch:last-child");
+// The name: hovering fills the letters (CSS only). When the pointer leaves, or a tap ends, the letters scroll
+// one after another from I to E (.is-roll). The intro class is removed once it has played so it can never replay.
+const heroTitle = document.querySelector(".hero-name");
+const heroName = heroTitle && heroTitle.querySelector(".name");
+if (heroTitle) {
   let busy = true; // not during the intro
-  setTimeout(() => (busy = false), 3200);
-  const wave = () => {
-    if (busy) return;
-    busy = true;
-    heroName.classList.remove("is-wave");
-    void heroName.offsetWidth; // restart the animation
-    heroName.classList.add("is-wave");
-    lastLetter.addEventListener("animationend", () => {
-      heroName.classList.remove("is-wave");
-      busy = false;
-    }, { once: true });
-  };
-  heroName.addEventListener("pointerenter", wave);
-  heroName.addEventListener("click", wave);
+  setTimeout(() => {
+    heroTitle.classList.remove("is-intro");
+    busy = false;
+  }, 3500);
+  if (heroName && !prefersReducedMotion) {
+    const lastStrip = heroName.querySelector(".ch:last-child .strip");
+    heroName.addEventListener("pointerleave", () => {
+      if (busy || !lastStrip) return;
+      busy = true;
+      heroTitle.classList.add("is-roll");
+      const done = () => {
+        lastStrip.removeEventListener("animationend", done);
+        heroTitle.classList.remove("is-roll");
+        busy = false;
+      };
+      lastStrip.addEventListener("animationend", done);
+      setTimeout(() => busy && done(), 2200); // safety if the event never comes
+    });
+  }
 }
 
 // -------------------------------
