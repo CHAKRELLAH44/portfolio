@@ -1,0 +1,24 @@
+/* Experience and Education: the timeline itself is styled in css/style.css ("Experience timeline"). */
+
+/* Education sits under the experience list as a second title + static timeline. */
+.experience .content > .title#education {
+  margin-top: clamp(3rem, 8vw, 5rem);
+}
+
+.experience .timeline-static .timeline-item {
+  cursor: default;
+}
+
+.edu-languages {
+  margin-top: 1.75rem;
+  padding-left: 3.2rem;
+  color: var(--gray);
+  font: 600 0.95rem "IBM Plex Sans", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .edu-languages {
+    padding-left: 1.75rem;
+  }
+}

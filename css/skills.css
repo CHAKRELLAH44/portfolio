@@ -1,0 +1,25 @@
+/* Skills grid additions. The tile, grid and filter rules are still in css/style.css ("skill").
+
+   Logo contrast: tiles are greyscale until hovered. Logos that are black (or very dark) would
+   vanish on the dark tile, and the white Next.js logo would vanish on the light tile.
+   data-tone is set on the <img> in index.html: black | deep | white. */
+.skill-box img[data-tone="black"] {
+  filter: invert(1);
+}
+
+.skill-box img[data-tone="deep"] {
+  filter: invert(1); /* coloured logos that are dark: light while grey, brand colour on hover */
+}
+
+.skill-box:is(:hover, :focus-visible, .is-picked, .is-match) img[data-tone="deep"] {
+  filter: none;
+}
+
+body[data-theme="light"] .skill-box img[data-tone="black"],
+body[data-theme="light"] .skill-box img[data-tone="deep"] {
+  filter: none;
+}
+
+body[data-theme="light"] .skill-box img[data-tone="white"] {
+  filter: invert(1);
+}

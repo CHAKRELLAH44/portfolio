@@ -91,6 +91,11 @@ body {
   max-width: 80px; /* Limiter la taille maximale */
 }
 
+/* Small label above a section title (was an h2, which made it bold). */
+.title .label {
+  font-weight: bold;
+}
+
 .about {
   position: relative;
   margin: 4rem 0;
@@ -113,7 +118,7 @@ body {
   margin-bottom: 2rem; /* Espace sous le titre */
 }
 
-.about .container .content .title h2 {
+.about .container .content .title .label {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -122,7 +127,7 @@ body {
   margin-top: 6rem;
 }
 
-.about .container .content .title h2 hr {
+.about .container .content .title .label hr {
   width: 90px;
   padding: 2px;
   border: none;
@@ -130,7 +135,7 @@ body {
   margin-top: 4px;
 }
 
-.about .container .content .title h1 {
+.about .container .content .title .heading {
   font: italic bold 3.5rem "IBM Plex Sans", sans-serif;
 }
 
@@ -183,7 +188,7 @@ body {
   line-height: 1.4rem;
 }
 
-.about-me button {
+.about-me .about-hidden {
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -199,19 +204,19 @@ body {
   transition: all 0.2s linear;
 }
 
-.about-me button:hover {
+.about-me .about-hidden:hover {
   color: var(--black);
   background-color: var(--primary);
 }
 
-.about-me button .arrow {
+.about-me .about-hidden .arrow {
   width: 20px;
   transform: rotate(135deg);
   fill: var(--white);
   transition: all 0.2s linear;
 }
 
-.about-me button:hover .arrow {
+.about-me .about-hidden:hover .arrow {
   transform: rotate(180deg);
   fill: var(--black);
   transition: all 0.2s linear;
@@ -232,12 +237,12 @@ body {
   animation: marquee 8s linear infinite;
 }
 
-.about .container .content .text-wrapper .text h1 {
+.about .container .content .text-wrapper .text p {
   font: italic bold 9rem "IBM Plex Sans", sans-serif;
   white-space: nowrap;
 }
 
-.about .container .content .text-wrapper .text h1 span {
+.about .container .content .text-wrapper .text p span {
   color: transparent;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: var(--white);
@@ -442,11 +447,11 @@ body {
   font: italic bold 1.3rem "IBM Plex Sans", sans-serif;
 }
 
-.contact .container .content .title h2 {
+.contact .container .content .title .label {
   color: var(--gray);
 }
 
-.contact .container .content .title h1 {
+.contact .container .content .title .heading {
   font-size: 4rem;
 }
 
@@ -2134,11 +2139,11 @@ body[data-theme="light"] .contact .container .content .contact-area .right-side 
     height: 70px;
   }
 
-  .contact .container .content .title h2 {
+  .contact .container .content .title .label {
     font-size: 2rem;
   }
 
-  .contact .container .content .title h1 {
+  .contact .container .content .title .heading {
     font-size: 3rem;
   }
 
@@ -2221,11 +2226,11 @@ body[data-theme="light"] .contact .container .content .contact-area .right-side 
     height: 60px;
   }
 
-  .contact .container .content .title h2 {
+  .contact .container .content .title .label {
     font-size: 1.5rem;
   }
 
-  .contact .container .content .title h1 {
+  .contact .container .content .title .heading {
     font-size: 2.5rem;
   }
 
@@ -2369,11 +2374,11 @@ body[data-theme="light"] .contact .container .content .contact-area .right-side 
     height: 50px;
   }
 
-  .contact .container .content .title h2 {
+  .contact .container .content .title .label {
     font-size: 1.2rem;
   }
 
-  .contact .container .content .title h1 {
+  .contact .container .content .title .heading {
     font-size: 2rem;
   }
 
@@ -2640,12 +2645,12 @@ img {
     margin-bottom: 0.75rem;
   }
 
-  .about .container .content .title h2 {
+  .about .container .content .title .label {
     margin-top: 1rem;
     font-size: 1.6rem;
   }
 
-  .about .container .content .title h1 {
+  .about .container .content .title .heading {
     font-size: clamp(2.5rem, 10vw, 3.5rem);
   }
 
@@ -2671,7 +2676,7 @@ img {
     gap: 1.25rem;
   }
 
-  .about-me button {
+  .about-me .about-hidden {
     width: fit-content;
     max-width: 100%;
     padding: 0.75rem 1rem;
@@ -2686,7 +2691,7 @@ img {
     margin-top: 2rem;
   }
 
-  .about .container .content .text-wrapper .text h1 {
+  .about .container .content .text-wrapper .text p {
     font-size: clamp(3.5rem, 14vw, 7rem);
   }
 
@@ -2789,7 +2794,7 @@ img {
     gap: 1.5rem;
   }
 
-  .contact .container .content .title h1 {
+  .contact .container .content .title .heading {
     font-size: clamp(2.5rem, 11vw, 4rem);
   }
 
@@ -3022,13 +3027,13 @@ body { font-size: 1rem; line-height: 1.55; }
   padding-inline: clamp(0.75rem, 4.2vw, 5rem);
 }
 
-.about .container .content .title h1,
-.contact .container .content .title h1 {
+.about .container .content .title .heading,
+.contact .container .content .title .heading {
   font-size: clamp(1.8rem, min(5vw, 7vh), 4.5rem);
   line-height: 1.12;
 }
 
-.about .container .content .title h2,
+.about .container .content .title .label,
 .all-projects > .container > .content > h1 {
   font-size: clamp(1.2rem, min(2.4vw, 4vh), 2.2rem);
 }
@@ -3119,12 +3124,12 @@ body { font-size: 1rem; line-height: 1.55; }
   gap: clamp(1rem, 3vh, 2.5rem);
 }
 
-.contact .container .content .title h2 {
+.contact .container .content .title .label {
   font-size: clamp(1.1rem, calc(0.9rem + 1vw + 0.25vh), 1.8rem);
   line-height: 1.1;
 }
 
-.contact .container .content .title h1 {
+.contact .container .content .title .heading {
   font-size: clamp(2rem, min(6vw, 9vh), 5rem);
   line-height: 0.98;
 }
@@ -3715,7 +3720,7 @@ body { font-size: 1rem; line-height: 1.55; }
   gap: 1rem;
 }
 
-.about-me .about-actions button,
+.about-me .about-actions .about-hidden,
 .about-actions .about-cv {
   flex: 1 1 14rem;
   width: auto;
@@ -3769,7 +3774,7 @@ body { font-size: 1rem; line-height: 1.55; }
   margin-bottom: clamp(1.75rem, 4vh, 3rem);
 }
 
-.experience .container .content .title h2 {
+.experience .container .content .title .label {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -3777,7 +3782,7 @@ body { font-size: 1rem; line-height: 1.55; }
   font-size: clamp(1.2rem, min(2.4vw, 4vh), 2.2rem);
 }
 
-.experience .container .content .title h2 hr {
+.experience .container .content .title .label hr {
   width: 90px;
   padding: 2px;
   margin-top: 4px;
@@ -3785,7 +3790,7 @@ body { font-size: 1rem; line-height: 1.55; }
   background-color: var(--gray);
 }
 
-.experience .container .content .title h1 {
+.experience .container .content .title .heading {
   color: var(--white);
   font: italic bold clamp(1.8rem, min(5vw, 7vh), 4.5rem)/1.12 "IBM Plex Sans", sans-serif;
 }
@@ -3974,7 +3979,7 @@ body[data-theme="light"] .timeline-item {
   }
 }
 
-.about-me .about-actions button,
+.about-me .about-actions .about-hidden,
 .about-actions .about-cv {
   font: 700 0.9rem "IBM Plex Sans", sans-serif;
   letter-spacing: 0.02em;
@@ -4943,7 +4948,7 @@ button,
   flex-direction: column;
 }
 
-.testimonials .container .content .title h2 {
+.testimonials .container .content .title .label {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -4951,7 +4956,7 @@ button,
   font-size: clamp(1.2rem, min(2.4vw, 4vh), 2.2rem);
 }
 
-.testimonials .container .content .title h2 hr {
+.testimonials .container .content .title .label hr {
   width: 90px;
   padding: 2px;
   margin-top: 4px;
@@ -4959,7 +4964,7 @@ button,
   background-color: var(--gray);
 }
 
-.testimonials .container .content .title h1 {
+.testimonials .container .content .title .heading {
   color: var(--white);
   font: italic bold clamp(1.8rem, min(5vw, 7vh), 4.5rem)/1.12 "IBM Plex Sans", sans-serif;
 }

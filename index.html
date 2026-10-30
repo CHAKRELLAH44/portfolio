@@ -35,6 +35,8 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/experience.css" />
+    <link rel="stylesheet" href="css/skills.css" />
     <title data-i18n="index.pageTitle">Imanska - Software Engineer Portfolio</title>
   </head>
   <body>
@@ -128,15 +130,15 @@
       <div class="container">
         <div class="content">
           <div class="title">
-            <h2 data-aos="fade-right" data-aos-duration="500" data-aos-delay="300"><span data-i18n="about.label">About</span> <hr></h2>
-            <h1 data-aos="fade-right" data-aos-duration="500" data-aos-delay="500">IMANE</h1>
+            <div class="label" data-aos="fade-right" data-aos-duration="500" data-aos-delay="300"><span data-i18n="about.label">About</span> <hr></div>
+            <h2 class="heading" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500">IMANE</h2>
           </div>
     
           <!-- Nouvelle structure pour la photo et le texte -->
           <div class="profile-and-text">
             <div class="profile-container" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
               <div class="profile">
-                  <img loading="lazy" decoding="async" src="assets/profile/profile-dark.webp" data-light-src="assets/profile/profile-light.webp" alt="profile">
+                  <img loading="lazy" decoding="async" src="assets/profile/profile-dark.webp" data-light-src="assets/profile/profile-light.webp" alt="Profile graphic: Imane Chakrellah" data-i18n-attr="alt:about.imgAlt" width="700" height="700">
               </div>
             </div>
     
@@ -144,16 +146,16 @@
               <p data-i18n="about.text">I’m an engineer, but I’m also a tech enthusiast and a challenge-seeker. My goal? To improve the world, one bug at a time. Or at least make it a little more fun through tech!</p>
 
               <ul class="about-stats" aria-label="Key figures" data-i18n-attr="aria-label:stats.aria">
-                <li><strong data-count="15">15+</strong><span data-i18n="stats.projects">Projects</span></li>
+                <li><strong data-count="19">19</strong><span data-i18n="stats.projects">Projects</span></li>
                 <li><strong data-count="5">5</strong><span data-i18n="stats.domains">Domains</span></li>
-                <li><strong data-count="30">30+</strong><span data-i18n="stats.certs">Certifications</span></li>
+                <li><strong data-count="30">30</strong><span data-i18n="stats.certs">Certifications</span></li>
               </ul>
 
               <div class="about-actions">
-              <button onclick="window.location.href='hidden-me.html'">
+              <a class="about-hidden" href="hidden-me.html">
                 <span data-i18n="about.hiddenBtn">SEE THE HIDDEN ME</span>
                 <box-icon class="arrow" name='arrow-back'></box-icon>
-              </button>
+              </a>
               <a class="about-cv" href="assets/docs/cv.pdf" download="Imane_CV.pdf">
                 <span data-i18n="about.cvBtn">DOWNLOAD MY CV</span>
                 <box-icon name='download'></box-icon>
@@ -166,14 +168,14 @@
             </div>
           </div>
     
-          <div class="text-wrapper" data-aos="flip-up">
+          <div class="text-wrapper" data-aos="flip-up" aria-hidden="true">
             <div class="text">
-              <h1>IMANE'S <span>PORTFOLIO</span></h1>
-              <h1>IMANE'S <span>PORTFOLIO</span></h1>
+              <p>IMANE'S <span>PORTFOLIO</span></p>
+              <p>IMANE'S <span>PORTFOLIO</span></p>
             </div>
             <div class="text">
-              <h1>IMANE'S <span>PORTFOLIO</span></h1>
-              <h1>IMANE'S <span>PORTFOLIO</span></h1>
+              <p>IMANE'S <span>PORTFOLIO</span></p>
+              <p>IMANE'S <span>PORTFOLIO</span></p>
             </div>
           </div>
         </div>
@@ -185,8 +187,8 @@
       <div class="container">
         <div class="content">
           <div class="title">
-            <h2 data-aos="fade-right" data-aos-duration="500" data-aos-delay="300"><span data-i18n="exp.label">Experience</span> <hr></h2>
-            <h1 data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-i18n="exp.heading">MY JOURNEY</h1>
+            <div class="label" data-aos="fade-right" data-aos-duration="500" data-aos-delay="300"><span data-i18n="exp.label">Experience</span> <hr></div>
+            <h2 class="heading" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-i18n="exp.heading">MY JOURNEY</h2>
           </div>
 
           <ol class="timeline">
@@ -230,6 +232,27 @@
               </div>
             </li>
           </ol>
+
+          <div class="title" id="education">
+            <div class="label" data-aos="fade-right" data-aos-duration="500" data-aos-delay="300"><span data-i18n="edu.label">Education</span> <hr></div>
+            <h2 class="heading" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-i18n="edu.heading">MY STUDIES</h2>
+          </div>
+
+          <ol class="timeline timeline-static">
+            <li class="timeline-item" data-aos="fade-up" data-aos-duration="600">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <p class="timeline-date" data-i18n="edu.1.date">2021 – 2026</p>
+              <h3 class="timeline-title" data-i18n="edu.1.title">École Marocaine des Sciences de l'Ingénieur (EMSI)</h3>
+              <p class="timeline-role" data-i18n="edu.1.role">State Engineering Degree (Master's level) in Computer Science and Networks</p>
+            </li>
+            <li class="timeline-item" data-aos="fade-up" data-aos-duration="600">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <p class="timeline-date" data-i18n="edu.2.date">2020 – 2021</p>
+              <h3 class="timeline-title" data-i18n="edu.2.title">Lycée Abderahim Bouabid</h3>
+              <p class="timeline-role" data-i18n="edu.2.role">High School Diploma in Sciences</p>
+            </li>
+          </ol>
+          <p class="edu-languages" data-i18n="edu.languages">Languages: French, English, Arabic, Turkish</p>
         </div>
       </div>
     </section>
@@ -240,9 +263,9 @@
 <section id="skill" class="skill">
   <div class="container">
     <div class="content">
-      <h1 data-aos="zoom-in-down" data-aos-delay="300" class="title" data-i18n="skills.title">
+      <h2 data-aos="zoom-in-down" data-aos-delay="300" class="title" data-i18n="skills.title">
         MY SUPERPOWERS
-      </h1>
+      </h2>
 
       <div class="skill-toolbar" data-aos="fade-up" data-aos-delay="300">
         <div class="skill-filters" role="group" aria-label="Filter skills by domain" data-i18n-attr="aria-label:skills.filterAria">
@@ -253,7 +276,7 @@
           <button type="button" class="filter-btn" data-skill-filter="devops" aria-pressed="false" data-i18n="filters.devops">DevOps &amp; Cloud</button>
           <button type="button" class="filter-btn" data-skill-filter="tools" aria-pressed="false" data-i18n="skills.tools">Tools &amp; Design</button>
         </div>
-        <p class="skill-count" aria-live="polite"><span class="skill-count-num">43</span> <span data-i18n="skills.count">technologies in my toolbox</span></p>
+        <p class="skill-count" aria-live="polite"><span class="skill-count-num">48</span> <span data-i18n="skills.count">technologies in my toolbox</span></p>
         <p class="skill-touch-hint" data-i18n="skills.longPressHint">Press and hold a logo to see where I used it</p>
       </div>
 
@@ -274,7 +297,7 @@
           <img loading="lazy" decoding="async" src="assets/icons/skills/react.svg" alt="react" />
         </div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="Next.js" tabindex="0">
-          <img loading="lazy" decoding="async" src="assets/icons/skills/next.svg" alt="next" />
+          <img data-tone="white" loading="lazy" decoding="async" src="assets/icons/skills/next.svg" alt="next" />
         </div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="Tailwind CSS" tabindex="0">
           <img loading="lazy" decoding="async" src="assets/icons/skills/tailwind.svg" alt="tailwind" />
@@ -289,7 +312,7 @@
           <img loading="lazy" decoding="async" src="assets/icons/skills/figma.svg" alt="figma" />
         </div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="tools" data-name="Adobe" tabindex="0">
-          <img loading="lazy" decoding="async" src="assets/icons/skills/adobe.svg" alt="adobe" />
+          <img data-tone="deep" loading="lazy" decoding="async" src="assets/icons/skills/adobe.svg" alt="adobe" />
         </div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="C" tabindex="0">
           <img loading="lazy" decoding="async" src="assets/icons/skills/c.svg" alt="c" />
@@ -298,27 +321,27 @@
           <img loading="lazy" decoding="async" src="assets/icons/skills/c++.svg" alt="c++" />
         </div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Grafana" tabindex="0">
-          <img loading="lazy" decoding="async" src="assets/icons/skills/grafana.svg" alt="Grafana" />
+          <img data-tone="deep" loading="lazy" decoding="async" src="assets/icons/skills/grafana.svg" alt="Grafana" />
         </div>
         
         <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Prometheus" tabindex="0">
           <img loading="lazy" decoding="async" src="assets/icons/skills/prometheus.png" alt="prometheus" />
         </div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Ansible" tabindex="0">
-          <img loading="lazy" decoding="async" src="assets/icons/skills/ansible.svg" alt="ansible" />
+          <img data-tone="black" loading="lazy" decoding="async" src="assets/icons/skills/ansible.svg" alt="ansible" />
         </div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Docker" tabindex="0">
           <img loading="lazy" decoding="async" src="assets/icons/skills/docker.svg" alt="docker" />
         </div>
         
         <div data-aos="zoom-in-down" class="skill-box" data-cat="data" data-name="Oracle" tabindex="0">
-          <img loading="lazy" decoding="async" src="assets/icons/skills/oracle.svg" alt="oracle" />
+          <img data-tone="deep" loading="lazy" decoding="async" src="assets/icons/skills/oracle.svg" alt="oracle" />
         </div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="tools" data-name="Git" tabindex="0">
           <img loading="lazy" decoding="async" src="assets/icons/skills/git.svg" alt="git" />
         </div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name=".NET" tabindex="0">
-          <img loading="lazy" decoding="async" src="assets/icons/skills/dotnet.svg" alt="dotnet" />
+          <img data-tone="deep" loading="lazy" decoding="async" src="assets/icons/skills/dotnet.svg" alt="dotnet" />
         </div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="AWS" tabindex="0">
           <img loading="lazy" decoding="async" src="assets/icons/skills/aws.svg" alt="aws" />
@@ -330,7 +353,7 @@
           <img loading="lazy" decoding="async" src="assets/icons/skills/linux.svg" alt="linux" />
         </div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="tools" data-name="GitHub" tabindex="0">
-          <img loading="lazy" decoding="async" src="assets/icons/skills/github.svg" alt="github" />
+          <img data-tone="black" loading="lazy" decoding="async" src="assets/icons/skills/github.svg" alt="github" />
         </div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Python" tabindex="0">
           <img loading="lazy" decoding="async" src="assets/icons/skills/python.svg" alt="python" />
@@ -341,22 +364,27 @@
         <div data-aos="zoom-in-down" class="skill-box" data-cat="tools" data-name="Slack" tabindex="0">
           <img loading="lazy" decoding="async" src="assets/icons/skills/slack.svg" alt="slack" />
         </div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Salesforce / Apex" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/Salesforce.svg" alt="Salesforce" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Spring Boot" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/springboot" alt="Spring Boot and Spring Data JPA" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Node.js" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/nodedotjs" alt="Node.js" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Django" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/django" alt="Django" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="Bootstrap" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/bootstrap" alt="Bootstrap" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Salesforce / Apex" tabindex="0"><img data-tone="black" loading="lazy" decoding="async" src="assets/icons/skills/Salesforce.svg" alt="Salesforce" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Spring Boot" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/springboot.svg" alt="Spring Boot and Spring Data JPA" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Node.js" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/nodedotjs.svg" alt="Node.js" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Apache Kafka" tabindex="0"><img data-tone="black" loading="lazy" decoding="async" src="assets/icons/skills/apachekafka.svg" alt="Apache Kafka" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="Django" tabindex="0"><img data-tone="black" loading="lazy" decoding="async" src="assets/icons/skills/django.svg" alt="Django" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="Bootstrap" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/bootstrap.svg" alt="Bootstrap" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="Angular" tabindex="0"><img data-tone="black" loading="lazy" decoding="async" src="assets/icons/skills/angular.svg" alt="Angular" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="Vue.js" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/vuedotjs.svg" alt="Vue.js" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="front" data-name="Flutter" tabindex="0"><img data-tone="deep" loading="lazy" decoding="async" src="assets/icons/skills/flutter.svg" alt="Flutter" /></div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Azure" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/azure.svg" alt="Microsoft Azure" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="MuleSoft" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/mulesoft.svg" alt="MuleSoft" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="REST / Swagger" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/swagger.svg" alt="REST APIs and Swagger" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="data" data-name="Firebase" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/firebase" alt="Firebase" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="data" data-name="H2 Database" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/h2database" alt="H2 Database" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Kubernetes" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/kubernetes" alt="Kubernetes" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Jenkins / CI/CD" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/jenkins" alt="Jenkins and CI/CD" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Argo CD" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/argo" alt="Argo CD" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Google Cloud" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/googlecloud.svg" alt="Google Cloud" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="MuleSoft" tabindex="0"><img data-tone="black" loading="lazy" decoding="async" src="assets/icons/skills/mulesoft.svg" alt="MuleSoft" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="back" data-name="REST / Swagger" tabindex="0"><img data-tone="black" loading="lazy" decoding="async" src="assets/icons/skills/swagger.svg" alt="REST APIs and Swagger" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="data" data-name="Firebase" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/firebase.svg" alt="Firebase" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="data" data-name="H2 Database" tabindex="0"><img data-tone="deep" loading="lazy" decoding="async" src="assets/icons/skills/h2database.svg" alt="H2 Database" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Kubernetes" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/kubernetes.svg" alt="Kubernetes" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Jenkins / CI/CD" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/jenkins.svg" alt="Jenkins and CI/CD" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Argo CD" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/argo.svg" alt="Argo CD" /></div>
         <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="Proxmox" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/proxmox.svg" alt="Proxmox" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="pfSense" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/pfsense" alt="pfSense" /></div>
-        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="VMware ESXi" tabindex="0"><img loading="lazy" decoding="async" src="https://cdn.simpleicons.org/vmware" alt="VMware ESXi" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="pfSense" tabindex="0"><img data-tone="black" loading="lazy" decoding="async" src="assets/icons/skills/pfsense.svg" alt="pfSense" /></div>
+        <div data-aos="zoom-in-down" class="skill-box" data-cat="devops" data-name="VMware ESXi" tabindex="0"><img loading="lazy" decoding="async" src="assets/icons/skills/vmware.svg" alt="VMware ESXi" /></div>
       </div>
     </div>
   </div>
@@ -367,8 +395,8 @@
       <div class="container">
         <div class="content">
           <div class="title">
-            <h2 data-aos="fade-right" data-aos-duration="500" data-aos-delay="300"><span data-i18n="testi.label">Kind words</span> <hr></h2>
-            <h1 data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-i18n="testi.heading">WE WORKED TOGETHER</h1>
+            <div class="label" data-aos="fade-right" data-aos-duration="500" data-aos-delay="300"><span data-i18n="testi.label">Kind words</span> <hr></div>
+            <h2 class="heading" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-i18n="testi.heading">WE WORKED TOGETHER</h2>
           </div>
 
           <div class="testi-board" data-aos="fade-up">
@@ -421,8 +449,8 @@
       <div class="container">
         <div class="content">
           <div class="title" data-aos="fade-down" data-aos-delay="300">
-            <h2 data-i18n="contact.lets">LET'S</h2>
-            <h1 data-i18n="contact.connect">CONNECT</h1>
+            <div class="label" data-i18n="contact.lets">LET'S</div>
+            <h2 class="heading" data-i18n="contact.connect">CONNECT</h2>
           </div>
 
           <div class="contact-area">
