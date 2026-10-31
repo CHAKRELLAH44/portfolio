@@ -32,7 +32,7 @@ body[data-theme="light"] .hidden-me {
   padding: 4rem 0;
   /* Sections slide in from the side (AOS); clip so they never widen the page. */
   overflow-x: clip;
-  background-color: var(--black);
+  background-color: transparent; /* the page glow (body::before) shows through */
 }
 
 /* ----- Numbered chapters with framed photos ----- */
@@ -230,7 +230,7 @@ body[data-theme="light"] .hidden-me .section[data-chapter="music"] { --accent-te
   width: min(90vw, 60rem);
   height: min(90vw, 60rem);
   border-radius: 50%;
-  background-color: rgba(var(--accent-rgb), 0.16);
+  background-color: rgba(var(--accent-rgb), 0.08); /* it sat hidden behind the section background until the page glow was added */
   filter: blur(120px);
   transform: translate(-50%, -50%);
   transition: background-color 0.9s ease;

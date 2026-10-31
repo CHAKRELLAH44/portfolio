@@ -50,6 +50,33 @@ body {
   color: var(--white);
 }
 
+/* Ambient glow: three soft accent lights fixed behind the whole page, so no section is flat black.
+   Sections must not paint their own full-width background or they would hide it. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(55% 45% at 88% 4%, rgba(var(--accent-rgb), 0.1), transparent 70%),
+    radial-gradient(50% 40% at 4% 96%, rgba(var(--accent-rgb), 0.07), transparent 70%),
+    radial-gradient(36% 30% at 0% 45%, rgba(var(--accent-rgb), 0.04), transparent 70%);
+}
+
+body[data-theme="light"]::before {
+  background:
+    radial-gradient(55% 45% at 88% 4%, rgba(var(--accent-rgb), 0.12), transparent 70%),
+    radial-gradient(50% 40% at 4% 96%, rgba(var(--accent-rgb), 0.09), transparent 70%),
+    radial-gradient(36% 30% at 0% 45%, rgba(var(--accent-rgb), 0.05), transparent 70%); /* keeps orange text above 4.5:1 */
+}
+
+@media print {
+  body::before {
+    display: none;
+  }
+}
+
 .container {
   width: 100%;
   margin-right: auto;

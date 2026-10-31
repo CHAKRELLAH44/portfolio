@@ -37,7 +37,7 @@ if (hiddenPage) {
       else link.removeAttribute("aria-current");
     });
     hiddenPage.style.setProperty("--active-rgb", colorOf(name));
-    if (chapterGlow) chapterGlow.style.backgroundColor = `rgba(${colorOf(name)}, 0.16)`;
+    if (chapterGlow) chapterGlow.style.backgroundColor = `rgba(${colorOf(name)}, 0.08)`;
   };
   if ("IntersectionObserver" in window) {
     // A chapter counts as "being read" when it crosses the middle band of the screen.

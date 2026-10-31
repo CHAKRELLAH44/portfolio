@@ -11,6 +11,21 @@
   min-height: 100svh;
   padding-top: 6rem;
   overflow: hidden;
+  isolation: isolate;
+}
+
+/* A soft spotlight behind the big name */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(48% 42% at 30% 46%, rgba(var(--accent-rgb), 0.1), transparent 70%);
+}
+
+body[data-theme="light"] .hero::before {
+  background: radial-gradient(48% 42% at 30% 46%, rgba(var(--accent-rgb), 0.1), transparent 70%);
 }
 
 body[data-theme="light"] .hero {
@@ -45,9 +60,11 @@ body[data-theme="light"] .hero {
 }
 
 .hero .shape-1 {
-  width: 200px;
-  height: 200px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
+  background-color: var(--primary);
+  opacity: 22%;
   animation: shape-1 60s infinite;
 }
 
@@ -62,7 +79,7 @@ body[data-theme="light"] .hero {
   top: 0;
   right: -100%;
   width: 100%;
-  height: 4%;
+  height: 5%;
   transform: rotate(45deg);
   filter: blur(50px);
   animation: line 50s infinite;
@@ -79,6 +96,11 @@ body[data-theme="light"] .hero .line {
 body[data-theme="light"] .hero .shape-1,
 body[data-theme="light"] .hero .shape-2 {
   opacity: 0.42;
+}
+
+body[data-theme="light"] .hero .shape-1 {
+  width: 200px;
+  height: 200px;
 }
 
 body[data-theme="light"] .hero .line {
@@ -505,7 +527,7 @@ body[data-theme="light"] .hero .arrow:focus-visible {
   from {
     right: -100%;
     top: 0;
-    opacity: 30%;
+    opacity: 42%;
   }
 
   to {

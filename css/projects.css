@@ -3,7 +3,7 @@
 .all-projects {
   padding: 4rem 0;
   min-height: 100vh;
-  background-color: var(--black);
+  background-color: transparent; /* the page glow (body::before) shows through */
 }
 
 .all-projects h1 {
