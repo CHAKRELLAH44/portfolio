@@ -154,15 +154,11 @@ body[data-theme="light"] .hero-name {
   display: inline-flex;
 }
 
-/* One letter: its window (.ch) and, on top of it, the outline for the running line (.trace) */
-.hero-name .lt {
-  position: relative;
-  display: block;
-}
-
-/* The line that runs around the outline of each letter, looping like in the first version of the site.
-   The svg holds the real glyph outline in font units (tools/make_name_paths.py); its box is the font's line box
-   (1.088em: ascent .878 + descent .21) placed so its baseline sits on the baseline of the letter (line-height .92). */
+/* The line that runs around the outline of every letter, looping like in the first version of the site. js/home.js puts
+   one svg in each letter (.g), so the line moves with the letters when they scroll. The svg holds the real glyph
+   outline in font units (js/hero-outlines.js, made by tools/make_name_paths.py); its box is the font's line box
+   (1.088em: ascent .878 + descent .21) placed so its baseline sits on the baseline of the letter (line-height .92).
+   A wide faint stroke under the bright one gives the glow without a filter on every letter. */
 .hero-name .trace {
   position: absolute;
   top: -0.084em;
@@ -171,14 +167,17 @@ body[data-theme="light"] .hero-name {
   overflow: visible;
   pointer-events: none;
   opacity: 0;
-  filter: drop-shadow(0 0 0.07em rgba(var(--accent-rgb), 0.75));
   transition: opacity 0.6s;
+}
+
+/* the other letters are centred in the slot; text-box is .015em narrower than the advance (letter-spacing) */
+.hero-name .g.f .trace {
+  left: 50%;
+  translate: calc(-50% + 0.0075em) 0;
 }
 
 .hero-name .trace path {
   fill: none;
-  stroke: var(--primary);
-  stroke-width: 22; /* font units: .022em */
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: 0.16 0.84; /* pathLength is 1: a line 16% of the outline long */
@@ -186,7 +185,17 @@ body[data-theme="light"] .hero-name {
   animation-delay: calc(var(--i) * -0.5s); /* each letter a little ahead of the next, so it seems to chase across IMANE */
 }
 
-body[data-theme="light"] .hero-name .trace path {
+.hero-name .trace .t-halo {
+  stroke: rgba(var(--accent-rgb), 0.42);
+  stroke-width: 70; /* font units */
+}
+
+.hero-name .trace .t-core {
+  stroke: var(--primary);
+  stroke-width: 22; /* .022em */
+}
+
+body[data-theme="light"] .hero-name .trace .t-core {
   stroke: var(--primary-text);
 }
 
@@ -216,6 +225,7 @@ body[data-theme="light"] .hero-name .trace path {
 }
 
 .hero-name .g {
+  position: relative;
   display: block;
   height: 0.92em;
   -webkit-text-stroke: max(1.5px, 0.012em) var(--name-stroke);

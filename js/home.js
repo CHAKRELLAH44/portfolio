@@ -156,13 +156,37 @@ if (heroSection && "IntersectionObserver" in window) {
 const heroTitle = document.querySelector(".hero-name");
 const heroName = heroTitle && heroTitle.querySelector(".name");
 if (heroTitle) {
+  // The line that runs around the letters: one svg inside every letter, the letters of the scroll too, so the line
+  // moves with them. The outlines come from js/hero-outlines.js (tools/make_name_paths.py).
+  const outlines = window.HERO_OUTLINES;
+  if (outlines) {
+    const SVG_NS = "http://www.w3.org/2000/svg";
+    heroTitle.querySelectorAll(".g").forEach((g) => {
+      const glyph = outlines.glyphs[g.textContent.trim()];
+      if (!glyph) return;
+      const svg = document.createElementNS(SVG_NS, "svg");
+      svg.setAttribute("class", "trace");
+      svg.setAttribute("viewBox", `0 ${-outlines.ascent} ${glyph[0]} ${outlines.ascent + outlines.descent}`);
+      svg.setAttribute("aria-hidden", "true");
+      svg.setAttribute("focusable", "false");
+      ["t-halo", "t-core"].forEach((cls) => {
+        const path = document.createElementNS(SVG_NS, "path");
+        path.setAttribute("class", cls);
+        path.setAttribute("pathLength", "1");
+        path.setAttribute("d", glyph[1]);
+        svg.append(path);
+      });
+      g.append(svg);
+    });
+  }
+
   let busy = true; // not during the intro
   setTimeout(() => {
     heroTitle.classList.remove("is-intro");
     busy = false;
   }, 3500);
   if (heroName && !prefersReducedMotion) {
-    const lastStrip = heroName.querySelector(".lt:last-child .strip");
+    const lastStrip = heroName.querySelector(".ch:last-child .strip");
     heroName.addEventListener("pointerleave", () => {
       if (busy || !lastStrip) return;
       busy = true;
