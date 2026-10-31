@@ -520,6 +520,10 @@ body[data-theme="light"] .hero .arrow:focus-visible {
   animation-play-state: paused;
 }
 
+body[data-theme="light"] .hero.is-offscreen .line {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero .shape-1,
   .hero .shape-2,
@@ -535,6 +539,10 @@ body[data-theme="light"] .hero .arrow:focus-visible {
 
   .hero .trace {
     display: none;
+  }
+
+  body[data-theme="light"] .hero .line {
+    animation: none;
   }
 }
 
