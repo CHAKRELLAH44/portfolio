@@ -162,7 +162,7 @@ if (heroTitle) {
     busy = false;
   }, 3500);
   if (heroName && !prefersReducedMotion) {
-    const lastStrip = heroName.querySelector(".ch:last-child .strip");
+    const lastStrip = heroName.querySelector(".lt:last-child .strip");
     heroName.addEventListener("pointerleave", () => {
       if (busy || !lastStrip) return;
       busy = true;

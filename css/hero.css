@@ -139,7 +139,11 @@ body[data-theme="light"] .hero-name {
   align-items: baseline;
   column-gap: 0.2em;
   padding: 0.04em 0.12em 0.02em 0;
-  overflow: hidden; /* the letters rise out of this edge */
+}
+
+/* the letters rise out of this edge; afterwards it is open so the glow of the line is not cut off */
+.hero-name.is-intro .hero-name-line {
+  overflow: hidden;
 }
 
 .hero-name .im {
@@ -148,6 +152,52 @@ body[data-theme="light"] .hero-name {
 
 .hero-name .name {
   display: inline-flex;
+}
+
+/* One letter: its window (.ch) and, on top of it, the outline for the running line (.trace) */
+.hero-name .lt {
+  position: relative;
+  display: block;
+}
+
+/* The line that runs around the outline of each letter, looping like in the first version of the site.
+   The svg holds the real glyph outline in font units (tools/make_name_paths.py); its box is the font's line box
+   (1.088em: ascent .878 + descent .21) placed so its baseline sits on the baseline of the letter (line-height .92). */
+.hero-name .trace {
+  position: absolute;
+  top: -0.084em;
+  left: 0;
+  height: 1.088em;
+  overflow: visible;
+  pointer-events: none;
+  opacity: 0;
+  filter: drop-shadow(0 0 0.07em rgba(var(--accent-rgb), 0.75));
+  transition: opacity 0.6s;
+}
+
+.hero-name .trace path {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 22; /* font units: .022em */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.16 0.84; /* pathLength is 1: a line 16% of the outline long */
+  animation: name-trace 4.2s linear infinite;
+  animation-delay: calc(var(--i) * -0.5s); /* each letter a little ahead of the next, so it seems to chase across IMANE */
+}
+
+body[data-theme="light"] .hero-name .trace path {
+  stroke: var(--primary-text);
+}
+
+/* shown once the intro has played; hidden while the letters spin, dimmed under the hover fill */
+.hero-name:not(.is-intro) .trace {
+  opacity: 1;
+}
+
+.hero-name.is-roll .trace {
+  opacity: 0;
+  transition-duration: 0.12s;
 }
 
 /* Each letter is a one-letter-tall window onto a strip: its own letter, three others, then its own letter again.
@@ -190,6 +240,10 @@ body[data-theme="light"] .hero-name {
   .hero-name .name:hover .ch {
     color: var(--primary);
     filter: drop-shadow(0 0 0.16em rgba(var(--accent-rgb), 0.6));
+  }
+
+  .hero-name:not(.is-roll) .name:hover .trace {
+    opacity: 0.3;
   }
 }
 
@@ -418,6 +472,7 @@ body[data-theme="light"] .hero .arrow:focus-visible {
 .hero.is-offscreen .im,
 .hero.is-offscreen .ch,
 .hero.is-offscreen .strip,
+.hero.is-offscreen .trace path,
 .hero.is-offscreen .pulse::after,
 .hero.is-offscreen .hero-roles-caret {
   animation-play-state: paused;
@@ -436,6 +491,9 @@ body[data-theme="light"] .hero .arrow:focus-visible {
     animation: none;
   }
 
+  .hero .trace {
+    display: none;
+  }
 }
 
 @keyframes line {
@@ -551,6 +609,16 @@ body[data-theme="light"] .hero .arrow:focus-visible {
   55% {
     color: var(--primary);
     filter: drop-shadow(0 0 0.16em rgba(var(--accent-rgb), 0.6));
+  }
+}
+
+@keyframes name-trace {
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
