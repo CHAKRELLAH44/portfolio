@@ -202,6 +202,37 @@ if (heroTitle) {
   }
 }
 
+// Light mode bloom: each hero element glows for a moment when the light reaches it, in order along a diagonal from the
+// top right to the bottom left (css/hero.css, hero-bloom). Here every element gets its place on that diagonal, 0 to 1.
+if (heroSection && !prefersReducedMotion) {
+  const shineTargets = [...heroSection.querySelectorAll(".hero-name .im, .hero-name .ch, .row-3, .hero-roles, .left-side, .right-side, .arrow svg")];
+  const placeShine = () => {
+    const hero = heroSection.getBoundingClientRect();
+    const qMin = -hero.width / Math.SQRT2;
+    const qMax = hero.height / Math.SQRT2;
+    shineTargets.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      const x = r.left + r.width / 2 - hero.left;
+      const y = r.top + r.height / 2 - hero.top;
+      const t = ((-x + y) / Math.SQRT2 - qMin) / (qMax - qMin);
+      el.style.setProperty("--shine-t", Math.min(1, Math.max(0, t)).toFixed(3));
+    });
+  };
+  // after the intro, when the letters and the fading texts are in their places
+  setTimeout(() => {
+    placeShine();
+    heroSection.classList.add("is-lit");
+  }, 3800);
+  let shineTimer;
+  const placeShineLater = () => {
+    clearTimeout(shineTimer);
+    shineTimer = setTimeout(placeShine, 150);
+  };
+  window.addEventListener("resize", placeShineLater);
+  document.addEventListener("portfolio:languagechange", placeShineLater);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeShineLater);
+}
+
 // -------------------------------
 // Experience: the timeline line fills as you scroll and dots light up
 // -------------------------------

@@ -102,24 +102,27 @@ body[data-theme="light"] .hero .shape-1 {
   height: 200px;
 }
 
-/* Light mode sweep: a soft diagonal band of the accent that crosses the hero from the top right to the bottom left,
-   about 10 s of every 30 s. It sits behind the text and moves with transform only (compositor, no repaint).
-   The gradient makes the long edges soft and the mask fades both ends, so nothing shows a hard edge. */
+/* Light mode: no visible band of light. Instead every element of the hero blooms for a moment when the light reaches it,
+   one after another along a diagonal from the top right to the bottom left. js/home.js gives each element its place on
+   that diagonal (--shine-t, 0 to 1) and adds .is-lit to the hero; one pass takes 6 s and repeats every 24 s. */
 body[data-theme="light"] .hero .line {
-  top: 50%;
-  right: auto;
-  left: 50%;
-  z-index: -1;
-  width: max(180%, 2400px); /* longer than the hero's diagonal at every size */
-  height: clamp(110px, 18vh, 200px);
-  background: linear-gradient(to bottom, transparent, rgba(var(--accent-rgb), 1) 50%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent);
-  box-shadow: none;
-  filter: none;
-  opacity: 0;
-  will-change: transform, opacity;
-  animation: line-light 30s linear 4s infinite backwards; /* the first pass waits for the name intro */
+  display: none;
+}
+
+body[data-theme="light"] .hero.is-lit :is(.row-3, .hero-roles, .left-side, .right-side) {
+  animation: hero-bloom 24s linear calc(var(--shine-t, 0) * 6s) infinite backwards;
+}
+
+body[data-theme="light"] .hero.is-lit .hero-name .im {
+  animation: hero-bloom-big 24s linear calc(var(--shine-t, 0) * 6s) infinite backwards;
+}
+
+body[data-theme="light"] .hero.is-lit .hero-name .ch {
+  animation: hero-bloom-letter 24s linear calc(var(--shine-t, 0) * 6s) infinite backwards;
+}
+
+body[data-theme="light"] .hero.is-lit .arrow svg {
+  animation: hero-bloom-icon 24s linear calc(var(--shine-t, 0) * 6s) infinite backwards;
 }
 
 /* Text block */
@@ -520,7 +523,7 @@ body[data-theme="light"] .hero .arrow:focus-visible {
   animation-play-state: paused;
 }
 
-body[data-theme="light"] .hero.is-offscreen .line {
+body[data-theme="light"] .hero.is-offscreen.is-lit :is(.row-3, .hero-roles, .left-side, .right-side, .hero-name .im, .hero-name .ch, .arrow svg) {
   animation-play-state: paused;
 }
 
@@ -541,7 +544,7 @@ body[data-theme="light"] .hero.is-offscreen .line {
     display: none;
   }
 
-  body[data-theme="light"] .hero .line {
+  body[data-theme="light"] .hero.is-lit :is(.row-3, .hero-roles, .left-side, .right-side, .hero-name .im, .hero-name .ch, .arrow svg) {
     animation: none;
   }
 }
@@ -629,32 +632,56 @@ body[data-theme="light"] .hero.is-offscreen .line {
   }
 }
 
-/* Light mode only. The band travels along its normal from outside the top right corner to outside the bottom left
-   corner: (width + height) / 4 from the hero centre on each axis, plus a margin. One pass is 36% of the 30 s loop. */
-@keyframes line-light {
-  0% {
-    transform: translate(-50%, -50%) translate(calc(25vw + 25svh + 150px), calc(-25vw - 25svh - 150px)) rotate(45deg);
-    opacity: 0;
-    animation-timing-function: ease-in-out;
+/* Light mode bloom: a soft glow swells and fades once per 24 s loop (the pulse is the first 8%, about 1.9 s). */
+@keyframes hero-bloom {
+  0%,
+  8%,
+  100% {
+    text-shadow: 0 0 0 rgba(var(--accent-rgb), 0), 0 0 0 rgba(var(--accent-rgb), 0);
   }
 
   4% {
-    opacity: 0.34;
+    text-shadow: 0 0 0.25em rgba(var(--accent-rgb), 0.5), 0 0 0.7em rgba(var(--accent-rgb), 0.3);
   }
+}
 
-  32% {
-    opacity: 0.34;
-  }
-
-  36%,
+@keyframes hero-bloom-big {
+  0%,
+  8%,
   100% {
-    transform: translate(-50%, -50%) translate(calc(-25vw - 25svh - 150px), calc(25vw + 25svh + 150px)) rotate(45deg);
-    opacity: 0;
+    text-shadow: 0 0 0 rgba(var(--accent-rgb), 0), 0 0 0 rgba(var(--accent-rgb), 0);
+  }
+
+  4% {
+    text-shadow: 0 0 0.1em rgba(var(--accent-rgb), 0.55), 0 0 0.28em rgba(var(--accent-rgb), 0.38);
   }
 }
+
+@keyframes hero-bloom-letter {
+  0%,
+  8%,
+  100% {
+    color: transparent;
+    filter: drop-shadow(0 0 0 rgba(var(--accent-rgb), 0));
+  }
+
+  4% {
+    color: rgba(var(--accent-rgb), 0.42);
+    filter: drop-shadow(0 0 0.16em rgba(var(--accent-rgb), 0.7));
+  }
 }
 
-@keyframes hero-caret { 50% { opacity: 0; } }
+@keyframes hero-bloom-icon {
+  0%,
+  8%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(var(--accent-rgb), 0));
+  }
+
+  4% {
+    filter: drop-shadow(0 0 0.25rem rgba(var(--accent-rgb), 0.8)) drop-shadow(0 0 0.7rem rgba(var(--accent-rgb), 0.5));
+  }
+}
 
 @keyframes ch-rise {
   from {
