@@ -86,8 +86,7 @@ body[data-theme="light"] .hero {
 }
 
 body[data-theme="light"] .hero .shape-1,
-body[data-theme="light"] .hero .shape-2,
-body[data-theme="light"] .hero .line {
+body[data-theme="light"] .hero .shape-2 {
   background-color: #e87512;
   filter: blur(58px);
   box-shadow: 0 0 5rem rgba(var(--accent-rgb), 0.68);
@@ -103,8 +102,24 @@ body[data-theme="light"] .hero .shape-1 {
   height: 200px;
 }
 
+/* Light mode sweep: a soft diagonal band of the accent that crosses the hero from the top right to the bottom left,
+   about 10 s of every 30 s. It sits behind the text and moves with transform only (compositor, no repaint).
+   The gradient makes the long edges soft and the mask fades both ends, so nothing shows a hard edge. */
 body[data-theme="light"] .hero .line {
-  animation-name: line-light;
+  top: 50%;
+  right: auto;
+  left: 50%;
+  z-index: -1;
+  width: max(180%, 2400px); /* longer than the hero's diagonal at every size */
+  height: clamp(110px, 18vh, 200px);
+  background: linear-gradient(to bottom, transparent, rgba(var(--accent-rgb), 1) 50%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent);
+  box-shadow: none;
+  filter: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: line-light 30s linear 4s infinite backwards; /* the first pass waits for the name intro */
 }
 
 /* Text block */
@@ -606,9 +621,29 @@ body[data-theme="light"] .hero .arrow:focus-visible {
   }
 }
 
+/* Light mode only. The band travels along its normal from outside the top right corner to outside the bottom left
+   corner: (width + height) / 4 from the hero centre on each axis, plus a margin. One pass is 36% of the 30 s loop. */
 @keyframes line-light {
-  from { right: -100%; top: 0; opacity: 0.58; }
-  to { right: 100%; top: 100%; opacity: 0; }
+  0% {
+    transform: translate(-50%, -50%) translate(calc(25vw + 25svh + 150px), calc(-25vw - 25svh - 150px)) rotate(45deg);
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+  }
+
+  4% {
+    opacity: 0.34;
+  }
+
+  32% {
+    opacity: 0.34;
+  }
+
+  36%,
+  100% {
+    transform: translate(-50%, -50%) translate(calc(-25vw - 25svh - 150px), calc(25vw + 25svh + 150px)) rotate(45deg);
+    opacity: 0;
+  }
+}
 }
 
 @keyframes hero-caret { 50% { opacity: 0; } }
