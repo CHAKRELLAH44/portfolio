@@ -38,14 +38,15 @@ done, and what is still open. Keep them up to date when something important chan
 ## State of the code
 
 - `main` is the old version that is live today.
-- The new version is stacked on three branches that were never merged or pushed: `fixes`, then `makeover`, then `polish`.
-  `polish` contains everything. Start from `polish` when she asks to continue the redesign; check with `git branch`.
+- The new version is on GitHub as the branch `rocmine-version`, which was pushed from the local branch `polish` (built on
+  `makeover`, which is built on `fixes`). It has not been merged into `main`, so the live site is still the old one.
+  Start from `rocmine-version` when she asks to continue the redesign; check with `git branch -a`.
 - What the new version has: new fonts (Archivo, Instrument Sans, IBM Plex Mono, all self-hosted), brand and skill icons as
   an inline SVG sprite, a floating pill navbar, a logo that turns dark in the light theme, a fullscreen phone menu, a soft
   accent glow behind every page, an About card with the word IMANSKA (it shows her real photo when one is added), a new
   contact section, "Find me on" cards, a certifications panel, Hidden Me cards that flip cleanly, and the hero described
   below.
-- To publish the new version, open a pull request from `polish` into `main` (or merge it), then push `main`. GitHub Pages
+- To publish the new version, open a pull request from `rocmine-version` into `main` (or merge it), then push `main`. GitHub Pages
   rebuilds on its own. Do this only when she says so. If she is not the owner of the repository on the account in use,
   she cannot push to it: use a fork and a pull request, or ask the owner to add her as a collaborator.
 - To look at the site, run `python -m http.server 8000` in this folder and open `http://localhost:8000`. Opening the
