@@ -190,14 +190,9 @@ body[data-theme="light"] .hero-name .trace path {
   stroke: var(--primary-text);
 }
 
-/* shown once the intro has played; hidden while the letters spin, dimmed under the hover fill */
+/* shown once the intro has played; it keeps running while the letters spin, and dims under the hover fill */
 .hero-name:not(.is-intro) .trace {
   opacity: 1;
-}
-
-.hero-name.is-roll .trace {
-  opacity: 0;
-  transition-duration: 0.12s;
 }
 
 /* Each letter is a one-letter-tall window onto a strip: its own letter, three others, then its own letter again.
@@ -242,7 +237,7 @@ body[data-theme="light"] .hero-name .trace path {
     filter: drop-shadow(0 0 0.16em rgba(var(--accent-rgb), 0.6));
   }
 
-  .hero-name:not(.is-roll) .name:hover .trace {
+  .hero-name .name:hover .trace {
     opacity: 0.3;
   }
 }
