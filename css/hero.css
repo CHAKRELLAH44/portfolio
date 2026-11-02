@@ -117,10 +117,6 @@ body[data-theme="light"] .hero.is-lit .hero-name .im {
   animation: hero-bloom-big 24s linear calc(var(--shine-t, 0) * 6s) infinite backwards;
 }
 
-body[data-theme="light"] .hero.is-lit .hero-name .ch {
-  animation: hero-bloom-letter 24s linear calc(var(--shine-t, 0) * 6s) infinite backwards;
-}
-
 body[data-theme="light"] .hero.is-lit .arrow svg {
   animation: hero-bloom-icon 24s linear calc(var(--shine-t, 0) * 6s) infinite backwards;
 }
@@ -148,165 +144,60 @@ body[data-theme="light"] .hero.is-lit .arrow svg {
   overflow-wrap: anywhere;
 }
 
-/* The name: "I'M" solid, "IMANE" outlined, on one baseline. The h1 holds the real text for screen readers.
-   It is sized from the width of the text block, so it fills it on a desktop and still fits one line on a phone
-   (the French "JE SUIS" wraps above the name when there is no room). */
+/* The name: "I'M" solid, then "IMANE" as an outlined svg text whose line draws itself and fades in a loop, like in
+   the first version of the site. The h1 holds the real text for screen readers. The svg keeps its 1600x300 shape,
+   so the name fills the width of the text block on every screen. js/home.js adds .is-glitching now and then. */
 .hero .text {
   container-type: inline-size;
 }
 
 .hero-name {
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --name-stroke: var(--white);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   margin: 0;
-  max-width: 100%;
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 15.2cqi, 12.5rem);
   font-style: italic;
   font-stretch: 125%;
   font-weight: 800;
-  line-height: 0.92;
-  letter-spacing: -0.015em;
-}
-
-body[data-theme="light"] .hero-name {
-  --name-stroke: var(--primary-text);
-}
-
-.hero-name-line {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  column-gap: 0.2em;
-  padding: 0.04em 0.12em 0.02em 0;
-}
-
-/* the letters rise out of this edge; afterwards it is open so the glow of the line is not cut off */
-.hero-name.is-intro .hero-name-line {
-  overflow: hidden;
 }
 
 .hero-name .im {
   color: var(--white);
+  font-size: clamp(2.4rem, 9cqi, 8rem);
+  line-height: 1;
 }
 
-.hero-name .name {
-  display: inline-flex;
-}
-
-/* The line that runs around the outline of every letter, looping like in the first version of the site. js/home.js puts
-   one svg in each letter (.g), so the line moves with the letters when they scroll. The svg holds the real glyph
-   outline in font units (js/hero-outlines.js, made by tools/make_name_paths.py); its box is the font's line box
-   (1.088em: ascent .878 + descent .21) placed so its baseline sits on the baseline of the letter (line-height .92).
-   A wide faint stroke under the bright one gives the glow without a filter on every letter. */
-.hero-name .trace {
-  position: absolute;
-  top: -0.084em;
-  left: 0;
-  height: 1.088em;
-  overflow: visible;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.6s;
-}
-
-/* the other letters are centred in the slot; text-box is .015em narrower than the advance (letter-spacing) */
-.hero-name .g.f .trace {
-  left: 50%;
-  translate: calc(-50% + 0.0075em) 0;
-}
-
-.hero-name .trace path {
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 0.16 0.84; /* pathLength is 1: a line 16% of the outline long */
-  animation: name-trace 4.2s linear infinite;
-  animation-delay: calc(var(--i) * -0.5s); /* each letter a little ahead of the next, so it seems to chase across IMANE */
-}
-
-.hero-name .trace .t-halo {
-  stroke: rgba(var(--accent-rgb), 0.42);
-  stroke-width: 70; /* font units */
-}
-
-.hero-name .trace .t-core {
-  stroke: var(--primary);
-  stroke-width: 22; /* .022em */
-}
-
-body[data-theme="light"] .hero-name .trace .t-core {
-  stroke: var(--primary-text);
-}
-
-/* shown once the intro has played; it keeps running while the letters spin, and dims under the hover fill */
-.hero-name:not(.is-intro) .trace {
-  opacity: 1;
-}
-
-/* Each letter is a one-letter-tall window onto a strip: its own letter, three others, then its own letter again.
-   Leaving the name scrolls every strip down to its last letter, which looks exactly like where it started
-   (js/home.js adds .is-roll). Hovering only fills the letters; nothing restarts. */
-.hero-name .ch {
+.hero-name .row-2 {
   display: block;
-  height: 1.04em;
-  margin: -0.06em -0.1em -0.06em -0.04em;
-  padding: 0.06em 0.1em 0.06em 0.04em;
-  overflow: hidden;
-  color: transparent;
-  filter: drop-shadow(0 0 0 rgba(var(--accent-rgb), 0)); /* the glow is a filter: a text-shadow would be cut off by the window */
-  transition: color 0.4s, filter 0.4s;
+  cursor: crosshair;
 }
 
-.hero-name .strip {
-  --to: -80%;
-  display: flex;
-  flex-direction: column;
-}
-
-.hero-name .g {
-  position: relative;
+.hero-name .row-2 svg {
   display: block;
-  height: 0.92em;
-  -webkit-text-stroke: max(1.5px, 0.012em) var(--name-stroke);
-  paint-order: stroke fill;
-}
-
-/* The other letters never widen the slot: they are centred in the width of the real letter */
-.hero-name .g.f {
-  display: grid;
-  justify-content: center;
   width: 100%;
-  contain: inline-size;
-  white-space: nowrap;
+  height: auto;
+  aspect-ratio: 1600 / 300;
+  overflow: visible;
 }
 
-@media (hover: hover) {
-  .hero-name .name:hover .ch {
-    color: var(--primary);
-    filter: drop-shadow(0 0 0.16em rgba(var(--accent-rgb), 0.6));
-  }
-
-  .hero-name .name:hover .trace {
-    opacity: 0.3;
-  }
+.hero-name .row-2 svg text {
+  font-size: 20rem;
+  text-transform: uppercase;
+  fill: transparent;
+  stroke: var(--white);
+  stroke-width: 2;
+  animation: name-stroke 5s infinite alternate;
 }
 
-/* Load: the letters rise one after another, then a wave of fill runs through the outline once.
-   js/home.js removes .is-intro afterwards so nothing can start it again. */
-.hero-name.is-intro .im {
-  animation: ch-rise 0.95s var(--ease) 0.1s both;
+body[data-theme="light"] .hero-name .row-2 svg text {
+  stroke: var(--primary-text);
+  filter: drop-shadow(0 0 0.35rem rgba(var(--accent-rgb), 0.45));
+  animation-name: name-stroke-light;
 }
 
-.hero-name.is-intro .ch {
-  animation: ch-rise 0.95s var(--ease) both, ch-fill 1.4s ease-in-out both;
-  animation-delay: calc(0.3s + var(--i) * 70ms), calc(1.5s + var(--i) * 120ms);
-}
-
-/* Pointer leaves (or a tap ends): the letters scroll one by one, I to E */
-.hero-name.is-roll .strip {
-  animation: ch-roll 0.95s cubic-bezier(0.2, 0.75, 0.2, 1) both;
-  animation-delay: calc(var(--i) * 90ms);
+.hero-name .row-2.is-glitching svg {
+  animation: hero-glitch 0.55s steps(2, end);
 }
 
 /* Typed roles */
@@ -515,15 +406,13 @@ body[data-theme="light"] .hero .arrow:focus-visible {
 .hero.is-offscreen .line,
 .hero.is-offscreen .arrow,
 .hero.is-offscreen .im,
-.hero.is-offscreen .ch,
-.hero.is-offscreen .strip,
-.hero.is-offscreen .trace path,
+.hero.is-offscreen .row-2 svg text,
 .hero.is-offscreen .pulse::after,
 .hero.is-offscreen .hero-roles-caret {
   animation-play-state: paused;
 }
 
-body[data-theme="light"] .hero.is-offscreen.is-lit :is(.row-3, .hero-roles, .left-side, .right-side, .hero-name .im, .hero-name .ch, .arrow svg) {
+body[data-theme="light"] .hero.is-offscreen.is-lit :is(.row-3, .hero-roles, .left-side, .right-side, .hero-name .im, .arrow svg) {
   animation-play-state: paused;
 }
 
@@ -533,18 +422,14 @@ body[data-theme="light"] .hero.is-offscreen.is-lit :is(.row-3, .hero-roles, .lef
   .hero .line,
   .hero .arrow,
   .hero .im,
-  .hero .ch,
-  .hero .strip,
+  .hero .row-2 svg,
+  .hero .row-2 svg text,
   .hero .pulse::after,
   .hero .hero-roles-caret {
     animation: none;
   }
 
-  .hero .trace {
-    display: none;
-  }
-
-  body[data-theme="light"] .hero.is-lit :is(.row-3, .hero-roles, .left-side, .right-side, .hero-name .im, .hero-name .ch, .arrow svg) {
+  body[data-theme="light"] .hero.is-lit :is(.row-3, .hero-roles, .left-side, .right-side, .hero-name .im, .arrow svg) {
     animation: none;
   }
 }
@@ -657,20 +542,6 @@ body[data-theme="light"] .hero.is-offscreen.is-lit :is(.row-3, .hero-roles, .lef
   }
 }
 
-@keyframes hero-bloom-letter {
-  0%,
-  8%,
-  100% {
-    color: transparent;
-    filter: drop-shadow(0 0 0 rgba(var(--accent-rgb), 0));
-  }
-
-  4% {
-    color: rgba(var(--accent-rgb), 0.42);
-    filter: drop-shadow(0 0 0.16em rgba(var(--accent-rgb), 0.7));
-  }
-}
-
 @keyframes hero-bloom-icon {
   0%,
   8%,
@@ -683,44 +554,57 @@ body[data-theme="light"] .hero.is-offscreen.is-lit :is(.row-3, .hero-roles, .lef
   }
 }
 
-@keyframes ch-rise {
-  from {
-    opacity: 0;
-    transform: translateY(105%) skewY(8deg);
+/* The line of IMANE draws itself from nothing to the full outline, going from cyan to white */
+@keyframes name-stroke {
+  0% {
+    stroke: #5ce1e6;
+    stroke-width: 0;
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
   }
-
-  to {
-    opacity: 1;
-    transform: none;
+  70% {
+    stroke: white;
   }
-}
-
-@keyframes ch-fill {
-  0%,
+  80% {
+    stroke: #5ce1e6;
+    stroke-width: 3;
+  }
   100% {
-    color: transparent;
-    filter: drop-shadow(0 0 0 rgba(var(--accent-rgb), 0));
-  }
-
-  35%,
-  55% {
-    color: var(--primary);
-    filter: drop-shadow(0 0 0.16em rgba(var(--accent-rgb), 0.6));
+    stroke: white;
+    stroke-width: 0;
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
   }
 }
 
-@keyframes name-trace {
-  from {
-    stroke-dashoffset: 1;
+/* Light mode: the same drawing, in the light theme's accent colours */
+@keyframes name-stroke-light {
+  0% {
+    stroke: var(--primary);
+    stroke-width: 0;
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
   }
-
-  to {
-    stroke-dashoffset: 0;
+  70% {
+    stroke: var(--primary-text);
+  }
+  80% {
+    stroke: var(--primary);
+    stroke-width: 3;
+  }
+  100% {
+    stroke: var(--primary-text);
+    stroke-width: 0;
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
   }
 }
 
-@keyframes ch-roll {
-  to {
-    transform: translateY(var(--to));
-  }
+@keyframes hero-glitch {
+  0%   { transform: none; filter: none; }
+  15%  { transform: translate(-6px, 2px) skewX(-8deg); filter: drop-shadow(4px 0 0 rgba(var(--accent-rgb), 0.9)) drop-shadow(-4px 0 0 #ff2bd6); clip-path: inset(10% 0 45% 0); }
+  30%  { transform: translate(5px, -2px); filter: drop-shadow(-5px 0 0 rgba(var(--accent-rgb), 0.9)) drop-shadow(5px 0 0 #ff2bd6); clip-path: inset(55% 0 5% 0); }
+  45%  { transform: translate(-3px, 0) skewX(6deg); filter: drop-shadow(3px 0 0 rgba(var(--accent-rgb), 0.9)); clip-path: inset(30% 0 30% 0); }
+  60%  { transform: translate(2px, 1px); filter: drop-shadow(-2px 0 0 #ff2bd6); clip-path: none; }
+  100% { transform: none; filter: none; clip-path: none; }
 }

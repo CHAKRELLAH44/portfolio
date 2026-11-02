@@ -49,107 +49,24 @@
   margin-top: 2rem;
 }
 
-.portrait {
-  --ink: var(--white);
-  container-type: inline-size;
-  width: 100%;
-  max-width: 32rem;
-  margin: 0;
-}
-
-body[data-theme="light"] .portrait {
-  --ink: var(--primary-text);
-}
-
-.portrait-card {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  isolation: isolate;
-  border: 1px solid color-mix(in srgb, var(--primary) 38%, transparent);
-  border-radius: 28px;
-  background:
-    radial-gradient(90% 60% at 15% 0%, rgba(var(--accent-rgb), 0.3), transparent 62%),
-    radial-gradient(80% 55% at 100% 100%, rgba(var(--accent-rgb), 0.18), transparent 60%),
-    var(--black);
-}
-
-/* A faint dot grid that fades towards the bottom */
-.portrait-grid {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image: radial-gradient(color-mix(in srgb, var(--white) 22%, transparent) 1px, transparent 1.5px);
-  background-size: 22px 22px;
-  -webkit-mask-image: linear-gradient(to bottom, #000, transparent 80%);
-  mask-image: linear-gradient(to bottom, #000, transparent 80%);
-}
-
-.portrait-mark {
-  position: absolute;
-  top: 6cqi;
-  left: 6cqi;
-  width: 15cqi;
-  height: auto;
-}
-
-/* IMANSKA in giant outlined italic letters, filled with the accent on hover */
-.portrait-word {
-  position: absolute;
-  right: 0;
-  bottom: 17cqi;
-  left: 0;
-  display: grid;
-  margin: 0;
-  padding-inline: 6cqi;
-  color: transparent;
-  font: italic 900 25cqi / 0.84 var(--font-display);
-  font-stretch: 125%;
-  letter-spacing: -0.01em;
-  -webkit-text-stroke: max(1.5px, 0.45cqi) var(--ink);
-  paint-order: stroke fill;
-  transition: color 0.7s ease, text-shadow 0.7s ease;
-}
-
-.portrait-word span:nth-child(2) {
-  padding-left: 9cqi;
-}
-
-.portrait-card:hover .portrait-word {
-  color: var(--primary);
-  text-shadow: 0 0 0.3em rgba(var(--accent-rgb), 0.45);
-}
-
-.portrait-caption {
-  position: absolute;
-  right: 6cqi;
-  bottom: 6cqi;
-  left: 6cqi;
+/* The photo, as in the first version: a dark and a light picture, swapped with the theme by js/core.js (data-light-src) */
+.profile-container {
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-top: 0.8rem;
-  border-top: 1px solid color-mix(in srgb, var(--white) 18%, transparent);
-  color: var(--gray);
-  font: 600 var(--step--1) var(--font-display);
-  letter-spacing: 0.02em;
-}
-
-/* A real photo covers the placeholder (inserted by js/home.js) */
-.portrait-photo {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
+  justify-content: flex-start;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
-.portrait.has-photo .portrait-grid,
-.portrait.has-photo .portrait-mark,
-.portrait.has-photo .portrait-word,
-.portrait.has-photo .portrait-caption {
-  display: none;
+.profile-container .profile {
+  width: 100%;
+  background: var(--gray);
+  border-radius: 64px;
+  overflow: hidden;
+}
+
+.profile-container .profile img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Ajustements pour le texte */
@@ -163,9 +80,11 @@ body[data-theme="light"] .portrait {
 }
 
 .about-me p {
+  max-width: 38em;
+  font-size: clamp(1.05rem, 0.9rem + 0.5vw, 1.35rem);
   font-weight: 500;
   font-style: italic;
-  line-height: 1.4rem;
+  line-height: 1.55;
 }
 
 .about-me .about-hidden {
@@ -272,13 +191,10 @@ body[data-theme="light"] .portrait {
     margin-top: 0.75rem;
   }
 
-  .portrait {
-    max-width: 22rem;
+  .profile-container .profile {
+    max-width: 520px;
     margin-inline: auto;
-  }
-
-  .portrait-card {
-    border-radius: 22px;
+    border-radius: 28px;
   }
 
   .about-me {
@@ -329,6 +245,7 @@ body[data-theme="light"] .portrait {
   }
 
   .about .container .content p { font-size: 0.9rem; line-height: 1.55; }
+  .about .container .content .about-me p { font-size: 1.05rem; }
 
   .about .container .content .marquee,
   .about .container .content .marquee span { font-size: clamp(2.5rem, 10vw, 4.5rem); }

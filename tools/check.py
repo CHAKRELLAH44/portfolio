@@ -14,7 +14,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PAGES = ["index.html", "projects.html", "hidden-me.html", "contact.html", "404.html", "admin.html"]
+PAGES = ["index.html", "projects.html", "hidden-me.html", "contact.html", "404.html", "perso.html"]
 TEXT = {".html", ".css", ".js", ".md", ".xml", ".json", ".yml", ".webmanifest"}
 # Assets kept on purpose although no page uses them yet.
 KEEP = ()
@@ -67,8 +67,8 @@ for name in PAGES:
             errors.append(f"{name}: missing file {ref}")
     if p.main != 1:
         warnings.append(f"{name}: {p.main} <main> elements (want 1)")
-    # admin.html shows its lock screen and its dashboard one at a time, each with its own h1
-    if p.h1 != 1 and name != "admin.html":
+    # perso.html shows its lock screen and its dashboard one at a time, each with its own h1
+    if p.h1 != 1 and name != "perso.html":
         warnings.append(f"{name}: {p.h1} <h1> elements (want 1)")
     if p.no_alt:
         warnings.append(f"{name}: {p.no_alt} <img> without alt")

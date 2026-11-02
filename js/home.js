@@ -151,61 +151,28 @@ if (heroSection && "IntersectionObserver" in window) {
   new IntersectionObserver(([entry]) => heroSection.classList.toggle("is-offscreen", !entry.isIntersecting)).observe(heroSection);
 }
 
-// The name: hovering fills the letters (CSS only). When the pointer leaves, or a tap ends, the letters scroll
-// one after another from I to E (.is-roll). The intro class is removed once it has played so it can never replay.
-const heroTitle = document.querySelector(".hero-name");
-const heroName = heroTitle && heroTitle.querySelector(".name");
-if (heroTitle) {
-  // The line that runs around the letters: one svg inside every letter, the letters of the scroll too, so the line
-  // moves with them. The outlines come from js/hero-outlines.js (tools/make_name_paths.py).
-  const outlines = window.HERO_OUTLINES;
-  if (outlines) {
-    const SVG_NS = "http://www.w3.org/2000/svg";
-    heroTitle.querySelectorAll(".g").forEach((g) => {
-      const glyph = outlines.glyphs[g.textContent.trim()];
-      if (!glyph) return;
-      const svg = document.createElementNS(SVG_NS, "svg");
-      svg.setAttribute("class", "trace");
-      svg.setAttribute("viewBox", `0 ${-outlines.ascent} ${glyph[0]} ${outlines.ascent + outlines.descent}`);
-      svg.setAttribute("aria-hidden", "true");
-      svg.setAttribute("focusable", "false");
-      ["t-halo", "t-core"].forEach((cls) => {
-        const path = document.createElementNS(SVG_NS, "path");
-        path.setAttribute("class", cls);
-        path.setAttribute("pathLength", "1");
-        path.setAttribute("d", glyph[1]);
-        svg.append(path);
-      });
-      g.append(svg);
-    });
-  }
-
-  let busy = true; // not during the intro
-  setTimeout(() => {
-    heroTitle.classList.remove("is-intro");
-    busy = false;
-  }, 3500);
-  if (heroName && !prefersReducedMotion) {
-    const lastStrip = heroName.querySelector(".ch:last-child .strip");
-    heroName.addEventListener("pointerleave", () => {
-      if (busy || !lastStrip) return;
-      busy = true;
-      heroTitle.classList.add("is-roll");
-      const done = () => {
-        lastStrip.removeEventListener("animationend", done);
-        heroTitle.classList.remove("is-roll");
-        busy = false;
-      };
-      lastStrip.addEventListener("animationend", done);
-      setTimeout(() => busy && done(), 2200); // safety if the event never comes
-    });
-  }
+// The name: IMANE glitches on hover, on a tap, and every 7 s while the hero is on screen (css/hero.css, hero-glitch).
+const heroName = document.querySelector(".hero-name .row-2");
+if (heroName && !prefersReducedMotion) {
+  const glitch = () => {
+    heroName.classList.remove("is-glitching");
+    void heroName.offsetWidth; // restart the animation
+    heroName.classList.add("is-glitching");
+  };
+  heroName.addEventListener("pointerenter", glitch);
+  heroName.addEventListener("click", glitch);
+  heroName.addEventListener("animationend", (event) => {
+    if (event.animationName === "hero-glitch") heroName.classList.remove("is-glitching");
+  });
+  setInterval(() => {
+    if (!document.hidden && window.scrollY < window.innerHeight) glitch();
+  }, 7000);
 }
 
 // Light mode bloom: each hero element glows for a moment when the light reaches it, in order along a diagonal from the
 // top right to the bottom left (css/hero.css, hero-bloom). Here every element gets its place on that diagonal, 0 to 1.
 if (heroSection && !prefersReducedMotion) {
-  const shineTargets = [...heroSection.querySelectorAll(".hero-name .im, .hero-name .ch, .row-3, .hero-roles, .left-side, .right-side, .arrow svg")];
+  const shineTargets = [...heroSection.querySelectorAll(".hero-name .im, .row-3, .hero-roles, .left-side, .right-side, .arrow svg")];
   const placeShine = () => {
     const hero = heroSection.getBoundingClientRect();
     const qMin = -hero.width / Math.SQRT2;
@@ -286,8 +253,8 @@ if (skillGrid) {
     cicd: "CI/CD Pipeline Automation",
     ansible: "Automated Package Deployment",
     dmz: "DMZ Virtual Network Architecture",
-    twitter: "PROVIROLL – Twitter Automation Agent",
-    coffee: "LUMINALINK – Coffee Shop",
+    twitter: "Twitter Automation Agent",
+    coffee: "Coffee Shop",
     health: "Healthcare AI – Predicting Patient Survival",
     reco: "Recommendation System – E-commerce",
     bank: "Bank Management System",
@@ -296,7 +263,7 @@ if (skillGrid) {
     movie: "Movie Management System",
     taxi: "Online Taxi Reservation System",
     faith: "FAITH Quran – Quran Reading PWA",
-    ora: "Entraînement Oral – AI Language Coach",
+    ora: "BlaBlaGym – AI Language Coach",
     hotelJava: "Hotel Management System (Java)",
     hotelCpp: "Hotel Management System (C++)",
     exams: "Mobile Application – Online Exams App",
@@ -307,7 +274,7 @@ if (skillGrid) {
   const SKILL_PROJECTS = {
     "HTML5": ["taxi"], "CSS3": ["taxi"], "JavaScript": ["bank", "ecom", "movie"], "TypeScript": ["ora"],
     "React": ["bank", "ecom", "movie", "faith"], "Next.js": ["faith", "ora"], "Tailwind CSS": ["faith", "ora"],
-    "MySQL": ["bank"], "PostgreSQL": ["faith", "ora"], "Firebase": ["exams", "carRental"], "H2 Database": ["ecom"],
+    "MySQL": ["bank", "hotelJava"], "PostgreSQL": ["faith", "ora"], "Firebase": ["exams", "carRental"], "H2 Database": ["ecom"],
     "GitHub": ["cicd"], "C++": ["hotelCpp"], ".NET": ["movie"], "C#": ["movie"],
     "Python": ["twitter", "health", "reco"], "Java": ["ecom", "echstore", "hotelJava", "exams"],
     "Salesforce / Apex": ["p2p"], "Spring Boot": ["bank", "ecom"], "Django": ["taxi"], "REST / Swagger": ["bank", "ecom"],
@@ -627,38 +594,9 @@ function notifyNewNote(note) {
       Role: note.role || "-",
       "Worked together as": relation,
       Message: note.message,
-      Moderate: new URL("admin.html", location.href).href,
+      Moderate: new URL("perso.html", location.href).href,
     }),
   }).catch(() => {});
-}
-
-// -------------------------------
-// About: show a photo instead of the placeholder when assets/profile/photo.webp or photo.jpg exists
-// -------------------------------
-const portrait = document.querySelector(".portrait");
-if (portrait) {
-  const card = portrait.querySelector(".portrait-card");
-  const show = (src) => {
-    const photo = document.createElement("img");
-    photo.className = "portrait-photo";
-    photo.src = src;
-    photo.alt = tr("about.photoAlt", "Portrait of Imane Chakrellah");
-    photo.decoding = "async";
-    card.removeAttribute("role");
-    card.removeAttribute("aria-label");
-    card.append(photo);
-    portrait.classList.add("has-photo");
-  };
-  // Try the formats one after the other; a missing file just means the placeholder stays.
-  const tryPhoto = (formats) => {
-    if (!formats.length) return;
-    const probe = new Image();
-    const src = "assets/profile/photo." + formats[0];
-    probe.onload = () => show(src);
-    probe.onerror = () => tryPhoto(formats.slice(1));
-    probe.src = src;
-  };
-  tryPhoto(["webp", "jpg"]);
 }
 
 // -------------------------------

@@ -180,11 +180,13 @@
           <div class="line" aria-hidden="true"></div>
 
           <div class="text">
-            <h1 class="hero-name is-intro">
+            <h1 class="hero-name">
               <span class="sr-only" data-i18n="hero.h1">Imane Chakrellah, software engineer</span>
-              <span class="hero-name-line" aria-hidden="true">
-                <span class="im" data-i18n="hero.im">I’M</span>
-                <span class="name"><span class="ch" style="--i: 0"><span class="strip"><span class="g">I</span><span class="g f">R</span><span class="g f">M</span><span class="g f">X</span><span class="g">I</span></span></span><span class="ch" style="--i: 1"><span class="strip"><span class="g">M</span><span class="g f">W</span><span class="g f">Q</span><span class="g f">M</span><span class="g">M</span></span></span><span class="ch" style="--i: 2"><span class="strip"><span class="g">A</span><span class="g f">S</span><span class="g f">P</span><span class="g f">S</span><span class="g">A</span></span></span><span class="ch" style="--i: 3"><span class="strip"><span class="g">N</span><span class="g f">Z</span><span class="g f">X</span><span class="g f">K</span><span class="g">N</span></span></span><span class="ch" style="--i: 4"><span class="strip"><span class="g">E</span><span class="g f">G</span><span class="g f">T</span><span class="g f">X</span><span class="g">E</span></span></span></span>
+              <span class="im" aria-hidden="true" data-aos="fade-right" data-aos-duration="2000" data-i18n="hero.im">I’M</span>
+              <span class="row-2" aria-hidden="true" data-aos="flip-down" data-aos-duration="2000">
+                <svg viewBox="0 0 1600 300" preserveAspectRatio="xMinYMid meet" focusable="false">
+                  <text x="0" y="50%" dominant-baseline="middle">IMANE</text>
+                </svg>
               </span>
             </h1>
 
@@ -199,7 +201,7 @@
 
           <div class="short-info">
             <div class="left-side" data-aos="fade" data-aos-delay="300" data-aos-offset="0">
-              <p class="place" data-i18n="hero.based">Based in Rabat, Morocco</p>
+              <p class="place" data-i18n="hero.based">Based in  Morocco</p>
               <p class="time"></p>
             </div>
 
@@ -225,31 +227,24 @@
         <div class="content">
           <div class="title">
             <div class="label" data-aos="fade-right" data-aos-duration="500" data-aos-delay="300"><span data-i18n="about.label">About</span> <hr></div>
-            <h2 class="heading" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500">IMANE</h2>
+            <h2 class="heading" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500">ME</h2>
           </div>
     
           <!-- Nouvelle structure pour la photo et le texte -->
           <div class="profile-and-text">
-            <figure class="portrait" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
-              <div class="portrait-card" role="img" aria-label="Imanska, Imane Chakrellah" data-i18n-attr="aria-label:about.portraitAlt">
-                <div class="portrait-grid" aria-hidden="true"></div>
-                <img class="portrait-mark" src="assets/brand/logo.png" data-light-src="assets/brand/logo-light.png" alt="" width="80" height="80" />
-                <div class="portrait-word" aria-hidden="true"><span>IMAN</span><span>SKA</span></div>
-                <figcaption class="portrait-caption" aria-hidden="true">
-                  <span>Imane Chakrellah</span>
-                  <span data-i18n="about.portraitPlace">Rabat, Morocco</span>
-                </figcaption>
-                <!-- When assets/profile/photo.webp or photo.jpg exists, js/home.js shows it here instead. -->
+            <div class="profile-container" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
+              <div class="profile">
+                <img loading="lazy" decoding="async" src="assets/profile/ai-profile-dark.webp" data-light-src="assets/profile/ai-profile-light.webp" alt="Portrait of Imane Chakrellah" data-i18n-attr="alt:about.photoAlt" />
               </div>
-            </figure>
+            </div>
     
             <div class="about-me" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
-              <p data-i18n="about.text">I’m an engineer, but I’m also a tech enthusiast and a challenge-seeker. My goal? To improve the world, one bug at a time. Or at least make it a little more fun through tech!</p>
+              <p data-i18n="about.text">I’m an engineer, but I’m also a tech enthusiast and a challenge-seeker. My goal? To improve the world, one bug at a time. Or at least make it a little more fun through tech.</p>
 
               <ul class="about-stats" aria-label="Key figures" data-i18n-attr="aria-label:stats.aria">
-                <li><strong data-count="19">19</strong><span data-i18n="stats.projects">Projects</span></li>
+                <li><strong data-count="15">15+</strong><span data-i18n="stats.projects">Projects</span></li>
                 <li><strong data-count="5">5</strong><span data-i18n="stats.domains">Domains</span></li>
-                <li><strong data-count="30">30</strong><span data-i18n="stats.certs">Certifications</span></li>
+                <li><strong data-count="30">30+</strong><span data-i18n="stats.certs">Certifications</span></li>
               </ul>
 
               <div class="about-actions">
@@ -262,7 +257,7 @@
                 <svg class="bx" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 16 4-5h-3V4h-2v7H8z"/><path d="M20 18H4v-7H2v7c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2v-7h-2v7z"/></svg>
               </a>
               <a class="about-certifications" href="projects.html#certifications">
-                <span data-i18n="certs.homeInvite">Explore my 30 certifications &amp; courses</span>
+                <span data-i18n="certs.homeInvite">Explore my certifications &amp; courses</span>
                 <svg class="bx" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8.999c0 1.902.765 3.627 2 4.89V21a.998.998 0 0 0 1.447.895L12 20.118l3.553 1.776a.992.992 0 0 0 .972-.043c.295-.183.475-.504.475-.851v-7.11a6.976 6.976 0 0 0 2-4.891C19 5.14 15.86 2 12 2S5 5.14 5 8.999zm7.447 9.106a1 1 0 0 0-.895 0L9 19.382v-4.067c.911.434 1.926.685 3 .685s2.089-.25 3-.685v4.066l-2.553-1.276zM12 4c2.756 0 5 2.242 5 4.999A5.006 5.006 0 0 1 12 14c-2.757 0-5-2.243-5-5.001A5.005 5.005 0 0 1 12 4z"/></svg>
               </a>
               </div>
@@ -334,26 +329,8 @@
             </li>
           </ol>
 
-          <div class="title" id="education">
-            <div class="label" data-aos="fade-right" data-aos-duration="500" data-aos-delay="300"><span data-i18n="edu.label">Education</span> <hr></div>
-            <h2 class="heading" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500" data-i18n="edu.heading">MY STUDIES</h2>
-          </div>
+          
 
-          <ol class="timeline timeline-static">
-            <li class="timeline-item" data-aos="fade-up" data-aos-duration="600">
-              <span class="timeline-dot" aria-hidden="true"></span>
-              <p class="timeline-date" data-i18n="edu.1.date">2021 – 2026</p>
-              <h3 class="timeline-title" data-i18n="edu.1.title">École Marocaine des Sciences de l'Ingénieur (EMSI)</h3>
-              <p class="timeline-role" data-i18n="edu.1.role">State Engineering Degree (Master's level) in Computer Science and Networks</p>
-            </li>
-            <li class="timeline-item" data-aos="fade-up" data-aos-duration="600">
-              <span class="timeline-dot" aria-hidden="true"></span>
-              <p class="timeline-date" data-i18n="edu.2.date">2020 – 2021</p>
-              <h3 class="timeline-title" data-i18n="edu.2.title">Lycée Abderahim Bouabid</h3>
-              <p class="timeline-role" data-i18n="edu.2.role">High School Diploma in Sciences</p>
-            </li>
-          </ol>
-          <p class="edu-languages" data-i18n="edu.languages">Languages: French, English, Arabic, Turkish</p>
         </div>
       </div>
     </section>
@@ -510,36 +487,45 @@
             <div class="intro" data-aos="fade-up">
               <p class="pitch"><strong data-i18n="contact.line1">SEND ME BUGS</strong> <span data-i18n="contact.love">(OR LOVE NOTES)</span></p>
               <p class="lead" data-i18n="contact.lead">Tell me about the project, the role or the bug.</p>
-              <div class="facts">
-                <p data-i18n="hero.based">Based in Rabat, Morocco</p>
-                <p class="avail"><span class="dot" aria-hidden="true"></span><span data-i18n="header.available">AVAILABLE FOR WORK</span></p>
-              </div>
-              <div class="socials">
-                <a class="round" href="https://www.linkedin.com/in/chakrellah" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg></a>
-                <a class="round" href="https://github.com/CHAKRELLAH44" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-github"/></svg></a>
-                <a class="round" href="https://discord.com/app" data-discord="imane.chakre" target="_blank" rel="noopener noreferrer" aria-label="Discord: imane.chakre" title="Discord: imane.chakre"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-discord"/></svg></a>
-                <a class="round" href="https://x.com/iman_chakre" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" title="X (Twitter)"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></a>
-              </div>
             </div>
 
             <div class="form-wrap">
-              <form class="card" action="https://formsubmit.co/chakrellaah@gmail.com" method="POST" data-aos="fade-up" data-aos-delay="150">
-                <div class="field">
-                  <input id="contact-name" type="text" name="name" placeholder=" " required autocomplete="name">
-                  <label for="contact-name" data-i18n="contact.name">YOUR NAME</label>
-                </div>
-                <div class="field">
-                  <input id="contact-email" type="email" name="email" placeholder=" " required autocomplete="email">
-                  <label for="contact-email" data-i18n="contact.email">YOUR EMAIL ADDRESS</label>
-                </div>
-                <div class="field">
-                  <textarea id="contact-message" name="message" placeholder=" " rows="5" required></textarea>
-                  <label for="contact-message" data-i18n="contact.message">HOW CAN I HELP YOU?</label>
+              <form class="postcard" action="https://formsubmit.co/chakrellaah@gmail.com" method="POST" data-aos="fade-up" data-aos-delay="150">
+                <div class="postcard-sheet">
+                  <div class="postcard-side">
+                    <p class="postcard-to"><span data-i18n="contact.to">To</span> Imane Chakrellah <span data-i18n="about.portraitPlace">Rabat, Morocco</span></p>
+                    <div class="stamp-slot" aria-hidden="true">
+                      <div class="stamp"><div class="stamp-face"><img src="assets/brand/logo.png" data-light-src="assets/brand/logo-light.png" alt="" width="80" height="80"><span>IMANSKA</span></div></div>
+                      <div class="postmark"><span>RABAT</span><span class="postmark-date"></span></div>
+                    </div>
+                    <div class="field">
+                      <input id="contact-name" type="text" name="name" placeholder=" " required autocomplete="name">
+                      <label for="contact-name" data-i18n="contact.name">YOUR NAME</label>
+                    </div>
+                    <div class="field">
+                      <input id="contact-email" type="email" name="email" placeholder=" " required autocomplete="email">
+                      <label for="contact-email" data-i18n="contact.email">YOUR EMAIL ADDRESS</label>
+                    </div>
+                  </div>
+                  <div class="postcard-message">
+                    <p class="postcard-greeting" aria-hidden="true" data-i18n="contact.dear">Hi Imane,</p>
+                    <div class="field field-letter">
+                      <textarea id="contact-message" name="message" placeholder=" " rows="6" required></textarea>
+                      <label for="contact-message" data-i18n="contact.message">HOW CAN I HELP YOU?</label>
+                    </div>
+                  </div>
+                  <div class="postcard-foot">
+                    <p class="postcard-hint" aria-live="polite">
+                      <span data-hint="empty" data-i18n="contact.hintEmpty">Fill in the card to stick the stamp.</span>
+                      <span data-hint="ready" data-i18n="contact.hintReady" hidden>Stamp on. Ready to post!</span>
+                      <span data-hint="posting" data-i18n="contact.hintPosting" hidden>Posting your card…</span>
+                    </p>
+                    <button type="submit" class="send"><span data-i18n="contact.send">SEND</span><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4z"/></svg></button>
+                  </div>
                 </div>
                 <input type="hidden" name="_next" value="https://chakrellah44.github.io/portfolio/contact.html?sent=1">
                 <input type="hidden" name="_subject" value="New Portfolio Contact!">
                 <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-                <button type="submit" class="send"><span data-i18n="contact.send">SEND</span><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
               </form>
             </div>
           </div>
@@ -583,7 +569,6 @@
     <script src="js/i18n.js"></script>
     <script src="js/supabase-config.js"></script>
     <script src="js/core.js"></script>
-    <script src="js/hero-outlines.js"></script>
     <script src="js/home.js"></script>
     <script src="js/analytics.js" defer></script>
 

@@ -1,4 +1,4 @@
-// Anonymous visit analytics, read in admin.html (table: supabase/analytics.sql).
+// Anonymous visit analytics, read in perso.html (table: supabase/analytics.sql).
 // No cookies, no IP address, no persistent visitor id: the session id only lives
 // in sessionStorage for the current tab. Respects Do Not Track / Global Privacy Control.
 (() => {

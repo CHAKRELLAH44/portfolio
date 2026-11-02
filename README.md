@@ -35,7 +35,7 @@ A few things you might notice along the way:
 - **Libraries:** none. Scroll reveal and icons are built in (glyphs from [Boxicons](https://boxicons.com/), MIT); fonts (Archivo, Instrument Sans, IBM Plex Mono) are served from the site, so there is no request to Google.
 
 ```
-├── index.html · projects.html · contact.html · hidden-me.html · 404.html · admin.html
+├── index.html · projects.html · contact.html · hidden-me.html · 404.html · perso.html
 ├── CLAUDE.md            # notes for Claude Code: how to work on this repo with its owner
 ├── css/
 │   ├── base.css         # page-wide rules: reset, colours (+ light theme), page glow, container, cursor, toast, touch
@@ -72,12 +72,10 @@ A few things you might notice along the way:
 Load order on a page: `base.css`, then the partials the page needs; `i18n.js`, `supabase-config.js`, `core.js`, then the page's own script.
 Run `python tools/check.py` before committing.
 
-## Add your photo
+## Change your photo
 
-The About section shows an "IMANSKA" placeholder card. To show a real photo instead, save it as
-`assets/profile/photo.webp` (or `photo.jpg`) and reload. No code change is needed. A portrait shape works
-best (about 4 wide by 5 high, 1000 pixels wide is plenty). Until the file exists the browser tools list a
-harmless 404 for it; that is the page looking for the photo.
+The About section shows `assets/profile/ai-profile-dark.webp` in dark mode and
+`assets/profile/ai-profile-light.webp` in light mode. Replace those two files (same names) to change the photo.
 
 ## Run it locally
 

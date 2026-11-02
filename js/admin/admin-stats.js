@@ -1,4 +1,4 @@
-// Visit statistics tab of admin.html. Reads public.events (supabase/analytics.sql)
+// Visit statistics tab of perso.html. Reads public.events (supabase/analytics.sql)
 // through api() from admin.js and aggregates everything in the browser.
 (() => {
   const $ = (id) => document.getElementById(id);

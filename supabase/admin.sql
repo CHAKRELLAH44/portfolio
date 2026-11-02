@@ -1,4 +1,4 @@
--- Moderation rights for admin.html. Run once, after testimonials.sql:
+-- Moderation rights for perso.html. Run once, after testimonials.sql:
 -- SQL Editor > New query > paste > Run.
 
 -- Who may moderate. Filled in by the last statement below.

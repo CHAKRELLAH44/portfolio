@@ -3,9 +3,11 @@
 // row level security (supabase/admin.sql) only lets accounts listed in public.admins
 // read pending notes, approve them or delete them.
 // Email of the Supabase user created for moderation (Authentication > Users).
-// Its password is the 6-digit passcode. Never write the passcode itself in this file.
+// Supabase wants passwords of at least 6 characters, so its password is PASSWORD_PREFIX followed by the
+// 4-digit passcode. Never write the passcode itself in this file.
 const ADMIN_EMAIL = "admin@imanska.dev";
-const PASSCODE_LENGTH = 6;
+const PASSCODE_LENGTH = 4;
+const PASSWORD_PREFIX = "imanska-";
 const SESSION_KEY = "portfolio-admin-session";
 const LOCK_KEY = "portfolio-admin-lock";
 const RELATIONS = { colleague: "Collègue", manager: "Manager", client: "Client·e", teammate: "Coéquipier·ère" };
@@ -294,7 +296,7 @@ function registerFail() {
 async function submitCode() {
   checking = true;
   try {
-    saveSession(await auth("password", { email: ADMIN_EMAIL, password: code }));
+    saveSession(await auth("password", { email: ADMIN_EMAIL, password: PASSWORD_PREFIX + code }));
     writeLock({ fails: 0, until: 0 });
     showPanel();
   } catch (err) {

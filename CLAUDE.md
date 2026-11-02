@@ -8,7 +8,7 @@ done, and what is still open. Keep them up to date when something important chan
 
 - Hand-written HTML, CSS and vanilla JavaScript. No framework, no build step. Hosted on GitHub Pages (the live site is
   `chakrellah44.github.io/portfolio`, built from the `main` branch).
-- Pages: `index.html` (home), `projects.html`, `hidden-me.html`, `contact.html`, `404.html`, `admin.html` (private
+- Pages: `index.html` (home), `projects.html`, `hidden-me.html`, `contact.html`, `404.html`, `perso.html` (private
   moderation page for testimonials).
 - Two languages: English is written in the HTML, French lives in `js/i18n.js` (`data-i18n` attributes). Two themes: dark
   (default) and light (`body[data-theme="light"]`).
@@ -67,8 +67,8 @@ done, and what is still open. Keep them up to date when something important chan
   from `python tools/make_name_paths.py`, which writes `js/hero-outlines.js`; run it again if the hero font or its weight
   changes.
 - Scroll reveal is built in (`data-aos` attributes, `css/reveal.css`, `js/core.js`); there is no animation library.
-- The About photo is optional: save a portrait as `assets/profile/photo.webp` (or `photo.jpg`) and it replaces the
-  IMANSKA card by itself.
+- The About photo has a dark and a light version: `assets/profile/ai-profile-dark.webp` and
+  `ai-profile-light.webp`, swapped with the theme through `data-light-src`.
 
 ## The hero name (decided, please keep)
 

@@ -106,37 +106,46 @@
             <div class="intro" data-aos="fade-up">
               <p class="pitch"><strong data-i18n="contact.line1">SEND ME BUGS</strong> <span data-i18n="contact.love">(OR LOVE NOTES)</span></p>
               <p class="lead" data-i18n="contact.lead">Tell me about the project, the role or the bug.</p>
-              <div class="facts">
-                <p data-i18n="hero.based">Based in Rabat, Morocco</p>
-                <p class="avail"><span class="dot" aria-hidden="true"></span><span data-i18n="header.available">AVAILABLE FOR WORK</span></p>
-              </div>
-              <div class="socials">
-                <a class="round" href="https://www.linkedin.com/in/chakrellah" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg></a>
-                <a class="round" href="https://github.com/CHAKRELLAH44" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-github"/></svg></a>
-                <a class="round" href="https://discord.com/app" data-discord="imane.chakre" target="_blank" rel="noopener noreferrer" aria-label="Discord: imane.chakre" title="Discord: imane.chakre"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-discord"/></svg></a>
-                <a class="round" href="https://x.com/iman_chakre" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" title="X (Twitter)"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></a>
-              </div>
             </div>
 
             <div class="form-wrap">
             <p class="form-sent" role="status" hidden data-i18n="contact.sent">Thanks! Your message has been sent. I'll get back to you soon.</p>
-              <form class="card" action="https://formsubmit.co/chakrellaah@gmail.com" method="POST" data-aos="fade-up" data-aos-delay="150">
-                <div class="field">
-                  <input id="contact-name" type="text" name="name" placeholder=" " required autocomplete="name">
-                  <label for="contact-name" data-i18n="contact.name">YOUR NAME</label>
-                </div>
-                <div class="field">
-                  <input id="contact-email" type="email" name="email" placeholder=" " required autocomplete="email">
-                  <label for="contact-email" data-i18n="contact.email">YOUR EMAIL ADDRESS</label>
-                </div>
-                <div class="field">
-                  <textarea id="contact-message" name="message" placeholder=" " rows="5" required></textarea>
-                  <label for="contact-message" data-i18n="contact.message">HOW CAN I HELP YOU?</label>
+              <form class="postcard" action="https://formsubmit.co/chakrellaah@gmail.com" method="POST" data-aos="fade-up" data-aos-delay="150">
+                <div class="postcard-sheet">
+                  <div class="postcard-side">
+                    <p class="postcard-to"><span data-i18n="contact.to">To</span> Imane Chakrellah <span data-i18n="about.portraitPlace">Rabat, Morocco</span></p>
+                    <div class="stamp-slot" aria-hidden="true">
+                      <div class="stamp"><div class="stamp-face"><img src="assets/brand/logo.png" data-light-src="assets/brand/logo-light.png" alt="" width="80" height="80"><span>IMANSKA</span></div></div>
+                      <div class="postmark"><span>RABAT</span><span class="postmark-date"></span></div>
+                    </div>
+                    <div class="field">
+                      <input id="contact-name" type="text" name="name" placeholder=" " required autocomplete="name">
+                      <label for="contact-name" data-i18n="contact.name">YOUR NAME</label>
+                    </div>
+                    <div class="field">
+                      <input id="contact-email" type="email" name="email" placeholder=" " required autocomplete="email">
+                      <label for="contact-email" data-i18n="contact.email">YOUR EMAIL ADDRESS</label>
+                    </div>
+                  </div>
+                  <div class="postcard-message">
+                    <p class="postcard-greeting" aria-hidden="true" data-i18n="contact.dear">Hi Imane,</p>
+                    <div class="field field-letter">
+                      <textarea id="contact-message" name="message" placeholder=" " rows="6" required></textarea>
+                      <label for="contact-message" data-i18n="contact.message">HOW CAN I HELP YOU?</label>
+                    </div>
+                  </div>
+                  <div class="postcard-foot">
+                    <p class="postcard-hint" aria-live="polite">
+                      <span data-hint="empty" data-i18n="contact.hintEmpty">Fill in the card to stick the stamp.</span>
+                      <span data-hint="ready" data-i18n="contact.hintReady" hidden>Stamp on. Ready to post!</span>
+                      <span data-hint="posting" data-i18n="contact.hintPosting" hidden>Posting your card…</span>
+                    </p>
+                    <button type="submit" class="send"><span data-i18n="contact.send">SEND</span><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4z"/></svg></button>
+                  </div>
                 </div>
                 <input type="hidden" name="_next" value="https://chakrellah44.github.io/portfolio/contact.html?sent=1">
                 <input type="hidden" name="_subject" value="New Portfolio Contact!">
                 <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-                <button type="submit" class="send"><span data-i18n="contact.send">SEND</span><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
               </form>
             </div>
           </div>
@@ -190,27 +199,6 @@
     <footer>
       <div class="container">
         <div class="content"> 
-          <p class="footer-title" data-i18n="footer.title">Imanska's PORTFOLIO</p>
-            <div class="social">
-          <a href="https://www.linkedin.com/in/chakrellah" target="_blank" rel="noopener noreferrer" class="logo" aria-label="LinkedIn" title="LinkedIn">
-              <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg>
-            </a>
-          <a href="https://discord.com/app" data-discord="imane.chakre" target="_blank" rel="noopener noreferrer" class="logo" aria-label="Discord: imane.chakre" title="Discord: imane.chakre">
-              <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-discord"/></svg>
-            </a>
-          <a href="https://github.com/CHAKRELLAH44" target="_blank" rel="noopener noreferrer" class="logo" aria-label="GitHub" title="GitHub">
-              <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-github"/></svg>
-            </a>
-            <a href="https://x.com/iman_chakre" target="_blank" rel="noopener noreferrer" class="logo" aria-label="X (Twitter)" title="X (Twitter)">
-              <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-x"/></svg>
-            </a>
-          </div>
-          <nav class="footer-nav" aria-label="Footer" data-i18n-attr="aria-label:footer.navAria">
-            <a href="projects.html" data-i18n="nav.projects">Projects</a>
-            <a href="hidden-me.html" data-i18n="nav.hidden">Hidden Me</a>
-            <a href="contact.html" data-i18n="nav.contact">Contact</a>
-            <a href="assets/docs/cv.pdf" download="Imane_CV.pdf" data-i18n="nav.cv">Download CV</a>
-          </nav>
           <p>&copy; Imanska <span id="year"></span> | <span data-i18n="footer.tagline">Building Tech, Adding Fun</span></p>
         </div>
       </div>

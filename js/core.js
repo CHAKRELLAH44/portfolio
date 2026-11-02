@@ -435,6 +435,71 @@ document.querySelectorAll(".contact form").forEach((form) => {
 });
 
 // -------------------------------
+// Contact postcard (css/contact.css): the stamp sticks once every field is valid, the card tilts towards the
+// pointer, and on send the postmark hits the stamp and the card flies off before the form really goes.
+// -------------------------------
+document.querySelectorAll(".postcard").forEach((form) => {
+  const sheet = form.querySelector(".postcard-sheet");
+  const fields = [...form.querySelectorAll(".field input, .field textarea")];
+  const hints = [...form.querySelectorAll("[data-hint]")];
+  const postmarkDate = form.querySelector(".postmark-date");
+
+  const showHint = (name) => hints.forEach((hint) => (hint.hidden = hint.dataset.hint !== name));
+  const updateReady = () => {
+    const ready = fields.every((field) => field.value.trim() && field.checkValidity());
+    form.classList.toggle("is-ready", ready);
+    if (!form.classList.contains("is-posting")) showHint(ready ? "ready" : "empty");
+  };
+  form.addEventListener("input", updateReady);
+  updateReady();
+
+  const stampDate = () => {
+    postmarkDate.textContent = new Date().toLocaleDateString(isFrench() ? "fr-FR" : "en-GB", { day: "2-digit", month: "short", year: "numeric" });
+  };
+  stampDate();
+  document.addEventListener("portfolio:languagechange", stampDate);
+
+  if (!prefersReducedMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    sheet.addEventListener("pointermove", (event) => {
+      const box = sheet.getBoundingClientRect();
+      const x = (event.clientX - box.left) / box.width - 0.5;
+      const y = (event.clientY - box.top) / box.height - 0.5;
+      sheet.style.setProperty("--ry", `${(x * 6).toFixed(2)}deg`);
+      sheet.style.setProperty("--rx", `${(y * -6).toFixed(2)}deg`);
+    });
+    sheet.addEventListener("pointerleave", () => {
+      sheet.style.removeProperty("--rx");
+      sheet.style.removeProperty("--ry");
+    });
+  }
+
+  // The submit event only fires once the browser's own validation has passed.
+  form.addEventListener("submit", (event) => {
+    if (prefersReducedMotion) return;
+    event.preventDefault();
+    if (form.classList.contains("is-posting")) return;
+    stampDate();
+    form.classList.add("is-ready", "is-posting");
+    showHint("posting");
+    let sent = false;
+    const send = () => {
+      if (sent) return;
+      sent = true;
+      HTMLFormElement.prototype.submit.call(form);
+    };
+    sheet.addEventListener("animationend", (e) => e.animationName === "postcard-away" && send());
+    setTimeout(send, 2200); // safety if the animation never ends
+  });
+
+  // Coming back with the Back button shows the page from the cache: put the card back.
+  window.addEventListener("pageshow", (event) => {
+    if (!event.persisted) return;
+    form.classList.remove("is-posting");
+    updateReady();
+  });
+});
+
+// -------------------------------
 // Share button in the footer: native share sheet, or copy the link.
 // Shared links carry ?ref=share so the admin dashboard can count visits from them.
 // -------------------------------

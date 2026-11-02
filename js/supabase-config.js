@@ -1,4 +1,4 @@
-// Shared by the home page (testimonials) and admin.html.
+// Shared by the home page (testimonials) and perso.html.
 // The publishable key is public by design: row level security in
 // supabase/testimonials.sql and supabase/admin.sql decides what it can do.
 const SUPABASE_URL = "https://waqgkbexfypfuunpszev.supabase.co";
