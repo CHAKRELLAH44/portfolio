@@ -252,6 +252,18 @@ document.querySelectorAll("[data-discord]").forEach((link) => {
 });
 
 // -------------------------------
+// A CV link downloads the file (its own download attribute), then opens the CV page, which confirms the download.
+// The short wait lets the browser start the download before the page changes. cv.js handles its own links.
+// -------------------------------
+if (!document.querySelector(".cv-viewer")) {
+  document.addEventListener("click", (event) => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.button !== 0) return;
+    if (!event.target.closest('a[href$="cv.pdf"][download]')) return;
+    setTimeout(() => location.assign("cv.html?downloaded=1"), 450);
+  });
+}
+
+// -------------------------------
 // Reading progress bar along the top edge (all pages)
 // -------------------------------
 const scrollProgress = document.createElement("div");
@@ -491,8 +503,16 @@ document.querySelectorAll(".livechat").forEach((form) => {
   const bubble = (who, content) => {
     const item = document.createElement("div");
     item.className = `livechat-${who}`;
-    item.textContent = Array.isArray(content) ? say(content) : content;
+    const words = document.createElement("span");
+    words.className = "livechat-text";
+    words.textContent = Array.isArray(content) ? say(content) : content;
     if (Array.isArray(content)) said.set(item, content);
+    const time = document.createElement("small");
+    time.className = "livechat-time";
+    time.setAttribute("aria-hidden", "true");
+    time.textContent = new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+    if (who === "me") time.insertAdjacentHTML("beforeend", '<span class="livechat-ticks">✓✓</span>');
+    item.append(words, time);
     log.append(item);
     toBottom();
   };
@@ -537,12 +557,16 @@ document.querySelectorAll(".livechat").forEach((form) => {
     chips.textContent = "";
     if (!show) return;
     if (state === "welcome") {
+      const invite = document.createElement("p");
+      invite.className = "livechat-invite";
+      invite.textContent = tr("contact.chatInvite", "A bug, a job or just a hello?");
       const start = document.createElement("button");
       start.type = "button";
       start.className = "livechat-start";
-      start.textContent = tr("contact.chatStart", "Start chat");
+      start.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12a8.500 8.500 0 0 1-12.600 7.450L3 21l1.550-5.400A8.500 8.500 0 1 1 21 12z"/></svg><span></span>';
+      start.querySelector("span").textContent = tr("contact.chatStart", "Start chat");
       start.addEventListener("click", startChat);
-      chips.append(start);
+      chips.append(invite, start);
       return;
     }
     TOPICS.forEach((topic) => {
@@ -638,20 +662,21 @@ document.querySelectorAll(".livechat").forEach((form) => {
   }
 
   const HELLO = ["contact.chatHello", "Hi! I'm Imane, nice to see you here."];
-  const ASK_NAME = ["contact.chatName", "Who am I talking to?"];
-  // The greeting comes first, with a button. The box to type in only appears once the chat has started.
-  const welcome = async () => {
+  const ASK_NAME = ["contact.chatName", "What's your name?"];
+  // An empty chat with "Start chat" in the middle. The two first messages arrive after the click.
+  const welcome = () => {
     state = "welcome";
     form.classList.add("is-welcome");
-    if (await imane(HELLO, false)) showChips(true);
+    setBusy(false);
+    showChips(true);
   };
   async function startChat() {
-    if (busy) return;
+    if (state !== "welcome") return;
+    state = "name";
     showChips(false);
     form.classList.remove("is-welcome");
-    state = "name";
     input.focus({ preventScroll: true });
-    await imane(ASK_NAME, true);
+    if (await imane(HELLO, true)) await imane(ASK_NAME, true);
   }
   const reply = () => answer(input.value);
   sendButton.addEventListener("click", reply);
@@ -683,20 +708,14 @@ document.querySelectorAll(".livechat").forEach((form) => {
   // The language button rewrites the whole conversation, not only the next messages.
   document.addEventListener("portfolio:languagechange", () => {
     log.querySelectorAll(".livechat-her, .livechat-me").forEach((item) => {
-      if (said.has(item)) item.textContent = say(said.get(item));
+      if (said.has(item)) item.querySelector(".livechat-text").textContent = say(said.get(item));
     });
     if (!chips.hidden) showChips(true);
     if (state === "done") restart.textContent = tr("contact.chatAgain", "Send another");
   });
 
   form.classList.add("is-live");
-  setBusy(true);
-  // Starts when it comes into view, without taking the focus from the rest of the page.
-  new IntersectionObserver((entries, observer) => {
-    if (!entries[0].isIntersecting) return;
-    observer.disconnect();
-    welcome();
-  }, { threshold: 0.3 }).observe(form);
+  welcome();
 });
 
 // -------------------------------

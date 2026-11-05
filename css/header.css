@@ -52,6 +52,20 @@ body[data-theme="light"] .site-header {
   transform: translateY(-110%);
 }
 
+/* A frosted bar across the whole width, so the page blurs behind the logo and the pills as it scrolls. It lives on
+   ::before because backdrop-filter on the header itself would make it the containing block of the fixed phone menu. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  pointer-events: none;
+}
+
 .site-header .container {
   padding-block: 0.9rem;
   transition: padding 0.25s var(--ease);
@@ -303,23 +317,11 @@ body[data-theme="light"] .nav-actions .theme-moon {
 }
 
 /* Phones: a bar with the logo, language, theme and a round menu button. The menu covers the whole screen and opens
-   as a circle growing from the button. The bar's blur lives on ::before because backdrop-filter on the header itself
-   would make it the containing block of the fixed menu. */
+   as a circle growing from the button. */
 @media (max-width: 768px) {
   .site-header {
     z-index: 10000;
     pointer-events: auto;
-  }
-
-  .site-header::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-bottom: 1px solid var(--rule);
-    background: var(--surface-strong);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
   }
 
   .site-header .container {

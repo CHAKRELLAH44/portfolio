@@ -14,7 +14,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PAGES = ["index.html", "projects.html", "hidden-me.html", "contact.html", "404.html", "perso.html", "privacy.html"]
+PAGES = ["index.html", "projects.html", "hidden-me.html", "contact.html", "404.html", "perso.html", "privacy.html", "cv.html"]
 TEXT = {".html", ".css", ".js", ".md", ".xml", ".json", ".yml", ".webmanifest"}
 # Assets kept on purpose although no page uses them yet.
 KEEP = ()

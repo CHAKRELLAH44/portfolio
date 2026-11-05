@@ -1,0 +1,312 @@
+/* CV page (cv.html): the PDF in a zoomable frame, and the notification shown after the download. */
+
+.cv-page-section {
+  --hairline: color-mix(in srgb, var(--white) 22%, transparent);
+  --surface: color-mix(in srgb, var(--white) 5%, var(--black));
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
+body[data-theme="light"] .cv-page-section {
+  --hairline: color-mix(in srgb, var(--white) 38%, transparent);
+  --surface: color-mix(in srgb, var(--white) 4%, var(--black));
+}
+
+.cv-page-section .content {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.cv-viewer {
+  display: grid;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 62rem;
+  min-width: 0;
+  margin-inline: auto;
+}
+
+/* Toolbar */
+.cv-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.cv-zoom,
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cv-tool {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.6rem;
+  height: 2.6rem;
+  padding: 0 0.8rem;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--white);
+  font: 700 0.86rem var(--font-display);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.cv-tool[data-zoom="in"],
+.cv-tool[data-zoom="out"] {
+  padding: 0;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.cv-tool:hover:not(:disabled) {
+  border-color: var(--primary-text);
+  color: var(--primary-text);
+}
+
+.cv-tool:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.cv-level {
+  min-width: 3.5rem;
+  color: var(--white);
+  font: 700 0.9rem var(--font-mono);
+  text-align: center;
+}
+
+.cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 2.6rem;
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font: 800 0.88rem var(--font-display);
+}
+
+.cv-download svg {
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.cv-viewer :is(a, button):focus-visible,
+.cv-notice :is(a, button):focus-visible {
+  outline: 2px solid var(--primary-text);
+  outline-offset: 2px;
+}
+
+/* The frame: it scrolls on its own, in both directions, and holds the pages */
+.cv-stage {
+  position: relative;
+  height: clamp(26rem, calc(100vh - 13rem), 62rem);
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--hairline);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.25);
+  cursor: grab;
+  scrollbar-color: rgba(var(--accent-rgb), 0.55) transparent;
+  scrollbar-width: thin;
+  touch-action: pan-x pan-y;
+}
+
+.cv-stage:focus-visible {
+  outline: 2px solid var(--primary-text);
+  outline-offset: 2px;
+}
+
+.cv-stage.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.cv-pages {
+  display: grid;
+  justify-content: safe center;
+  gap: 1rem;
+  width: max-content;
+  min-width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.cv-pages canvas {
+  display: block;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+}
+
+.cv-status,
+.cv-error,
+.cv-noscript {
+  margin: 0;
+  padding: 3rem 1rem;
+  color: var(--gray);
+  font: 500 0.95rem var(--font-body);
+  text-align: center;
+}
+
+.cv-status[hidden],
+.cv-error[hidden] {
+  display: none;
+}
+
+.cv-error a,
+.cv-noscript a {
+  color: var(--primary-text);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.cv-tip {
+  margin: 0;
+  color: var(--gray);
+  font: italic 500 0.8rem / 1.4 var(--font-display);
+  text-align: center;
+}
+
+/* Notification after the download */
+.cv-notice {
+  position: fixed;
+  top: 5.5rem;
+  right: clamp(0.75rem, 3vw, 2rem);
+  z-index: 9000;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: min(23rem, calc(100vw - 1.5rem));
+  padding: 0.85rem 2.4rem 0.9rem 0.9rem;
+  border: 1px solid var(--primary-text);
+  border-radius: 16px;
+  background: var(--black);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 22px rgba(var(--accent-rgb), 0.25);
+  animation: cv-notice-in 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cv-notice[hidden] {
+  display: none;
+}
+
+.cv-notice.is-leaving {
+  opacity: 0;
+  transform: translateX(1.5rem);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+@keyframes cv-notice-in {
+  from {
+    opacity: 0;
+    transform: translateX(2.5rem);
+  }
+}
+
+.cv-notice-icon {
+  flex: none;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0.42rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.cv-notice-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cv-notice-text {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.cv-notice-text b {
+  color: var(--white);
+  font: italic 800 0.98rem / 1.2 var(--font-display);
+}
+
+.cv-notice-text p {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--gray);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.cv-notice-file {
+  color: var(--white);
+  font: 600 0.76rem var(--font-mono);
+}
+
+.cv-notice-again {
+  justify-self: start;
+  margin-top: 0.15rem;
+  color: var(--primary-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.cv-notice-close {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.3rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--gray);
+  font-size: 1.35rem;
+  cursor: pointer;
+}
+
+.cv-notice-close:hover {
+  color: var(--white);
+}
+
+@media (max-width: 600px) {
+  .cv-toolbar {
+    justify-content: center;
+  }
+
+  .cv-stage {
+    height: clamp(24rem, calc(100vh - 15rem), 50rem);
+  }
+
+  .cv-pages {
+    gap: 0.6rem;
+    padding: 0.6rem;
+  }
+
+  .cv-notice {
+    top: 4.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-notice,
+  .cv-notice.is-leaving,
+  .cv-tool {
+    animation: none;
+    transition: none;
+  }
+}

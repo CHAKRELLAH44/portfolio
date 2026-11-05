@@ -75,6 +75,15 @@ if (skillGrid) {
     });
   });
 
+  // The hint only shows when the frame really has more of the name to swipe to.
+  const skillFrame = skillGrid.closest(".skill-frame");
+  const swipeHint = document.querySelector(".skill-swipe-hint");
+  if (skillFrame && swipeHint) {
+    const updateHint = () => (swipeHint.hidden = skillFrame.scrollWidth <= skillFrame.clientWidth + 1);
+    new ResizeObserver(updateHint).observe(skillFrame);
+    updateHint();
+  }
+
   // Touch screens have no hover: a tap shows the logo in color with its name.
   skillBoxes.forEach((box) => {
     box.addEventListener("click", () => {
@@ -373,10 +382,81 @@ if (skillGrid) {
     event.stopImmediatePropagation();
   }, true);
 
+  // Under the frame: the projects of the logo being pointed at, or of the one picked with a tap. The old content
+  // fades out, then the new one comes in, so that moving across the logos stays smooth.
+  const detail = document.querySelector(".skill-detail");
+  const detailInner = detail?.querySelector(".skill-detail-inner");
+  if (detail) {
+    let shown; // the box on display: undefined until the first render, null for the invitation
+    let swapTimer = 0;
+    const render = (box) => {
+      detailInner.textContent = "";
+      const title = document.createElement("p");
+      title.className = "skill-detail-title";
+      if (!box) {
+        title.classList.add("is-invite");
+        title.textContent = coarsePointer
+          ? tr("skills.detailTap", "Tap a logo to see the projects where I used it")
+          : tr("skills.detailHover", "Point at a logo to see the projects where I used it");
+        detailInner.append(title);
+        return;
+      }
+      const projects = SKILL_PROJECTS[box.dataset.name] || [];
+      title.textContent = box.dataset.name;
+      const label = document.createElement("span");
+      label.textContent = projects.length ? tr("skills.usedIn", "Used in") : tr("skills.everyday", "Part of my everyday toolbox.");
+      title.append(" ", label);
+      detailInner.append(title);
+      if (!projects.length) return;
+      const list = document.createElement("ul");
+      list.className = "skill-detail-list";
+      projects.forEach((key, index) => {
+        const item = document.createElement("li");
+        item.style.setProperty("--i", index);
+        item.textContent = tr(`proj.${key}.title`, PROJECT_TITLES[key]);
+        list.append(item);
+      });
+      detailInner.append(list);
+    };
+    const show = (box) => {
+      const target = box || skillGrid.querySelector(".skill-box.is-picked");
+      if (target === shown) return;
+      shown = target;
+      clearTimeout(swapTimer);
+      detail.classList.add("is-changing");
+      swapTimer = setTimeout(() => {
+        render(shown);
+        detail.classList.remove("is-changing");
+      }, prefersReducedMotion ? 0 : 130);
+    };
+    skillGrid.addEventListener("pointerover", (event) => {
+      if (event.pointerType !== "mouse") return;
+      const box = event.target.closest(".skill-box");
+      if (box) show(box);
+    });
+    skillGrid.closest(".skill-frame").addEventListener("pointerleave", (event) => {
+      if (event.pointerType === "mouse") show(null);
+    });
+    skillGrid.addEventListener("focusin", (event) => {
+      const box = event.target.closest(".skill-box");
+      if (box) show(box);
+    });
+    skillGrid.addEventListener("focusout", () => show(null));
+    // A tap toggles the picked logo first (listener on the box itself), then this reads the result.
+    skillGrid.addEventListener("click", (event) => {
+      const box = event.target.closest(".skill-box");
+      if (box) show(box.classList.contains("is-picked") ? box : null);
+    });
+    render(null);
+    shown = null;
+    document.addEventListener("portfolio:languagechange", () => render(shown));
+  }
+
   document.addEventListener("pointerdown", (event) => {
     if (!bubble.hidden && !bubble.contains(event.target) && event.target.closest(".skill-box") !== bubbleBox) closeBubble();
   });
   window.addEventListener("scroll", closeBubble, { passive: true });
+  skillGrid.closest(".skill-frame")?.addEventListener("scroll", closeBubble, { passive: true });
   document.addEventListener("keydown", (event) => event.key === "Escape" && closeBubble());
   document.addEventListener("portfolio:languagechange", closeBubble);
 }

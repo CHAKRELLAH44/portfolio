@@ -8,7 +8,7 @@ done, and what is still open. Keep them up to date when something important chan
 
 - Hand-written HTML, CSS and vanilla JavaScript. No framework, no build step. Hosted on GitHub Pages (the live site is
   `chakrellah44.github.io/portfolio`, built from the `main` branch).
-- Pages: `index.html` (home), `projects.html`, `hidden-me.html`, `contact.html`, `privacy.html`, `404.html`, `perso.html` (private
+- Pages: `index.html` (home), `projects.html`, `hidden-me.html`, `contact.html`, `cv.html` (the CV shown with PDF.js, self-hosted in `js/vendor/pdfjs`), `privacy.html`, `404.html`, `perso.html` (private
   moderation page for testimonials).
 - Two languages: English is written in the HTML, French lives in `js/i18n.js` (`data-i18n` attributes). Two themes: dark
   (default) and light (`body[data-theme="light"]`).

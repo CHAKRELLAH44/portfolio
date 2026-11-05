@@ -1,9 +1,9 @@
-/* Skills: domain filters and the icon grid.
+/* Skills: domain filters and the 55 logos that spell IMANE (see the end of this file for the layout).
 
    Each tile holds an inline SVG icon (<svg class="ico"><use href="#i-react"/></svg>, sprite built by
    tools/build_icons.py). The icon is drawn with currentColor: calm at rest, the brand colour (--brand on the
    tile) on hover, focus and filter match. data-dim marks brand colours that would vanish on a theme:
-   "dark" = too dark for the dark theme, "light" = too light for the light theme; those keep the text colour. */
+   "dark" = too dark for the dark theme, "light" = too light for the light theme; those get a lighter or darker mix. */
 
 .skill {
   padding: 4rem 0; 
@@ -544,7 +544,184 @@
   color: var(--brand, var(--primary));
 }
 
-body:not([data-theme="light"]) .skill-box[data-dim="dark"]:is(:hover, :focus-visible, .is-picked, .is-match) .ico,
+/* Brand colours that would vanish on this theme still show as a colour, made lighter or darker. */
+body:not([data-theme="light"]) .skill-box[data-dim="dark"]:is(:hover, :focus-visible, .is-picked, .is-match) .ico {
+  color: color-mix(in srgb, var(--brand) 45%, #fff);
+}
+
 body[data-theme="light"] .skill-box[data-dim="light"]:is(:hover, :focus-visible, .is-picked, .is-match) .ico {
+  color: color-mix(in srgb, var(--brand) 62%, #000);
+}
+
+/* ===== The 55 logos spell IMANE, in a frame =====
+   Each tile has its place in the page: --c / --r on 22 columns and 5 rows. The name always stays on one line: when
+   the frame is too narrow it scrolls sideways, like swiping along a screen. The tiles are small, so a hovered one
+   grows enough to show its name, from the side that keeps it inside the frame (transform-origin follows its column),
+   and the frame's padding leaves it room above and below. */
+.skill .container .content .skill-frame {
+  width: 100%;
+  max-width: 76rem;
+  padding: clamp(2rem, 3.5vw, 2.75rem) clamp(1rem, 2.5vw, 1.75rem);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-color: rgba(var(--accent-rgb), 0.55) transparent;
+  scrollbar-width: thin;
+  border: 1px solid var(--frame-line, color-mix(in srgb, var(--white) 24%, transparent));
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--white) 3%, var(--black));
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.22), 0 24px 50px -34px rgba(0, 0, 0, 0.7);
+}
+
+.skill .container .content .skills {
+  grid-template-columns: repeat(22, minmax(0, 1fr));
+  gap: clamp(0.3rem, 0.45vw, 0.4rem);
+  width: 100%;
+  min-width: 63.5rem; /* below this the frame scrolls, so that the tiles stay big enough to see and to touch */
+}
+
+.skill .container .content .skills .skill-box {
+  grid-column: var(--c);
+  grid-row: var(--r);
+  aspect-ratio: 1;
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  padding: 16%;
+  border-width: 1.5px;
+  border-color: color-mix(in srgb, var(--white) 34%, transparent);
+  border-radius: 18%;
+  transform-origin: calc((var(--c) - 1) / 21 * 100%) 50%;
+}
+
+.skill .container .content .skills .skill-box .ico {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+}
+
+.skill .container .content .skills .skill-box:is(:hover, :focus-visible, .is-picked) {
+  z-index: 3;
+  transform: perspective(600px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(2);
+}
+
+.skill .container .content .skills .skill-box::after {
+  padding: 0.08rem 0.1rem;
+  color: var(--primary-text);
+  font-size: 0.4rem;
+  line-height: 1.05;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.skill .container .content .skills .skill-box:is(:hover, :focus-visible, .is-picked) .ico {
+  transform: translateY(-16%) scale(0.72);
+}
+
+.skill-swipe-hint {
+  margin: -2.75rem 0 0;
+  color: var(--gray);
+  font: italic 500 0.82rem var(--font-display);
+  text-align: center;
+}
+
+.skill-swipe-hint[hidden] {
+  display: none;
+}
+
+/* Under the frame: the projects of the logo in focus. It keeps its room, so the page never jumps. */
+.skill-detail {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  width: 100%;
+  max-width: 76rem;
+  min-height: 6.5rem;
+  margin-top: -2.75rem;
+  transition: opacity 0.13s ease, transform 0.13s ease;
+}
+
+.skill-detail.is-changing {
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+.skill-detail-inner {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  animation: skill-detail-in 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skill-detail-title {
+  margin: 0;
+  color: var(--primary-text);
+  font: italic 800 var(--step-1) / 1.2 var(--font-display);
+  text-align: center;
+}
+
+.skill-detail-title span {
+  color: var(--gray);
+  font: 500 0.9rem var(--font-display);
+}
+
+.skill-detail-title.is-invite {
+  color: var(--gray);
+  font: italic 500 0.95rem / 1.35 var(--font-display);
+}
+
+.skill-detail-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-detail-list li {
+  padding: 0.32rem 0.8rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.45);
+  border-radius: 999px;
   color: var(--white);
+  font: 600 0.84rem / 1.3 var(--font-display);
+  animation: skill-detail-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: calc(var(--i) * 45ms);
+}
+
+@keyframes skill-detail-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (max-width: 768px) {
+  .skill-swipe-hint {
+    margin-top: -1.1rem;
+  }
+
+  .skill-detail {
+    min-height: 8.5rem;
+    margin-top: -1.1rem;
+  }
+
+  .skill-detail-list li {
+    font-size: 0.78rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill .container .content .skills .skill-box:is(:hover, :focus-visible, .is-picked) {
+    transform: scale(2);
+  }
+
+  .skill-detail,
+  .skill-detail-inner,
+  .skill-detail-list li {
+    animation: none;
+    transition: none;
+  }
 }
