@@ -435,68 +435,268 @@ document.querySelectorAll(".contact form").forEach((form) => {
 });
 
 // -------------------------------
-// Contact postcard (css/contact.css): the stamp sticks once every field is valid, the card tilts towards the
-// pointer, and on send the postmark hits the stamp and the card flies off before the form really goes.
+// Contact form (css/contact.css): a scripted conversation. "Imane" asks one question at a time and the answers fill in
+// the real form, which is then sent through FormSubmit without leaving the page. If that fails, the form is posted
+// the normal way. Each answer is also saved in Supabase as the visitor goes (supabase/messages.sql), so the
+// conversation shows in perso.html even if they stop before the end, or if FormSubmit is down.
+// Without JavaScript the plain fields show instead.
 // -------------------------------
-document.querySelectorAll(".postcard").forEach((form) => {
-  const sheet = form.querySelector(".postcard-sheet");
-  const fields = [...form.querySelectorAll(".field input, .field textarea")];
-  const hints = [...form.querySelectorAll("[data-hint]")];
-  const postmarkDate = form.querySelector(".postmark-date");
+document.querySelectorAll(".livechat").forEach((form) => {
+  const log = form.querySelector(".livechat-log");
+  const chips = form.querySelector(".livechat-chips");
+  const input = form.querySelector(".livechat-input");
+  const sendButton = form.querySelector(".livechat-send");
+  const restart = form.querySelector(".livechat-restart");
+  const field = (name) => form.querySelector(`[name="${name}"]`);
+  const subject = field("_subject");
+  const baseSubject = subject.value;
+  const TOPICS = [
+    { key: "bug", label: ["contact.topicBug", "A bug"], reply: ["contact.replyBug", "A bug? Show me where it bites."], type: "Bug" },
+    { key: "job", label: ["contact.topicJob", "A job or project"], reply: ["contact.replyJob", "Now we're talking. Tell me about it."], type: "Job or project" },
+    { key: "hi", label: ["contact.topicHi", "Just saying hi"], reply: ["contact.replyHi", "That's kind of you! What's on your mind?"], type: "Just saying hi" },
+  ];
+  let state = "idle"; // idle, welcome, name, topic, message, email, sending, done
+  let run = 0; // starting over cancels whatever "Imane" was about to say
+  let busy = true;
+  const said = new WeakMap();
+  const newChatId = () => (window.crypto?.randomUUID ? crypto.randomUUID() : null);
+  let chatId = newChatId();
 
-  const showHint = (name) => hints.forEach((hint) => (hint.hidden = hint.dataset.hint !== name));
-  const updateReady = () => {
-    const ready = fields.every((field) => field.value.trim() && field.checkValidity());
-    form.classList.toggle("is-ready", ready);
-    if (!form.classList.contains("is-posting")) showHint(ready ? "ready" : "empty");
+  // Never blocks the chat: if saving fails, the conversation simply carries on.
+  const saveChat = (status = "draft") => {
+    if (!chatId || typeof SUPABASE_URL === "undefined" || !SUPABASE_URL || field("_honey").value) return;
+    const headers = { apikey: SUPABASE_ANON_KEY, "Content-Type": "application/json" };
+    if (SUPABASE_ANON_KEY.startsWith("eyJ")) headers.Authorization = `Bearer ${SUPABASE_ANON_KEY}`;
+    fetch(`${SUPABASE_URL}/rest/v1/rpc/save_contact_message`, {
+      method: "POST",
+      keepalive: true, // lets the request finish even while the page is closing
+      headers,
+      body: JSON.stringify({
+        p_id: chatId,
+        p_name: field("name").value,
+        p_topic: field("type").value,
+        p_message: field("message").value,
+        p_email: state === "sending" || state === "done" ? field("email").value : "",
+        p_lang: isFrench() ? "fr" : "en",
+        p_page: (location.pathname.split("/").pop() || "index").replace(/\.html$/, ""),
+        p_status: status,
+      }),
+    }).catch(() => {});
   };
-  form.addEventListener("input", updateReady);
-  updateReady();
 
-  const stampDate = () => {
-    postmarkDate.textContent = new Date().toLocaleDateString(isFrench() ? "fr-FR" : "en-GB", { day: "2-digit", month: "short", year: "numeric" });
+  const say = ([key, fallback, name = ""]) => tr(key, fallback).replace("{name}", name);
+  const pause = (ms) => new Promise((resolve) => setTimeout(resolve, prefersReducedMotion ? 0 : ms));
+  const toBottom = () => (log.scrollTop = log.scrollHeight);
+  // A message given as [key, English, name] follows the language; what the visitor typed stays as typed.
+  const bubble = (who, content) => {
+    const item = document.createElement("div");
+    item.className = `livechat-${who}`;
+    item.textContent = Array.isArray(content) ? say(content) : content;
+    if (Array.isArray(content)) said.set(item, content);
+    log.append(item);
+    toBottom();
   };
-  stampDate();
-  document.addEventListener("portfolio:languagechange", stampDate);
+  const typing = () => {
+    const dots = document.createElement("div");
+    dots.className = "livechat-her livechat-dots";
+    dots.setAttribute("aria-hidden", "true");
+    dots.innerHTML = "<i></i><i></i><i></i>";
+    log.append(dots);
+    toBottom();
+    return dots;
+  };
+  const setBusy = (value) => {
+    busy = value;
+    sendButton.disabled = value;
+  };
+  const fitInput = () => {
+    input.style.height = "auto";
+    input.style.height = `${input.scrollHeight}px`;
+  };
+  const setMode = () => {
+    input.inputMode = state === "email" ? "email" : "text";
+    input.autocomplete = state === "email" ? "email" : state === "name" ? "name" : "off";
+    input.autocapitalize = state === "email" ? "off" : "sentences";
+  };
+  // Keeps the keyboard open on phones: the box stays usable and answers simply wait while she is "typing".
+  const imane = async (message, keepFocus) => {
+    const mine = run;
+    setBusy(true);
+    const dots = typing();
+    await pause(450 + Math.min(say(message).length * 12, 650));
+    if (mine !== run) return false;
+    dots.remove();
+    bubble("her", message);
+    setBusy(false);
+    setMode();
+    if (keepFocus) input.focus({ preventScroll: true });
+    return true;
+  };
+  const showChips = (show) => {
+    chips.hidden = !show;
+    chips.textContent = "";
+    if (!show) return;
+    if (state === "welcome") {
+      const start = document.createElement("button");
+      start.type = "button";
+      start.className = "livechat-start";
+      start.textContent = tr("contact.chatStart", "Start chat");
+      start.addEventListener("click", startChat);
+      chips.append(start);
+      return;
+    }
+    TOPICS.forEach((topic) => {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.textContent = tr(...topic.label);
+      chip.addEventListener("click", () => answer(topic.label, topic));
+      chips.append(chip);
+    });
+  };
 
-  if (!prefersReducedMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-    sheet.addEventListener("pointermove", (event) => {
-      const box = sheet.getBoundingClientRect();
-      const x = (event.clientX - box.left) / box.width - 0.5;
-      const y = (event.clientY - box.top) / box.height - 0.5;
-      sheet.style.setProperty("--ry", `${(x * 6).toFixed(2)}deg`);
-      sheet.style.setProperty("--rx", `${(y * -6).toFixed(2)}deg`);
-    });
-    sheet.addEventListener("pointerleave", () => {
-      sheet.style.removeProperty("--rx");
-      sheet.style.removeProperty("--ry");
-    });
+  const deliver = async () => {
+    const mine = run;
+    const payload = Object.fromEntries(new FormData(form));
+    payload._captcha = "false";
+    delete payload._next;
+    let delivered = false;
+    const dots = typing(); // FormSubmit can take a few seconds to answer
+    const stop = new AbortController();
+    const tooLong = setTimeout(() => stop.abort(), 15000);
+    try {
+      const response = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+        signal: stop.signal,
+      });
+      const result = await response.json();
+      delivered = response.ok && String(result.success) === "true";
+    } catch (err) {}
+    clearTimeout(tooLong);
+    dots.remove();
+    if (mine !== run) return;
+    if (!delivered) {
+      // The normal post leaves the page, and shows FormSubmit's own screens if it needs anything.
+      saveChat("unconfirmed");
+      await imane(["contact.chatFallback", "One last step on the next page."], false);
+      if (mine !== run) return;
+      setBusy(true);
+      await pause(1200);
+      if (mine === run) HTMLFormElement.prototype.submit.call(form);
+      return;
+    }
+    state = "done";
+    saveChat("sent");
+    await imane(["contact.chatDone", "Got it, it's in my inbox. Talk soon, {name}!", field("name").value], false);
+    setBusy(true);
+    input.disabled = true;
+    restart.textContent = tr("contact.chatAgain", "Send another");
+    buzz([15, 40, 15]);
+    if (typeof launchConfetti === "function") launchConfetti();
+  };
+
+  async function answer(content, topic) {
+    const value = topic ? topic.type : content.trim();
+    if (!value || busy) return;
+    bubble("me", topic ? content : value);
+    input.value = "";
+    fitInput();
+    restart.hidden = false;
+    if (state === "name") {
+      field("name").value = value;
+      state = "topic";
+      saveChat();
+      if (await imane(["contact.chatTopic", "Nice to meet you, {name}! What are you bringing me?", value], true)) showChips(true);
+    } else if (state === "topic") {
+      showChips(false);
+      const type = topic ? topic.type : value.slice(0, 60);
+      field("type").value = type;
+      subject.value = `${baseSubject} (${type})`;
+      state = "message";
+      saveChat();
+      await imane(topic ? topic.reply : ["contact.replyOther", "Interesting. Tell me everything."], true);
+    } else if (state === "message") {
+      field("message").value = value;
+      state = "email";
+      saveChat();
+      await imane(["contact.chatEmail", "Noted. What's your email address, so I can reply?"], true);
+    } else if (state === "email") {
+      field("email").value = value;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) || !field("email").checkValidity()) {
+        await imane(["contact.chatBadEmail", "Hmm, that doesn't look like an email address. Try again?"], true);
+        return;
+      }
+      state = "sending";
+      saveChat();
+      setBusy(true);
+      if (await imane(["contact.chatSending", "Perfect. Sending it to my inbox…"], false)) {
+        setBusy(true);
+        form.requestSubmit(); // runs the form's usual submit listeners, then the handler below
+      }
+    }
   }
 
-  // The submit event only fires once the browser's own validation has passed.
-  form.addEventListener("submit", (event) => {
-    if (prefersReducedMotion) return;
+  const HELLO = ["contact.chatHello", "Hi! I'm Imane, nice to see you here."];
+  const ASK_NAME = ["contact.chatName", "Who am I talking to?"];
+  // The greeting comes first, with a button. The box to type in only appears once the chat has started.
+  const welcome = async () => {
+    state = "welcome";
+    form.classList.add("is-welcome");
+    if (await imane(HELLO, false)) showChips(true);
+  };
+  async function startChat() {
+    if (busy) return;
+    showChips(false);
+    form.classList.remove("is-welcome");
+    state = "name";
+    input.focus({ preventScroll: true });
+    await imane(ASK_NAME, true);
+  }
+  const reply = () => answer(input.value);
+  sendButton.addEventListener("click", reply);
+  input.addEventListener("input", fitInput);
+  input.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" || event.shiftKey || event.isComposing) return;
     event.preventDefault();
-    if (form.classList.contains("is-posting")) return;
-    stampDate();
-    form.classList.add("is-ready", "is-posting");
-    showHint("posting");
-    let sent = false;
-    const send = () => {
-      if (sent) return;
-      sent = true;
-      HTMLFormElement.prototype.submit.call(form);
-    };
-    sheet.addEventListener("animationend", (e) => e.animationName === "postcard-away" && send());
-    setTimeout(send, 2200); // safety if the animation never ends
+    reply();
+  });
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    deliver();
+  });
+  restart.addEventListener("click", () => {
+    run += 1;
+    chatId = newChatId(); // the earlier conversation stays saved as it was
+    log.textContent = "";
+    input.value = "";
+    input.disabled = false;
+    fitInput();
+    showChips(false);
+    ["name", "email", "message", "type"].forEach((name) => (field(name).value = ""));
+    subject.value = baseSubject;
+    restart.hidden = true;
+    restart.textContent = tr("contact.chatRestart", "Start over");
+    welcome();
   });
 
-  // Coming back with the Back button shows the page from the cache: put the card back.
-  window.addEventListener("pageshow", (event) => {
-    if (!event.persisted) return;
-    form.classList.remove("is-posting");
-    updateReady();
+  // The language button rewrites the whole conversation, not only the next messages.
+  document.addEventListener("portfolio:languagechange", () => {
+    log.querySelectorAll(".livechat-her, .livechat-me").forEach((item) => {
+      if (said.has(item)) item.textContent = say(said.get(item));
+    });
+    if (!chips.hidden) showChips(true);
+    if (state === "done") restart.textContent = tr("contact.chatAgain", "Send another");
   });
+
+  form.classList.add("is-live");
+  setBusy(true);
+  // Starts when it comes into view, without taking the focus from the rest of the page.
+  new IntersectionObserver((entries, observer) => {
+    if (!entries[0].isIntersecting) return;
+    observer.disconnect();
+    welcome();
+  }, { threshold: 0.3 }).observe(form);
 });
 
 // -------------------------------

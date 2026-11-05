@@ -8,11 +8,11 @@ done, and what is still open. Keep them up to date when something important chan
 
 - Hand-written HTML, CSS and vanilla JavaScript. No framework, no build step. Hosted on GitHub Pages (the live site is
   `chakrellah44.github.io/portfolio`, built from the `main` branch).
-- Pages: `index.html` (home), `projects.html`, `hidden-me.html`, `contact.html`, `404.html`, `perso.html` (private
+- Pages: `index.html` (home), `projects.html`, `hidden-me.html`, `contact.html`, `privacy.html`, `404.html`, `perso.html` (private
   moderation page for testimonials).
 - Two languages: English is written in the HTML, French lives in `js/i18n.js` (`data-i18n` attributes). Two themes: dark
   (default) and light (`body[data-theme="light"]`).
-- Backend: Supabase for testimonials and anonymous visit stats (SQL in `supabase/`). The contact form posts to FormSubmit.
+- Backend: Supabase for testimonials and anonymous visit stats (SQL in `supabase/`). The contact form is a scripted chat (`js/core.js`): it sends through FormSubmit and also saves each answer in Supabase (`supabase/messages.sql`), shown in the Messages tab of `perso.html`.
 - `README.md` describes the folders; `tools/` holds small scripts that generate parts of the site.
 
 ## How to work with Imane

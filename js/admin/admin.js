@@ -105,6 +105,7 @@ async function showPanel() {
     return setStatus(statusEl, "Ce compte n'est pas admin : lance la dernière ligne de supabase/admin.sql avec ton email.", "error");
   }
   loadNotes();
+  window.refreshMessages?.();
 }
 
 async function loadNotes() {
@@ -126,11 +127,14 @@ function render() {
   document.querySelector('[data-count="pending"]').textContent = pending.length;
   document.querySelector('[data-count="approved"]').textContent = approved.length;
   tabs.forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.tab === currentTab)));
-  // The stats tab lives in admin-stats.js.
+  // The stats tab lives in admin-stats.js and the messages tab in admin-messages.js.
   const statsView = currentTab === "stats";
-  list.hidden = statsView;
+  const messagesView = currentTab === "messages";
+  list.hidden = statsView || messagesView;
   document.getElementById("stats").hidden = !statsView;
+  document.getElementById("messages").hidden = !messagesView;
   if (statsView) return window.showStats?.();
+  if (messagesView) return window.showMessages?.();
 
   const shown = currentTab === "pending" ? pending : approved;
   list.innerHTML = "";
@@ -249,7 +253,11 @@ tabs.forEach((tab) => tab.addEventListener("click", () => {
   currentTab = tab.dataset.tab;
   render();
 }));
-document.getElementById("refresh").addEventListener("click", () => (currentTab === "stats" ? window.showStats?.(true) : loadNotes()));
+document.getElementById("refresh").addEventListener("click", () => {
+  if (currentTab === "stats") window.showStats?.(true);
+  else if (currentTab === "messages") window.showMessages?.(true);
+  else loadNotes();
+});
 document.getElementById("logout").addEventListener("click", () => signOut());
 
 // -------------------------------

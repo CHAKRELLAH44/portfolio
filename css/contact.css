@@ -145,360 +145,287 @@ body[data-theme="light"] .contact {
   display: none;
 }
 
-/* The message form is a postcard: address and stamp on the right, the letter on lined paper on the left.
-   js/core.js sticks the stamp (.is-ready) once every field is valid, then on send the postmark hits the stamp
-   and the card flies off (.is-posting) before the form is really sent. The side comes first in the markup so
-   the tab order is name, email, message; the grid puts it on the right. */
-.postcard {
-  container-type: inline-size;
+/* The message form is a conversation: a scripted "Imane" asks the questions one at a time and js/core.js fills in
+   the real form behind it. Without JavaScript the plain fields show instead (.livechat-plain). */
+.livechat {
   min-width: 0;
-}
-
-.postcard-sheet {
-  --line: 1.75rem; /* height of one ruled line of the letter */
-  --pad: clamp(1.25rem, 5cqi, 2rem);
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  grid-template-areas:
-    "message side"
-    "foot foot";
-  gap: 1.25rem var(--pad);
-  padding: calc(var(--pad) + 6px);
+  padding: clamp(1.1rem, 4vw, 1.5rem);
+  overflow: hidden;
+  border: 1px solid var(--hairline);
   border-radius: 18px;
   background:
     radial-gradient(110% 70% at 100% 0%, rgba(var(--accent-rgb), 0.09), transparent 60%),
     var(--surface);
   box-shadow: 0 24px 50px -30px rgba(0, 0, 0, 0.7);
-  transition: transform 0.25s ease-out;
 }
 
-/* Tilts a little towards the pointer (js/core.js sets --rx/--ry); it stays flat while someone is typing */
-.postcard:not(:focus-within) .postcard-sheet {
-  transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+.livechat:not(.is-live) .livechat-ui,
+.livechat.is-live .livechat-plain {
+  display: none;
 }
 
-/* Airmail border: diagonal stripes in a 6px frame */
-.postcard-sheet::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 6px;
-  border-radius: inherit;
-  background: repeating-linear-gradient(-45deg, var(--primary) 0 10px, transparent 10px 20px, #ff2bd6 20px 30px, transparent 30px 40px);
-  opacity: 0.6;
-  pointer-events: none;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-}
-
-.postcard-message {
-  grid-area: message;
+.livechat-ui {
   display: grid;
-  align-content: start;
+  gap: 0.75rem;
   min-width: 0;
 }
 
-.postcard-side {
-  grid-area: side;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-content: start;
-  gap: 1rem 0.75rem;
+.livechat-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.livechat-top img {
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  object-fit: contain;
+}
+
+.livechat-top div {
+  flex: 1;
   min-width: 0;
-  padding-left: var(--pad);
-  border-left: 1px dashed var(--hairline);
 }
 
-.postcard-side .field {
-  grid-column: 1 / -1;
-}
-
-.postcard-to {
-  margin: 0;
+.livechat-top b {
+  display: block;
   color: var(--white);
-  font: italic 700 1.05rem / 1.25 var(--font-display);
+  font-family: var(--font-display);
 }
 
-.postcard-to span {
+.livechat-top small {
   display: block;
   color: var(--gray);
-  font: 600 0.72rem / 1.6 var(--font-mono);
-  font-style: normal;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.78rem;
+  line-height: 1.3;
 }
 
-.postcard-greeting {
-  margin: 0;
-  color: var(--primary-text);
-  font: italic 800 var(--step-1) / 1.2 var(--font-display);
-}
-
-/* The stamp waits faded and crooked in a dashed slot, then sticks once the card is filled in */
-.stamp-slot {
-  position: relative;
-  width: 5.4rem;
-  height: 6.6rem;
-  border: 1.5px dashed var(--hairline);
-  border-radius: 4px;
-  transition: border-color 0.3s ease;
-}
-
-.stamp {
-  width: 100%;
-  height: 100%;
-  padding: 0.3rem;
-  background: var(--primary);
-  opacity: 0.3;
-  filter: grayscale(1);
-  transform: rotate(-12deg) scale(0.8);
-  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease, filter 0.3s ease;
-  /* perforated edge: half holes every 0.6rem around a solid middle (5.4rem and 6.6rem are multiples of 0.6rem) */
-  -webkit-mask: linear-gradient(#000 0 0) content-box, radial-gradient(circle, #0000 0.16rem, #000 0.17rem) -0.3rem -0.3rem / 0.6rem 0.6rem;
-  mask: linear-gradient(#000 0 0) content-box, radial-gradient(circle, #0000 0.16rem, #000 0.17rem) -0.3rem -0.3rem / 0.6rem 0.6rem;
-}
-
-.stamp-face {
-  display: grid;
-  place-content: center;
-  justify-items: center;
-  gap: 0.35rem;
-  height: 100%;
-  border: 1px solid rgba(var(--accent-rgb), 0.5);
-  background:
-    radial-gradient(80% 60% at 50% 30%, rgba(var(--accent-rgb), 0.25), transparent 70%),
-    var(--black);
-}
-
-.stamp-face img {
-  width: 2.4rem;
-  height: auto;
-}
-
-.stamp-face span {
-  color: var(--primary-text);
-  font: 600 0.55rem var(--font-mono);
-  letter-spacing: 0.14em;
-}
-
-.postcard.is-ready .stamp-slot {
-  border-color: transparent;
-}
-
-.postcard.is-ready .stamp {
-  opacity: 1;
-  filter: none;
-  transform: rotate(4deg);
-}
-
-/* Postmark: a round date stamp with wavy cancel lines, hidden until the card is sent */
-.postmark {
-  position: absolute;
-  bottom: -1.1rem;
-  left: -1.9rem;
-  display: grid;
-  place-content: center;
-  width: 4.6rem;
-  aspect-ratio: 1;
-  border: 2px solid var(--white);
-  border-radius: 50%;
+.livechat-restart {
+  flex: none;
+  min-height: 36px;
+  padding: 0 0.85rem;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: transparent;
   color: var(--white);
-  font: 600 0.5rem / 1.35 var(--font-mono);
-  letter-spacing: 0.08em;
-  text-align: center;
-  opacity: 0;
-  transform: scale(1.8) rotate(-30deg);
-  pointer-events: none;
+  font: 700 0.78rem var(--font-display);
+  cursor: pointer;
 }
 
-.postmark::before {
-  content: "";
-  position: absolute;
-  top: 32%;
-  right: 100%;
-  width: 2.6rem;
-  height: 36%;
-  background: repeating-linear-gradient(to bottom, var(--white) 0 2px, transparent 2px 6px);
+.livechat-restart:hover {
+  border-color: var(--primary-text);
 }
 
-/* Fields: handwriting lines instead of boxes */
-.field {
-  position: relative;
+.livechat-restart[hidden] {
+  display: none;
 }
 
-.field input,
-.field textarea {
-  display: block;
-  width: 100%;
-  padding: 1.3rem 0.15rem 0.35rem;
+.livechat-log {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: clamp(16rem, 42vh, 21rem);
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.livechat-log > * {
+  flex: none;
+  max-width: 84%;
+  padding: 0.55rem 0.85rem;
+  border-radius: 16px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  animation: livechat-in 0.22s ease-out;
+}
+
+.livechat-her {
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  background: color-mix(in srgb, var(--white) 11%, var(--black));
+  color: var(--white);
+}
+
+.livechat-me {
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.livechat-dots {
+  display: flex;
+  gap: 0.3rem;
+  padding-block: 0.8rem;
+}
+
+.livechat-dots i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--gray);
+  animation: livechat-dot 0.9s ease-in-out infinite;
+}
+
+.livechat-dots i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.livechat-dots i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes livechat-dot {
+  40% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes livechat-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.livechat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.livechat-chips[hidden] {
+  display: none;
+}
+
+.livechat-chips button {
+  min-height: 40px;
+  padding: 0 0.95rem;
+  border: 1px solid var(--primary-text);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--white);
+  font: 700 0.85rem var(--font-display);
+  cursor: pointer;
+}
+
+.livechat-chips button:hover {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.livechat.is-welcome .livechat-composer {
+  display: none;
+}
+
+.livechat-chips .livechat-start {
+  min-height: 46px;
+  padding: 0 1.5rem;
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--on-primary);
+  font-size: 1rem;
+  animation: livechat-in 0.22s ease-out;
+}
+
+.livechat-chips .livechat-start:hover {
+  box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.25);
+}
+
+.livechat-composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+
+.livechat-input {
+  flex: 1;
+  min-width: 0;
+  max-height: 7.5rem;
+  padding: 0.55rem 0.1rem;
   border: 0;
-  border-bottom: 1.5px solid var(--hairline);
+  border-bottom: 2px solid var(--hairline);
   border-radius: 0;
   background: transparent;
   color: var(--white);
-  font: 1rem / 1.4 var(--font-body);
-  transition: border-color 0.2s ease;
+  font: 1rem / 1.45 var(--font-body);
+  resize: none;
 }
 
-.field input:focus,
-.field textarea:focus {
+.livechat-input:focus {
   outline: none;
+  border-bottom-color: var(--primary-text);
 }
 
-/* the line fills with the accent from the left when the field is focused */
-.postcard-side .field::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  background: var(--primary-text);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s ease;
+.livechat-input:disabled {
+  opacity: 0.5;
 }
 
-.postcard-side .field:focus-within::after {
-  transform: scaleX(1);
+.livechat-send {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--on-primary);
+  cursor: pointer;
 }
 
-/* The letter: ruled paper whose lines scroll with the text */
-.field-letter textarea {
-  min-height: calc(var(--line) * 7);
-  padding: var(--line) 0.25rem 0;
-  border-bottom: 0;
-  background: repeating-linear-gradient(to bottom, transparent 0 calc(var(--line) - 1px), var(--hairline) calc(var(--line) - 1px) var(--line)) local;
-  font: italic 500 1.05rem / var(--line) var(--font-body);
-  resize: vertical;
+.livechat-send .ui-icon {
+  width: 1.2em;
+  height: 1.2em;
 }
 
-/* The label rests on the line and floats up when the field has focus or a value. */
-.field label {
-  position: absolute;
-  top: 1.3rem;
-  left: 0.15rem;
-  right: 0;
-  overflow: hidden;
+.livechat-send:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.livechat button:focus-visible {
+  outline: 2px solid var(--primary-text);
+  outline-offset: 2px;
+}
+
+/* Without JavaScript: plain fields */
+.livechat-plain {
+  display: grid;
+  gap: 1rem;
+}
+
+.livechat-field {
+  display: grid;
+  gap: 0.3rem;
   color: var(--gray);
-  font: 600 0.8rem / 1.4 var(--font-display);
-  letter-spacing: 0.06em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  pointer-events: none;
-  transform-origin: left top;
-  transition: transform 0.18s ease, color 0.18s ease;
+  font: 600 0.8rem var(--font-mono);
 }
 
-.field-letter label {
-  top: 0.35rem;
-}
-
-.field input:focus ~ label,
-.field input:not(:placeholder-shown) ~ label,
-.field textarea:focus ~ label,
-.field textarea:not(:placeholder-shown) ~ label {
-  transform: translateY(-1.1rem) scale(0.82);
-}
-
-.field-letter textarea:focus ~ label,
-.field-letter textarea:not(:placeholder-shown) ~ label {
-  transform: scale(0.82);
-}
-
-.field input:focus ~ label,
-.field textarea:focus ~ label {
-  color: var(--primary-text);
-}
-
-/* Invalid styling appears only after the visitor has interacted with the field. */
-.field input:user-invalid {
-  border-bottom-color: var(--err);
-}
-
-.field input:user-invalid ~ label,
-.field textarea:user-invalid ~ label {
-  color: var(--err);
-}
-
-.postcard-foot {
-  grid-area: foot;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem 1rem;
-  padding-top: 1rem;
-  border-top: 1px dashed var(--hairline);
-}
-
-.postcard-hint {
-  margin: 0;
-  color: var(--gray);
-  font: 500 0.8rem / 1.4 var(--font-mono);
-}
-
-.postcard.is-ready .postcard-hint {
-  color: var(--primary-text);
-}
-
-/* Sending: the postmark lands on the stamp, then the card takes off */
-.postcard.is-posting .postmark {
-  animation: postmark-slam 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.3) forwards;
-}
-
-.postcard.is-posting .postcard-sheet {
-  animation: postcard-away 0.8s cubic-bezier(0.55, 0, 0.75, 0.2) 0.55s forwards;
-}
-
-@keyframes postmark-slam {
-  to {
-    opacity: 0.85;
-    transform: scale(1) rotate(-14deg);
-  }
-}
-
-@keyframes postcard-away {
-  0% {
-    transform: none;
-  }
-  25% {
-    transform: translateY(10px) rotate(1.5deg);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(30%, -120%) rotate(-12deg) scale(0.6);
-  }
-}
-
-/* Narrow card: address and stamp on top, then the letter */
-@container (max-width: 34rem) {
-  .postcard-sheet {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-      "side"
-      "message"
-      "foot";
-  }
-
-  .postcard-side {
-    padding: 0 0 1.25rem;
-    border-left: 0;
-    border-bottom: 1px dashed var(--hairline);
-  }
+.livechat-field input,
+.livechat-field textarea {
+  width: 100%;
+  padding: 0.5rem 0.1rem;
+  border: 0;
+  border-bottom: 2px solid var(--hairline);
+  background: transparent;
+  color: var(--white);
+  font: 1rem / 1.45 var(--font-body);
 }
 
 /* Character counter (inserted after the textarea by js/core.js). */
-.field .char-counter {
+.livechat .char-counter {
   margin: 0.4rem 0.25rem 0;
   color: var(--gray);
   font: 500 var(--step--1) var(--font-display);
   text-align: right;
 }
 
-.field .char-counter.is-near-limit {
+.livechat .char-counter.is-near-limit {
   color: var(--primary-text);
 }
 
@@ -542,17 +469,6 @@ body[data-theme="light"] .contact {
 
 .send:hover .ui-icon {
   transform: translate(3px, -3px);
-}
-
-/* once the stamp is on, the button breathes to say "ready" */
-.postcard.is-ready .send {
-  animation: send-ready 1.8s ease-in-out infinite;
-}
-
-@keyframes send-ready {
-  50% {
-    box-shadow: 0 0 0 6px rgba(var(--accent-rgb), 0.22);
-  }
 }
 
 .send:focus-visible {
@@ -680,15 +596,12 @@ body[data-theme="light"] .social-media {
   .link-card .go,
   .send,
   .send .ui-icon,
-  .field label,
-  .postcard-sheet,
-  .postcard-side .field::after,
-  .stamp {
+  .livechat * {
     transition: none;
   }
 
-  .postcard.is-ready .send {
-    animation: none;
+  .livechat * {
+    animation: none !important;
   }
 
   .link-card:hover,

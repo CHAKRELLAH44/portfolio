@@ -351,11 +351,12 @@ if (filterButtons.length) {
   });
 }
 
-// Certifications & courses: credentials as cards, courses as a filterable list.
+// Certifications & courses: credentials and courses as rows to swipe, courses with filters and a "show all" list.
 // The hidden-from-view list `.certification-data` is the data source and the no-JavaScript fallback.
+// Links marked data-featured come first, so they are the ones on screen before any swipe.
 const certSection = document.querySelector(".certifications");
 if (certSection && certSection.querySelector(".certs-app")) {
-  const COURSE_PREVIEW = 8;
+  const COURSE_PREVIEW = 3;
   const GROUP_ORDER = ["michigan", "epfl", "meta", "jhu", "ibm", "google", "aws", "other"];
   const PROVIDER_GROUP = {
     "University of Michigan": "michigan",
@@ -383,15 +384,15 @@ if (certSection && certSection.querySelector(".certs-app")) {
     let meta = PROVIDER_SHORT[provider] || provider;
     const suffix = title.match(/^(.*?) – (Salesforce) (\d{4})$/);
     if (suffix) { title = suffix[1]; meta = `${suffix[2]} ${suffix[3]}`; }
-    return { index, href: a.href, title, meta, credential, group: PROVIDER_GROUP[provider] || "other" };
+    return { index, href: a.href, title, meta, credential, featured: a.hasAttribute("data-featured"), group: PROVIDER_GROUP[provider] || "other" };
   });
-  const credentials = items.filter((item) => item.credential);
+  const featuredFirst = (a, b) => b.featured - a.featured;
+  const credentials = items.filter((item) => item.credential).sort(featuredFirst);
   const courses = items.filter((item) => !item.credential)
-    .sort((a, b) => GROUP_ORDER.indexOf(a.group) - GROUP_ORDER.indexOf(b.group) || a.index - b.index);
+    .sort((a, b) => featuredFirst(a, b) || GROUP_ORDER.indexOf(a.group) - GROUP_ORDER.indexOf(b.group) || a.index - b.index);
 
   const credentialList = certSection.querySelector("#cert-credentials");
   const courseList = certSection.querySelector("#cert-course-list");
-  const statusLine = certSection.querySelector(".cert-status");
   const toggle = certSection.querySelector(".cert-toggle");
   const chips = [...certSection.querySelectorAll("[data-cert-filter]")];
   let activeGroup = "all";
@@ -455,22 +456,66 @@ if (certSection && certSection.querySelector(".certs-app")) {
     });
   }
 
+  // A row of cards scrolled sideways (scroll-snap in css/projects.css): the finger or trackpad moves it natively,
+  // the arrows move it one screenful, and the status line says which cards are on screen.
+  function makeSlider(list, statusKey, statusEnglish) {
+    const foot = list.nextElementSibling;
+    const status = foot.querySelector(".cert-status");
+    const nav = foot.querySelector(".cert-nav");
+    const [prev, next] = nav.querySelectorAll("button");
+
+    const measure = () => {
+      const cards = [...list.children].filter((li) => !li.hidden);
+      const style = getComputedStyle(list);
+      const gap = parseFloat(style.columnGap) || 0;
+      const width = list.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+      const step = cards.length ? cards[0].offsetWidth + gap : 0;
+      return { total: cards.length, step, perView: step ? Math.max(1, Math.round((width + gap) / step)) : 1 };
+    };
+
+    const refresh = () => {
+      const { total, step, perView } = measure();
+      const isList = list.classList.contains("is-expanded");
+      const first = step && !isList ? Math.round(list.scrollLeft / step) : 0;
+      const last = isList ? total : Math.min(first + perView, total);
+      nav.hidden = isList || total <= perView;
+      prev.disabled = first <= 0;
+      next.disabled = last >= total;
+      const range = first + 1 < last ? `${first + 1}–${last}` : String(last);
+      status.textContent = fill(tr(statusKey, statusEnglish), { n: range, total });
+    };
+
+    const move = (direction) => {
+      const { step, perView } = measure();
+      list.scrollBy({ left: direction * step * perView, behavior: prefersReducedMotion ? "auto" : "smooth" });
+    };
+    prev.addEventListener("click", () => move(-1));
+    next.addEventListener("click", () => move(1));
+
+    let frame = 0;
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(() => { frame = 0; refresh(); });
+    };
+    list.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return refresh;
+  }
+
+  const refreshCredentials = makeSlider(credentialList, "certs.shownCredentials", "Showing {n} of {total} credentials");
+  const refreshCourses = makeSlider(courseList, "certs.shown", "Showing {n} of {total} courses");
+
   function update() {
     const matching = courses.filter((item) => activeGroup === "all" || item.group === activeGroup);
-    const limited = matching.length > COURSE_PREVIEW;
-    let shown = 0;
     [...courseList.children].forEach((li) => {
-      const match = activeGroup === "all" || li.dataset.group === activeGroup;
-      const visible = match && (expanded || !limited || shown < COURSE_PREVIEW);
-      if (visible) shown += 1;
-      li.hidden = !visible;
+      li.hidden = activeGroup !== "all" && li.dataset.group !== activeGroup;
     });
-    toggle.hidden = !limited;
+    courseList.classList.toggle("is-expanded", expanded);
+    toggle.hidden = matching.length <= COURSE_PREVIEW;
     toggle.setAttribute("aria-expanded", String(expanded));
     toggle.textContent = expanded
       ? tr("certs.showFewer", "Show fewer")
       : fill(tr("certs.showAll", "Show all {n} courses"), { n: matching.length });
-    statusLine.textContent = fill(tr("certs.shown", "Showing {n} of {total} courses"), { n: shown, total: matching.length });
+    refreshCourses();
     chips.forEach((chip) => {
       const active = chip.dataset.certFilter === activeGroup;
       chip.classList.toggle("is-active", active);
@@ -483,11 +528,13 @@ if (certSection && certSection.querySelector(".certs-app")) {
     chip.querySelector(".cert-chip-n").textContent = String(group === "all" ? courses.length : courses.filter((c) => c.group === group).length);
     chip.addEventListener("click", () => {
       activeGroup = group;
+      courseList.scrollLeft = 0;
       update();
     });
   });
   toggle.addEventListener("click", () => {
     expanded = !expanded;
+    courseList.scrollLeft = 0;
     update();
     if (!expanded) courseList.closest(".cert-block").scrollIntoView({ block: "nearest" });
   });
@@ -495,12 +542,15 @@ if (certSection && certSection.querySelector(".certs-app")) {
     renderCredentials();
     renderCourses();
     update();
+    refreshCredentials();
   });
 
+  // The rows can only be measured once the panel is on screen.
+  certSection.classList.add("is-enhanced");
   renderCredentials();
   renderCourses();
   update();
-  certSection.classList.add("is-enhanced");
+  refreshCredentials();
 }
 
 // -------------------------------

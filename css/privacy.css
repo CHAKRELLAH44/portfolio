@@ -1,0 +1,49 @@
+/* Privacy page (privacy.html): a short readable column. Colours come from the tokens in base.css. */
+
+.privacy {
+  padding-block: clamp(2.5rem, 7vw, 6rem) clamp(1.5rem, 4vw, 3rem);
+}
+
+.privacy .content {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.privacy-lead {
+  max-width: 44ch;
+  color: var(--white);
+  font-size: var(--step-1);
+  line-height: 1.4;
+}
+
+.privacy-list {
+  display: grid;
+  max-width: 46rem;
+}
+
+.privacy-list article {
+  display: grid;
+  gap: 0.5rem;
+  padding-block: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--white) 22%, transparent);
+}
+
+.privacy-list h2 {
+  font: italic 800 var(--step-1) / 1.15 var(--font-display);
+}
+
+.privacy-list p {
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+.privacy-list a {
+  color: var(--primary-text);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.privacy-date {
+  color: var(--gray);
+  font: 500 var(--step--1) var(--font-mono);
+}

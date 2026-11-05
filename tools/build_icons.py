@@ -21,7 +21,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 ICONS = ROOT / "tools" / "icons"
-PAGES = ["index.html", "projects.html", "hidden-me.html", "contact.html", "404.html", "perso.html"]
+PAGES = ["index.html", "projects.html", "hidden-me.html", "contact.html", "404.html", "perso.html", "privacy.html"]
 START, END = "<!-- icons:start -->", "<!-- icons:end -->"
 USE_RX = re.compile(r"""href=["']#i-([a-z0-9-]+)["']""")
 SCRIPT_RX = re.compile(r"""<script[^>]+src=["']([^"'?#:]+)""")

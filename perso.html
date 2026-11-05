@@ -41,7 +41,7 @@
       <section id="panel" hidden>
         <div class="admin-head">
           <div>
-            <h1>Remarques</h1>
+            <h1>Espace admin</h1>
             <p id="who"></p>
           </div>
           <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
@@ -52,11 +52,13 @@
         <div class="tabs" role="tablist">
           <button type="button" class="admin-btn" role="tab" data-tab="pending" aria-selected="true">En attente <span class="count" data-count="pending">0</span></button>
           <button type="button" class="admin-btn" role="tab" data-tab="approved" aria-selected="false">Publiées <span class="count" data-count="approved">0</span></button>
+          <button type="button" class="admin-btn" role="tab" data-tab="messages" aria-selected="false">Messages <span class="count" data-count="messages">0</span></button>
           <button type="button" class="admin-btn" role="tab" data-tab="stats" aria-selected="false"><svg class="ui-icon" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7.5 16v-3M12 16V9M16.5 16v-5M21 16V6"/></svg> Statistiques</button>
           <button type="button" class="admin-btn" id="refresh">↻ Actualiser</button>
         </div>
         <p class="admin-status" id="status" role="status"></p>
         <ul class="notes" id="notes"></ul>
+        <ul class="notes" id="messages" hidden></ul>
 
         <!-- Visit statistics (admin-stats.js) -->
         <section class="stats" id="stats" hidden>
@@ -104,5 +106,6 @@
     <script src="js/supabase-config.js"></script>
     <script src="js/admin/admin.js"></script>
     <script src="js/admin/admin-stats.js"></script>
+    <script src="js/admin/admin-messages.js"></script>
   </body>
 </html>

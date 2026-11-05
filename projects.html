@@ -382,7 +382,16 @@
             <div class="certs-app">
               <div class="cert-block">
                 <h3 class="cert-subtitle" data-i18n="certs.credentials">Credentials</h3>
-                <ul class="cert-credentials" id="cert-credentials"></ul>
+                <ul class="cert-slider cert-credentials" id="cert-credentials"></ul>
+                <div class="cert-foot">
+                  <p class="cert-status" aria-live="polite"></p>
+                  <div class="cert-actions">
+                    <div class="cert-nav">
+                      <button type="button" class="cert-arrow" aria-label="Previous" data-i18n-attr="aria-label:certs.prev"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button>
+                      <button type="button" class="cert-arrow" aria-label="Next" data-i18n-attr="aria-label:certs.next"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="cert-block">
                 <div class="cert-courses-head">
@@ -399,18 +408,24 @@
                     <button type="button" class="filter-btn" data-cert-filter="other" aria-pressed="false"><span data-i18n="certs.filterOther">Other</span> <span class="cert-chip-n"></span></button>
                   </div>
                 </div>
-                <ul class="cert-list" id="cert-course-list"></ul>
+                <ul class="cert-slider cert-list" id="cert-course-list"></ul>
                 <div class="cert-foot">
                   <p class="cert-status" aria-live="polite"></p>
-                  <button type="button" class="filter-btn cert-toggle" aria-expanded="false" aria-controls="cert-course-list" hidden></button>
+                  <div class="cert-actions">
+                    <div class="cert-nav">
+                      <button type="button" class="cert-arrow" aria-label="Previous" data-i18n-attr="aria-label:certs.prev"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button>
+                      <button type="button" class="cert-arrow" aria-label="Next" data-i18n-attr="aria-label:certs.next"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button>
+                    </div>
+                    <button type="button" class="filter-btn cert-toggle" aria-expanded="false" aria-controls="cert-course-list" hidden></button>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="certification-data">
-              <a href="https://www.coursera.org/learn/packt-advanced-spring-cloud-microservices-and-deployment-with-docker-1nbvc/home/welcome" data-provider="Packt">Advanced Spring Cloud Microservices &amp; Deployment with Docker</a>
-              <a href="https://www.coursera.org/learn/machine-learning-with-python/home/welcome" data-provider="IBM">Machine Learning with Python</a>
+              <a href="https://www.coursera.org/learn/packt-advanced-spring-cloud-microservices-and-deployment-with-docker-1nbvc/home/welcome" data-provider="Packt" data-featured>Advanced Spring Cloud Microservices &amp; Deployment with Docker</a>
+              <a href="https://www.coursera.org/learn/machine-learning-with-python/home/welcome" data-provider="IBM" data-featured>Machine Learning with Python</a>
               <a href="https://www.coursera.org/learn/react-native-course/home/welcome" data-provider="Meta">React Native</a>
-              <a href="https://www.coursera.org/learn/ibm-containers-docker-kubernetes-openshift/home/welcome" data-provider="IBM">Introduction to Containers w/ Docker, Kubernetes &amp; OpenShift</a>
+              <a href="https://www.coursera.org/learn/ibm-containers-docker-kubernetes-openshift/home/welcome" data-provider="IBM" data-featured>Introduction to Containers w/ Docker, Kubernetes &amp; OpenShift</a>
               <a href="https://www.coursera.org/learn/introduction-git-github/home/welcome" data-provider="Google">Introduction to Git and GitHub</a>
               <a href="https://www.coursera.org/learn/azure-virtual-networks/home/welcome" data-provider="Whizlabs">Virtual Networks in Azure</a>
               <a href="https://www.coursera.org/learn/wireframes-low-fidelity-prototypes/home/welcome" data-provider="Google">Build Wireframes and Low-Fidelity Prototypes</a>
@@ -431,12 +446,12 @@
               <a href="https://www.coursera.org/learn/basic-sql-syntax/home/welcome" data-provider="Coursera">Understanding Basic SQL Syntax</a>
               <a href="https://www.coursera.org/learn/html-css-javascript-for-web-developers/home/welcome" data-provider="Johns Hopkins University">HTML, CSS, and Javascript for Web Developers</a>
               <a href="https://www.coursera.org/learn/the-structured-query-language-sql/home/welcome" data-provider="University of Colorado Boulder">The Structured Query Language (SQL)</a>
-              <a href="https://trailhead.salesforce.com/credentials/" data-provider="Salesforce" data-status="credential">Intermediate Administrator – Salesforce 2026</a>
+              <a href="https://trailhead.salesforce.com/credentials/" data-provider="Salesforce" data-status="credential" data-featured>Intermediate Administrator – Salesforce 2026</a>
               <a href="https://trailhead.salesforce.com/credentials/" data-provider="Salesforce" data-status="credential">Beginner Administrator – Salesforce 2026</a>
               <a href="https://trailhead.salesforce.com/credentials/" data-provider="Salesforce" data-status="credential">Intermediate Developer – Salesforce 2026</a>
               <a href="https://trailhead.salesforce.com/credentials/" data-provider="Salesforce" data-status="credential">Lightning Experience Basics – Salesforce 2026</a>
               <a href="https://trailhead.salesforce.com/credentials/" data-provider="Salesforce" data-status="credential">Flow Builder – Salesforce 2026</a>
-              <a href="https://www.oracle.com/education/certification/" data-provider="Oracle" data-status="credential">Oracle Database 19c Admin Professional Credential</a>
+              <a href="https://www.oracle.com/education/certification/" data-provider="Oracle" data-status="credential" data-featured>Oracle Database 19c Admin Professional Credential</a>
             </div>
           </section>
 
@@ -480,7 +495,8 @@
               <a href="contact.html" data-i18n="nav.contact">Contact</a>
               <a href="assets/docs/cv.pdf" download="Imane_CV.pdf" data-i18n="nav.cv">Download CV</a>
             </nav>
-            <p>&copy; Imanska <span id="year"></span> | <span data-i18n="footer.tagline">Building Tech, Adding Fun</span></p>
+            <p data-i18n="footer.tagline">Building Tech, Adding Fun</p>
+            <p class="footer-legal"><span>&copy; <span id="year"></span> Imanska. <span data-i18n="footer.rights">All rights reserved.</span></span> <a href="privacy.html" data-i18n="footer.privacy">Privacy</a></p>
           </div>
         </div>
       </footer>

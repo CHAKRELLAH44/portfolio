@@ -79,6 +79,28 @@ footer .footer-nav a:hover {
   text-underline-offset: 0.25em;
 }
 
+/* Copyright and privacy link, the very last line of the page */
+footer .footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--white) 72%, transparent);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+footer .footer-legal a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+footer .footer-legal a:hover {
+  color: var(--white);
+}
+
 /* Share button (added by js/core.js) */
 .share-btn {
   display: inline-flex;
