@@ -145,6 +145,24 @@ body[data-theme="light"] .contact {
   display: none;
 }
 
+.form-error {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  color: var(--white);
+}
+
+.form-error a {
+  color: var(--primary-text);
+}
+
+.form-error[hidden] {
+  display: none;
+}
+
 /* The message form is a conversation that looks like a messaging app: a scripted "Imane" asks the questions one at
    a time and js/core.js fills in the real form behind it. It opens on an empty chat with "Start chat" in the middle.
    Without JavaScript the plain fields show instead (.livechat-plain). */

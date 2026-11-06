@@ -448,9 +448,8 @@ document.querySelectorAll(".contact form").forEach((form) => {
 
 // -------------------------------
 // Contact form (css/contact.css): a scripted conversation. "Imane" asks one question at a time and the answers fill in
-// the real form, which is then sent through FormSubmit without leaving the page. If that fails, the form is posted
-// the normal way. Each answer is also saved in Supabase as the visitor goes (supabase/messages.sql), so the
-// conversation shows in perso.html even if they stop before the end, or if FormSubmit is down.
+// the real form, which is sent through EmailJS without leaving the page. Each answer is also saved in Supabase as the
+// visitor goes (supabase/messages.sql), so the conversation shows in perso.html even if they stop before the end.
 // Without JavaScript the plain fields show instead.
 // -------------------------------
 document.querySelectorAll(".livechat").forEach((form) => {
@@ -459,6 +458,8 @@ document.querySelectorAll(".livechat").forEach((form) => {
   const input = form.querySelector(".livechat-input");
   const sendButton = form.querySelector(".livechat-send");
   const restart = form.querySelector(".livechat-restart");
+  const deliveryError = form.closest(".form-wrap").querySelector(".form-error");
+  const emailConfig = window.EMAILJS_CONFIG;
   const field = (name) => form.querySelector(`[name="${name}"]`);
   const subject = field("_subject");
   const baseSubject = subject.value;
@@ -580,36 +581,41 @@ document.querySelectorAll(".livechat").forEach((form) => {
 
   const deliver = async () => {
     const mine = run;
-    const payload = Object.fromEntries(new FormData(form));
-    payload._captcha = "false";
-    delete payload._next;
+    deliveryError.hidden = true;
     let delivered = false;
-    const dots = typing(); // FormSubmit can take a few seconds to answer
-    const stop = new AbortController();
-    const tooLong = setTimeout(() => stop.abort(), 15000);
+    let deliveryFailure;
+    const dots = typing();
     try {
-      const response = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
-        signal: stop.signal,
-      });
-      const result = await response.json();
-      delivered = response.ok && String(result.success) === "true";
-    } catch (err) {}
-    clearTimeout(tooLong);
-    dots.remove();
+      if (field("_honey").value) throw new Error("Contact form rejected as spam");
+      if (!window.emailjs || !emailConfig?.publicKey || !emailConfig.serviceId || !emailConfig.templateId) {
+        throw new Error("EmailJS is unavailable or not configured");
+      }
+      const response = await window.emailjs.send(emailConfig.serviceId, emailConfig.templateId, {
+        from_name: field("name").value,
+        reply_to: field("email").value,
+        message: field("message").value,
+        topic: field("type").value,
+        subject: subject.value,
+      }, { publicKey: emailConfig.publicKey });
+      delivered = response.status === 200;
+      if (!delivered) throw new Error(`EmailJS responded with HTTP ${response.status}`);
+    } catch (error) {
+      deliveryFailure = error;
+    } finally {
+      dots.remove();
+    }
     if (mine !== run) return;
     if (!delivered) {
-      // The normal post leaves the page, and shows FormSubmit's own screens if it needs anything.
       saveChat("unconfirmed");
-      await imane(["contact.chatFallback", "One last step on the next page."], false);
-      if (mine !== run) return;
-      setBusy(true);
-      await pause(1200);
-      if (mine === run) HTMLFormElement.prototype.submit.call(form);
+      console.warn("Contact message could not be delivered.", deliveryFailure);
+      deliveryError.hidden = false;
+      state = "email";
+      input.value = field("email").value;
+      fitInput();
+      await imane(["contact.chatUnavailable", "The email service is temporarily unavailable. Please try again or"], true);
       return;
     }
+    deliveryError.hidden = true;
     state = "done";
     saveChat("sent");
     await imane(["contact.chatDone", "Got it, it's in my inbox. Talk soon, {name}!", field("name").value], false);

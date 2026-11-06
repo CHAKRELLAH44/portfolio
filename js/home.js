@@ -659,24 +659,24 @@ if (testiSection && typeof SUPABASE_URL !== "undefined") {
 }
 
 // -------------------------------
-// Email alert for a new testimonial (FormSubmit, same inbox as the contact form)
+// Email alert for a new testimonial (EmailJS, same inbox as the contact form)
 // -------------------------------
 function notifyNewNote(note) {
+  const config = window.EMAILJS_CONFIG;
+  if (!window.emailjs || !config?.publicKey || !config.serviceId || !config.templateId) {
+    console.warn("Testimonial was saved, but its email notification could not be sent: EmailJS is unavailable or not configured.");
+    return;
+  }
   const relation = tr(`testi.rel.${note.relation}`, note.relation);
-  fetch("https://formsubmit.co/ajax/chakrellaah@gmail.com", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify({
-      _subject: `New portfolio note from ${note.name}`,
-      _template: "table",
-      _captcha: "false",
-      Name: note.name,
-      Role: note.role || "-",
-      "Worked together as": relation,
-      Message: note.message,
-      Moderate: new URL("perso.html", location.href).href,
-    }),
-  }).catch(() => {});
+  window.emailjs.send(config.serviceId, config.templateId, {
+    from_name: note.name,
+    reply_to: "",
+    topic: `Testimonial · ${relation}`,
+    subject: `New portfolio note from ${note.name}`,
+    message: `${note.message}\n\nRole: ${note.role || "-"}\nWorked together as: ${relation}\nModerate: ${new URL("perso.html", location.href).href}`,
+  }, { publicKey: config.publicKey }).catch((error) => {
+    console.warn("Testimonial was saved, but its email notification could not be sent.", error);
+  });
 }
 
 // -------------------------------

@@ -110,7 +110,7 @@
 
             <div class="form-wrap">
             <p class="form-sent" role="status" hidden data-i18n="contact.sent">Thanks! Your message has been sent. I'll get back to you soon.</p>
-              <form class="livechat" action="https://formsubmit.co/chakrellaah@gmail.com" method="POST" data-aos="fade-up" data-aos-delay="150">
+              <form class="livechat" action="mailto:chakrellaah@gmail.com" method="POST" enctype="text/plain" data-aos="fade-up" data-aos-delay="150">
                 <div class="livechat-ui">
                   <div class="livechat-top">
                     <img src="assets/brand/logo.png" data-light-src="assets/brand/logo-light.png" alt="" width="36" height="36">
@@ -131,10 +131,13 @@
                   <button type="submit" class="send"><span data-i18n="contact.send">Send</span></button>
                 </div>
                 <input type="hidden" name="type" value="">
-                <input type="hidden" name="_next" value="https://chakrellah44.github.io/portfolio/contact.html?sent=1">
                 <input type="hidden" name="_subject" value="New Portfolio Contact!">
                 <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
               </form>
+              <p class="form-error" role="alert" hidden>
+                <span data-i18n="contact.chatUnavailable">The email service is temporarily unavailable. Please try again or</span>
+                <a href="mailto:chakrellaah@gmail.com" data-i18n="contact.chatEmailFallback">email me directly</a>.
+              </p>
             </div>
           </div>
         </div>
@@ -193,7 +196,9 @@
       </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="js/i18n.js"></script>
+    <script src="js/emailjs-config.js"></script>
     <script src="js/supabase-config.js"></script>
     <script src="js/core.js"></script>
     <script src="js/analytics.js" defer></script>
